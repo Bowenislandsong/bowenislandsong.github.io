@@ -4,129 +4,280 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bowen Song — Academic Homepage</title>
-  <meta name="description" content="Wearable sensing • Biomechanics • Federated learning" />
+  <meta name="description" content="Bowen Song | USC Viterbi — AI for Health, Explainable AI, Low‑latency inference, Multi‑modal sensing, Distributed systems." />
   <link rel="icon" href="avatar.jpg" />
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
+  <style>html{scroll-behavior:smooth}</style>
 </head>
 <body class="bg-white text-slate-800">
   <!-- Header -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-200">
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/85 border-b border-slate-200">
     <div class="mx-auto max-w-5xl px-4 md:px-6">
       <div class="flex items-center justify-between py-3">
         <a href="#top" class="font-semibold tracking-tight">Bowen Song</a>
         <nav class="hidden md:flex gap-6 text-sm">
+          <a href="#research" class="hover:text-black">Research</a>
+          <a href="#education" class="hover:text-black">Education</a>
+          <a href="#experience-ai" class="hover:text-black">AI Experience</a>
+          <a href="#experience-cloud" class="hover:text-black">Cloud/Industry</a>
           <a href="#publications" class="hover:text-black">Publications</a>
-          <a href="#projects" class="hover:text-black">Projects</a>
-          <a href="#teaching" class="hover:text-black">Teaching</a>
-          <a href="#service" class="hover:text-black">Service</a>
-          <a href="#news" class="hover:text-black">News</a>
+          <a href="#skills" class="hover:text-black">Skills</a>
           <a href="#contact" class="hover:text-black">Contact</a>
         </nav>
-        <a href="cv.pdf" class="rounded-xl bg-slate-900 text-white px-3 py-1 text-sm font-medium hover:opacity-90">CV</a>
+        <a href="cv.pdf" class="rounded-xl bg-slate-900 text-white px-3 py-1 text-sm font-medium hover:opacity-90">CV (PDF)</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
   <main id="top" class="mx-auto max-w-5xl px-4 md:px-6">
+
+    <!-- Hero -->
     <section class="grid grid-cols-1 md:grid-cols-[1fr,220px] gap-8 md:gap-12 py-10 md:py-14">
       <div>
         <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Bowen Song</h1>
-        <p class="mt-2 text-slate-700">Wearable sensing • Biomechanics • Federated learning</p>
-        <ul class="mt-4 flex flex-col gap-2 text-sm text-slate-700">
-          <li>PhD, USC Viterbi — Computer Science</li>
-          <li>SER/SVD models for on-device biomechanics</li>
-          <li>GRF, joint moments & angles from IMUs</li>
+        <p class="mt-2 text-slate-700">AI for Health · Explainable AI · Low‑latency Inference · Multi‑modal Sensing · Distributed Systems</p>
+        <ul class="mt-4 flex flex-wrap gap-3 text-sm">
+          <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="mailto:bowenson@usc.edu">bowenson@usc.edu</a></li>
+          <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://github.com/Bowenislandsong" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://orcid.org/0000-0002-5071-3880" target="_blank" rel="noopener">ORCID</a></li>
+          <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://qed.usc.edu" target="_blank" rel="noopener">Research Lab</a></li>
         </ul>
-        <div class="mt-4 flex flex-wrap gap-3 text-sm">
-          <a href="https://scholar.google.com/" class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50">Google Scholar</a>
-          <a href="https://github.com/" class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50">GitHub</a>
-          <a href="https://www.linkedin.com/" class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50">LinkedIn</a>
-          <a href="mailto:bowensong@usc.edu" class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50">Email</a>
-        </div>
       </div>
       <div class="flex md:justify-end">
-        <img src="avatar.jpg" alt="Bowen Song" class="h-44 w-44 md:h-56 md:w-56 rounded-3xl object-cover ring-2 ring-slate-200" />
+        <img src="img/aboutmepic/bio.jpeg" alt="Bowen Song" class="h-44 w-44 md:h-56 md:w-56 rounded-3xl object-cover ring-2 ring-slate-200" />
       </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section id="research" class="scroll-mt-24 py-6">
+      <h2 class="text-xl md:text-2xl font-semibold">Research Interests</h2>
+      <p class="mt-3"><strong>Focuses:</strong> Machine Learning · AI for Health · Explainable AI · Low Latency (real‑time) Inference · Multi‑Modal Signal Processing · Distributed Systems · Queueing Theory · Cloud Computing · Datacenter Networking · Privacy</p>
+      <div class="mt-3 space-y-3 text-sm leading-6">
+        <p>Interpretable, low‑latency ML for multi‑modal sensors (IMU, GRF, EEG/EOG/EMG/EKG). Analyze elite runners’ longitudinal trends for injury risk; lightweight models for GRF and joint moments/angles.</p>
+        <p>Systems: queueing‑theoretic capacity planning; bandwidth‑efficient synchronization for datacenters and remote hosts.</p>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="scroll-mt-24 py-6">
+      <h2 class="text-xl md:text-2xl font-semibold">Education</h2>
+      <ul class="mt-4 space-y-4">
+        <li class="rounded-2xl border border-slate-200 p-4">
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">PhD in Computer Science, University of Southern California</h3><span class="text-sm text-slate-600">2020–Present · Los Angeles, CA</span></div>
+          <p class="text-sm text-slate-700">AI for Health, Explainable AI, Queueing Theory, Datacenter Networking.</p>
+        </li>
+        <li class="rounded-2xl border border-slate-200 p-4">
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">MS in Electrical &amp; Computer Engineering, Boston University</h3><span class="text-sm text-slate-600">May 2019 · Boston, MA</span></div>
+          <p class="text-sm text-slate-700">Information Theory, Cloud Computing, Data Structures, Machine Learning.</p>
+        </li>
+        <li class="rounded-2xl border border-slate-200 p-4">
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">BEng in Electrical Engineering, University of Victoria</h3><span class="text-sm text-slate-600">Nov 2017 · Victoria, BC</span></div>
+          <p class="text-sm text-slate-700">Wireless, Radar, Signal &amp; Image Processing, Optimization.</p>
+        </li>
+      </ul>
     </section>
 
     <!-- Publications -->
     <section id="publications" class="scroll-mt-24 py-6">
-      <h2 class="text-xl md:text-2xl font-semibold">Selected Publications</h2>
-      <ul class="mt-4 space-y-6">
+      <h2 class="text-xl md:text-2xl font-semibold">Publications</h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Curated items first (drag to reorder). Click <em>Abstract</em> to toggle. Below that, files from <code>papers/</code>.
+      </p>
+
+      <!-- Draggable curated cards render here -->
+      <div id="pub-curated" class="mt-4 space-y-4"></div>
+
+      <h3 class="mt-8 font-semibold">All files in <code>papers/</code></h3>
+      <div id="pub-list" class="mt-3 grid gap-3"></div>
+      <p id="pub-hint" class="mt-3 text-xs text-slate-500 hidden">
+        If nothing shows, ensure <code>papers/</code> exists on the <code>main</code> branch and try a hard refresh.
+      </p>
+    </section>
+
+
+      <!-- Draggable curated cards render here -->
+      <div id="pub-curated" class="mt-4 space-y-4"></div>
+
+      <h3 class="mt-8 font-semibold">All files in <code>papers/</code></h3>
+      <div id="pub-list" class="mt-3 grid gap-3"></div>
+      <p id="pub-hint" class="mt-3 text-xs text-slate-500 hidden">
+        If nothing shows, ensure <code>papers/</code> exists on the <code>main</code> branch and try a hard refresh.
+      </p>
+    </section>
+
+    <!-- AI Industry & Research Experience -->
+    <section id="experience-ai" class="scroll-mt-24 py-6">
+      <h2 class="text-xl md:text-2xl font-semibold">AI Industry &amp; Research Experience</h2>
+      <ul class="mt-4 space-y-4">
         <li class="rounded-2xl border border-slate-200 p-4">
-          <h3 class="mt-2 text-lg md:text-xl font-semibold">Federated SER: Personalized Linear Embeddings for Wearable Biomechanics</h3>
-          <p class="text-sm text-slate-600">B. Song, et al. · Under review (2025)</p>
-          <p class="mt-2 text-sm">Convex mixing of global/local predictors in a shared SVD space; strong generalization to unseen actions.</p>
-          <div class="mt-3 flex flex-wrap gap-3 text-sm">
-            <a href="#" class="underline">PDF</a>
-            <a href="#" class="underline">Code</a>
-            <a href="#" class="underline">BibTeX</a>
-          </div>
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">Personalized AI for Health — QEDLAB, USC</h3><span class="text-sm text-slate-600">Aug 2020 – Present · Los Angeles, CA</span></div>
+          <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+            <li>Low‑latency interpretable models on IMU/GRF for injury risk and counterfactual analysis; clinician‑in‑the‑loop web app.</li>
+            <li>Sensor time‑sync across modalities; addressed lags and drift. Cross‑modal forecasting with causal framing.</li>
+            <li>Proposed linear personalized GRF forecasting outperforming LSTM baselines; mentored student teams.</li>
+          </ul>
         </li>
         <li class="rounded-2xl border border-slate-200 p-4">
-          <h3 class="mt-2 text-lg md:text-xl font-semibold">SER for Multi-Task Biomechanical Estimation from IMUs</h3>
-          <p class="text-sm text-slate-600">B. Song, et al. · Preprint (2024)</p>
-          <p class="mt-2 text-sm">Shared latent embeddings across GRF, joint moments, and angles with simple linear heads.</p>
-          <div class="mt-3 flex gap-3 text-sm">
-            <a href="#" class="underline">PDF</a>
-            <a href="#" class="underline">Code</a>
-          </div>
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">PhD Research Intern — Core Ranking, eBay</h3><span class="text-sm text-slate-600">May – Aug 2024 · San Jose, CA</span></div>
+          <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+            <li>Mixture‑of‑Experts for organic rankings; optimized conversions/clicks/watch metrics.</li>
+            <li>Natural segmentation &amp; expert capacity via Mixture of Rankers; scalable pipeline with enterprise Krylov and multi‑GPU.</li>
+          </ul>
         </li>
       </ul>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="scroll-mt-24 py-6">
-      <h2 class="text-xl md:text-2xl font-semibold">Projects</h2>
-      <div class="mt-4 grid md:grid-cols-2 gap-4 md:gap-6">
-        <div class="rounded-2xl border border-slate-200 p-4">
-          <h3 class="font-semibold">PAC12 Toolkit</h3>
-          <p class="mt-2 text-sm">Evaluation for cyclic/non-cyclic tasks, RMSE/R² reporting, and cross-action transfer matrices.</p>
-        </div>
-        <div class="rounded-2xl border border-slate-200 p-4">
-          <h3 class="font-semibold">Gated Combination Model</h3>
-          <p class="mt-2 text-sm">Convex gate α(x) between global/local models; closed-form oracle target; lightweight predictors.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Teaching -->
-    <section id="teaching" class="scroll-mt-24 py-6">
-      <h2 class="text-xl md:text-2xl font-semibold">Teaching</h2>
-      <ul class="mt-3 list-disc pl-6 text-sm">
-        <li><span class="font-medium">Guest Lecturer</span> — EE/CS Wearable Sensing (Spring 2025)</li>
+    <!-- Cloud & Industry Experience -->
+    <section id="experience-cloud" class="scroll-mt-24 py-6">
+      <h2 class="text-xl md:text-2xl font-semibold">Cloud Industry &amp; Research Experience</h2>
+      <ul class="mt-4 space-y-4">
+        <li class="rounded-2xl border border-slate-200 p-4">
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">PhD Research Intern — Infrastructure, eBay</h3><span class="text-sm text-slate-600">May – Aug 2023 · San Jose, CA</span></div>
+          <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+            <li>Owner of Kafka Connector to multi‑DC ClickHouse with real‑time ingestion and exactly‑once semantics.</li>
+          </ul>
+        </li>
+        <li class="rounded-2xl border border-slate-200 p-4">
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">Software Engineer — OpenShift, Red Hat (IBM)</h3><span class="text-sm text-slate-600">Jun 2019 – Aug 2020 · Boston, MA</span></div>
+          <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+            <li>Maintained Operator Lifecycle Manager &amp; satellites; Helm integration; flake analysis &amp; alerts.</li>
+            <li>Upstream contributions to Kubernetes scheduler/descheduler; mentored eventually consistent DB (RCDS); DevConf.US 2020.</li>
+          </ul>
+        </li>
+        <li class="rounded-2xl border border-slate-200 p-4">
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">Cloud Resource Management — QEDLAB, USC</h3><span class="text-sm text-slate-600">2020 – 2022 · Los Angeles, CA</span></div>
+          <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+            <li>Performance–cost–QoS trade‑offs in hybrid cloud federations; fairness/revenue sharing; mentored queueing simulators.</li>
+          </ul>
+        </li>
+        <li class="rounded-2xl border border-slate-200 p-4">
+          <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">Efficient String Reconciliation — NISLAB, Boston University</h3><span class="text-sm text-slate-600">May 2018 – May 2019 · Boston, MA</span></div>
+          <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+            <li>Designed RCDS, a bandwidth‑efficient sync protocol outperforming rsync for frequent updates.</li>
+          </ul>
+        </li>
       </ul>
     </section>
 
-    <!-- Service -->
-    <section id="service" class="scroll-mt-24 py-6">
-      <h2 class="text-xl md:text-2xl font-semibold">Service</h2>
-      <ul class="mt-3 list-disc pl-6 text-sm">
-        <li><span class="font-medium">Reviewer</span> — IEEE EMBC, BSN</li>
-        <li><span class="font-medium">Reviewer</span> — NeurIPS Datasets & Benchmarks</li>
-      </ul>
-    </section>
+    <!-- Auto list from /papers -->
+    <div id="pub-list" class="mt-5 grid gap-3"></div>
+    <p id="pub-hint" class="mt-3 text-xs text-slate-500 hidden">
+      If nothing shows, ensure <code>papers/</code> exists on the <code>main</code> branch and try a hard refresh.
+    </p>
+  </section>
 
-    <!-- News -->
-    <section id="news" class="scroll-mt-24 py-6">
-      <h2 class="text-xl md:text-2xl font-semibold">News</h2>
-      <ul class="mt-3 space-y-3 text-sm">
-        <li><span class="w-24 inline-block text-slate-500">Sep 2025</span> Submitted ‘Federated SER for Unseen Tasks in Wearable Biomechanics’ to IEEE BSN.</li>
-        <li><span class="w-24 inline-block text-slate-500">Aug 2025</span> Released PAC12 evaluation toolkit v0.3 with multi-expert convex gates.</li>
+    <!-- Skills -->
+    <section id="skills" class="scroll-mt-24 py-6">
+    <h2 class="text-xl md:text-2xl font-semibold">Technical Skills</h2>
+
+
+    <!-- Pill badges at a glance -->
+    <div class="mt-3 flex flex-wrap gap-2 text-xs">
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">On‑device ML</span>
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">Federated / Privacy‑preserving</span>
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">Streaming / Real‑time</span>
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">Causal &amp; Counterfactual</span>
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">Reliability &amp; Evaluation</span>
+    </div>
+
+
+    <div class="mt-4 grid md:grid-cols-3 gap-6 text-sm">
+    <!-- Column 1: AI & Modeling -->
+    <div class="rounded-2xl border border-slate-200 p-4">
+    <h3 class="font-semibold">AI &amp; Modeling</h3>
+    <ul class="mt-2 list-disc pl-5 space-y-1">
+    <li>Time‑series &amp; biomech: SER/SVD, linear systems, MoE rankers</li>
+    <li>Representation learning, domain adaptation, personalization</li>
+    <li>Probabilistic modeling, uncertainty, conformal prediction</li>
+    <li>Causal discovery &amp; counterfactual simulation</li>
+    <li>Optimizers: L‑BFGS, AdamW; convex/closed‑form solvers</li>
+    </ul>
+    </div>
+
+
+    <!-- Column 2: AI Systems & Data -->
+    <div class="rounded-2xl border border-slate-200 p-4">
+      <h3 class="font-semibold">AI Systems &amp; Data</h3>
+      <ul class="mt-2 list-disc pl-5 space-y-1">
+        <li>PyTorch, TensorFlow, CUDA, JAX</li>
+        <li>Distributed multi-GPU training with Ray + Kubeflow (NCCL backend)</li>
+        <li>Observability: Prometheus/Grafana for GPU util &amp; throughput; Canary/A-B rollouts</li>
+        <li>Data infrastructure: Kafka → ClickHouse for streaming features; S3/GCS artifact registry</li>
+        <li>MLOps: experiment tracking, CI, reproducible eval</li>
+        <li>Edge &amp; on-device: quantization, latency-aware design</li>
+        <li>Federated learning: aggregation, privacy, comms budget</li>
       </ul>
+    </div>
+
+
+    <!-- Column 3: Programming & Tools -->
+    <div class="rounded-2xl border border-slate-200 p-4">
+    <h3 class="font-semibold">Programming &amp; Tools</h3>
+    <ul class="mt-2 list-disc pl-5 space-y-1">
+    <li>Python, C/C++, Go, Rust (tooling), Java/Scala</li>
+    <li>SQL, ClickHouse; Pandas/Polars, NumPy/Scipy</li>
+    <li>Kubernetes, Docker, GitHub Actions</li>
+    <li>Linux perf, Nsight, profiler‑guided optimization</li>
+    <li>LaTeX/Beamer, Markdown, Plotting (matplotlib)</li>
+    </ul>
+    </div>
+    </div>
+
+
+    <!-- Fun / awesome builds -->
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+    <div class="rounded-2xl border border-slate-200 p-4">
+    <h3 class="font-semibold">Selected Engineering Wins</h3>
+    <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+    <li>⚡ <span class="font-medium">1000×</span> speedup: closed‑form SVD/SER pipeline vs. deep baselines for biomechanical signal estimations</li>
+    <li>📦 Deployed <span class="font-medium">on‑device</span> inference to phone/watch; sub‑50ms latency</li>
+    <li>🧠 Mixture‑of‑Experts rankers in production (e‑commerce); multi‑objective lift</li>
+    <li>🔐 Federated personalization with tight comms budget and uncertainty estimates</li>
+    <li>🛰️ IMU/GRF multi‑sensor time‑sync with drift/lag correction</li>
+    </ul>
+    </div>
+    <div class="rounded-2xl border border-slate-200 p-4">
+      <h3 class="font-semibold">For Fun</h3>
+      <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+        <li>🏃 Endurance athlete — LA Marathon finisher (2022 &amp; 2024), Rose Half, Catalina Marathon (+2,000 ft elevation gain); love pushing limits just like in research.</li>
+        <li>💻 Side projects — built my own 8-GPU workstation, wrote a lightweight job scheduler, and hacked together real-time gait demo at 60 Hz using IMUs + PyTorch.</li>
+        <li>🎹 Pianist &amp; maker — blend creativity with engineering, from composing music to prototyping wearable sensor rigs and custom PCB boards.</li>
+        <li>🌊 Adventurer — surfer, open-water swimmer, and 🤸 acro-yoga practitioner; teamwork, flow, and balance matter in sports.</li>
+      </ul>
+    </div>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="scroll-mt-24 py-6">
       <h2 class="text-xl md:text-2xl font-semibold">Contact</h2>
-      <p class="text-sm"><span class="font-medium">Email:</span> <a class="underline" href="mailto:bowensong@usc.edu">bowensong@usc.edu</a></p>
-      <p class="text-sm"><span class="font-medium">Location:</span> Los Angeles, CA</p>
+      <div class="text-sm">
+        <p><span class="font-medium">Email:</span> <a class="underline" href="mailto:bowenson@usc.edu">bowenson@usc.edu</a></p>
+        <p><span class="font-medium">Address:</span> Los Angeles, CA 90007</p>
+      </div>
     </section>
+
+    <!-- Affiliations -->
+    <section id="affiliations" class="py-6">
+      <h2 class="text-xl md:text-2xl font-semibold mb-4">Affiliations</h2>
+      <div class="flex flex-wrap gap-8 items-center justify-start">
+          <a href="https://qed.usc.edu/" target="_blank" rel="noopener">
+            <img src="img/Affiliation/qed_logo.png" alt="QED Lab Logo" class="h-14 md:h-20 max-w-xs object-contain" title="QED Lab" />
+          </a>
+          <a href="https://www.usc.edu/" target="_blank" rel="noopener">
+            <img src="img/Affiliation/usc_logo.png" alt="USC Logo" class="h-14 md:h-20 max-w-xs object-contain" title="University of Southern California" />
+          </a>
+          <a href="https://www.bu.edu/" target="_blank" rel="noopener">
+            <img src="img/Affiliation/master_logo.gif" alt="BU Logo" class="h-14 md:h-20 max-w-xs object-contain" title="BU" />
+          </a>
+          <a href="https://www.uvic.ca/" target="_blank" rel="noopener">
+            <img src="img/Affiliation/uvic_logo.png" alt="UVic Logo" class="h-14 md:h-20 max-w-xs object-contain" title="University of Victoria" />
+          </a>
+      </div>
+    </section>
+
   </main>
 
   <footer class="border-t border-slate-200">
@@ -137,7 +288,294 @@
   </footer>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Auto‑list PDFs/BibTeX from papers/ via GitHub API (public repos only)
+    const GH_USER = 'Bowenislandsong';
+    const GH_REPO = 'bowenislandsong.github.io';
+    const GH_BRANCH = 'main';
+    const API_URL = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/papers?ref=${GH_BRANCH}`;
+
+    async function loadPubs(){
+      const wrap = document.getElementById('pub-list');
+      const hint = document.getElementById('pub-hint');
+      try{
+        const res = await fetch(API_URL, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
+        if(!res.ok) throw new Error('GitHub API not ok');
+        const files = await res.json();
+        // Filter PDFs and common bib/tex files
+        const items = (Array.isArray(files) ? files : []).filter(f => /\.(pdf|bib|tex)$/i.test(f.name));
+        if(items.length === 0){ hint.classList.remove('hidden'); return; }
+        items.sort((a,b)=> a.name.localeCompare(b.name));
+        const frag = document.createDocumentFragment();
+        for(const f of items){
+          const card = document.createElement('div');
+          card.className = 'rounded-2xl border border-slate-200 p-4 flex items-center justify-between gap-4';
+          const title = f.name.replace(/_/g,' ').replace(/\.(pdf|bib|tex)$/i,'');
+          const fileUrl = `https://${GH_USER}.github.io/papers/${encodeURIComponent(f.name)}`; // served by Pages
+          const rawUrl  = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/papers/${encodeURIComponent(f.name)}`;
+          card.innerHTML = `
+            <div class="min-w-0">
+              <h3 class="font-medium truncate">${title}</h3>
+              <p class="text-xs text-slate-500 truncate">papers/${f.name}</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-sm shrink-0">
+              <a class="underline" href="${fileUrl}" target="_blank" rel="noopener">Open</a>
+              <a class="underline" href="${rawUrl}" target="_blank" rel="noopener">Raw</a>
+              <a class="underline" href="${fileUrl}?download=1" download>Download</a>
+            </div>`;
+          frag.appendChild(card);
+        }
+        wrap.appendChild(frag);
+      }catch(e){
+        hint.classList.remove('hidden');
+        const err = document.createElement('p');
+        err.className = 'text-sm text-red-600 mt-2';
+        err.textContent = 'Could not load publications from GitHub. Try refreshing, or ensure papers/ exists and is public.';
+        wrap.appendChild(err);
+      }
+    }
+    loadPubs();
   </script>
+  
+  <script>
+    // Set footer year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ---------- Curated publications (VALID JS objects!) ----------
+    const PUBLICATIONS = [
+      {
+        title: "Estimating Ground Reaction Forces From Inertial Sensors",
+        authors: "B. Song, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, D. Shah",
+        venue: "IEEE Transactions on Biomedical Engineering",
+        year: "2025",
+        pdfUrl: "papers/Estimating_Ground_Reaction_Forces_From_Inertial_Sensors.pdf",
+        abstract:
+          "Objective: Determine whether steady-state running IMU signals can estimate GRFs and biomechanical variables (contact time, impulse, Δv) using lightweight ML. Methods: Introduce SVD Embedding Regression (SER), a linear mapping between SVD embeddings of IMU and GRF, and compare SER and kNN to LSTM baselines. Results: Lightweight models are similarly accurate or better than LSTMs with far lower latency and cost. Significance: Enables on-device GRF estimation for clinical risk screening in running.",
+        bibtex:
+          "@ARTICLE{song2023predicting,author={Song, B. and Paolieri, M. and Stewart, H. E. and Golubchik, L. and McNitt-Gray, J. L. and Misra, V. and Shah, D.},journal={IEEE Transactions on Biomedical Engineering}, title={Estimating Ground Reaction Forces from Inertial Sensors}, year={2024}, volume={}, number={}, pages={1-14},keywords={Ground Reaction Force;Inertial Measurement Unit;Sensors;Singular value decomposition;Neural Networks},doi={10.1109/TBME.2024.3465373}}",
+        citation:
+          "Song, B., Paolieri, M., Stewart, H. E., Golubchik, L., McNitt-Gray, J. L., Misra, V., & Shah, D. (2025). Estimating Ground Reaction Forces From Inertial Sensors. IEEE Trans. Biomed. Eng., 72(2)."
+      },
+      {
+        title: "Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements",
+        authors: "Bowen Song, Marco Paolieri, Leana Golubchik",
+        venue: "USC CS (Technical Report / Conference Manuscript)",
+        year: "2022",
+        pdfUrl: "papers/Performance_and_Revenue_Analysis_of_Hybrid_Cloud_Federations_with_QoS_Requirements.pdf",
+        abstract:
+          "Hybrid clouds federate resources to meet QoS while reducing cost. We model performance and revenue via CTMC and allocate savings with Shapley value. Under equal QoS, profits are maximized when members join and share all resources; with differing QoS, we quantify profit across sharing decisions and compare allocation schemes.",
+        bibtex:
+          "@INPROCEEDINGS{cloud_qos,author={Song, Bowen and Paolieri, Marco and Golubchik, Leana},booktitle={2022 IEEE 15th International Conference on Cloud Computing (CLOUD)}, title={Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements}, year={2022}, volume={}, number={}, pages={321-330}, doi={10.1109/CLOUD55607.2022.00055}}",
+        citation:
+          "Song, B., Paolieri, M., & Golubchik, L. (2022). Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements."
+      },
+      {
+        title: "Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS)",
+        authors: "Bowen Song, Ari Trachtenberg",
+        venue: "Allerton / Technical Report",
+        year: "2019",
+        pdfUrl: "papers/Scalable_String_Reconciliation_by_Recursive_Content-Dependent_Shingling.pdf",
+        abstract:
+          "RCDS reconciles similar remote strings with minimal communication, scaling with edit distance. Across ~5000 popular GitHub repos, RCDS outperforms rsync on ~51% of release revisions, especially for frequent small updates.",
+        bibtex:
+          "@INPROCEEDINGS{song2019scalable,author={Song, Bowen and Trachtenberg, Ari},booktitle={2019 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},pages={623--630},title={Scalable string reconciliation by recursive content-dependent shingling},year={2019},organization={IEEE}}",
+        citation:
+          "Song, B., & Trachtenberg, A. (2019). Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS)."
+      },
+      {
+        title: "Master’s Thesis — Boston University",
+        authors: "Bowen Song",
+        venue: "Boston University, MS ECE",
+        year: "2019",
+        pdfUrl:
+          "https://www.proquest.com/pqdtglobal/docview/2290816367/fulltextPDF/2FA09048CF2E49DBPQ/",
+        abstract:
+          "Bandwidth-efficient synchronization and string reconciliation (RCDS) for distributed systems; improvements over rsync for frequent updates; analysis for cloud/datacenter workflows.",
+        bibtex:
+          "@misc{Bowen_thesis,title={Scalable string reconciliation by recursive content-dependent shingling},author={Song,, Bowen},year={2019},URL={https://open.bu.edu/handle/2144/36028},publisher={OpenBU}}",
+        citation:
+          "Song, B. (2019). Bandwidth-efficient synchronization and string reconciliation in distributed systems. Master’s thesis, Boston University."
+      }
+    ];
+
+  // UI helpers
+  function makeBtn(label, onClick) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'rounded-lg border px-3 py-1 text-sm hover:bg-slate-50';
+    b.textContent = label;
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  function renderCurated() {
+    const root = document.getElementById('pub-curated');
+    if (!root) return;
+    root.innerHTML = '';
+    PUBLICATIONS.forEach((p) => {
+      const card = document.createElement('div');
+      card.className = 'rounded-2xl border border-slate-200 p-4';
+
+      const head = document.createElement('div');
+      head.className = 'flex items-baseline justify-between gap-4';
+      head.innerHTML =
+        `<div class="min-w-0">
+           <h3 class="font-semibold">${p.title}</h3>
+           <p class="text-sm text-slate-600 truncate">${p.authors} · ${p.venue} · ${p.year}</p>
+         </div>`;
+      card.appendChild(head);
+
+      const row = document.createElement('div');
+      row.className = 'mt-3 flex flex-wrap gap-2';
+
+      if (p.pdfUrl) {
+        row.appendChild(makeBtn('PDF', () => window.open(p.pdfUrl, '_blank', 'noopener')));
+      }
+
+      const abs = document.createElement('p');
+      abs.className = 'mt-3 text-sm text-slate-700 hidden';
+      abs.textContent = p.abstract || 'No abstract provided.';
+
+      row.appendChild(makeBtn('Abstract', () => {
+        abs.classList.toggle('hidden');
+      }));
+
+      row.appendChild(makeBtn('BibTeX', () => {
+        if (!p.bibtex) return;
+        navigator.clipboard.writeText(p.bibtex).then(() => {
+          row.lastChild.textContent = 'Copied!';
+          setTimeout(() => (row.lastChild.textContent = 'BibTeX'), 1200);
+        });
+      }));
+
+      row.appendChild(makeBtn('Cite', () => {
+        if (!p.citation) return;
+        navigator.clipboard.writeText(p.citation).then(() => {
+          row.lastChild.textContent = 'Copied!';
+          setTimeout(() => (row.lastChild.textContent = 'Cite'), 1200);
+        });
+      }));
+
+      card.appendChild(row);
+      card.appendChild(abs);
+      root.appendChild(card);
+    });
+  }
+
+  // ---------- Auto-list from papers/ (GitHub Pages) ----------
+  const GH_USER   = 'Bowenislandsong';
+  const GH_REPO   = 'bowenislandsong.github.io';
+  const GH_BRANCH = 'main';
+  const API_URL   = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/papers?ref=${GH_BRANCH}`;
+
+  function ghRaw(name){
+    return `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/papers/${encodeURIComponent(name)}`;
+  }
+  function ghPagesFile(name){
+    return `https://${GH_USER}.github.io/papers/${encodeURIComponent(name)}`;
+  }
+
+  async function loadPubsFromRepo() {
+    const wrap = document.getElementById('pub-list');
+    const hint = document.getElementById('pub-hint');
+    if (!wrap) return;
+
+    try {
+      const res = await fetch(API_URL, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
+      if (!res.ok) throw new Error('GitHub API not ok');
+      const files = await res.json();
+      const items = (Array.isArray(files) ? files : []).filter(f => /\.(pdf|bib|tex)$/i.test(f.name));
+      if (items.length === 0) { hint && hint.classList.remove('hidden'); return; }
+
+      // Group by basename
+      const byBase = new Map();
+      for (const f of items) {
+        const base = f.name.replace(/\.(pdf|bib|tex)$/i, '');
+        const arr = byBase.get(base) || [];
+        arr.push(f);
+        byBase.set(base, arr);
+      }
+
+      // Render
+      for (const [base, arr] of byBase) {
+        const pdf = arr.find(x => /\.pdf$/i.test(x.name));
+        const bib = arr.find(x => /\.bib$/i.test(x.name));
+        const tex = arr.find(x => /\.tex$/i.test(x.name));
+        const title = base.replace(/_/g, ' ');
+
+        const card = document.createElement('div');
+        card.className = 'rounded-2xl border border-slate-200 p-4';
+
+        const head = document.createElement('div');
+        head.className = 'flex items-baseline justify-between gap-4';
+        head.innerHTML = `<h3 class="font-medium truncate">${title}</h3>
+                          <span class="text-xs text-slate-500 truncate">papers/${pdf?.name || bib?.name || tex?.name}</span>`;
+        card.appendChild(head);
+
+        const row = document.createElement('div');
+        row.className = 'mt-2 flex flex-wrap gap-3 text-sm';
+
+        if (pdf) {
+          const a = document.createElement('a');
+          a.className = 'underline';
+          a.href = ghPagesFile(pdf.name);
+          a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = 'PDF';
+          row.appendChild(a);
+        }
+        if (bib) {
+          const a = document.createElement('a');
+          a.className = 'underline';
+          a.href = ghRaw(bib.name);
+          a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = 'BibTeX';
+          row.appendChild(a);
+        }
+
+        // Toggle abstract (if .tex present, link raw; otherwise placeholder)
+        const abs = document.createElement('p');
+        abs.className = 'hidden mt-3 text-sm text-slate-700';
+        abs.textContent = tex ? 'Abstract available in source.' : 'No abstract available.';
+        const absBtn = document.createElement('button');
+        absBtn.type = 'button';
+        absBtn.className = 'underline';
+        absBtn.textContent = 'Show abstract';
+        absBtn.onclick = () => {
+          abs.classList.toggle('hidden');
+          absBtn.textContent = abs.classList.contains('hidden') ? 'Show abstract' : 'Hide abstract';
+        };
+        row.appendChild(absBtn);
+
+        // Raw fallback
+        const rawAny = arr[0];
+        if (rawAny) {
+          const raw = document.createElement('a');
+          raw.className = 'underline';
+          raw.href = ghRaw(rawAny.name);
+          raw.target = '_blank'; raw.rel = 'noopener';
+          raw.textContent = 'Raw';
+          row.appendChild(raw);
+        }
+
+        card.appendChild(row);
+        card.appendChild(abs);
+        wrap.appendChild(card);
+      }
+    } catch (e) {
+      if (hint) hint.classList.remove('hidden');
+      const err = document.createElement('p');
+      err.className = 'text-sm text-red-600 mt-2';
+      err.textContent = 'Could not load publications from GitHub. Ensure papers/ exists and is public.';
+      wrap.appendChild(err);
+    }
+  }
+
+  // Kick off
+  renderCurated();
+  loadPubsFromRepo();
+</script>
 </body>
 </html>
