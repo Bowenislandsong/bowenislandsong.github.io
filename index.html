@@ -336,45 +336,51 @@
 
 
     <div class="mt-4 grid md:grid-cols-3 gap-6 text-sm">
-    <!-- Column 1: AI & Modeling -->
-    <div class="rounded-2xl border border-slate-200 p-4">
-    <h3 class="font-semibold">AI &amp; Modeling</h3>
-    <ul class="mt-2 list-disc pl-5 space-y-1">
-    <li>Time‑series &amp; biomech: SER/SVD, linear systems, MoE rankers</li>
-    <li>Representation learning, domain adaptation, personalization</li>
-    <li>Probabilistic modeling, uncertainty, conformal prediction</li>
-    <li>Causal discovery &amp; counterfactual simulation</li>
-    <li>Optimizers: L‑BFGS, AdamW; convex/closed‑form solvers</li>
-    </ul>
-    </div>
+      <!-- Column 1: AI & Modeling -->
+      <div class="rounded-2xl border border-slate-200 p-4">
+        <h3 class="font-semibold">AI &amp; Modeling</h3>
+        <ul class="mt-2 list-disc pl-5 space-y-1">
+          <li><strong>SVD-based Regression</strong> (Singular Value Decomposition Embedding Regression) for GRF, joint moments, and joint angles</li>
+          <!-- <li><strong>Federated SVD-based Regression</strong>: static α, per-client/task α, gating α(x), and multi-expert convex mixtures for personalization</li> -->
+          <li>Federated Modeling: Multi-task, multi-action estimation across seen/unseen actions, subjects, and environments</li>
+          <li>Domain adaptation &amp; representation learning; closed-form linear adaptation methods</li>
+          <li>Uncertainty quantification (probabilistic models, conformal prediction)</li>
+          <li>Causal discovery &amp; counterfactual simulation for biomechanics, health, and robotics</li>
+          <li>Low-latency, on-device inference and edge deployment for wearables</li>
+          <li>Neural architectures: LSTM, CNN, Transformers, Mixture-of-Experts, Mixture-of-Rankers</li>
+          <li><strong>LLM Reasoning research</strong>: enhancing LLM chain-of-thought via recommendation-style reranking</li>
+          <li>Optimization: convex/closed-form solvers, efficient SVD, L-BFGS, AdamW</li>
+          <li>Scalable ML pipelines: Krylov multi-GPU training, experiment tracking, resource-aware design</li>
+        </ul>
+      </div>
 
+      <!-- Column 2: AI Systems & Data -->
+      <div class="rounded-2xl border border-slate-200 p-4">
+        <h3 class="font-semibold">AI Systems &amp; Data</h3>
+        <ul class="mt-2 list-disc pl-5 space-y-1">
+          <li>Frameworks: PyTorch, TensorFlow, JAX, CUDA</li>
+          <li>Distributed multi-GPU training: Ray, Kubeflow, NCCL backend</li>
+          <li>Federated learning: aggregation strategies, privacy preservation, comms/resource efficiency</li>
+          <li>Edge &amp; mobile AI: quantization, latency-aware design, near real-time inference</li>
+          <li>MLOps: CI/CD, reproducible evaluation, experiment tracking, artifact versioning</li>
+          <li>Observability: Prometheus/Grafana for GPU utilization, throughput monitoring, Canary/A-B rollouts</li>
+          <li>Data infrastructure: Kafka → ClickHouse streaming, S3/GCS registries, scalable feature stores</li>
+          <li>Cloud &amp; datacenter optimization: queueing theory for capacity planning, bandwidth-efficient sync</li>
+        </ul>
+      </div>
 
-    <!-- Column 2: AI Systems & Data -->
-    <div class="rounded-2xl border border-slate-200 p-4">
-      <h3 class="font-semibold">AI Systems &amp; Data</h3>
-      <ul class="mt-2 list-disc pl-5 space-y-1">
-        <li>PyTorch, TensorFlow, CUDA, JAX</li>
-        <li>Distributed multi-GPU training with Ray + Kubeflow (NCCL backend)</li>
-        <li>Observability: Prometheus/Grafana for GPU util &amp; throughput; Canary/A-B rollouts</li>
-        <li>Data infrastructure: Kafka → ClickHouse for streaming features; S3/GCS artifact registry</li>
-        <li>MLOps: experiment tracking, CI, reproducible eval</li>
-        <li>Edge &amp; on-device: quantization, latency-aware design</li>
-        <li>Federated learning: aggregation, privacy, comms budget</li>
-      </ul>
-    </div>
-
-
-    <!-- Column 3: Programming & Tools -->
-    <div class="rounded-2xl border border-slate-200 p-4">
-    <h3 class="font-semibold">Programming &amp; Tools</h3>
-    <ul class="mt-2 list-disc pl-5 space-y-1">
-    <li>Python, C/C++, Go, Rust (tooling), Java/Scala</li>
-    <li>SQL, ClickHouse; Pandas/Polars, NumPy/Scipy</li>
-    <li>Kubernetes, Docker, GitHub Actions</li>
-    <li>Linux perf, Nsight, profiler‑guided optimization</li>
-    <li>LaTeX/Beamer, Markdown, Plotting (matplotlib)</li>
-    </ul>
-    </div>
+      <!-- Column 3: Programming & Tools -->
+      <div class="rounded-2xl border border-slate-200 p-4">
+        <h3 class="font-semibold">Programming &amp; Tools</h3>
+        <ul class="mt-2 list-disc pl-5 space-y-1">
+          <li>Languages: Python, C/C++, Go, Rust (tooling), Java/Scala</li>
+          <li>Data science: Pandas/Polars, NumPy/SciPy, SQL, ClickHouse</li>
+          <li>Systems: Kubernetes, Docker, GitHub Actions CI/CD</li>
+          <li>Profiling &amp; optimization: Linux perf, NVIDIA Nsight, profiler-guided tuning</li>
+          <li>Visualization &amp; writing: matplotlib/Plotly, LaTeX/Beamer, Markdown</li>
+          <li>Workflow: Bash scripting, HPC job arrays, multi-environment management</li>
+        </ul>
+      </div>
     </div>
 
 
