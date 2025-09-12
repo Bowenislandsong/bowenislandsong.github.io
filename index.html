@@ -29,9 +29,10 @@
         <nav class="flex gap-2 md:gap-4 text-xs md:text-sm overflow-x-auto">
           <a href="#/personal" class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="personal">Personal</a>
           <a href="#/quantum"  class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="quantum">Quantum Computing</a>
-          <a href="#/genai"    class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="genai">Generative AI</a>
+          <!-- <a href="#/genai"    class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="genai">Generative AI</a>
           <a href="#/health"   class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="health">Smart Health</a>
-          <a href="#/music"    class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="music">Music</a>
+          <a href="#/music"    class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="music">Music</a> -->
+          <a href="#/classes"  class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="classes">Classes</a>
         </nav>
         <a href="img/resume/Bowen_Song_Resume.pdf" class="rounded-xl bg-slate-900 text-white px-3 py-1 text-sm font-medium hover:opacity-90">CV (PDF)</a>
       </div>
@@ -64,9 +65,20 @@
     </div>
   </footer>
 
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+
   <!-- Scripts -->
   <script src="js/router.js"></script>
   <script src="js/section-hooks.js"></script>
+  <script src="js/quantum.js"></script>
+  <script src="js/classes.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>

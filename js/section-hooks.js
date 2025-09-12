@@ -138,6 +138,9 @@
     },
     quantum() {
       bindDelegation();
+      // Mount QuantumPage if available
+      const root = document.querySelector('.qfx');
+      if (window.QuantumPage && root) window.QuantumPage.mount(root);
     },
     genai() {
       bindDelegation();
@@ -147,6 +150,10 @@
     },
     music() {
       bindDelegation();
+    },
+    classes() {
+      // No delegation needed, just load the PDF viewer logic
+      if (window.setupClassesViewer) window.setupClassesViewer();
     },
   };
 })();

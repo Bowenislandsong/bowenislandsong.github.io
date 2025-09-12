@@ -9,6 +9,14 @@
   // ---- Config ----
   const DEFAULT_PAGE = 'personal';
   const SECTION_DIR = 'sections';
+  const routes = {
+    personal: 'sections/personal.html',
+    quantum: 'sections/quantum.html',
+    genai: 'sections/genai.html',
+    health: 'sections/health.html',
+    music: 'sections/music.html',
+    classes: 'sections/classes.html',
+  };
   const CACHE_MODE = 'no-store'; // ensure you always see latest
   const SCROLL_BEHAVIOR = 'smooth';
 
@@ -74,7 +82,23 @@
       const html = await fetchSectionHTML(page);
       if (reqId !== inflightReq) return; // a newer request won
 
+      // Inject HTML and execute any <script> tags
       APP.innerHTML = html;
+      // Find and execute scripts in the injected HTML
+      const scripts = APP.querySelectorAll('script');
+      scripts.forEach(oldScript => {
+        const newScript = document.createElement('script');
+        // Copy attributes
+        for (const attr of oldScript.attributes) {
+          newScript.setAttribute(attr.name, attr.value);
+        }
+        // Inline script content
+        if (oldScript.textContent) {
+          newScript.textContent = oldScript.textContent;
+        }
+        // Replace old script with new one to trigger execution
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      });
       currentPage = page;
       loadedPages.add(page);
 
@@ -84,6 +108,11 @@
       // Section hooks (if provided)
       if (window.sectionHooks && typeof window.sectionHooks[page] === 'function') {
         try { window.sectionHooks[page](); } catch (e) { /* no-op */ }
+      }
+
+      // Re-typeset math if MathJax is loaded
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([APP]);
       }
     } catch (e) {
       if (reqId !== inflightReq) return;
