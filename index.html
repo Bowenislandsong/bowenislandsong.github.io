@@ -54,12 +54,22 @@
     <!-- Research Interests -->
     <section id="research" class="scroll-mt-24 py-6">
       <h2 class="text-xl md:text-2xl font-semibold">Research Interests</h2>
-      <p class="mt-3"><strong>Focuses:</strong> Machine Learning · AI for Health · Explainable AI · Low Latency (real‑time) Inference · Multi‑Modal Signal Processing · Distributed Systems · Queueing Theory · Cloud Computing · Datacenter Networking · Privacy</p>
+      <p class="mt-3">
+        <strong>Focus Areas:</strong> Machine Learning · AI for Health · Explainable AI · Real-Time (Low Latency) Inference · Multi-Modal Sensor Data · Distributed Systems · Cloud & Datacenter Efficiency · Privacy-Preserving AI
+      </p>
       <div class="mt-3 space-y-3 text-sm leading-6">
-        <p>Interpretable, low‑latency ML for multi‑modal sensors (IMU, GRF, EEG/EOG/EMG/EKG). Analyze elite runners’ longitudinal trends for injury risk; lightweight models for GRF and joint moments/angles.</p>
-        <p>Systems: queueing‑theoretic capacity planning; bandwidth‑efficient synchronization for datacenters and remote hosts.</p>
+        <p>
+          My work develops <em>interpretable machine learning</em> methods that run efficiently on everyday devices. A key focus is using <em>wearable sensor data</em>—such as inertial measurement units (IMUs)—to estimate important biomechanical signals like <em>ground reaction forces, joint moments, and joint angles</em>. These measurements are vital for monitoring athlete performance, preventing injuries, and supporting applications in rehabilitation and robotics.
+        </p>
+        <p>
+          Recently, I introduced a lightweight approach called <em>SVD Embedding Regression (SER)</em>, which makes accurate predictions from IMU data with very low computational cost. Building on this, I developed a <em>Federated SER framework</em> that allows models to be trained across multiple athletes or institutions without sharing raw data—preserving privacy while improving accuracy through collaboration. This work helps create scalable, trustworthy AI systems for health monitoring outside of the lab.
+        </p>
+        <p>
+          Beyond health applications, I specialize in <em>cloud and distributed systems</em>. My prior research has applied <em>queueing theory</em> to optimize datacenter capacity and developed <em>bandwidth-efficient solutions</em> for large-scale data synchronization. These experiences connect my interests in <em>efficient computing</em> with <em>real-world health applications</em>.
+        </p>
       </div>
     </section>
+
 
     <!-- Education -->
     <section id="education" class="scroll-mt-24 py-6">
@@ -82,31 +92,172 @@
 
     <!-- Publications -->
     <section id="publications" class="scroll-mt-24 py-6">
-      <h2 class="text-xl md:text-2xl font-semibold">Publications</h2>
-      <p class="mt-2 text-sm text-slate-600">
-        Curated items first (drag to reorder). Click <em>Abstract</em> to toggle. Below that, files from <code>papers/</code>.
-      </p>
+      <h2 class="text-xl md:text-2xl font-semibold">Selected Publications</h2>
 
-      <!-- Draggable curated cards render here -->
-      <div id="pub-curated" class="mt-4 space-y-4"></div>
+      <div class="mt-4 space-y-4">
+        <!-- 1) TBME 2025 -->
+        <article class="rounded-2xl border border-slate-200 p-4">
+          <header class="flex items-baseline justify-between gap-4">
+            <div class="min-w-0">
+              <h3 class="font-semibold">Estimating Ground Reaction Forces From Inertial Sensors</h3>
+              <p class="text-sm text-slate-600 truncate">
+                B. Song, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, D. Shah · IEEE Trans. Biomed. Eng. · 2025
+              </p>
+            </div>
+          </header>
 
-      <h3 class="mt-8 font-semibold">All files in <code>papers/</code></h3>
-      <div id="pub-list" class="mt-3 grid gap-3"></div>
-      <p id="pub-hint" class="mt-3 text-xs text-slate-500 hidden">
-        If nothing shows, ensure <code>papers/</code> exists on the <code>main</code> branch and try a hard refresh.
-      </p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+              href="papers/Estimating_Ground_Reaction_Forces_From_Inertial_Sensors.pdf" target="_blank" rel="noopener">PDF</a>
+            <!-- Add your actual IEEE Xplore URL if you have one -->
+            <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+              href="https://ieeexplore.ieee.org/abstract/document/10684546" target="_blank" rel="noopener">IEEE Xplore</a>
+
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-toggle="#abs-grf">Abstract</button>
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-copy="#bib-grf">BibTeX</button>
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-copy="#cite-grf">Cite</button>
+          </div>
+
+          <p id="abs-grf" class="mt-3 text-sm text-slate-700 hidden">
+            Objective: Determine whether steady-state running IMU signals can estimate GRFs and biomechanical variables (contact time, impulse, Δv) using lightweight ML.
+            Methods: Introduce SVD Embedding Regression (SER) and compare against LSTM/kNN. Results: Lightweight models match or beat LSTMs at far lower latency/cost.
+            Significance: Enables on-device GRF estimation for clinical risk screening.
+          </p>
+
+          <pre id="bib-grf" class="sr-only">@ARTICLE{song2023predicting,
+      author={Song, B. and Paolieri, M. and Stewart, H. E. and Golubchik, L. and McNitt-Gray, J. L. and Misra, V. and Shah, D.},
+      journal={IEEE Transactions on Biomedical Engineering},
+      title={Estimating Ground Reaction Forces from Inertial Sensors},
+      year={2024},
+      pages={1-14},
+      doi={10.1109/TBME.2024.3465373}
+    }</pre>
+          <pre id="cite-grf" class="sr-only">Song, B., Paolieri, M., Stewart, H. E., Golubchik, L., McNitt-Gray, J. L., Misra, V., & Shah, D. (2025).
+    Estimating Ground Reaction Forces From Inertial Sensors. IEEE Trans. Biomed. Eng., 72(2).</pre>
+        </article>
+
+        <!-- 2) CLOUD 2022 -->
+        <article class="rounded-2xl border border-slate-200 p-4">
+          <header class="flex items-baseline justify-between gap-4">
+            <div class="min-w-0">
+              <h3 class="font-semibold">Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements</h3>
+              <p class="text-sm text-slate-600 truncate">
+                Bowen Song, Marco Paolieri, Leana Golubchik · IEEE CLOUD · 2022
+              </p>
+            </div>
+          </header>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+              href="papers/Performance_and_Revenue_Analysis_of_Hybrid_Cloud_Federations_with_QoS_Requirements.pdf" target="_blank" rel="noopener">PDF</a>
+            <!-- Add your actual IEEE Xplore link for this paper if you have it -->
+            <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+              href="https://ieeexplore.ieee.org/abstract/document/9860670" target="_blank" rel="noopener">IEEE Xplore</a>
+
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-toggle="#abs-cloud">Abstract</button>
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-copy="#bib-cloud">BibTeX</button>
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-copy="#cite-cloud">Cite</button>
+          </div>
+
+          <p id="abs-cloud" class="mt-3 text-sm text-slate-700 hidden">
+            CTMC model of hybrid-cloud federations with savings allocated by Shapley value.
+            Equal QoS → sharing maximizes profit; differing QoS → quantify profit across sharing decisions and compare allocation schemes.
+          </p>
+
+          <pre id="bib-cloud" class="sr-only">@INPROCEEDINGS{cloud_qos,
+      author={Song, Bowen and Paolieri, Marco and Golubchik, Leana},
+      booktitle={2022 IEEE 15th International Conference on Cloud Computing (CLOUD)},
+      title={Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements},
+      year={2022},
+      pages={321-330},
+      doi={10.1109/CLOUD55607.2022.00055}
+    }</pre>
+          <pre id="cite-cloud" class="sr-only">Song, B., Paolieri, M., & Golubchik, L. (2022). Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements. In IEEE CLOUD 2022.</pre>
+        </article>
+
+        <!-- 3) RCDS Allerton 2019 -->
+        <article class="rounded-2xl border border-slate-200 p-4">
+          <header class="flex items-baseline justify-between gap-4">
+            <div class="min-w-0">
+              <h3 class="font-semibold">Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS)</h3>
+              <p class="text-sm text-slate-600 truncate">
+                Bowen Song, Ari Trachtenberg · Allerton · 2019
+              </p>
+            </div>
+          </header>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+              href="papers/Scalable_String_Reconciliation_by_Recursive_Content-Dependent_Shingling.pdf" target="_blank" rel="noopener">PDF</a>
+            <!-- Your provided USC proxy IEEE Xplore link -->
+            <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+              href="https://ieeexplore-ieee-org.libproxy1.usc.edu/abstract/document/8919901" target="_blank" rel="noopener">IEEE Xplore</a>
+
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-toggle="#abs-rcds">Abstract</button>
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-copy="#bib-rcds">BibTeX</button>
+            <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+                    data-copy="#cite-rcds">Cite</button>
+          </div>
+
+          <p id="abs-rcds" class="mt-3 text-sm text-slate-700 hidden">
+            RCDS reconciles similar remote strings with minimal communication, scaling with edit distance.
+            Across ~5000 popular GitHub repos, RCDS outperforms rsync on ~51% of release revisions, especially for frequent small updates.
+          </p>
+
+          <pre id="bib-rcds" class="sr-only">@inproceedings{song2019scalable,
+      title={Scalable string reconciliation by recursive content-dependent shingling},
+      author={Song, Bowen and Trachtenberg, Ari},
+      booktitle={2019 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
+      pages={623--630},
+      year={2019},
+      organization={IEEE}
+    }</pre>
+          <pre id="cite-rcds" class="sr-only">Song, B., & Trachtenberg, A. (2019). Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS). Allerton 2019.</pre>
+        </article>
+      </div>
     </section>
 
+    <script>
+      // Wire up Abstract toggles and Copy buttons (robust; no inline JS parsing issues)
+      document.addEventListener('click', async (e) => {
+        const t = e.target;
+        if (!(t instanceof HTMLElement)) return;
 
-      <!-- Draggable curated cards render here -->
-      <div id="pub-curated" class="mt-4 space-y-4"></div>
+        // Toggle abstract
+        const toggleSel = t.getAttribute('data-toggle');
+        if (toggleSel) {
+          const el = document.querySelector(toggleSel);
+          if (el) el.classList.toggle('hidden');
+          return;
+        }
 
-      <h3 class="mt-8 font-semibold">All files in <code>papers/</code></h3>
-      <div id="pub-list" class="mt-3 grid gap-3"></div>
-      <p id="pub-hint" class="mt-3 text-xs text-slate-500 hidden">
-        If nothing shows, ensure <code>papers/</code> exists on the <code>main</code> branch and try a hard refresh.
-      </p>
-    </section>
+        // Copy BibTeX / Cite
+        const copySel = t.getAttribute('data-copy');
+        if (copySel) {
+          const el = document.querySelector(copySel);
+          if (!el) return;
+          const txt = el.innerText; // preserves newlines
+          try {
+            await navigator.clipboard.writeText(txt);
+            const old = t.textContent;
+            t.textContent = 'Copied!';
+            setTimeout(() => (t.textContent = old), 1200);
+          } catch {
+            // Fallback for older browsers: prompt
+            window.prompt('Copy to clipboard:', txt);
+          }
+        }
+      });
+    </script>
+
 
     <!-- AI Industry & Research Experience -->
     <section id="experience-ai" class="scroll-mt-24 py-6">
@@ -162,12 +313,12 @@
       </ul>
     </section>
 
-    <!-- Auto list from /papers -->
+    <!-- Auto list from /papers
     <div id="pub-list" class="mt-5 grid gap-3"></div>
     <p id="pub-hint" class="mt-3 text-xs text-slate-500 hidden">
       If nothing shows, ensure <code>papers/</code> exists on the <code>main</code> branch and try a hard refresh.
     </p>
-  </section>
+  </section> -->
 
     <!-- Skills -->
     <section id="skills" class="scroll-mt-24 py-6">
