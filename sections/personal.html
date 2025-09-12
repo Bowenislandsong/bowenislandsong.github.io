@@ -1,0 +1,433 @@
+<!-- sections/personal.html -->
+
+<!-- Hero -->
+<section id="top" class="grid grid-cols-1 md:grid-cols-[1fr,220px] gap-8 md:gap-12 py-10 md:py-14">
+  <div>
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Bowen Song</h1>
+    <p class="mt-2 text-slate-700">AI for Health · Explainable AI · Low-latency Inference · Multi-modal Sensing · Distributed Systems</p>
+    <ul class="mt-4 flex flex-wrap gap-3 text-sm">
+      <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="mailto:bowenson@usc.edu">bowenson@usc.edu</a></li>
+      <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://github.com/Bowenislandsong" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://orcid.org/0000-0002-5071-3880" target="_blank" rel="noopener">ORCID</a></li>
+      <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+      <li><a class="rounded-full border px-3 py-1 border-slate-300 hover:bg-slate-50" href="https://qed.usc.edu" target="_blank" rel="noopener">Research Lab</a></li>
+    </ul>
+  </div>
+  <div class="flex md:justify-end">
+    <img src="img/aboutmepic/bio.jpeg" alt="Bowen Song" class="h-44 w-44 md:h-56 md:w-56 rounded-3xl object-cover ring-2 ring-slate-200" />
+  </div>
+</section>
+
+<!-- Research Interests -->
+<section id="research" class="scroll-mt-24 py-6">
+  <h2 class="text-xl md:text-2xl font-semibold">Research Interests</h2>
+  <p class="mt-3">
+    <strong>Focus Areas:</strong> Machine Learning · AI for Health · Explainable AI · Real-Time (Low Latency) Inference · Multi-Modal Sensor Data · Distributed Systems · Cloud & Datacenter Efficiency · Privacy-Preserving AI
+  </p>
+  <div class="mt-3 space-y-3 text-sm leading-6">
+    <p>
+      My work develops <em>interpretable machine learning</em> methods that run efficiently on everyday devices. A key focus is using <em>wearable sensor data</em>—such as inertial measurement units (IMUs)—to estimate important biomechanical signals like <em>ground reaction forces, joint moments, and joint angles</em>. These measurements are vital for monitoring athlete performance, preventing injuries, and supporting applications in rehabilitation and robotics.
+    </p>
+    <p>
+      Recently, I introduced a lightweight approach called <em>SVD Embedding Regression (SER)</em>, which makes accurate predictions from IMU data with very low computational cost. Building on this, I developed a <em>Federated SER framework</em> that allows models to be trained across multiple athletes or institutions without sharing raw data—preserving privacy while improving accuracy through collaboration. This work helps create scalable, trustworthy AI systems for health monitoring outside of the lab.
+    </p>
+    <p>
+      Beyond health applications, I specialize in <em>cloud and distributed systems</em>. My prior research has applied <em>queueing theory</em> to optimize datacenter capacity and developed <em>bandwidth-efficient solutions</em> for large-scale data synchronization. These experiences connect my interests in <em>efficient computing</em> with <em>real-world health applications</em>.
+    </p>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="scroll-mt-24 py-6">
+  <h2 class="text-xl md:text-2xl font-semibold">Education</h2>
+  <ul class="mt-4 space-y-4">
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">PhD in Computer Science, University of Southern California</h3><span class="text-sm text-slate-600">2020–Present · Los Angeles, CA</span></div>
+      <p class="text-sm text-slate-700">AI for Health, Explainable AI, Queueing Theory, Datacenter Networking.</p>
+    </li>
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">MS in Electrical &amp; Computer Engineering, Boston University</h3><span class="text-sm text-slate-600">2019 · Boston, MA</span></div>
+      <p class="text-sm text-slate-700">Information Theory, Cloud Computing, Data Structures, Machine Learning.</p>
+    </li>
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4"><h3 class="font-semibold">BEng in Electrical Engineering, University of Victoria</h3><span class="text-sm text-slate-600">2017 · Victoria, BC</span></div>
+      <p class="text-sm text-slate-700">Wireless, Radar, Signal &amp; Image Processing, Optimization.</p>
+    </li>
+  </ul>
+</section>
+
+<!-- Publications -->
+<section id="publications" class="scroll-mt-24 py-6">
+  <h2 class="text-xl md:text-2xl font-semibold">Selected Publications</h2>
+
+  <div class="mt-4 space-y-4">
+
+    <!-- 1) TBME 2024 -->
+    <article class="rounded-2xl border border-slate-200 p-4">
+      <header class="flex items-baseline justify-between gap-4">
+        <div class="min-w-0">
+          <h3 class="font-semibold">Estimating Ground Reaction Forces From Inertial Sensors</h3>
+          <p class="text-sm text-slate-600 truncate">
+            B. Song, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, D. Shah · IEEE Trans. Biomed. Eng. · 2024
+          </p>
+        </div>
+      </header>
+
+      <div class="mt-3 flex flex-wrap gap-2">
+        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+           href="papers/Estimating_Ground_Reaction_Forces_From_Inertial_Sensors.pdf" target="_blank" rel="noopener">PDF</a>
+        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+           href="https://ieeexplore.ieee.org/abstract/document/10684546" target="_blank" rel="noopener">IEEE Xplore</a>
+
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-toggle="#abs-grf">Abstract</button>
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-copy="#bib-grf">BibTeX</button>
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-copy="#cite-grf">Cite</button>
+      </div>
+
+      <p id="abs-grf" class="mt-3 text-sm text-slate-700 hidden">
+       Objective: Our aim is to determine if data collected with inertial measurement units (IMUs) during steady-state running could be used to estimate ground reaction forces (GRFs) and to derive biomechanical variables (e.g., contact time, impulse, change in velocity) using lightweight machine-learning approaches. In contrast, state-of-the-art estimation using LSTMs suffers from prohibitive inference times on edge devices, requires expensive training and hyperparameter optimization, and results in black box models. 
+       Methods: We proposed a novel lightweight solution, SVD Embedding Regression (SER), using linear regression between SVD embeddings of IMU data and GRF data. We also compared lightweight solutions including SER and k-Nearest-Neighbors (KNN) regression with state-of-the-art LSTMs. 
+       Results: We performed extensive experiments to evaluate these techniques under multiple scenarios and combinations of IMU signals and quantified estimation errors for predicting GRFs and biomechanical variables. We did this using training data from different athletes, from the same athlete, or both, and we explored the use of acceleration and angular velocity data from sensors at different locations (sacrum and shanks). 
+       Conclusion: Our results illustrated that lightweight solutions such as SER and KNN can be similarly accurate or more accurate than LSTMs. The use of personal data reduced estimation errors of all methods, particularly for most biomechanical variables (as compared to GRFs); moreover, this gain was more pronounced in the lightweight methods. 
+       Significance: The study of GRFs is used to characterize the mechanical loading experienced by individuals in movements such as running, which is clinically applicable to identify athletes at risk for stress-related injuries.
+      </p>
+
+      <pre id="bib-grf" class="sr-only">@ARTICLE{song2023predicting,
+  author={Song, B. and Paolieri, M. and Stewart, H. E. and Golubchik, L. and McNitt-Gray, J. L. and Misra, V. and Shah, D.},
+  journal={IEEE Transactions on Biomedical Engineering},
+  title={Estimating Ground Reaction Forces from Inertial Sensors},
+  year={2024},
+  pages={1-14},
+  doi={10.1109/TBME.2024.3465373}
+}</pre>
+      <pre id="cite-grf" class="sr-only">Song, B., Paolieri, M., Stewart, H. E., Golubchik, L., McNitt-Gray, J. L., Misra, V., & Shah, D. (2025).
+Estimating Ground Reaction Forces From Inertial Sensors. IEEE Trans. Biomed. Eng., 72(2).</pre>
+    </article>
+
+    <!-- 2) CLOUD 2022 -->
+    <article class="rounded-2xl border border-slate-200 p-4">
+      <header class="flex items-baseline justify-between gap-4">
+        <div class="min-w-0">
+          <h3 class="font-semibold">Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements</h3>
+          <p class="text-sm text-slate-600 truncate">
+            Bowen Song, Marco Paolieri, Leana Golubchik · IEEE CLOUD · 2022
+          </p>
+        </div>
+      </header>
+
+      <div class="mt-3 flex flex-wrap gap-2">
+        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+           href="papers/Performance_and_Revenue_Analysis_of_Hybrid_Cloud_Federations_with_QoS_Requirements.pdf" target="_blank" rel="noopener">PDF</a>
+        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+           href="https://ieeexplore.ieee.org/abstract/document/9860670" target="_blank" rel="noopener">IEEE Xplore</a>
+
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-toggle="#abs-cloud">Abstract</button>
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-copy="#bib-cloud">BibTeX</button>
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-copy="#cite-cloud">Cite</button>
+      </div>
+
+      <p id="abs-cloud" class="mt-3 text-sm text-slate-700 hidden">
+        Hybrid cloud architectures, where private clouds or data centers forward part of their workload to public cloud providers to satisfy quality of service (QoS) requirements, are increasingly common due to the availability of on-demand cloud resources that can be provisioned automatically through programming APIs. In this paper, we analyze performance and revenue in federations of hybrid clouds, where private clouds agree to share part of their local computing resources with other members of the federation. Through resource sharing, underprovisioned members can save on public cloud costs, while overprovisioned members can put their idle resources to work. To reward all hybrid clouds for their contributions (computing resources or workload), public cloud savings due to the federation are distributed among members according to Shapley value. We model this cloud architecture with a continuous-time Markov chain and prove that, if all hybrid clouds have the same QoS requirements, their profits are maximized when they join the federation and share all resources. We also show that this result does not hold when hybrid clouds have different QoS requirements, and we provide a solution to evaluate profit for different resource sharing decisions. Finally, our experimental evaluation compares the distribution of public cloud savings according to Shapley value with alternative approaches, illustrating its ability to discourage free riders of the federation.
+      </p>
+
+      <pre id="bib-cloud" class="sr-only">@INPROCEEDINGS{cloud_qos,
+  author={Song, Bowen and Paolieri, Marco and Golubchik, Leana},
+  booktitle={2022 IEEE 15th International Conference on Cloud Computing (CLOUD)},
+  title={Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements},
+  year={2022},
+  pages={321-330},
+  doi={10.1109/CLOUD55607.2022.00055}
+}</pre>
+      <pre id="cite-cloud" class="sr-only">Song, B., Paolieri, M., & Golubchik, L. (2022). Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements. In IEEE CLOUD 2022.</pre>
+    </article>
+
+    <!-- 3) RCDS Allerton 2019 -->
+    <article class="rounded-2xl border border-slate-200 p-4">
+      <header class="flex items-baseline justify-between gap-4">
+        <div class="min-w-0">
+          <h3 class="font-semibold">Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS)</h3>
+          <p class="text-sm text-slate-600 truncate">
+            Bowen Song, Ari Trachtenberg · Allerton · 2019
+          </p>
+        </div>
+      </header>
+
+      <div class="mt-3 flex flex-wrap gap-2">
+        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+           href="papers/Scalable_String_Reconciliation_by_Recursive_Content-Dependent_Shingling.pdf" target="_blank" rel="noopener">PDF</a>
+        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
+           href="https://ieeexplore-ieee-org.libproxy1.usc.edu/abstract/document/8919901" target="_blank" rel="noopener">IEEE Xplore</a>
+
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-toggle="#abs-rcds">Abstract</button>
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-copy="#bib-rcds">BibTeX</button>
+        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-copy="#cite-rcds">Cite</button>
+      </div>
+
+      <p id="abs-rcds" class="mt-3 text-sm text-slate-700 hidden">
+        We consider the problem of reconciling similar, but remote, strings with minimum communication complexity. This “string reconciliation” problem is a fundamental building block for a variety of networking applications, including those that maintain large-scale distributed networks and perform remote file synchronization. 
+        We present the novel Recursive Content-Dependent Shingling (RCDS) protocol that is computationally practical for large strings and scales linearly with the edit distance between the remote strings. We provide comparisons to the performance of rsync, one of the most popular file synchronization tools in active use. 
+        Our experiments show that, with minimal engineering, RCDS outperforms the heavily optimized rsync in reconciling release revisions for about 51% of the 5000 top starred git repositories on GitHub. The improvement is particularly evident for repositories that see frequent, but small, updates.
+      </p>
+
+      <pre id="bib-rcds" class="sr-only">@inproceedings{song2019scalable,
+  title={Scalable string reconciliation by recursive content-dependent shingling},
+  author={Song, Bowen and Trachtenberg, Ari},
+  booktitle={2019 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
+  pages={623--630},
+  year={2019},
+  organization={IEEE}
+}</pre>
+      <pre id="cite-rcds" class="sr-only">Song, B., & Trachtenberg, A. (2019). Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS). Allerton 2019.</pre>
+    </article>
+
+  </div>
+</section>
+
+<!-- (Optional) Auto list from /papers -->
+<!--
+<div id="pub-list" class="mt-5 grid gap-3"></div>
+<p id="pub-hint" class="mt-3 text-xs text-slate-500 hidden">
+  If nothing shows, ensure <code>papers/</code> exists on the <code>main</code> branch and try a hard refresh.
+</p>
+-->
+
+<!-- AI Industry & Research Experience -->
+<section id="experience-ai" class="scroll-mt-24 py-6">
+  <h2 class="text-xl md:text-2xl font-semibold">AI Industry &amp; Research Experience</h2>
+  <ul class="mt-4 space-y-4">
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">Personalized AI for Health — QEDLAB, USC</h3>
+        <span class="text-sm text-slate-600">Aug 2020 – Present · Los Angeles, CA</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>Low-latency interpretable models on IMU/GRF for injury risk and counterfactual analysis; clinician-in-the-loop web app.</li>
+        <li>Sensor time-sync across modalities; addressed lags and drift. Cross-modal forecasting with causal framing.</li>
+        <li>Proposed linear personalized GRF forecasting outperforming LSTM baselines; mentored student teams.</li>
+      </ul>
+    </li>
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">PhD Research Intern — Core Ranking, eBay</h3>
+        <span class="text-sm text-slate-600">May – Aug 2024 · San Jose, CA</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>Mixture-of-Experts for organic rankings; optimized conversions/clicks/watch metrics.</li>
+        <li>Natural segmentation &amp; expert capacity via Mixture of Rankers; scalable pipeline with enterprise Krylov and multi-GPU.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Cloud & Industry Experience -->
+<section id="experience-cloud" class="scroll-mt-24 py-6">
+  <h2 class="text-xl md:text-2xl font-semibold">Cloud Industry &amp; Research Experience</h2>
+  <ul class="mt-4 space-y-4">
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">PhD Research Intern — Infrastructure, eBay</h3>
+        <span class="text-sm text-slate-600">May – Aug 2023 · San Jose, CA</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>Owner of Kafka Connector to multi-DC ClickHouse with real-time ingestion and exactly-once semantics.</li>
+      </ul>
+    </li>
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">Software Engineer — OpenShift, Red Hat (IBM)</h3>
+        <span class="text-sm text-slate-600">Jun 2019 – Aug 2020 · Boston, MA</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>Maintained Operator Lifecycle Manager &amp; satellites; Helm integration; flake analysis &amp; alerts.</li>
+        <li>Upstream contributions to Kubernetes scheduler/descheduler; mentored eventually consistent DB (RCDS); DevConf.US 2020.</li>
+      </ul>
+    </li>
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">Cloud Resource Management — QEDLAB, USC</h3>
+        <span class="text-sm text-slate-600">2020 – 2022 · Los Angeles, CA</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>Performance–cost–QoS trade-offs in hybrid cloud federations; fairness/revenue sharing; mentored queueing simulators.</li>
+      </ul>
+    </li>
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">Efficient String Reconciliation — NISLAB, Boston University</h3>
+        <span class="text-sm text-slate-600">May 2018 – May 2019 · Boston, MA</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>Designed RCDS, a bandwidth-efficient sync protocol outperforming rsync for frequent updates.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="scroll-mt-24 py-6">
+  <h2 class="text-xl md:text-2xl font-semibold">Technical Skills</h2>
+
+  <!-- Pill badges -->
+  <div class="mt-3 flex flex-wrap gap-2 text-xs">
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">On-device ML</span>
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">Federated / Privacy-preserving</span>
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">Streaming / Real-time</span>
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">Causal &amp; Counterfactual</span>
+    <span class="inline-flex items-center rounded-full border px-2 py-0.5 border-slate-300">Reliability &amp; Evaluation</span>
+  </div>
+
+  <div class="mt-4 grid md:grid-cols-3 gap-6 text-sm">
+    <!-- AI & Modeling -->
+    <div class="rounded-2xl border border-slate-200 p-4">
+      <h3 class="font-semibold">AI &amp; Modeling</h3>
+      <ul class="mt-2 list-disc pl-5 space-y-1">
+        <li><strong>SVD-based Regression</strong> (Singular Value Decomposition Embedding Regression) for GRF, joint moments, and joint angles</li>
+        <li>Federated Modeling: Multi-task, multi-action estimation across seen/unseen actions, subjects, and environments</li>
+        <li>Domain adaptation &amp; representation learning; closed-form linear adaptation methods</li>
+        <li>Uncertainty quantification (probabilistic models, conformal prediction)</li>
+        <li>Causal discovery &amp; counterfactual simulation for biomechanics, health, and robotics</li>
+        <li>Low-latency, on-device inference and edge deployment for wearables</li>
+        <li>Neural architectures: LSTM, CNN, Transformers, Mixture-of-Experts, Mixture-of-Rankers</li>
+        <li><strong>LLM Reasoning research</strong>: enhancing LLM chain-of-thought via recommendation-style reranking</li>
+        <li>Optimization: convex/closed-form solvers, efficient SVD, L-BFGS, AdamW</li>
+        <li>Scalable ML pipelines: Krylov multi-GPU training, experiment tracking, resource-aware design</li>
+      </ul>
+    </div>
+
+    <!-- AI Systems & Data -->
+    <div class="rounded-2xl border border-slate-200 p-4">
+      <h3 class="font-semibold">AI Systems &amp; Data</h3>
+      <ul class="mt-2 list-disc pl-5 space-y-1">
+        <li>Frameworks: PyTorch, TensorFlow, JAX, CUDA</li>
+        <li>Distributed multi-GPU training: Ray, Kubeflow, NCCL backend</li>
+        <li>Federated learning: aggregation strategies, privacy preservation, comms/resource efficiency</li>
+        <li>Edge &amp; mobile AI: quantization, latency-aware design, near real-time inference</li>
+        <li>MLOps: CI/CD, reproducible evaluation, experiment tracking, artifact versioning</li>
+        <li>Observability: Prometheus/Grafana for GPU utilization, throughput monitoring, Canary/A-B rollouts</li>
+        <li>Data infrastructure: Kafka → ClickHouse streaming, S3/GCS registries, scalable feature stores</li>
+        <li>Cloud &amp; datacenter optimization: queueing theory for capacity planning, bandwidth-efficient sync</li>
+      </ul>
+    </div>
+
+    <!-- Programming & Tools -->
+    <div class="rounded-2xl border border-slate-200 p-4">
+      <h3 class="font-semibold">Programming &amp; Tools</h3>
+      <ul class="mt-2 list-disc pl-5 space-y-1">
+        <li>Languages: Python, C/C++, Go, Rust (tooling), Java/Scala</li>
+        <li>Data science: Pandas/Polars, NumPy/SciPy, SQL, ClickHouse</li>
+        <li>Systems: Kubernetes, Docker, GitHub Actions CI/CD</li>
+        <li>Profiling &amp; optimization: Linux perf, NVIDIA Nsight, profiler-guided tuning</li>
+        <li>Visualization &amp; writing: matplotlib/Plotly, LaTeX/Beamer, Markdown</li>
+        <li>Workflow: Bash scripting, HPC job arrays, multi-environment management</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Fun / awesome builds -->
+  <div class="mt-6 grid md:grid-cols-2 gap-6">
+    <div class="rounded-2xl border border-slate-200 p-4">
+      <h3 class="font-semibold">Selected Engineering Wins</h3>
+      <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+        <li>⚡ <span class="font-medium">1000×</span> speedup: closed-form SVD/SER pipeline vs. deep baselines for biomechanical signal estimations</li>
+        <li>📦 Deployed <span class="font-medium">on-device</span> inference to phone/watch; sub-50ms latency</li>
+        <li>🧠 Mixture-of-Experts rankers in production (e-commerce); multi-objective lift</li>
+        <li>🔐 Federated personalization with tight comms budget and uncertainty estimates</li>
+        <li>🛰️ IMU/GRF multi-sensor time-sync with drift/lag correction</li>
+      </ul>
+    </div>
+    <div class="rounded-2xl border border-slate-200 p-4">
+      <h3 class="font-semibold">For Fun</h3>
+      <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+        <li>🏃 Endurance athlete — LA Marathon finisher (2022 &amp; 2024), Rose Half, Catalina Marathon (+2,000 ft elevation gain).</li>
+        <li>💻 Side projects — 8-GPU workstation, lightweight job scheduler, real-time gait demo at 60 Hz (IMUs + PyTorch).</li>
+        <li>🎹 Pianist &amp; maker — from composing music to prototyping wearable sensor rigs and custom PCBs.</li>
+        <li>🌊 Adventurer — surfer, open-water swimmer, and 🤸 acro-yoga practitioner.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Teaching & Mentoring -->
+<section id="teaching" class="scroll-mt-24 py-6">
+  <h2 class="text-xl md:text-2xl font-semibold">Mentoring &amp; Teaching Experience</h2>
+  <ul class="mt-4 space-y-4">
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">Mentoring — Academic & Industry</h3>
+        <span class="text-sm text-slate-600">2017–2025 · USC & BU & Red Hat</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>Supervised and mentored <strong>10+ MS and undergraduate students</strong> on projects in ML for biomechanics, cloud simulation, and distributed systems.</li>
+        <li>Guided students across the full pipeline — from data preprocessing and model design to training and evaluation — resulting in <strong>publishable research</strong> and conference submissions.</li>
+        <li>Built lab onboarding tutorials for multi-sensor data handling, federated ML, and managing a hand-built GPU cluster (now a <strong>lab standard</strong>).</li>
+      </ul>
+      <div class="mt-4 border-t pt-3">
+        <p class="text-sm text-slate-600">
+          Snapshot from my <strong>Cloud Computing TA role at BU</strong>, where I mentored students on distributed systems, project reviews, and computational setups.
+        </p>
+        <div class="mt-2">
+          <a href="https://www.youtube.com/watch?v=6FnfpbiwJTo" target="_blank" rel="noopener"
+             class="inline-flex items-center rounded-lg border px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+            📺 Watch on YouTube
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">Teaching Assistant — University of Southern California</h3>
+        <span class="text-sm text-slate-600">2020–2026 · Los Angeles, CA</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>TA for 
+          <a class="underline" href="https://merlot.usc.edu/cs353-s25/" target="_blank" rel="noopener">CSCI 353 (Computer Networking)</a>, 
+          <a class="underline" href="https://bytes.usc.edu/cs356/" target="_blank" rel="noopener">CSCI 356 (Computer Systems)</a>, and 
+          <a class="underline" href="https://merlot.usc.edu/cs402-m25/" target="_blank" rel="noopener">CSCI 402 (Operating Systems)</a>.
+        </li>
+        <li>Led weekly discussion sections and office hours for <strong>100+ students</strong>, focusing on networking protocols, systems programming, and OS internals.</li>
+        <li>Built and maintained an <strong>auto-grading system</strong> for exams and labs, reducing manual grading effort by ~60%.</li>
+      </ul>
+    </li>
+
+    <li class="rounded-2xl border border-slate-200 p-4">
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="font-semibold">Teaching Assistant — Boston University</h3>
+        <span class="text-sm text-slate-600">2017–2019 · Boston, MA</span>
+      </div>
+      <ul class="mt-2 list-disc pl-6 text-sm space-y-1">
+        <li>TA for <a class="underline" href="https://okrieg.github.io/cc/cc.html" target="_blank" rel="noopener">Cloud Computing (EC 528)</a> — designed labs/projects, hardware deployment, and course content support.</li>
+        <li>TA for <a class="underline" href="https://www.bu.edu/academics/eng/courses/eng-ec-601/" target="_blank" rel="noopener">Product Design (EC 601)</a> — led project-based learning, evaluated team deliverables, guided final project presentations.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="scroll-mt-24 py-6">
+  <h2 class="text-xl md:text-2xl font-semibold">Contact</h2>
+  <div class="text-sm">
+    <p><span class="font-medium">Email:</span> <a class="underline" href="mailto:bowenson@usc.edu">bowenson@usc.edu</a></p>
+    <p><span class="font-medium">Address:</span> Los Angeles, CA 90007</p>
+  </div>
+</section>
+
+<!-- Affiliations -->
+<section id="affiliations" class="py-6">
+  <h2 class="text-xl md:text-2xl font-semibold mb-4">Affiliations</h2>
+  <div class="flex flex-wrap gap-8 items-center justify-start">
+    <a href="https://qed.usc.edu/" target="_blank" rel="noopener">
+      <img src="img/Affiliation/qed_logo.png" alt="QED Lab Logo" class="h-14 md:h-20 max-w-xs object-contain" title="QED Lab" />
+    </a>
+    <a href="https://www.usc.edu/" target="_blank" rel="noopener">
+      <img src="img/Affiliation/usc_logo.png" alt="USC Logo" class="h-14 md:h-20 max-w-xs object-contain" title="University of Southern California" />
+    </a>
+    <a href="https://www.bu.edu/" target="_blank" rel="noopener">
+      <img src="img/Affiliation/master_logo.gif" alt="BU Logo" class="h-14 md:h-20 max-w-xs object-contain" title="BU" />
+    </a>
+    <a href="https://www.uvic.ca/" target="_blank" rel="noopener">
+      <img src="img/Affiliation/uvic_logo.png" alt="UVic Logo" class="h-14 md:h-20 max-w-xs object-contain" title="University of Victoria" />
+    </a>
+  </div>
+</section>
