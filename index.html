@@ -8,32 +8,82 @@
   <link rel="icon" href="avatar.jpg" />
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>html{scroll-behavior:smooth}</style>
+  <style>
+    html { scroll-behavior: smooth; }
+    
+    /* Ensure hidden class works properly */
+    .hidden {
+      display: none !important;
+    }
+    
+    /* Page navigation styles */
+    .main-nav-btn {
+      transition: all 0.2s ease;
+    }
+    
+    .main-nav-btn:hover {
+      background-color: rgb(241 245 249);
+    }
+    
+    .page-content {
+      min-height: 60vh;
+    }
+    
+    /* Mobile responsive navigation */
+    @media (max-width: 768px) {
+      .main-nav-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+      }
+      
+      #personal-subnav nav {
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body class="bg-white text-slate-800">
-  <!-- Header -->
+  <!-- Main Navigation Header -->
   <header class="sticky top-0 z-50 backdrop-blur bg-white/85 border-b border-slate-200">
     <div class="mx-auto max-w-5xl px-4 md:px-6">
+      <!-- Main site header -->
       <div class="flex items-center justify-between py-3">
-        <a href="#top" class="font-semibold tracking-tight">Bowen Song</a>
-        <nav class="hidden md:flex gap-6 text-sm">
-          <a href="#research" class="hover:text-black">Research</a>
-          <a href="#education" class="hover:text-black">Education</a>
-          <a href="#experience-ai" class="hover:text-black">AI Experience</a>
-          <a href="#experience-cloud" class="hover:text-black">Cloud/Industry</a>
-          <a href="#publications" class="hover:text-black">Publications</a>
-          <a href="#skills" class="hover:text-black">Skills</a>
-          <a href="#contact" class="hover:text-black">Contact</a>
+        <a href="#" onclick="showPage('personal')" class="font-semibold tracking-tight">Bowen Song</a>
+        <!-- Main navigation tabs -->
+        <nav class="flex gap-2 md:gap-4 text-xs md:text-sm overflow-x-auto">
+          <button onclick="showPage('personal')" class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="personal">Personal</button>
+          <button onclick="showPage('quantum')" class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="quantum">Quantum Computing</button>
+          <button onclick="showPage('genai')" class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="genai">Generative AI</button>
+          <button onclick="showPage('health')" class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="health">Smart Health</button>
+          <button onclick="showPage('music')" class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="music">Music</button>
         </nav>
         <a href="img/resume/Bowen_Song_Resume.pdf" class="rounded-xl bg-slate-900 text-white px-3 py-1 text-sm font-medium hover:opacity-90">CV (PDF)</a>
+      </div>
+      
+      <!-- Personal page sub-navigation (shown only on Personal page) -->
+      <div id="personal-subnav" class="border-t border-slate-200 py-2 hidden">
+        <nav class="flex gap-6 text-sm overflow-x-auto">
+          <a href="#research" class="hover:text-black whitespace-nowrap">Research</a>
+          <a href="#education" class="hover:text-black whitespace-nowrap">Education</a>
+          <a href="#experience-ai" class="hover:text-black whitespace-nowrap">AI Experience</a>
+          <a href="#experience-cloud" class="hover:text-black whitespace-nowrap">Cloud/Industry</a>
+          <a href="#publications" class="hover:text-black whitespace-nowrap">Publications</a>
+          <a href="#skills" class="hover:text-black whitespace-nowrap">Skills</a>
+          <a href="#contact" class="hover:text-black whitespace-nowrap">Contact</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <main id="top" class="mx-auto max-w-5xl px-4 md:px-6">
+  <!-- Page Container -->
+  <div class="page-container">
+    
+    <!-- Personal Page (existing content) -->
+    <main id="personal-page" class="page-content mx-auto max-w-5xl px-4 md:px-6">
 
     <!-- Hero -->
-    <section class="grid grid-cols-1 md:grid-cols-[1fr,220px] gap-8 md:gap-12 py-10 md:py-14">
+    <section id="top" class="grid grid-cols-1 md:grid-cols-[1fr,220px] gap-8 md:gap-12 py-10 md:py-14">
       <div>
         <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Bowen Song</h1>
         <p class="mt-2 text-slate-700">AI for Health · Explainable AI · Low‑latency Inference · Multi‑modal Sensing · Distributed Systems</p>
@@ -495,14 +545,275 @@
       </div>
     </section>
 
-  </main>
+    </main>
+    
+    <!-- Quantum Computing Page -->
+    <main id="quantum-page" class="page-content mx-auto max-w-5xl px-4 md:px-6 hidden">
+      <section class="py-10 md:py-14">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Quantum Computing</h1>
+          <p class="mt-2 text-slate-700">Exploring the frontiers of quantum algorithms and quantum machine learning</p>
+        </div>
+        
+        <div class="space-y-8">
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Quantum Research Interests</h2>
+            <div class="rounded-2xl border border-slate-200 p-6">
+              <p class="text-slate-700 leading-relaxed">
+                My quantum computing research focuses on the intersection of quantum algorithms and machine learning. 
+                I'm particularly interested in quantum optimization algorithms, variational quantum eigensolvers (VQE), 
+                and quantum approximate optimization algorithms (QAOA) for solving complex optimization problems 
+                that arise in AI and healthcare applications.
+              </p>
+            </div>
+          </section>
+          
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Quantum Projects</h2>
+            <div class="grid gap-4">
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">Quantum-Enhanced Sensor Fusion</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Exploring quantum algorithms for improved multi-modal sensor data processing in wearable health devices.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">Quantum Machine Learning for Biomechanics</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Investigating quantum neural networks for ground reaction force estimation from IMU data.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Generative AI Page -->
+    <main id="genai-page" class="page-content mx-auto max-w-5xl px-4 md:px-6 hidden">
+      <section class="py-10 md:py-14">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Generative AI</h1>
+          <p class="mt-2 text-slate-700">Creating intelligent systems that generate, synthesize, and reason</p>
+        </div>
+        
+        <div class="space-y-8">
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Generative AI Research</h2>
+            <div class="rounded-2xl border border-slate-200 p-6">
+              <p class="text-slate-700 leading-relaxed">
+                My work in generative AI spans multiple domains including large language model reasoning, 
+                multimodal generation, and AI safety. I focus on developing more interpretable and reliable 
+                generative systems that can be deployed safely in critical applications like healthcare and 
+                scientific research.
+              </p>
+            </div>
+          </section>
+          
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Key Projects</h2>
+            <div class="grid gap-4">
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">LLM Chain-of-Thought Enhancement</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Improving LLM reasoning capabilities through recommendation-style reranking of reasoning paths.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">Biomechanical Data Synthesis</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Generating synthetic sensor data for training robust health monitoring systems while preserving privacy.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">Federated Generative Models</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Developing privacy-preserving generative models for collaborative AI across multiple institutions.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Smart Health Page -->
+    <main id="health-page" class="page-content mx-auto max-w-5xl px-4 md:px-6 hidden">
+      <section class="py-10 md:py-14">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Smart Health</h1>
+          <p class="mt-2 text-slate-700">AI-powered healthcare solutions for preventive medicine and personalized treatment</p>
+        </div>
+        
+        <div class="space-y-8">
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Health Technology Focus</h2>
+            <div class="rounded-2xl border border-slate-200 p-6">
+              <p class="text-slate-700 leading-relaxed">
+                My smart health research centers on developing AI systems that can predict, prevent, and personalize 
+                healthcare interventions. Using wearable sensors, machine learning, and clinical expertise, 
+                I create tools that enable continuous health monitoring and early intervention for injury prevention, 
+                chronic disease management, and performance optimization.
+              </p>
+            </div>
+          </section>
+          
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Health Applications</h2>
+            <div class="grid gap-4">
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">Real-time Injury Risk Assessment</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  On-device models that analyze gait patterns and biomechanics to predict injury risk in athletes and elderly populations.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">Personalized Rehabilitation</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Adaptive AI systems that customize rehabilitation protocols based on individual recovery patterns and biomechanical data.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">Chronic Disease Monitoring</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Continuous monitoring systems for diabetes, cardiovascular health, and neurological conditions using multi-modal sensing.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">Digital Biomarkers</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Extracting digital biomarkers from sensor data to enable early detection and monitoring of health conditions.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Music Page -->
+    <main id="music-page" class="page-content mx-auto max-w-5xl px-4 md:px-6 hidden">
+      <section class="py-10 md:py-14">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Music</h1>
+          <p class="mt-2 text-slate-700">Where creativity meets technology - exploring musical expression and AI</p>
+        </div>
+        
+        <div class="space-y-8">
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Musical Journey</h2>
+            <div class="rounded-2xl border border-slate-200 p-6">
+              <p class="text-slate-700 leading-relaxed">
+                Music has been a constant companion throughout my academic and research journey. As a pianist and composer, 
+                I find deep connections between musical patterns and the algorithms I develop. This intersection of 
+                creativity and computation influences my approach to research, from signal processing techniques 
+                inspired by musical harmony to the rhythmic patterns found in biomechanical data.
+              </p>
+            </div>
+          </section>
+          
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Music & Technology Projects</h2>
+            <div class="grid gap-4">
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">🎹 Piano Performance & Composition</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Active pianist with a focus on classical and contemporary pieces. Compose original works that blend traditional harmony with modern techniques.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">🎵 AI-Assisted Music Generation</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Exploring machine learning approaches to music composition and analysis, including rhythm pattern recognition and harmonic progression prediction.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">🎧 Digital Audio Processing</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Applying signal processing expertise to audio engineering projects, including real-time audio effects and performance optimization.
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <h3 class="font-semibold">🎤 Music & Movement Analysis</h3>
+                <p class="text-sm text-slate-700 mt-2">
+                  Investigating the relationship between musical rhythm and human movement patterns for applications in rehabilitation and performance enhancement.
+                </p>
+              </div>
+            </div>
+          </section>
+          
+          <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-4">Philosophy</h2>
+            <div class="rounded-2xl border border-slate-200 p-6">
+              <p class="text-slate-700 leading-relaxed">
+                I believe that music and mathematics share a fundamental language - patterns, rhythms, and harmonies 
+                that appear in everything from signal processing algorithms to biomechanical systems. This perspective 
+                enriches both my musical expression and my research approach, leading to more creative solutions and 
+                a deeper appreciation for the beauty in complex systems.
+              </p>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    
+  </div>
 
   <footer class="border-t border-slate-200">
     <div class="mx-auto max-w-5xl px-4 md:px-6 py-6 text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
       <p>© <span id="year"></span> Bowen Song</p>
-      <a href="#top" class="underline">Back to top</a>
+      <a href="#" onclick="scrollToTop()" class="underline">Back to top</a>
     </div>
   </footer>
+
+  <script>
+    // Page navigation functionality
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page-content').forEach(page => {
+        page.classList.add('hidden');
+      });
+      
+      // Show selected page
+      const targetPage = document.getElementById(pageId + '-page');
+      if (targetPage) {
+        targetPage.classList.remove('hidden');
+      }
+      
+      // Update navigation buttons
+      document.querySelectorAll('.main-nav-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-200', 'font-medium');
+        if (btn.getAttribute('data-page') === pageId) {
+          btn.classList.add('bg-slate-200', 'font-medium');
+        }
+      });
+      
+      // Show/hide personal page subnav
+      const personalSubnav = document.getElementById('personal-subnav');
+      if (pageId === 'personal') {
+        personalSubnav.classList.remove('hidden');
+      } else {
+        personalSubnav.classList.add('hidden');
+      }
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Initialize page on load
+    document.addEventListener('DOMContentLoaded', function() {
+      showPage('personal'); // Show personal page by default
+    });
+    
+    // Mobile menu toggle (if needed)
+    function toggleMobileMenu() {
+      // Implementation for mobile menu if needed
+    }
+  </script>
 
   <script>
     // Year
