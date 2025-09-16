@@ -136,29 +136,99 @@ window.setupClassesViewer = async function setupClassesViewer() {
   // 'pdfjs' uses in-page PDF.js rendering. Default to nativeIframe for reliability.
   let viewerMode = 'nativeIframe';
 
-  // Helper: List PDFs (static for now, can be dynamic with server)
+  // Helper: List PDFs dynamically by fetching /classes/ directory and subfolders
   async function listPDFs() {
-    // For demo, hardcode. Replace with AJAX if you have a backend.
-    return [
-      { name: 'CS356_Discussion_03.pdf', path: 'classes/cs356/CS356_Discussion_03.pdf' }
-      // Add more as needed
-    ];
+    // Try to fetch /classes/ and parse links to .pdf files
+    async function fetchDir(url) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) return [];
+        const text = await res.text();
+        // Parse links to .pdf files
+        const regex = /href=["']([^"'>]+\.pdf)["']/gi;
+        const matches = [...text.matchAll(regex)];
+        return matches.map(m => url.replace(/\/$/, '') + '/' + m[1]);
+      } catch (e) { return []; }
+    }
+    // Recursively scan /classes/ and subfolders
+    async function scanAll(base) {
+      let pdfs = [];
+      try {
+        const res = await fetch(base);
+        if (!res.ok) return pdfs;
+        const text = await res.text();
+        // Find subfolders
+        const folderRegex = /href=["']([^"'>]+\/)["']/gi;
+        const folders = [...text.matchAll(folderRegex)].map(m => m[1]).filter(f => f !== '../');
+        // Find PDFs in this folder
+        const pdfRegex = /href=["']([^"'>]+\.pdf)["']/gi;
+        const pdfsHere = [...text.matchAll(pdfRegex)].map(m => base.replace(/\/$/, '') + '/' + m[1]);
+        pdfs = pdfs.concat(pdfsHere);
+        // Scan subfolders
+        for (const folder of folders) {
+          const subPdfs = await scanAll(base.replace(/\/$/, '') + '/' + folder.replace(/\/$/, ''));
+          pdfs = pdfs.concat(subPdfs);
+        }
+      } catch (e) { /* ignore */ }
+      return pdfs;
+    }
+    const pdfList = await scanAll('/classes');
+    return pdfList.map(f => ({ name: f.split('/').pop(), path: f.replace(/^\/+/, '') }));
   }
 
-  // Render file browser
+  // Render file browser with PDF previews and pretty layout
   async function renderBrowser() {
     const files = await listPDFs();
-    browser.innerHTML = '<h2 class="text-lg font-semibold mb-2">Available PDFs</h2>' +
-      (files.length ? files.map(f => `<div><a class="text-blue-700 underline hover:text-blue-900" href="#" data-pdf="${f.path}">${f.name}</a></div>`).join('')
-      : '<div class="text-red-600">No PDF files found in classes/.</div>');
-    if (files.length) {
-      browser.querySelectorAll('a[data-pdf]').forEach(a => {
-        a.onclick = e => {
-          e.preventDefault();
-          openPDF(a.getAttribute('data-pdf'));
-        };
-      });
+    browser.innerHTML = `<h2 class="text-lg font-semibold mb-4">Available PDFs</h2>`;
+    if (!files.length) {
+      browser.innerHTML += '<div class="text-red-600">No PDF files found in classes/.</div>';
+      return;
     }
+    // Modern grid layout
+    const grid = document.createElement('div');
+    grid.className = 'grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3';
+    for (const f of files) {
+      const card = document.createElement('div');
+      card.className = 'group bg-white rounded-xl shadow border border-slate-200 p-4 flex flex-col items-center hover:shadow-lg transition-shadow';
+      // Preview area
+      const preview = document.createElement('div');
+      preview.className = 'w-full h-40 flex items-center justify-center bg-slate-50 rounded mb-3 overflow-hidden';
+      preview.style.position = 'relative';
+      // Show spinner while loading
+      preview.innerHTML = `<div class="text-slate-400 animate-pulse">Loading…</div>`;
+      card.appendChild(preview);
+      // PDF.js thumbnail rendering (if available)
+      if (window.pdfjsLib) {
+        window.pdfjsLib.getDocument(f.path).promise.then(pdfDoc => {
+          pdfDoc.getPage(1).then(page => {
+            const viewport = page.getViewport({ scale: 0.3 });
+            const canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            preview.innerHTML = '';
+            preview.appendChild(canvas);
+            page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise.catch(()=>{});
+          }).catch(() => { preview.innerHTML = '<div class="text-slate-400">No preview</div>'; });
+        }).catch(() => { preview.innerHTML = '<div class="text-slate-400">No preview</div>'; });
+      } else {
+        preview.innerHTML = '<div class="text-slate-400">No preview</div>';
+      }
+      // Filename
+      const fname = document.createElement('div');
+      fname.className = 'font-mono text-sm text-slate-700 mb-2 truncate w-full text-center';
+      fname.textContent = f.name;
+      card.appendChild(fname);
+      // Open button
+      const openBtn = document.createElement('button');
+      openBtn.className = 'px-4 py-1 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors w-full font-semibold';
+      openBtn.textContent = 'Open as slides';
+      openBtn.onclick = () => openPDF(f.path);
+      card.appendChild(openBtn);
+      grid.appendChild(card);
+    }
+    browser.appendChild(grid);
   }
 
   // Open and render PDF
