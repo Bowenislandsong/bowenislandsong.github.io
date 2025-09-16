@@ -16,24 +16,9 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - name: Generate classes/index.json
+      - name: Generate index files
         run: |
-          python3 -c "import os, json; files = [];
-for root, _, fs in os.walk('classes'):
-  for f in fs:
-    if f.lower().endswith('.pdf'):
-      path = os.path.join(root, f).replace('\\', '/');
-      files.append({'name': f, 'path': path});
-with open('classes/index.json', 'w') as out: json.dump(files, out, indent=2)"
-      - name: Generate papers/index.json
-        run: |
-          python3 -c "import os, json; files = [];
-for root, _, fs in os.walk('papers'):
-  for f in fs:
-    if f.lower().endswith('.md'):
-      path = os.path.join(root, f).replace('\\', '/');
-      files.append({'name': f, 'path': path});
-with open('papers/index.json', 'w') as out: json.dump(files, out, indent=2)"
+          python3 .github/scripts/generate_indexes.py
       - name: Commit and push index files
         run: |
           git config --global user.name "github-actions"
