@@ -10,11 +10,14 @@ window.setupPapersDiscovery = async function setupPapersDiscovery() {
   async function listPaperFiles() {
     try {
       const res = await fetch('papers/index.json');
-      if (!res.ok) return [];
+      if (!res.ok) throw new Error('index.json not found');
       const files = await res.json();
       // files should be [{ name, path }]
       return files.map(f => f.path);
-    } catch (e) { return []; }
+    } catch (e) {
+      browser.innerHTML = `<div class='text-red-600'>Could not load papers.<br><span class='text-xs'>Reason: ${e.message || e}</span><br><span class='text-xs'>If you are seeing this on GitHub Pages, make sure papers/index.json and all markdown files are published and accessible.</span></div>`;
+      return [];
+    }
   }
 
   // Helper: parse frontmatter and content from markdown
@@ -42,7 +45,7 @@ window.setupPapersDiscovery = async function setupPapersDiscovery() {
   // Load and render all papers
   const files = await listPaperFiles();
   if (!files.length) {
-    browser.innerHTML = '<div class="text-red-600">No papers found.</div>';
+    // browser.innerHTML already set by fallback above
     return;
   }
   browser.innerHTML = '';
@@ -50,7 +53,7 @@ window.setupPapersDiscovery = async function setupPapersDiscovery() {
   for (const file of files.reverse()) { // newest first
     try {
       const res = await fetch(file);
-      if (!res.ok) continue;
+      if (!res.ok) throw new Error(`Could not load ${file}`);
       const md = await res.text();
       const { meta, content } = parsePaper(md);
       // Render collapsible card
@@ -89,7 +92,13 @@ window.setupPapersDiscovery = async function setupPapersDiscovery() {
       // Make header clickable
       card.querySelector('.card-header').onclick = card.querySelector('h2').onclick;
       browser.appendChild(card);
-    } catch (e) { /* skip */ }
+    } catch (e) {
+      // Show error for individual paper
+      const errDiv = document.createElement('div');
+      errDiv.className = 'bg-red-50 border border-red-200 rounded p-3 mb-2 text-red-700';
+      errDiv.innerHTML = `<b>Error loading paper:</b> ${file}<br><span class='text-xs'>${e.message || e}</span>`;
+      browser.appendChild(errDiv);
+    }
   }
 }
 
