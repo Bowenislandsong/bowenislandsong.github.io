@@ -138,42 +138,14 @@ window.setupClassesViewer = async function setupClassesViewer() {
 
   // Helper: List PDFs dynamically by fetching /classes/ directory and subfolders
   async function listPDFs() {
-    // Try to fetch /classes/ and parse links to .pdf files
-    async function fetchDir(url) {
-      try {
-        const res = await fetch(url);
-        if (!res.ok) return [];
-        const text = await res.text();
-        // Parse links to .pdf files
-        const regex = /href=["']([^"'>]+\.pdf)["']/gi;
-        const matches = [...text.matchAll(regex)];
-        return matches.map(m => url.replace(/\/$/, '') + '/' + m[1]);
-      } catch (e) { return []; }
-    }
-    // Recursively scan /classes/ and subfolders
-    async function scanAll(base) {
-      let pdfs = [];
-      try {
-        const res = await fetch(base);
-        if (!res.ok) return pdfs;
-        const text = await res.text();
-        // Find subfolders
-        const folderRegex = /href=["']([^"'>]+\/)["']/gi;
-        const folders = [...text.matchAll(folderRegex)].map(m => m[1]).filter(f => f !== '../');
-        // Find PDFs in this folder
-        const pdfRegex = /href=["']([^"'>]+\.pdf)["']/gi;
-        const pdfsHere = [...text.matchAll(pdfRegex)].map(m => base.replace(/\/$/, '') + '/' + m[1]);
-        pdfs = pdfs.concat(pdfsHere);
-        // Scan subfolders
-        for (const folder of folders) {
-          const subPdfs = await scanAll(base.replace(/\/$/, '') + '/' + folder.replace(/\/$/, ''));
-          pdfs = pdfs.concat(subPdfs);
-        }
-      } catch (e) { /* ignore */ }
-      return pdfs;
-    }
-    const pdfList = await scanAll('/classes');
-    return pdfList.map(f => ({ name: f.split('/').pop(), path: f.replace(/^\/+/, '') }));
+    // Fetch static index.json listing all PDFs
+    try {
+      const res = await fetch('classes/index.json');
+      if (!res.ok) return [];
+      const files = await res.json();
+      // files should be [{ name, path }]
+      return files;
+    } catch (e) { return []; }
   }
 
   // Render file browser with PDF previews and pretty layout

@@ -6,15 +6,14 @@ window.setupPapersDiscovery = async function setupPapersDiscovery() {
   if (!browser) return;
   browser.innerHTML = '<div class="text-sm text-slate-600">Loading papers…</div>';
 
-  // Helper: fetch and parse all .md files in /papers/
+  // Helper: fetch all .md files from papers/index.json
   async function listPaperFiles() {
     try {
-      const res = await fetch('/papers/');
+      const res = await fetch('papers/index.json');
       if (!res.ok) return [];
-      const text = await res.text();
-      const regex = /href=["']([^"'>]+\.md)["']/gi;
-      const matches = [...text.matchAll(regex)];
-      return matches.map(m => '/papers/' + m[1]);
+      const files = await res.json();
+      // files should be [{ name, path }]
+      return files.map(f => f.path);
     } catch (e) { return []; }
   }
 
