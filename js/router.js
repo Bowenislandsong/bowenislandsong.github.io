@@ -15,7 +15,8 @@
     genai: 'sections/genai.html',
     health: 'sections/health.html',
     music: 'sections/music.html',
-    classes: 'sections/classes.html',
+  classes: 'sections/classes.html',
+  'paper-discovery': 'sections/paper-discovery.html',
   };
   const CACHE_MODE = 'no-store'; // ensure you always see latest
   const SCROLL_BEHAVIOR = 'smooth';

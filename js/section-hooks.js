@@ -104,12 +104,12 @@
         const card = document.createElement('div');
         card.className = 'rounded-2xl border border-slate-200 p-4 flex items-center justify-between gap-4';
         const title = f.name.replace(/_/g, ' ').replace(/\.(pdf|bib|tex)$/i, '');
-        const fileUrl = `https://${GH_USER}.github.io/papers/${encodeURIComponent(f.name)}`;
-        const rawUrl  = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/papers/${encodeURIComponent(f.name)}`;
+        const fileUrl = `https://${GH_USER}.github.io/publications/${encodeURIComponent(f.name)}`;
+        const rawUrl  = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/publications/${encodeURIComponent(f.name)}`;
         card.innerHTML = `
           <div class="min-w-0">
             <h3 class="font-medium truncate">${title}</h3>
-            <p class="text-xs text-slate-500 truncate">papers/${f.name}</p>
+            <p class="text-xs text-slate-500 truncate">publications/${f.name}</p>
           </div>
           <div class="flex flex-wrap gap-2 text-sm shrink-0">
             <a class="underline" href="${fileUrl}" target="_blank" rel="noopener">Open</a>
@@ -123,7 +123,7 @@
       hint?.classList.remove('hidden');
       const err = document.createElement('p');
       err.className = 'text-sm text-red-600 mt-2';
-      err.textContent = 'Could not load publications from GitHub. Try refreshing, or ensure papers/ exists and is public.';
+      err.textContent = 'Could not load publications from GitHub. Try refreshing, or ensure publications/ exists and is public.';
       wrap.appendChild(err);
     }
   }
