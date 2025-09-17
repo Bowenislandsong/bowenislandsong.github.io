@@ -8,14 +8,16 @@ window.setupPapersDiscovery = async function setupPapersDiscovery() {
 
   // Helper: fetch all .md files from papers/index.json
   async function listPaperFiles() {
-    // Fetch static index.json listing all PDFs
     try {
       const res = await fetch('papers/index.json');
-      if (!res.ok) return [];
+      if (!res.ok) throw new Error('index.json not found');
       const files = await res.json();
       // files should be [{ name, path }]
-      return files;
-    } catch (e) { return []; }
+      return files.map(f => f.path);
+    } catch (e) {
+      browser.innerHTML = `<div class='text-red-600'>Could not load papers.<br><span class='text-xs'>Reason: ${e.message || e}</span><br><span class='text-xs'>If you are seeing this on GitHub Pages, make sure papers/index.json and all markdown files are published and accessible.</span></div>`;
+      return [];
+    }
   }
 
   // Helper: parse frontmatter and content from markdown
