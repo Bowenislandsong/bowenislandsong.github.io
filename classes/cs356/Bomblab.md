@@ -3,6 +3,7 @@
 # Bomb Lab: A Complete Walkthrough
 
 This document provides a comprehensive guide to solving a typical 8-phase binary bomb. The goal of the bomb lab is to enhance your understanding of assembly language, debugging tools like GDB, and reverse engineering concepts.
+Note: this is not the answer key, it only tell you how to understand the bomb code selected for my bomb.asm. See both for a comprehensive understanding.
 
 **Tools Used:**
 
