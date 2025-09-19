@@ -153,7 +153,7 @@ window.setupClassesViewer = async function setupClassesViewer() {
     const files = await listPDFs();
     browser.innerHTML = `<h2 class="text-lg font-semibold mb-4">Available PDFs</h2>`;
     if (!files.length) {
-      browser.innerHTML += '<div class="text-red-600">No PDF files found in classes/.</div>';
+      browser.innerHTML += '<div class="text-red-600">No files found in classes/.</div>';
       return;
     }
     // Modern grid layout
@@ -169,34 +169,57 @@ window.setupClassesViewer = async function setupClassesViewer() {
       // Show spinner while loading
       preview.innerHTML = `<div class="text-slate-400 animate-pulse">Loading…</div>`;
       card.appendChild(preview);
-      // PDF.js thumbnail rendering (if available)
-      if (window.pdfjsLib) {
-        window.pdfjsLib.getDocument(f.path).promise.then(pdfDoc => {
-          pdfDoc.getPage(1).then(page => {
-            const viewport = page.getViewport({ scale: 0.3 });
-            const canvas = document.createElement('canvas');
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-            canvas.style.width = '100%';
-            canvas.style.height = '100%';
-            preview.innerHTML = '';
-            preview.appendChild(canvas);
-            page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise.catch(()=>{});
+      
+      // File type specific preview and handling
+      if (f.type === 'pdf') {
+        // PDF.js thumbnail rendering (if available)
+        if (window.pdfjsLib) {
+          window.pdfjsLib.getDocument(f.path).promise.then(pdfDoc => {
+            pdfDoc.getPage(1).then(page => {
+              const viewport = page.getViewport({ scale: 0.3 });
+              const canvas = document.createElement('canvas');
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              canvas.style.width = '100%';
+              canvas.style.height = '100%';
+              preview.innerHTML = '';
+              preview.appendChild(canvas);
+              page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise.catch(()=>{});
+            }).catch(() => { preview.innerHTML = '<div class="text-slate-400">No preview</div>'; });
           }).catch(() => { preview.innerHTML = '<div class="text-slate-400">No preview</div>'; });
-        }).catch(() => { preview.innerHTML = '<div class="text-slate-400">No preview</div>'; });
+        } else {
+          preview.innerHTML = '<div class="text-slate-400">PDF Preview</div>';
+        }
+      } else if (f.type === 'markdown') {
+        preview.innerHTML = '<div class="text-blue-600 text-4xl">📄</div><div class="text-xs text-slate-500 mt-1">Markdown</div>';
+      } else if (f.type === 'asm') {
+        preview.innerHTML = '<div class="text-green-600 text-4xl">⚙️</div><div class="text-xs text-slate-500 mt-1">Assembly</div>';
       } else {
         preview.innerHTML = '<div class="text-slate-400">No preview</div>';
       }
+      
       // Filename
       const fname = document.createElement('div');
       fname.className = 'font-mono text-sm text-slate-700 mb-2 truncate w-full text-center';
       fname.textContent = f.name;
       card.appendChild(fname);
+      
       // Open button
       const openBtn = document.createElement('button');
       openBtn.className = 'px-4 py-1 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors w-full font-semibold';
-      openBtn.textContent = 'Open as slides';
-      openBtn.onclick = () => openPDF(f.path);
+      if (f.type === 'pdf') {
+        openBtn.textContent = 'Open as slides';
+        openBtn.onclick = () => openPDF(f.path);
+      } else if (f.type === 'markdown') {
+        openBtn.textContent = 'Read guide';
+        openBtn.onclick = () => openMarkdown(f.path);
+      } else if (f.type === 'asm') {
+        openBtn.textContent = 'View assembly';
+        openBtn.onclick = () => openAssembly(f.path);
+      } else {
+        openBtn.textContent = 'Open file';
+        openBtn.onclick = () => window.open(f.path, '_blank');
+      }
       card.appendChild(openBtn);
       grid.appendChild(card);
     }
@@ -593,6 +616,124 @@ window.setupClassesViewer = async function setupClassesViewer() {
   }
   // Drawing removed: hide draw canvas by default
   if (drawCanvas) drawCanvas.style.display = 'none';
+
+  // Open and render Markdown
+  async function openMarkdown(url) {
+    const markdownContainer = document.getElementById('markdown-viewer-container');
+    const markdownContent = document.getElementById('markdown-content');
+    const markdownTitle = document.getElementById('markdown-title');
+    const closeBtn = document.getElementById('close-markdown');
+    
+    if (!markdownContainer || !markdownContent) {
+      console.error('Markdown viewer elements not found');
+      return;
+    }
+    
+    // Show markdown container, hide browser
+    markdownContainer.style.display = '';
+    browser.style.display = 'none';
+    
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Failed to load: ${response.status}`);
+      const content = await response.text();
+      
+      // Set title
+      const filename = url.split('/').pop();
+      markdownTitle.textContent = filename;
+      
+      // Render markdown content
+      if (window.marked) {
+        markdownContent.innerHTML = window.marked.parse(content);
+      } else {
+        // Fallback: simple text formatting
+        markdownContent.innerHTML = `<pre class="whitespace-pre-wrap font-mono text-sm">${content}</pre>`;
+      }
+      
+      // Add syntax highlighting for code blocks if available
+      if (window.hljs) {
+        markdownContent.querySelectorAll('pre code').forEach(block => {
+          window.hljs.highlightElement(block);
+        });
+      }
+      
+      // Setup close button
+      if (closeBtn) {
+        closeBtn.onclick = () => {
+          markdownContainer.style.display = 'none';
+          browser.style.display = '';
+        };
+      }
+      
+    } catch (err) {
+      markdownContent.innerHTML = `<div class='text-red-600 p-4'>Failed to load markdown: ${err.message}</div>`;
+    }
+  }
+
+  // Open and render Assembly
+  async function openAssembly(url) {
+    const assemblyContainer = document.getElementById('assembly-viewer-container');
+    const assemblyContent = document.getElementById('assembly-content');
+    const assemblyTitle = document.getElementById('assembly-title');
+    const copyBtn = document.getElementById('copy-assembly');
+    const closeBtn = document.getElementById('close-assembly');
+    
+    if (!assemblyContainer || !assemblyContent) {
+      console.error('Assembly viewer elements not found');
+      return;
+    }
+    
+    // Show assembly container, hide browser
+    assemblyContainer.style.display = '';
+    browser.style.display = 'none';
+    
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Failed to load: ${response.status}`);
+      const content = await response.text();
+      
+      // Set title
+      const filename = url.split('/').pop();
+      assemblyTitle.textContent = filename;
+      
+      // Display assembly content
+      const preElement = assemblyContent.querySelector('pre');
+      if (preElement) {
+        preElement.textContent = content;
+      }
+      
+      // Setup copy functionality
+      if (copyBtn) {
+        copyBtn.onclick = () => {
+          navigator.clipboard.writeText(content).then(() => {
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => copyBtn.textContent = 'Copy', 2000);
+          }).catch(() => {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = content;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => copyBtn.textContent = 'Copy', 2000);
+          });
+        };
+      }
+      
+      // Setup close button
+      if (closeBtn) {
+        closeBtn.onclick = () => {
+          assemblyContainer.style.display = 'none';
+          browser.style.display = '';
+        };
+      }
+      
+    } catch (err) {
+      assemblyContent.innerHTML = `<div class='text-red-600 p-4'>Failed to load assembly: ${err.message}</div>`;
+    }
+  }
 
   // Initial render with error safety
   try {

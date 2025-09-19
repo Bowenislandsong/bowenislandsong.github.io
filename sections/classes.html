@@ -7,6 +7,7 @@
 
   <div id="pdf-browser" class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8"></div>
 
+  <!-- PDF Viewer Container -->
   <div id="pdf-viewer-container" class="relative bg-white rounded-xl shadow-lg p-4 border border-slate-200" style="display:none;">
     <div id="pdf-toolbar" class="flex flex-wrap items-center gap-2 mb-4 justify-between">
       <div class="flex gap-2 items-center">
@@ -24,5 +25,30 @@
       <canvas id="draw-canvas" class="absolute top-0 left-0" style="pointer-events:none; touch-action:none;"></canvas>
     </div>
   </div>
+
+  <!-- Markdown Viewer Container -->
+  <div id="markdown-viewer-container" class="relative bg-white rounded-xl shadow-lg p-4 border border-slate-200" style="display:none;">
+    <div class="flex justify-between items-center mb-4">
+      <h2 id="markdown-title" class="text-xl font-bold">Markdown Document</h2>
+      <button id="close-markdown" class="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600">✕ Close</button>
+    </div>
+    <div id="markdown-content" class="prose prose-slate max-w-none overflow-auto" style="max-height: 80vh;"></div>
+  </div>
+
+  <!-- Assembly Viewer Container -->
+  <div id="assembly-viewer-container" class="relative bg-gray-900 rounded-xl shadow-lg p-4 border border-slate-200" style="display:none;">
+    <div class="flex justify-between items-center mb-4">
+      <h2 id="assembly-title" class="text-lg font-bold text-white">Assembly Code</h2>
+      <div class="flex gap-2">
+        <button id="copy-assembly" class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Copy</button>
+        <button id="close-assembly" class="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600">✕ Close</button>
+      </div>
+    </div>
+    <div id="assembly-content" class="text-green-400 font-mono text-sm overflow-auto" style="max-height: 80vh;">
+      <pre class="whitespace-pre-wrap"></pre>
+    </div>
+  </div>
 </div>
+<!-- Load marked.js for markdown rendering -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <!-- PDF.js and custom logic will be loaded by classes.js -->
