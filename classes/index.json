@@ -9,14 +9,4 @@
     "path": "classes/cs356/data_lab_explained.pdf",
     "type": "pdf"
   },
-  {
-    "name": "bomb.asm",
-    "path": "classes/cs356/bomb.asm",
-    "type": "asm"
-  },
-  {
-    "name": "Bomblab.md",
-    "path": "classes/cs356/Bomblab.md",
-    "type": "markdown"
-  }
 ]
