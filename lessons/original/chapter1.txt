@@ -1,0 +1,3 @@
+Preface (Original PDF Text)
+
+This book is for people who are curious about quantum computing as a possible job or career, but aren't math whizzes or computer experts. You only need to know basic trigonometry to understand it. The book teaches the math and programming you need to actually do quantum computing. If you already know linear algebra, this book might be too easy for you. The author hopes to show you that quantum computing isn't impossible to understand and wants to encourage you to learn more. The book came from a class the author taught at a university and has been improved based on student feedback.

@@ -31,6 +31,7 @@ build/
 *.tmp
 *.temp
 .cache/
+*__pycache__/
 
 # Log files
 *.log

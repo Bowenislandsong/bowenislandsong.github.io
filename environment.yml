@@ -1,0 +1,11 @@
+name: website
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - google-generativeai
+      - PyPDF2
+      - matplotlib

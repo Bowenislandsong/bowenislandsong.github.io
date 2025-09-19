@@ -1,543 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quantum Computing Fundamentals — Interactive Textbook</title>
-  <style>
-    :root{
-      /* Light theme palette */
-      --bg:#f7f9fc;        /* page background */
-      --panel:#ffffff;      /* cards / nav */
-      --ink:#0f172a;        /* primary text */
-      --muted:#64748b;      /* muted text */
-      --accent:#2563eb;     /* brand blue */
-      --accent2:#10b981;    /* teal for highlights */
-      --danger:#ef4444;     /* red */
-      --line:#e5e7eb;       /* borders */
-      --hover:#f1f5f9;      /* hover bg */
-      --code:#f8fafc;       /* code bg */
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
-    a{color:var(--accent)}
-    .wrap{display:grid;grid-template-columns:280px 1fr;gap:16px;height:100vh}
-    nav{background:var(--panel);padding:16px;overflow:auto;border-right:1px solid var(--line)}
-    main{padding:20px 28px;overflow:auto}
-    h1{font-size:28px;margin:0 0 8px}
-    h2{font-size:22px;margin:24px 0 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
-    h3{font-size:18px;margin:16px 0 8px}
-    .toc h3{margin-top:0}
-    .toc a{display:block;padding:6px 8px;border-radius:8px;text-decoration:none;color:var(--ink)}
-    .toc a:hover,.toc a.active{background:var(--hover)}
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}
-    .row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:#fff;padding:8px 12px;border-radius:10px}
-    .btn:hover{filter:brightness(0.95)}
-    .muted{color:var(--muted)}
-    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;background:var(--code);border:1px solid var(--line);padding:2px 6px;border-radius:6px}
-    details{background:#ffffff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-    summary{cursor:pointer;font-weight:600}
-    .grid{display:grid;gap:16px}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .code{overflow:auto;background:var(--code);border:1px solid var(--line);border-radius:12px;padding:12px;color:#111827}
-    .foot{margin-top:24px;color:var(--muted);font-size:12px}
-    .badge{display:inline-block;font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;background:#eef2ff;color:#3730a3}
-    .notice{border-left:4px solid var(--accent2);padding-left:12px}
-    canvas{background:#ffffff;border:1px solid var(--line);border-radius:12px}
-    .table{width:100%;border-collapse:collapse}
-    .table th,.table td{border-bottom:1px solid var(--line);padding:8px;text-align:left}
-    .quiz .q{margin:8px 0}
-    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--code)}
-    .pill input{accent-color:var(--accent)}
-    @media (max-width: 900px){ .wrap{grid-template-columns:1fr} nav{order:2} main{order:1} }
-  </style>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Quantum Computing for Dummies</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css">
 </head>
-<body>
-<div class="wrap">
-  <nav>
-    <h3>📚 Contents</h3>
-    <div class="toc" id="toc"></div>
-    <div class="card">
-      <div><span class="badge">Interactive</span> Try the live qubit simulator, Bloch sphere, and quizzes.</div>
-    </div>
-    <div class="card">
-      <h3>Quick links</h3>
-      <a href="#intro">1. What is a qubit?</a>
-      <a href="#linear">2. Linear algebra primer</a>
-      <a href="#states">3. States & measurement</a>
-      <a href="#gates">4. Gates</a>
-      <a href="#bloch">5. Bloch sphere (demo)</a>
-      <a href="#circuits">6. Circuits</a>
-      <a href="#entanglement">7. Superposition & entanglement</a>
-      <a href="#algorithms">8. Algorithms (Deutsch)</a>
-      <a href="#noise">9. Noise & error</a>
-      <a href="#exercises">10. Exercises</a>
-    </div>
-  </nav>
-  <main>
-    <header>
-      <h1>Quantum Computing Fundamentals</h1>
-      <p class="muted">An interactive, single‑page textbook with runnable demos and embedded intuition. Built for self‑study and teaching.</p>
-      <div class="row">
-        <button class="btn" id="resetAll">Reset all demos</button>
-        <button class="btn" id="toggleMath">Toggle formulas</button>
-      </div>
-    </header>
+<body class="bg-gradient-to-br from-blue-100 to-teal-100 min-h-screen">
+		<div class="flex flex-col md:flex-row max-w-7xl mx-auto py-10 px-2 gap-6">
+			<!-- Sidebar -->
+			<aside class="md:w-72 w-full bg-white/80 rounded-2xl shadow-lg p-6 mb-6 md:mb-0">
+				<h1 class="text-3xl font-extrabold text-blue-800 mb-4">Quantum Computing for Dummies</h1>
+				<p class="text-base text-slate-700 mb-4">A super-friendly, visual introduction to quantum computing. No math, no jargon—just fun and intuition!</p>
+				<nav id="lesson-list" class="space-y-2">
+					<!-- Lessons will be loaded here -->
+				</nav>
+				<a href="lessons/introduction-to-classical-and-quantum-computing.pdf" target="_blank" class="block mb-4 px-3 py-2 bg-blue-100 text-blue-700 rounded font-semibold hover:bg-blue-200 text-center">View/Download Full PDF</a>
+			</aside>
+			<!-- Main Reading Pane -->
+			<main class="flex-1 bg-white rounded-2xl shadow-2xl p-8 min-h-[60vh] prose prose-lg max-w-none w-full" id="lesson-content">
+				<div class="text-slate-400 text-center py-20 text-xl">Select a chapter from the sidebar to begin reading.</div>
+</style>
+			</main>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<script>
+			// Load lessons from index.json
+			fetch('lessons/index.json')
+				.then(res => res.json())
+				.then(list => {
+					const nav = document.getElementById('lesson-list');
+					nav.innerHTML = '';
+					list.forEach((lesson, idx) => {
+						const btn = document.createElement('button');
+						btn.className = 'w-full text-left px-4 py-2 rounded-lg font-semibold text-blue-700 hover:bg-blue-100 focus:bg-blue-200 transition';
+						btn.textContent = lesson.title;
+						btn.onclick = () => showLesson(lesson.path, btn);
+						btn.id = 'lesson-btn-' + idx;
+						nav.appendChild(btn);
+					});
+				});
 
-    <section id="intro" data-title="1 · What is a Qubit?">
-      <h2>1 · What is a Qubit?</h2>
-      <p>
-        A qubit is a two‑level quantum system with state $\lvert\psi\rangle = \alpha\lvert0\rangle + \beta\lvert1\rangle$, where $\alpha,\beta\in\mathbb C$ and $\lvert\alpha\rvert^2+\lvert\beta\rvert^2=1$.
-        Unlike a classical bit, a qubit can be in a superposition of $\lvert0\rangle$ and $\lvert1\rangle$.
-      </p>
-      <details class="notice"><summary>Physical intuition</summary>
-        Global phase is unobservable, so states differing by $e^{i\phi}$ are equivalent. This leaves a 2‑sphere of unique states — the <em>Bloch sphere</em> — parameterized by polar angles $(\theta,\varphi)$ with representation
-        $$\lvert\psi\rangle = \cos\tfrac{\theta}{2}\,\lvert0\rangle + e^{i\varphi}\sin\tfrac{\theta}{2}\,\lvert1\rangle.$$
-      </details>
-      <div class="card grid grid-2">
-        <div>
-          <h3>Live State Vector</h3>
-          <div class="row">
-            <label class="pill">θ <input id="theta" type="range" min="0" max="3.1416" step="0.001" value="1.047"/></label>
-            <label class="pill">φ <input id="phi" type="range" min="0" max="6.283" step="0.001" value="0.785"/></label>
-          </div>
-          <div class="card">
-            <div id="stateText"></div>
-          </div>
-          <div class="row">
-            <button class="btn" data-preset="zero">|0⟩</button>
-            <button class="btn" data-preset="one">|1⟩</button>
-            <button class="btn" data-preset="plus">|+⟩</button>
-            <button class="btn" data-preset="minus">|−⟩</button>
-            <button class="btn" data-preset="plus_i">|+i⟩</button>
-          </div>
-        </div>
-        <div>
-          <h3>Measurement (Z‑basis)</h3>
-          <p class="muted">Compute $P(0)=\lvert\alpha\rvert^2$ and $P(1)=\lvert\beta\rvert^2$ and sample $N$ shots.</p>
-          <div class="row"><label class="pill">Shots <input id="shots" type="range" min="10" max="5000" value="1000" step="10"></label> <button class="btn" id="measureBtn">Measure</button></div>
-          <div class="card">
-            <div id="hist"></div>
-          </div>
-        </div>
-      </div>
-    </section>
+				function showLesson(path, btn) {
+						// Determine PDF page for this lesson (assume 5 pages per chapter, starting at page 1)
+						const chapterMatch = path.match(/chapter(\d+)\.md$/);
+						let page = 1;
+						if (chapterMatch) {
+							page = (parseInt(chapterMatch[1]) - 1) * 5 + 1;
+						}
+							fetch(path).then(res => res.text()).then(md => {
+								// Update URL hash for bookmarking
+								if (chapterMatch) {
+									window.location.hash = `chapter${chapterMatch[1]}`;
+								}
+									document.getElementById('lesson-content').innerHTML = `
+										<div class="space-y-6">
+											<h2 class="text-2xl font-extrabold mb-4 text-blue-700 border-b pb-2">Beginner Lesson</h2>
+											<div class="prose prose-xl max-w-none leading-relaxed">
+												${marked.parse(md)}
+											</div>
+										</div>
+									`;
+								// Highlight selected button
+								document.querySelectorAll('#lesson-list button').forEach(b => b.classList.remove('bg-blue-200'));
+								if (btn) btn.classList.add('bg-blue-200');
+								// Scroll to top of reading pane
+								document.getElementById('lesson-content').scrollTo({top:0, behavior:'smooth'});
+							});
+		// Fullscreen PDF iframe
+		function fullscreenPDF() {
+			const iframe = document.getElementById('pdf-iframe');
+			if (iframe.requestFullscreen) {
+				iframe.requestFullscreen();
+			} else if (iframe.webkitRequestFullscreen) {
+				iframe.webkitRequestFullscreen();
+			} else if (iframe.mozRequestFullScreen) {
+				iframe.mozRequestFullScreen();
+			} else if (iframe.msRequestFullscreen) {
+				iframe.msRequestFullscreen();
+			}
+		}
 
-    <section id="linear" data-title="2 · Linear Algebra Primer">
-      <h2>2 · Linear Algebra Primer</h2>
-      <div class="grid grid-2">
-        <div>
-          <h3>Dirac notation</h3>
-          <ul>
-            <li>Basis: $\lvert0\rangle = \begin{bmatrix}1\\0\end{bmatrix}$, $\lvert1\rangle = \begin{bmatrix}0\\1\end{bmatrix}$</li>
-            <li>Inner product: $\langle\phi\lvert\psi\rangle$</li>
-            <li>Outer product: $\lvert\psi\rangle\langle\phi\rvert$</li>
-          </ul>
-          <p>States are unit vectors; gates are unitary matrices $U$ with $U^\dagger U=I$.</p>
-        </div>
-        <div>
-          <h3>Pauli & Hadamard</h3>
-          <table class="table">
-            <tr><th>Gate</th><th>Matrix</th><th>Action</th></tr>
-            <tr><td>$X$</td><td>$\begin{bmatrix}0&1\\1&0\end{bmatrix}$</td><td>Bit‑flip</td></tr>
-            <tr><td>$Y$</td><td>$\begin{bmatrix}0&-i\\i&0\end{bmatrix}$</td><td>Bit+phase flip</td></tr>
-            <tr><td>$Z$</td><td>$\begin{bmatrix}1&0\\0&-1\end{bmatrix}$</td><td>Phase flip</td></tr>
-            <tr><td>$H$</td><td>$\tfrac1{\sqrt2}\begin{bmatrix}1&1\\1&-1\end{bmatrix}$</td><td>Superposition</td></tr>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="states" data-title="3 · States & Measurement">
-      <h2>3 · States & Measurement</h2>
-      <p>Born rule: measuring $\lvert\psi\rangle = \alpha\lvert0\rangle+\beta\lvert1\rangle$ in the computational basis yields 0 with probability $\lvert\alpha\rvert^2$ and 1 with probability $\lvert\beta\rvert^2$.
-      Post‑measurement state collapses to the observed eigenstate.</p>
-      <details><summary>Density matrices</summary>
-        <p>For pure states $\rho = \lvert\psi\rangle\langle\psi\rvert$. Mixed states are convex combinations $\rho=\sum_k p_k \lvert\psi_k\rangle\langle\psi_k\rvert$.</p>
-      </details>
-    </section>
-
-    <section id="gates" data-title="4 · Gates (Single & Two‑Qubit)">
-      <h2>4 · Gates (Single & Two‑Qubit)</h2>
-      <div class="grid grid-2">
-        <div>
-          <h3>Single‑qubit rotations</h3>
-          <p>$R_x(\theta)=e^{-i\theta X/2}$, $R_y(\theta)$, $R_z(\phi)$ rotate the Bloch vector.</p>
-          <div class="row">
-            <label class="pill">Apply <select id="oneGate">
-              <option value="X">X</option>
-              <option value="Y">Y</option>
-              <option value="Z">Z</option>
-              <option value="H">H</option>
-              <option value="Rx">R_x(π/4)</option>
-              <option value="Ry">R_y(π/4)</option>
-              <option value="Rz">R_z(π/4)</option>
-            </select></label>
-            <button class="btn" id="applyOne">Apply to current |ψ⟩</button>
-          </div>
-        </div>
-        <div>
-          <h3>CNOT & entanglement</h3>
-          <p>CNOT maps $\lvert a,b\rangle\mapsto\lvert a, a\oplus b\rangle$. Using $H$ on control then CNOT yields a Bell pair.</p>
-          <div class="row">
-            <button class="btn" id="bell">Create Bell state</button>
-            <button class="btn" id="measureBell">Measure 1000 shots</button>
-          </div>
-          <div class="card" id="bellOut"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="bloch" data-title="5 · Bloch Sphere (Interactive)">
-      <h2>5 · Bloch Sphere (Interactive)</h2>
-      <p>Drag to rotate. The tip shows the Bloch vector $(\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta)$ from the controls above.</p>
-      <canvas id="bloch" width="420" height="420" aria-label="Bloch sphere"></canvas>
-    </section>
-
-    <section id="circuits" data-title="6 · Circuits & Tensor Products">
-      <h2>6 · Circuits & Tensor Products</h2>
-      <p>Multi‑qubit states live in a tensor product space. For two qubits, basis $\{\lvert00\rangle,\lvert01\rangle,\lvert10\rangle,\lvert11\rangle\}$.
-      Gates compose via Kronecker products.</p>
-      <details><summary>Try a simple 2‑qubit circuit</summary>
-        <div class="row">
-          <button class="btn" id="h1">H on qubit 1</button>
-          <button class="btn" id="cnot12">CNOT (1→2)</button>
-          <button class="btn" id="measure2">Measure 2000 shots</button>
-        </div>
-        <div class="card" id="twoOut"></div>
-      </details>
-    </section>
-
-    <section id="entanglement" data-title="7 · Superposition & Entanglement">
-      <h2>7 · Superposition & Entanglement</h2>
-      <p><strong>Superposition</strong> is linearity of amplitudes; <strong>entanglement</strong> is non‑separability: a state $\lvert\psi\rangle$ is entangled if it cannot be written as $\lvert\phi\rangle\otimes\lvert\chi\rangle$.</p>
-      <details><summary>Schmidt test (2‑qubit)</summary>
-        <p>For $\lvert\psi\rangle=\sum_{ij}c_{ij}\lvert ij\rangle$, form $C=[c_{ij}]$; if $\text{rank}(C)=1$ then separable; else entangled.</p>
-      </details>
-    </section>
-
-    <section id="algorithms" data-title="8 · Algorithms: Deutsch (Interactive)">
-      <h2>8 · Algorithms: Deutsch (Interactive)</h2>
-      <p>Given oracle $f:\{0,1\}\to\{0,1\}$, decide if $f$ is <em>constant</em> or <em>balanced</em> with one query using the Deutsch circuit.</p>
-      <div class="grid grid-2">
-        <div>
-          <h3>Pick an oracle</h3>
-          <label class="pill"><input type="radio" name="oracle" value="f0" checked> f(x)=0</label>
-          <label class="pill"><input type="radio" name="oracle" value="f1"> f(x)=1</label>
-          <label class="pill"><input type="radio" name="oracle" value="fid"> f(x)=x</label>
-          <label class="pill"><input type="radio" name="oracle" value="fnot"> f(x)=¬x</label>
-          <div class="row"><button class="btn" id="runDeutsch">Run Deutsch</button></div>
-        </div>
-        <div>
-          <h3>Result</h3>
-          <div class="card" id="deutschOut"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="noise" data-title="9 · Noise & Error (NISQ)">
-      <h2>9 · Noise & Error (NISQ)</h2>
-      <ul>
-        <li>Decoherence: $T_1$ (amplitude) and $T_2$ (phase) times.</li>
-        <li>Common channels: dephasing, depolarizing, amplitude damping.</li>
-        <li>Error mitigation vs error correction (stabilizers, surface codes).</li>
-      </ul>
-      <details><summary>Simulate dephasing on |+⟩</summary>
-        <div class="row">
-          <label class="pill">p (phase flip prob) <input id="dephaseP" type="range" min="0" max="1" step="0.01" value="0.2"></label>
-          <button class="btn" id="runDephase">Apply to |+⟩ then measure</button>
-        </div>
-        <div class="card" id="dephaseOut"></div>
-      </details>
-    </section>
-
-    <section id="exercises" data-title="10 · Exercises & Checks">
-      <h2>10 · Exercises & Checks</h2>
-      <div class="quiz card">
-        <div class="q">
-          <strong>Q1.</strong> Show that $H X H = Z$.
-          <div class="row"><button class="btn" onclick="showSol('sol1')">Show solution</button></div>
-          <div id="sol1" class="code" style="display:none">Using $H=\tfrac1{\sqrt2}\begin{bmatrix}1&1\\1&-1\end{bmatrix}$ and $X=\begin{bmatrix}0&1\\1&0\end{bmatrix}$, compute $HXH=\begin{bmatrix}1&0\\0&-1\end{bmatrix}=Z$.</div>
-        </div>
-        <div class="q">
-          <strong>Q2.</strong> Prepare a Bell state using $H$ and CNOT. What are the correlated outcomes?
-          <div class="row"><button class="btn" onclick="showSol('sol2')">Show solution</button></div>
-          <div id="sol2" class="code" style="display:none">Apply $H$ to qubit 1, then CNOT(1→2) to obtain $\lvert\Phi^+\rangle=\tfrac{1}{\sqrt2}(\lvert00\rangle+\lvert11\rangle)$. Measurements are perfectly correlated: both 0 or both 1.</div>
-        </div>
-      </div>
-      <p class="foot">© 2025. You may reuse this page for teaching with attribution.</p>
-    </section>
-
-  </main>
-</div>
-
-<script>
-// ---------- Utilities ----------
-const $ = (q,root=document)=>root.querySelector(q);
-const $$ = (q,root=document)=>Array.from(root.querySelectorAll(q));
-const fmt = (x,prec=4)=> (Math.abs(x) < 1e-12 ? 0 : +x.toFixed(prec));
-function complexStr([re,im]){
-  const r=fmt(re), i=fmt(im);
-  if(Math.abs(i)<1e-12) return `${r}`;
-  if(Math.abs(r)<1e-12) return `${i}i`;
-  return `${r} ${i>=0?'+':'−'} ${Math.abs(i)}i`;
-}
-
-// Build TOC highlighting
-function buildTOC(){
-  const toc = $('#toc');
-  toc.innerHTML = '';
-  $$('main section').forEach(sec=>{
-    const a=document.createElement('a');
-    a.href = '#' + sec.id; a.textContent = sec.dataset.title || sec.querySelector('h2').textContent;
-    toc.appendChild(a);
-  });
-  function highlight(){
-    const y = window.scrollY; let active;
-    $$('main section').forEach(sec=>{
-      const r = sec.getBoundingClientRect();
-      if(r.top < 200 && r.bottom > 200) active = sec;
-    });
-    $$('#toc a').forEach(a=>a.classList.toggle('active', active && a.getAttribute('href')==='#'+active.id));
-  }
-  document.addEventListener('scroll', highlight, {passive:true});
-  highlight();
-}
-
-// ---------- State math ----------
-// Single-qubit state represented as [a, b] complex pairs [re, im]
-function fromAngles(theta, phi){
-  const a=[Math.cos(theta/2),0];
-  const b=[Math.sin(theta/2)*Math.cos(phi), Math.sin(theta/2)*Math.sin(phi)];
-  return normalize([a,b]);
-}
-function add([ar,ai],[br,bi]){return [ar+br, ai+bi]}
-function sub([ar,ai],[br,bi]){return [ar-br, ai-bi]}
-function mul([ar,ai],[br,bi]){return [ar*br - ai*bi, ar*bi + ai*br]}
-function scale([ar,ai], s){return [ar*s, ai*s]}
-function norm2([ar,ai]){return ar*ar+ai*ai}
-function normalize([a,b]){
-  const n = Math.sqrt(norm2(a)+norm2(b));
-  return [[a[0]/n,a[1]/n],[b[0]/n,b[1]/n]];
-}
-
-function stateText([a,b]){
-  const pa = fmt(norm2(a)); const pb = fmt(norm2(b));
-  return `|ψ⟩ = ${complexStr(a)}·|0⟩ + ${complexStr(b)}·|1⟩\nP(0)=${pa}, P(1)=${pb}`
-}
-
-let theta = parseFloat($('#theta').value), phi = parseFloat($('#phi').value);
-let psi = fromAngles(theta,phi);
-
-function refreshState(){
-  $('#stateText').textContent = stateText(psi);
-  drawBloch();
-}
-
-$('#theta').addEventListener('input', e=>{theta=parseFloat(e.target.value); psi = fromAngles(theta,phi); refreshState();});
-$('#phi').addEventListener('input', e=>{phi=parseFloat(e.target.value); psi = fromAngles(theta,phi); refreshState();});
-
-// Presets
-$$("[data-preset]").forEach(btn=>btn.addEventListener('click',()=>{
-  const k = btn.dataset.preset;
-  if(k==='zero'){theta=0;phi=0}
-  if(k==='one'){theta=Math.PI;phi=0}
-  if(k==='plus'){theta=Math.PI/2;phi=0}
-  if(k==='minus'){theta=Math.PI/2;phi=Math.PI}
-  if(k==='plus_i'){theta=Math.PI/2;phi=Math.PI/2}
-  $('#theta').value=theta; $('#phi').value=phi; psi=fromAngles(theta,phi); refreshState();
-}));
-
-// Measurement histogram
-function sampleZ([a,b], shots){
-  const p0 = norm2(a), p1 = norm2(b);
-  let c0=0; for(let i=0;i<shots;i++){ if(Math.random()<p0) c0++; }
-  return {p0, p1, c0, c1: shots-c0};
-}
-$('#measureBtn').addEventListener('click',()=>{
-  const shots = parseInt($('#shots').value);
-  const {p0,p1,c0,c1} = sampleZ(psi, shots);
-  $('#hist').innerHTML = `<div>Expected P(0)=${fmt(p0)}, P(1)=${fmt(p1)}</div>
-    <div class="row"><div class="pill">Observed 0: <strong>${c0}</strong></div><div class="pill">Observed 1: <strong>${c1}</strong></div></div>`;
-});
-
-// One-qubit gates
-const I=[[1,0],[0,0]]; // complex 1 and 0 helpers (we use real-only for common gates)
-function applyGate(psi, gate){
-  const [[a,b]]=[psi];
-  const [g00,g01,g10,g11]=gate; // each gxx is [re,im]
-  const a2 = add(mul(g00,a), mul(g01,b));
-  const b2 = add(mul(g10,a), mul(g11,b));
-  return normalize([a2,b2]);
-}
-const ONE = [[ [1,0],[0,0] ], [ [0,0],[1,0] ]]; // basis |0>, |1>
-const Xg = [ [ [0,0],[1,0] ], [ [1,0],[0,0] ] ];
-const Zg = [ [ [1,0],[0,0] ], [ [0,0],[-1,0] ] ];
-const Yg = [ [ [0,0],[0,-1] ], [ [0,1],[0,0] ] ];
-const Hs = 1/Math.SQRT2; const Hg = [ [ [Hs,0],[Hs,0] ], [ [Hs,0],[-Hs,0] ] ];
-function Rx(piOver){ const t=Math.PI/4; const c=Math.cos(t), s=Math.sin(t); return [ [[c,0],[0,-s]], [[0,-s],[c,0]] ]; }
-function Ry(piOver){ const t=Math.PI/4; const c=Math.cos(t), s=Math.sin(t); return [ [[c,0],[s,0] ], [ [-s,0],[c,0] ] ]; }
-function Rz(piOver){ const t=Math.PI/4; return [ [[Math.cos(t),-Math.sin(t)],[0,0]], [[0,0],[Math.cos(t),Math.sin(t)]] ]; }
-
-$('#applyOne').addEventListener('click',()=>{
-  const g = $('#oneGate').value;
-  const G = g==='X'?Xg: g==='Y'?Yg: g==='Z'?Zg: g==='H'?Hg: g==='Rx'?Rx(): g==='Ry'?Ry(): Rz();
-  psi = applyGate(psi, G); refreshState();
-});
-
-// Two-qubit quick sim (minimal, real-only for demo)
-function kron2(A,B){
-  // A,B: 2x2 complex; return 4x4
-  const out=[];
-  for(let i=0;i<2;i++) for(let j=0;j<2;j++) for(let k=0;k<2;k++) for(let l=0;l<2;l++){
-    const a=A[i][j], b=B[k][l]; out.push(mul(a,b));
-  }
-  return out; // flattened 16
-}
-function apply4(state4, G){
-  const y=new Array(4).fill([0,0]);
-  for(let r=0;r<4;r++){
-    let acc=[0,0];
-    for(let c=0;c<4;c++){
-      const m=G[r*4+c]; acc = add(acc, mul(m, state4[c]));
-    }
-    y[r]=acc;
-  }
-  // normalize
-  let n=0; for(const z of y) n+=norm2(z); n=Math.sqrt(n); return y.map(z=>[z[0]/n,z[1]/n]);
-}
-const CNOT = (()=>{
-  // |00>->|00>, |01>->|01>, |10>->|11>, |11>->|10>
-  const zero=[ [1,0],[0,0] ], one=[ [0,0],[1,0] ];
-  const P0 = [zero, [ [0,0],[0,0] ] ];
-  const P1 = [ [ [0,0],[0,0] ], one ];
-  // CNOT = |0><0|⊗I + |1><1|⊗X
-  const I2=[ [ [1,0],[0,0] ], [ [0,0],[1,0] ] ];
-  const X2=Xg;
-  function proj(ket){ // |0><0| or |1><1|
-    return [ [ket[0], [0,0] ], [ [0,0], ket[1] ] ];
-  }
-  const term1 = kron2( proj(ONE[0]), I2 );
-  const term2 = kron2( proj(ONE[1]), X2 );
-  // sum 4x4
-  const G=[]; for(let i=0;i<16;i++) G.push(add(term1[i], term2[i]));
-  return G;
-})();
-
-$('#bell').addEventListener('click',()=>{
-  // start |00>, apply H on qubit 1 then CNOT
-  let s = [[1,0],[0,0],[0,0],[0,0]]; // |00>
-  const H1 = kron2(Hg, [ [ [1,0],[0,0] ], [ [0,0],[1,0] ] ]);
-  s = apply4(s, H1); s = apply4(s, CNOT);
-  $('#bellOut').textContent = 'Created |Φ⁺⟩ = (|00⟩+|11⟩)/√2. Try measuring below.';
-});
-$('#measureBell').addEventListener('click',()=>{
-  // measure Bell state prepared as above
-  let s = [[1,0],[0,0],[0,0],[0,0]]; // |00>
-  const H1 = kron2(Hg, [ [ [1,0],[0,0] ], [ [0,0],[1,0] ] ]);
-  s = apply4(s, H1); s = apply4(s, CNOT);
-  const probs=[norm2(s[0]),norm2(s[1]),norm2(s[2]),norm2(s[3])];
-  let c=[0,0,0,0];
-  for(let i=0;i<1000;i++){
-    const r=Math.random();
-    let acc=0, idx=0; for(;idx<4;idx++){acc+=probs[idx]; if(r<acc) break;}
-    c[idx]++;
-  }
-  $('#bellOut').innerHTML = `Counts (1000 shots): 00=${c[0]}, 01=${c[1]}, 10=${c[2]}, 11=${c[3]}`;
-});
-
-// Two-qubit demo in Circuits section
-$('#h1').addEventListener('click',()=>{
-  window._two = { state: apply4([[1,0],[0,0],[0,0],[0,0]], kron2(Hg, [ [ [1,0],[0,0] ], [ [0,0],[1,0] ] ])) };
-  $('#twoOut').textContent = 'Applied H on qubit 1: state is (|00⟩+|10⟩)/√2.';
-});
-$('#cnot12').addEventListener('click',()=>{
-  if(!window._two){ $('#twoOut').textContent = 'Apply H on qubit 1 first.'; return; }
-  window._two.state = apply4(window._two.state, CNOT);
-  $('#twoOut').textContent = 'Applied CNOT(1→2): state is Bell |Φ⁺⟩.';
-});
-$('#measure2').addEventListener('click',()=>{
-  if(!window._two){ $('#twoOut').textContent = 'Build a state first.'; return; }
-  const s = window._two.state; const p=s.map(norm2); let c=[0,0,0,0];
-  for(let i=0;i<2000;i++){ const r=Math.random(); let acc=0, idx=0; for(;idx<4;idx++){acc+=p[idx]; if(r<acc) break;} c[idx]++; }
-  $('#twoOut').textContent = `Counts (2000): 00=${c[0]}, 01=${c[1]}, 10=${c[2]}, 11=${c[3]}`;
-});
-
-// Deutsch algorithm
-function deutschRun(kind){
-  // |01> → H on both → Uf → H on first → measure first
-  let s=[[0,0],[1,0],[0,0],[0,0]]; // |01>
-  const Hboth = kron2(Hg,Hg); s = apply4(s,Hboth);
-  // Oracles
-  const Uf_f0 = [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1].map((v,i)=> i%5==0? [v,0]:[0,0]);
-  const Uf_f1 = [0,1,0,0, 1,0,0,0, 0,0,0,1, 0,0,1,0].map((v,i)=> i%5==0? [v,0]:[0,0]);
-  const Uf_id = [1,0,0,0, 0,1,0,0, 0,0,0,1, 0,0,1,0].map((v,i)=> i%5==0? [v,0]:[0,0]);
-  const Uf_not= [0,1,0,0, 1,0,0,0, 0,0,1,0, 0,0,0,1].map((v,i)=> i%5==0? [v,0]:[0,0]);
-  const G = kind==='f0'?Uf_f0: kind==='f1'?Uf_f1: kind==='fid'?Uf_id: Uf_not;
-  s = apply4(s,G); s = apply4(s,kron2(Hg,[ [ [1,0],[0,0] ], [ [0,0],[1,0] ] ]));
-  const p0 = norm2(s[0])+norm2(s[1]); // first qubit = 0 subspace
-  const isConst = p0>0.9; // ideal circuit → |0> for constant, |1> for balanced
-  return {p0, decision: isConst? 'constant' : 'balanced'};
-}
-$('#runDeutsch').addEventListener('click',()=>{
-  const kind = $$('input[name="oracle"]').find(r=>r.checked).value;
-  const {p0,decision} = deutschRun(kind);
-  $('#deutschOut').innerHTML = `Measured first qubit: P(|0⟩)≈${fmt(p0)} → <strong>${decision.toUpperCase()}</strong>`;
-});
-
-// Simple dephasing channel on |+>
-$('#runDephase').addEventListener('click',()=>{
-  const p = parseFloat($('#dephaseP').value);
-  // ρ_plus = (1/2) [ [1, 1], [1, 1] ]; Dephasing: off-diagonals → (1-2p) times
-  const r01 = 1 - 2*p;
-  $('#dephaseOut').innerHTML = `After dephasing with p=${p.toFixed(2)}, off-diagonal coherence scales to ${r01.toFixed(2)}.\nMeasuring in Z gives still 50/50; in X basis contrast reduces.`;
-});
-
-// Bloch sphere minimal renderer
-const canv = $('#bloch');
-let drag=false, yaw=0.8, pitch=0.4;
-canv.addEventListener('mousedown',()=>drag=true);
-window.addEventListener('mouseup',()=>drag=false);
-canv.addEventListener('mousemove',e=>{ if(!drag) return; yaw += e.movementX*0.01; pitch += e.movementY*0.01; drawBloch(); });
-function project([x,y,z]){ const cy=Math.cos(yaw), sy=Math.sin(yaw), cp=Math.cos(pitch), sp=Math.sin(pitch);
-  // rotate point then project
-  const X = cy*x + sy*z; const Z = -sy*x + cy*z; const Y = cp*y - sp*Z; const Z2 = sp*y + cp*Z; // simple rotation
-  const s = 170; const cx=canv.width/2, cyy=canv.height/2;
-  return [cx + s*X, cyy - s*Y];
-}
-function drawBloch(){
-  const ctx = canv.getContext('2d'); ctx.clearRect(0,0,canv.width,canv.height);
-  const cx=canv.width/2, cyy=canv.height/2, R=170;
-  ctx.strokeStyle = '#2a3b78'; ctx.lineWidth=1.2; ctx.beginPath(); ctx.arc(cx,cyy,R,0,Math.PI*2); ctx.stroke();
-  // axes
-  const axes=[[1,0,0,'X'],[0,1,0,'Y'],[0,0,1,'Z']];
-  axes.forEach(([x,y,z,label])=>{
-    const p1=project([-x,-y,-z]); const p2=project([x,y,z]);
-    ctx.strokeStyle='#334aa0'; ctx.beginPath(); ctx.moveTo(...p1); ctx.lineTo(...p2); ctx.stroke();
-    ctx.fillStyle='#bcd1ff'; const pt=project([x,y,z]); ctx.fillText(label, pt[0]+6, pt[1]+6);
-  });
-  // state tip from current θ,φ
-  const vx = Math.sin(theta)*Math.cos(phi);
-  const vy = Math.sin(theta)*Math.sin(phi);
-  const vz = Math.cos(theta);
-  const p0 = project([0,0,0]); const p = project([vx,vy,vz]);
-  ctx.strokeStyle='#8ae9c1'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(...p0); ctx.lineTo(...p); ctx.stroke();
-  ctx.fillStyle='#8ae9c1'; ctx.beginPath(); ctx.arc(p[0],p[1],5,0,Math.PI*2); ctx.fill();
-}
-
-// UI helpers
-function showSol(id){ const el = document.getElementById(id); el.style.display = el.style.display==='none' ? 'block' : 'none'; }
-$('#resetAll').addEventListener('click',()=>{ theta=Math.PI/3; phi=Math.PI/4; $('#theta').value=theta; $('#phi').value=phi; psi=fromAngles(theta,phi); refreshState(); $('#hist').textContent=''; $('#bellOut').textContent=''; $('#twoOut').textContent=''; $('#deutschOut').textContent=''; $('#dephaseOut').textContent=''; });
-$('#toggleMath').addEventListener('click',()=>{
-  document.documentElement.classList.toggle('hide-math');
-  const hide = document.documentElement.classList.contains('hide-math');
-  $$('mjx-container').forEach(x=>x.style.display = hide ? 'none' : 'inline');
-});
-
-buildTOC();
-refreshState();
-</script>
+		// On page load, check hash and auto-select chapter
+		window.addEventListener('DOMContentLoaded', () => {
+			const hash = window.location.hash;
+			if (hash && hash.startsWith('#chapter')) {
+				const idx = parseInt(hash.replace('#chapter','')) - 1;
+				const btn = document.getElementById('lesson-btn-' + idx);
+				if (btn) btn.click();
+			}
+		});
+				}
+		</script>
 </body>
 </html>
