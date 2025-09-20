@@ -1,8 +1,8 @@
 [
   {
-    "name": "bomblab.md",
-    "path": "classes/cs356/bomblab.md",
-    "type": "markdown"
+    "name": "data_lab_explained.pdf",
+    "path": "classes/cs356/data_lab_explained.pdf",
+    "type": "pdf"
   },
   {
     "name": "bomb.asm",
@@ -10,13 +10,13 @@
     "type": "asm"
   },
   {
-    "name": "CS356_Discussion_03.pdf",
-    "path": "classes/cs356/CS356_Discussion_03.pdf",
-    "type": "pdf"
+    "name": "bomblab.md",
+    "path": "classes/cs356/bomblab.md",
+    "type": "markdown"
   },
   {
-    "name": "data_lab_explained.pdf",
-    "path": "classes/cs356/data_lab_explained.pdf",
+    "name": "CS356_Discussion_03.pdf",
+    "path": "classes/cs356/CS356_Discussion_03.pdf",
     "type": "pdf"
   }
 ]
