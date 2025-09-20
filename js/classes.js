@@ -169,7 +169,7 @@ window.setupClassesViewer = async function setupClassesViewer() {
       // Show spinner while loading
       preview.innerHTML = `<div class="text-slate-400 animate-pulse">Loading…</div>`;
       card.appendChild(preview);
-      
+
       // File type specific preview and handling
       if (f.type === 'pdf') {
         // PDF.js thumbnail rendering (if available)
@@ -194,16 +194,14 @@ window.setupClassesViewer = async function setupClassesViewer() {
         preview.innerHTML = '<div class="text-blue-600 text-4xl">📄</div><div class="text-xs text-slate-500 mt-1">Markdown</div>';
       } else if (f.type === 'asm') {
         preview.innerHTML = '<div class="text-green-600 text-4xl">⚙️</div><div class="text-xs text-slate-500 mt-1">Assembly</div>';
-      } else {
-        preview.innerHTML = '<div class="text-slate-400">No preview</div>';
       }
-      
+
       // Filename
       const fname = document.createElement('div');
       fname.className = 'font-mono text-sm text-slate-700 mb-2 truncate w-full text-center';
       fname.textContent = f.name;
       card.appendChild(fname);
-      
+
       // Open button
       const openBtn = document.createElement('button');
       openBtn.className = 'px-4 py-1 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors w-full font-semibold';
@@ -642,14 +640,37 @@ window.setupClassesViewer = async function setupClassesViewer() {
       const filename = url.split('/').pop();
       markdownTitle.textContent = filename;
       
-      // Render markdown content
+      // Render markdown content with GitHub-like styling
       if (window.marked) {
-        markdownContent.innerHTML = window.marked.parse(content);
+        markdownContent.innerHTML = `
+          <div class="prose prose-lg max-w-3xl mx-auto bg-white border border-slate-200 shadow-sm rounded-lg p-6 mb-6">
+            ${window.marked.parse(content)}
+          </div>
+        `;
+        // Style code blocks for scroll and add copy button
+        markdownContent.querySelectorAll('pre code').forEach(block => {
+          const pre = block.parentElement;
+          pre.classList.add('bg-gray-100', 'rounded', 'p-3', 'font-mono', 'text-sm', 'overflow-x-auto', 'border', 'border-slate-200', 'max-h-96', 'relative');
+          // Add vertical scroll for long code
+          pre.style.maxHeight = '24rem';
+          pre.style.overflowY = 'auto';
+          // Add copy button
+          const copyBtn = document.createElement('button');
+          copyBtn.textContent = 'Copy';
+          copyBtn.className = 'absolute top-2 right-2 px-2 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 z-10';
+          copyBtn.onclick = () => {
+            navigator.clipboard.writeText(block.textContent).then(() => {
+              copyBtn.textContent = 'Copied!';
+              setTimeout(() => copyBtn.textContent = 'Copy', 1500);
+            });
+          };
+          pre.appendChild(copyBtn);
+        });
       } else {
         // Fallback: simple text formatting
-        markdownContent.innerHTML = `<pre class="whitespace-pre-wrap font-mono text-sm">${content}</pre>`;
+        markdownContent.innerHTML = `<pre class="whitespace-pre-wrap font-mono text-lg bg-white border border-slate-200 shadow-sm rounded-lg p-6 mb-6" style="max-height:24rem;overflow:auto;">${content}</pre>`;
       }
-      
+
       // Add syntax highlighting for code blocks if available
       if (window.hljs) {
         markdownContent.querySelectorAll('pre code').forEach(block => {
@@ -786,3 +807,23 @@ window.setupClassesViewer = async function setupClassesViewer() {
     } catch (err) { console.warn('[Classes] keyboard nav error', err); }
   });
 }
+
+function displayFile(content, type) {
+  const viewer = document.getElementById('file-viewer');
+  if (type === 'md') {
+    viewer.innerHTML = `
+      <div class="prose prose-lg max-w-none mx-auto">
+        ${marked.parse(content)}
+      </div>
+    `;
+  } else if (type === 'asm') {
+    viewer.innerHTML = `
+      <pre class="bg-gray-100 p-4 rounded text-sm overflow-auto whitespace-pre-wrap font-mono">
+        ${content.replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+      </pre>
+    `;
+  } else if (type === 'pdf') {
+    viewer.innerHTML = `<embed src="${content}" width="100%" height="600px" type="application/pdf">`;
+  }
+}
+
