@@ -5,9 +5,9 @@
     "type": "pdf"
   },
   {
-    "name": "bomb.asm",
-    "path": "classes/cs356/bomb.asm",
-    "type": "asm"
+    "name": "CS356_Discussion_03.pdf",
+    "path": "classes/cs356/CS356_Discussion_03.pdf",
+    "type": "pdf"
   },
   {
     "name": "bomblab.md",
@@ -15,8 +15,8 @@
     "type": "markdown"
   },
   {
-    "name": "CS356_Discussion_03.pdf",
-    "path": "classes/cs356/CS356_Discussion_03.pdf",
-    "type": "pdf"
+    "name": "bomb.asm",
+    "path": "classes/cs356/bomb.asm",
+    "type": "asm"
   }
 ]
