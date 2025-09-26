@@ -1,14 +1,20 @@
 [
-	{
-		"name": "chapter1.md",
-		"title": "Chapter 1: Quantum for Dummies",
-		"path": "lessons/chapter1.md",
-		"original": "lessons/original/chapter1.txt"
-	},
-	{
-		"name": "chapter2.md",
-		"title": "Chapter 2: Quantum for Dummies",
-		"path": "lessons/chapter2.md",
-		"original": "lessons/original/chapter2.txt"
-	}
+  {
+    "name": "chapter1.md",
+    "title": "Chapter 1: Quantum for Dummies",
+    "path": "lessons/chapter1.md",
+    "original": "lessons/original/chapter1.txt"
+  },
+  {
+    "name": "chapter2.md",
+    "title": "Chapter 2: Quantum for Dummies",
+    "path": "lessons/chapter2.md",
+    "original": "lessons/original/chapter2.txt"
+  },
+  {
+    "name": "chapter3.md",
+    "title": "Chapter 3: Quantum for Dummies",
+    "path": "lessons/chapter3.md",
+    "original": "lessons/original/chapter3.txt"
+  }
 ]
