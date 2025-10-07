@@ -253,12 +253,10 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Contact
 
 **Bowen Song**
-- 📧 Email: [bowenson@usc.edu](mailto:bowenson@usc.edu)
 - 🔗 LinkedIn: [linkedin.com/in/songbowen](https://www.linkedin.com/in/songbowen/)
 - 🐙 GitHub: [github.com/Bowenislandsong](https://github.com/Bowenislandsong)
 - 🎓 ORCID: [0000-0002-5071-3880](https://orcid.org/0000-0002-5071-3880)
 - 🏢 University of Southern California, Los Angeles, CA
-- 📱 Phone: +1 (857) 318-5369
 
 ---
 
