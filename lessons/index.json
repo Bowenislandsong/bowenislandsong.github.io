@@ -94,5 +94,11 @@
     "title": "Chapter 16: Quantum for Dummies",
     "path": "lessons/chapter16.md",
     "original": "lessons/original/chapter16.txt"
+  },
+  {
+    "name": "chapter17.md",
+    "title": "Chapter 17: Quantum for Dummies",
+    "path": "lessons/chapter17.md",
+    "original": "lessons/original/chapter17.txt"
   }
 ]
