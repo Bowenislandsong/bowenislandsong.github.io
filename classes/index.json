@@ -1,7 +1,22 @@
 [
   {
+    "name": "attack lab (slides).pdf",
+    "path": "classes/cs356/attack lab (slides).pdf",
+    "type": "pdf"
+  },
+  {
     "name": "CS356_Discussion_03.pdf",
     "path": "classes/cs356/CS356_Discussion_03.pdf",
+    "type": "pdf"
+  },
+  {
+    "name": "attack_lab.md",
+    "path": "classes/cs356/attack_lab.md",
+    "type": "markdown"
+  },
+  {
+    "name": "CS356_Discussion_07.pdf",
+    "path": "classes/cs356/CS356_Discussion_07.pdf",
     "type": "pdf"
   },
   {
@@ -18,20 +33,5 @@
     "name": "bomb.asm",
     "path": "classes/cs356/bomb.asm",
     "type": "asm"
-  },
-  {
-    "name": "CS356 Discussion 07",
-    "path": "classes/cs356/CS356_Discussion_07.pdf",
-    "type": "pdf"
-  },
-  {
-    "name": "attacklab.md",
-    "path": "classes/cs356/attack_lab.md",
-    "type": "markdown"
-  },
-  {
-    "name": "attack lab (slides)",
-    "path": "classes/cs356/attack lab (slides).pdf",
-    "type": "pdf"
   }
 ]
