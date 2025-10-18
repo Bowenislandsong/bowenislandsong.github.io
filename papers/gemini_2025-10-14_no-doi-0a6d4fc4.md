@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "Ground Reaction Force Estimation with Sensor Fusion Based on Multi-Head Attention Mechanism"
 authors: "Shihao Zhou, Xiaoxing He, Haoyi Liang, Jinwen He, Wei Li, Lei Wang"
@@ -29,4 +28,4 @@ The paper utilizes a multi-head attention mechanism, which is a relatively recen
 *   The study focuses only on walking. Further investigation is needed to assess the method's performance during other activities, such as running, jumping, or stair climbing.
 *   The paper does not discuss the computational cost of the multi-head attention mechanism. Investigating and optimizing the computational efficiency would enhance the method's practicality for real-time applications.
 *   The dataset used might not be sufficiently diverse in terms of subject demographics (age, weight, height, gait abnormalities). Expanding the dataset to include a more representative sample would improve the generalizability of the results.
-```
+
