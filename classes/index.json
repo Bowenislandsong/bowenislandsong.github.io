@@ -18,5 +18,20 @@
     "name": "bomb.asm",
     "path": "classes/cs356/bomb.asm",
     "type": "asm"
-  }
+  },
+  {
+    "name": "CS356 Discussion 07",
+    "path": "classes/cs356/CS356_Discussion_07.pdf",
+    "type": "pdf"
+  },
+  {
+    "name": "attacklab.md",
+    "path": "classes/cs356/attack_lab.md",
+    "type": "markdown"
+  },
+  {
+    "name": "attack lab (slides)",
+    "path": "classes/cs356/attack lab (slides).pdf",
+    "type": "pdf"
+  },
 ]
