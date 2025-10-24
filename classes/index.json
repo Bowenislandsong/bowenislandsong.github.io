@@ -33,5 +33,10 @@
     "name": "bomb.asm",
     "path": "classes/cs356/bomb.asm",
     "type": "asm"
+  },
+  {
+    "name": "cache_lab.md",
+    "path": "classes/cs356/cache_lab.md",
+    "type": "markdown"
   }
 ]
