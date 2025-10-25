@@ -184,5 +184,11 @@
     "title": "Chapter 31: Quantum for Dummies",
     "path": "lessons/chapter31.md",
     "original": "lessons/original/chapter31.txt"
+  },
+  {
+    "name": "chapter32.md",
+    "title": "Chapter 32: Quantum for Dummies",
+    "path": "lessons/chapter32.md",
+    "original": "lessons/original/chapter32.txt"
   }
 ]
