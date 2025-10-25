@@ -5,6 +5,11 @@
     "type": "pdf"
   },
   {
+    "name": "cache_lab.md",
+    "path": "classes/cs356/cache_lab.md",
+    "type": "markdown"
+  },
+  {
     "name": "attack_lab.md",
     "path": "classes/cs356/attack_lab.md",
     "type": "markdown"
@@ -33,10 +38,5 @@
     "name": "bomb.asm",
     "path": "classes/cs356/bomb.asm",
     "type": "asm"
-  },
-  {
-    "name": "cache_lab.md",
-    "path": "classes/cs356/cache_lab.md",
-    "type": "markdown"
   }
 ]
