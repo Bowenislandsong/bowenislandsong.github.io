@@ -426,3 +426,86 @@ static void access_range(CacheSystem *cs, bool is_write, unsigned long address, 
 ```
 
 This alignment ensures partial-block ranges still touch the first containing block.
+
+## 12) Multi-CPU Shared Cache: Remote Invalidations and Writebacks
+
+When multiple cores access shared memory blocks, you must track **remote coherence events** that occur due to the MSI protocol. You’ll modify your simulator so that each core’s cache lines are kept consistent through **remote invalidations** and **remote writebacks**.
+
+The logic is as follows:
+
+### Concept
+
+When a core reads or writes a block that may be cached by other cores:
+
+* **Read:** other cores in `M` must *write back* and downgrade to `S`.
+* **Write:** other cores must *invalidate* their copies; if they had `M`, they must also *write back* first.
+
+You don’t need to simulate an actual shared L3 cache—just **count the number of writebacks** and **update cache line states** accordingly.
+
+### Behavior Summary
+
+| Access Type | Remote Core State | Action on Remote Core   | Log Event                                           | New State |
+| ----------- | ----------------- | ----------------------- | --------------------------------------------------- | --------- |
+| **Read**    | `M`               | Write back + downgrade  | `EVENT_REMOTE_WRITEBACK`                            | `S`       |
+| **Read**    | `S` or `I`        | No change               | —                                                   | unchanged |
+| **Write**   | `M`               | Write back + invalidate | `EVENT_REMOTE_WRITEBACK`, `EVENT_REMOTE_INVALIDATE` | `I`       |
+| **Write**   | `S`               | Invalidate              | `EVENT_REMOTE_INVALIDATE`                           | `I`       |
+| **Write**   | `I`               | No change               | —                                                   | unchanged |
+
+### Pseudocode
+
+```c
+// Called whenever a core performs an access
+void handle_coherence(CacheSystem *cs, Stats *stats,
+                      int requester_core, uint64_t tag, uint64_t index, bool is_write) {
+  for (int c = 0; c < cs->C; c++) if (c != requester_core) {
+    CacheSet *rset = get_set(cs, c, index);
+    int li = find_line(rset, cs->K, tag);
+    if (li < 0) continue;
+
+    CacheLine *rl = &rset->lines[li];
+    if (!rl->valid) continue;
+
+    if (is_write) {
+      if (rl->state == LINE_M)
+        stats_log(stats, EVENT_REMOTE_WRITEBACK, c);
+      stats_log(stats, EVENT_REMOTE_INVALIDATE, c);
+      rl->state = LINE_I;
+      rl->valid = false;
+    } else { // read
+      if (rl->state == LINE_M) {
+        stats_log(stats, EVENT_REMOTE_WRITEBACK, c);
+        rl->state = LINE_S;
+      }
+    }
+  }
+}
+```
+
+### Integration Notes
+
+* Call `handle_coherence(...)` **before** installing a new line or upgrading a line to `M`.
+* Use `stats_log(stats, EVENT_REMOTE_INVALIDATE, core_id)` and `stats_log(stats, EVENT_REMOTE_WRITEBACK, core_id)` for each affected remote core.
+* This ensures your simulator correctly logs inter-core coherence traffic without explicitly simulating shared caches.
+
+### Example Walkthrough
+
+1. **Core 0 writes** to address A → line becomes `M`.
+2. **Core 1 reads** A → Core 0 performs remote writeback (`M→S`), both now `S`.
+3. **Core 2 writes** A → Core 0 and Core 1 invalidate (`S→I`), Core 2 becomes `M`.
+
+Resulting events:
+
+```
+Core0: EVENT_REMOTE_WRITEBACK
+Core0: EVENT_REMOTE_INVALIDATE
+Core1: EVENT_REMOTE_INVALIDATE
+```
+
+### Testing
+
+Confirm your simulator:
+
+* Logs a writeback when a remote `M` line is downgraded.
+* Logs invalidations when any remote cache holds the same block.
+* Maintains correct state transitions: `M→S` on read, `S/M→I` on write.
