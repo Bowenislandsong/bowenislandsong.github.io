@@ -4,9 +4,9 @@ This document explains **how the allocator in this repo works**, why it passes t
 
 Read this side-by-side with:
 
-* `src/mm_block.c`, `src/mm_block.h`
-* `src/mm_list.c`, `src/mm_list.h`
-* `src/mm.c`
+* [`src/mm_block.c`](./mm_block.c), [`src/mm_block.h`](./mm_block.h)
+* [`src/mm_list.c`](./mm_list.c), [`src/mm_list.h`](./mm_list.h)
+* [`src/mm.c`](./src/mm.c)
 
 The goal is to help you *learn the design*, not just copy the code.
 
