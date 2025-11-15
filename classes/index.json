@@ -40,7 +40,7 @@
     "type": "asm"
   },
   {
-    "name": "malloc.md",
+    "name": "malloc_lab.md",
     "path": "classes/cs356/malloc/malloc_lab.md",
     "type": "markdown"
   }
