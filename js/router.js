@@ -201,11 +201,37 @@
     }, true);
   }
 
+  // ---- Check if classes should be hidden ----
+  async function checkAndHideClassesTab() {
+    const hideClassesTab = () => {
+      const classesTab = document.querySelector('a[href="#/classes"]');
+      if (classesTab) classesTab.style.display = 'none';
+    };
+
+    try {
+      const res = await fetch('classes/index.json');
+      if (!res.ok) {
+        hideClassesTab();
+        return;
+      }
+      const classes = await res.json();
+      
+      // Hide Classes tab if array is empty
+      if (Array.isArray(classes) && classes.length === 0) {
+        hideClassesTab();
+      }
+    } catch (e) {
+      // On error, hide the classes tab as well
+      hideClassesTab();
+    }
+  }
+
   // ---- Boot ----
   window.addEventListener('hashchange', () => handleRoute(location.hash));
   window.addEventListener('DOMContentLoaded', () => {
     setupPrefetch();
     setupAnchorDelegation();
+    checkAndHideClassesTab();
 
     // If no hash, go to default page
     if (!location.hash) {
