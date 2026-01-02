@@ -161,10 +161,6 @@ The website is automatically deployed to GitHub Pages from the main branch.
 - **Vercel**: Connect GitHub repository
 - **Traditional Web Hosting**: Upload all files via FTP
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## 📞 Contact
 
 **Bowen Song**
@@ -172,7 +168,3 @@ This project is open source and available under the [MIT License](LICENSE).
 - 🐙 GitHub: [github.com/Bowenislandsong](https://github.com/Bowenislandsong)
 - 🎓 ORCID: [0000-0002-5071-3880](https://orcid.org/0000-0002-5071-3880)
 - 🏢 University of Southern California, Los Angeles, CA
-
----
-
-**Built with ❤️ in Los Angeles** | **Powered by GitHub Pages**
