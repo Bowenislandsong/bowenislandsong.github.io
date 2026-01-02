@@ -203,24 +203,26 @@
 
   // ---- Check if classes should be hidden ----
   async function checkAndHideClassesTab() {
+    const hideClassesTab = () => {
+      const classesTab = document.querySelector('a[href="#/classes"]');
+      if (classesTab) classesTab.style.display = 'none';
+    };
+
     try {
-      const res = await fetch('classes/index.json', { cache: 'no-store' });
-      if (!res.ok) return;
+      const res = await fetch('classes/index.json');
+      if (!res.ok) {
+        hideClassesTab();
+        return;
+      }
       const classes = await res.json();
       
       // Hide Classes tab if array is empty
       if (Array.isArray(classes) && classes.length === 0) {
-        const classesTab = document.querySelector('a[href="#/classes"]');
-        if (classesTab) {
-          classesTab.style.display = 'none';
-        }
+        hideClassesTab();
       }
     } catch (e) {
       // On error, hide the classes tab as well
-      const classesTab = document.querySelector('a[href="#/classes"]');
-      if (classesTab) {
-        classesTab.style.display = 'none';
-      }
+      hideClassesTab();
     }
   }
 
