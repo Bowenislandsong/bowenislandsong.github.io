@@ -4,8 +4,8 @@ authors: "Ziyu Zhang, Yueying Li, Qingxuan Shi, Yubo Fan, Hu Ding"
 journal: "IEEE Transactions on Instrumentation and Measurement"
 year: 2024
 volume: 73
-issue:
-pages: "1-14"
+issue: ""
+pages: 1-14
 doi: "10.1109/TIM.2024.3373414"
 keywords: "ground reaction force (GRF), inertial measurement unit (IMU), physics-informed neural network (PINN), gait analysis"
 abstract: "Ground reaction force (GRF) estimation is essential in gait analysis. Inertial measurement units (IMUs) provide a wearable and cost-effective way to measure human movements. Deep learning models have been widely used to map IMU data to GRF. However, these models are typically data-driven and lack physical interpretability and generalization ability. In this paper, we propose a physics-informed neural network (PINN) for GRF estimation using IMU data. The PINN incorporates the governing equations of human motion as a regularization term in the loss function. This allows the model to learn the underlying physical principles of gait and improve its generalization ability. We validate the proposed method on a public dataset and compare it with several state-of-the-art methods. The results show that the proposed method achieves competitive performance with better generalization ability."

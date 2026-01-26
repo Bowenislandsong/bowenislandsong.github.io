@@ -2,22 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bowenislandsong.github.io/</loc>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://bowenislandsong.github.io/#/personal</loc>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://bowenislandsong.github.io/#/classes</loc>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bowenislandsong.github.io/#/paper-discovery</loc>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bowenislandsong.github.io/#/quantum</loc>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Direct links to class PDFs -->

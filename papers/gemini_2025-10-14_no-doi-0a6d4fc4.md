@@ -4,7 +4,7 @@ authors: "Shihao Zhou, Xiaoxing He, Haoyi Liang, Jinwen He, Wei Li, Lei Wang"
 journal: "IEEE Transactions on Instrumentation and Measurement"
 year: 2022
 volume: 71
-issue: N/A
+issue: "N/A"
 pages: 1-12
 doi: "10.1109/TIM.2022.3160965"
 keywords: "ground reaction force (GRF) estimation, inertial measurement unit (IMU), multi-head attention mechanism, sensor fusion"

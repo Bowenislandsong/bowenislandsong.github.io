@@ -3,9 +3,9 @@ title: "Estimating Ground Reaction Forces in Different Gait Patterns Based on Mu
 authors: "Zhiyuan Zhang, Zhenzhong Kuang, Qiming Zhang, Qiang Huang, Liang Zhao"
 journal: "Sensors"
 year: 2024
-volume: "24"
-issue: "8"
-pages: "2466"
+volume: 24
+issue: 8
+pages: 2466
 doi: "https://doi.org/10.3390/s24082466"
 keywords: "ground reaction force; inertial measurement unit; gait pattern recognition; multi-mode fusion; deep learning"
 abstract: "Ground reaction force (GRF) is a crucial biomechanical parameter for gait analysis and rehabilitation training. Inertial measurement units (IMUs) offer a convenient and cost-effective solution for GRF estimation. However, existing IMU-based GRF estimation methods often struggle to accurately capture the variations in GRF caused by different gait patterns. To address this issue, we propose a multi-mode fusion framework for GRF estimation that considers various gait patterns. First, we recognize the gait pattern using a deep learning model based on IMU signals. Then, we design different GRF estimation models for each gait pattern and fuse the results based on the gait pattern recognition. Experimental results show that our method achieves state-of-the-art performance in GRF estimation under different gait patterns."

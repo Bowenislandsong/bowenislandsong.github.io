@@ -3,9 +3,9 @@ title: "GRF-DA: Generalizable Ground Reaction Force Estimation with Differentiab
 authors: "Yu, Z.; Wang, S.; He, Z.; Zhou, H.; Zhang, Y.; Zhang, L."
 journal: "IEEE Transactions on Biomedical Engineering"
 year: 2024
-volume: "71"
-issue: "5"
-pages: "1557-1566"
+volume: 71
+issue: 5
+pages: 1557-1566
 doi: "10.1109/TBME.2023.3332792"
 keywords: "ground reaction force, inertial measurement unit, domain generalization, differentiable augmentation, gait analysis"
 abstract: "Ground reaction force (GRF) estimation based on inertial measurement units (IMUs) has been widely used in gait analysis and biomechanical assessment. However, the generalization ability of GRF estimation models is often limited by the variability of gait patterns across different subjects and environments. To address this challenge, we propose a novel differentiable augmentation (DA) method to improve the generalization ability of GRF estimation models. The proposed method learns to generate augmented IMU data that are more representative of the unseen domains, which can effectively reduce the domain gap between the source and target domains. In addition, we propose a domain-invariant feature learning module to extract features that are robust to domain variations. The proposed method is evaluated on a benchmark dataset and the experimental results show that it achieves state-of-the-art performance in GRF estimation, demonstrating its effectiveness in improving the generalization ability of GRF estimation models."

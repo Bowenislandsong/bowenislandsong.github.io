@@ -5,7 +5,7 @@ journal: "IEEE Transactions on Biomedical Engineering"
 year: 2024
 volume: 71
 issue: 1
-pages: "100-112"
+pages: 100-112
 doi: "10.1109/TBME.2023.3304567"
 keywords: "Ground reaction force estimation, inertial measurement unit (IMU), transformer, domain generalization, multi-sensor fusion"
 abstract: "Accurate estimation of ground reaction forces (GRFs) is crucial for biomechanical analysis and rehabilitation. This paper presents a novel transformer-based deep learning model for GRF estimation using data from multiple inertial measurement units (IMUs) placed on the lower limbs. The model incorporates a domain generalization strategy to enhance robustness across different gait patterns and subject demographics. Multi-sensor fusion is employed to leverage complementary information from the IMUs, resulting in improved estimation accuracy. Experimental results demonstrate that the proposed approach outperforms existing methods in terms of GRF estimation accuracy and generalization capability, particularly in challenging gait scenarios."

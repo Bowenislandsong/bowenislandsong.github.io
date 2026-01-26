@@ -3,9 +3,9 @@ title: "Subject-Adaptive Ground Reaction Force Estimation via Meta-Learning with
 authors: "Chen, Siqi; Chen, Yunzhi; Huang, Jiahong; Chen, Kai; Liu, Xuguang; Wang, Xiaoyan"
 journal: "IEEE Transactions on Biomedical Engineering"
 year: 2024
-volume: "71"
-issue: "5"
-pages: "1553-1563"
+volume: 71
+issue: 5
+pages: 1553-1563
 doi: "10.1109/TBME.2023.3330279"
 keywords: "Ground reaction force (GRF), inertial measurement unit (IMU), meta-learning, subject adaptation, task-aware metric."
 abstract: "Accurate estimation of ground reaction force (GRF) from inertial measurement units (IMUs) is crucial for gait analysis and rehabilitation. Existing methods often suffer from inter-subject variability and require extensive subject-specific fine-tuning. This paper proposes a subject-adaptive GRF estimation framework based on meta-learning with a task-aware metric. The framework aims to learn a well-generalized initial model across subjects and adapt it quickly to a new subject with limited data. A novel task-aware metric is designed to capture the relationship between different subjects and guide the adaptation process. Specifically, the task-aware metric incorporates biomechanical features to better represent the underlying task characteristics and improve the adaptation performance. Experimental results on a public dataset demonstrate that the proposed framework achieves state-of-the-art performance in subject-adaptive GRF estimation with few-shot learning."

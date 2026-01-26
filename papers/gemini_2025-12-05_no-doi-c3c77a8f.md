@@ -4,7 +4,7 @@ authors: "Rongjie Shi, Hongyi Zhang, Weihai Chen, Jun Zhao, Lei Wang"
 journal: "IEEE Transactions on Instrumentation and Measurement"
 year: 2023
 volume: 72
-issue: N/A
+issue: "N/A"
 pages: 1-12
 doi: "10.1109/TIM.2023.3297148"
 keywords: "ground reaction force (GRF); inertial measurement unit (IMU); sensor fusion; vision sensor; deep learning"

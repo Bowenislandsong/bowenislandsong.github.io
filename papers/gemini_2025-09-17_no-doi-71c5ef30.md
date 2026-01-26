@@ -1,14 +1,14 @@
 ---
-title: 'Estimating Ground Reaction Forces with Transformer and Optimal Sensor Fusion Based on Inertial Measurement Units'
-authors: 'Yifan Zhang, Lei Wang, Yuqing Xue, Huiyan Li, Chao Chen, Jinlong Li'
-journal: 'Sensors'
+title: "Estimating Ground Reaction Forces with Transformer and Optimal Sensor Fusion Based on Inertial Measurement Units"
+authors: "Yifan Zhang, Lei Wang, Yuqing Xue, Huiyan Li, Chao Chen, Jinlong Li"
+journal: "Sensors"
 year: 2024
 volume: 24
 issue: 3
 pages: 923
-doi: 'https://doi.org/10.3390/s24030923'
-keywords: 'ground reaction forces; transformer; sensor fusion; gait analysis; inertial measurement units; biomechanics'
-abstract: 'Accurate estimation of ground reaction forces (GRFs) is crucial for biomechanical analysis of human movement. This paper proposes a novel method based on a transformer network and optimal sensor fusion to estimate GRFs using inertial measurement units (IMUs). We first placed IMUs on multiple body segments and designed a sensor fusion strategy based on an information entropy criterion to select the most informative IMU combination. Then, a transformer network was trained to map the selected IMU data to GRFs. The proposed method was validated on a public gait dataset. The results demonstrated that the proposed method achieved promising performance in GRF estimation and outperformed existing methods. The optimal sensor fusion strategy also contributed to improved accuracy and reduced computational cost. The proposed method has the potential to be applied in various fields, such as sports training, rehabilitation, and clinical gait analysis.'
+doi: "https://doi.org/10.3390/s24030923"
+keywords: "ground reaction forces; transformer; sensor fusion; gait analysis; inertial measurement units; biomechanics"
+abstract: "Accurate estimation of ground reaction forces (GRFs) is crucial for biomechanical analysis of human movement. This paper proposes a novel method based on a transformer network and optimal sensor fusion to estimate GRFs using inertial measurement units (IMUs). We first placed IMUs on multiple body segments and designed a sensor fusion strategy based on an information entropy criterion to select the most informative IMU combination. Then, a transformer network was trained to map the selected IMU data to GRFs. The proposed method was validated on a public gait dataset. The results demonstrated that the proposed method achieved promising performance in GRF estimation and outperformed existing methods. The optimal sensor fusion strategy also contributed to improved accuracy and reduced computational cost. The proposed method has the potential to be applied in various fields, such as sports training, rehabilitation, and clinical gait analysis."
 ---
 
 ## Summary

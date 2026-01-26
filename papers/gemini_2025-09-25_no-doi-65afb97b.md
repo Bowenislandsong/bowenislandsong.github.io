@@ -3,9 +3,9 @@ title: "Estimating ground reaction forces with transformer-based domain adaptati
 authors: "Zhao, Z., Yin, Z., Sun, M., & Yu, H."
 journal: "Sensors"
 year: 2024
-volume: "24"
-issue: "3"
-pages: "887"
+volume: 24
+issue: 3
+pages: 887
 doi: "https://doi.org/10.3390/s24030887"
 keywords: "ground reaction force; inertial measurement unit; transformer; domain adaptation; transfer learning"
 abstract: "Ground reaction forces (GRFs) are essential for gait analysis and biomechanical research. While force plates offer accurate measurements, their limitations in real-world scenarios necessitate the development of portable estimation methods using inertial measurement units (IMUs). This study introduces a novel domain adaptation framework based on the transformer architecture for estimating GRFs from IMU data. The proposed method leverages source data with available GRF labels to train a model that can be adapted to new target subjects with minimal labeled data. The transformer architecture captures long-range dependencies in the IMU data, while domain adaptation techniques mitigate the discrepancies between source and target domains. Experimental results demonstrate that the proposed approach significantly improves the accuracy and generalization ability of GRF estimation compared to traditional methods, particularly in scenarios with limited labeled data from the target domain. The proposed domain adaptation strategy shows promise for personalized GRF estimation in real-world applications."

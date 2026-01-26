@@ -4,8 +4,8 @@ authors: "Xingpeng Zhang, Yuting Gao, Yuhang Li, Hongyang Zhao, Jing Zhao, Cheng
 journal: "IEEE Transactions on Instrumentation and Measurement"
 year: 2023
 volume: 72
-issue: N/A
-pages: "1-12"
+issue: "N/A"
+pages: 1-12
 doi: "10.1109/TIM.2023.3297676"
 keywords: "ground reaction force, attention mechanism, multi-scale fusion, inertial measurement unit, deep learning"
 abstract: "Accurate and reliable ground reaction force (GRF) estimation is crucial for gait analysis and clinical applications. However, existing GRF estimation methods based on inertial measurement units (IMUs) often struggle to capture the complex spatial-temporal relationships between IMU data and GRF signals. To address this issue, we propose a novel deep learning framework called Spatial-Temporal Attention and Multi-Scale Fusion Network (STAMF-Net) for GRF estimation. STAMF-Net leverages a spatial attention mechanism to selectively weight the contributions of different IMU sensors and a temporal attention mechanism to capture the temporal dependencies within the IMU data. Furthermore, a multi-scale fusion module is employed to integrate features extracted at different scales, enabling the model to capture both local and global contextual information. Experimental results on a publicly available dataset demonstrate that STAMF-Net significantly outperforms existing state-of-the-art methods in GRF estimation accuracy. The proposed framework provides a promising approach for accurate and robust GRF estimation using wearable IMU sensors."

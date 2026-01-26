@@ -3,13 +3,12 @@ title: "Personalized Estimation of Ground Reaction Forces During Level-Ground Wa
 authors: "Rathindra Nath Shawon, Shweta Sharma, and Robert Gregg"
 journal: "IEEE Transactions on Neural Systems and Rehabilitation Engineering"
 year: 2024
-volume: "32"
-issue: "3"
-pages: "941-950"
+volume: 32
+issue: 3
+pages: 941-950
 doi: "10.1109/TNSRE.2024.3352333"
 keywords: "biomechanics, deep learning, gait analysis, ground reaction force, inertial measurement units, personalization, transformers."
 abstract: "Estimation of ground reaction force (GRF) during walking is crucial for various biomechanical and clinical applications. While lab-based force plates are considered the gold standard for GRF measurement, their usage is limited to controlled environments. Inertial measurement units (IMUs) offer a promising alternative for GRF estimation in real-world settings. However, subject-specific gait characteristics and sensor placement variations pose significant challenges to achieving high accuracy and generalization. This study proposes a personalized GRF estimation approach that leverages a transformer-based deep learning model and a single IMU placed at the shank. The transformer architecture enables the model to capture long-range dependencies in the inertial data and effectively learn the complex relationship between IMU signals and GRFs. A personalized training strategy is employed, where the model is first pre-trained on a large dataset of GRF and IMU data from multiple subjects, and then fine-tuned on a small amount of subject-specific data. The proposed approach was evaluated on a dataset of 10 subjects walking at different speeds. The results demonstrate that the personalized transformer-based model significantly outperforms existing GRF estimation methods, achieving root mean squared errors of 0.08 BW, 0.05 BW, and 0.08 BW for the vertical, anterior-posterior, and mediolateral GRF components, respectively. Furthermore, an ablation study confirms the effectiveness of both the transformer architecture and the personalized training strategy. The findings suggest that the proposed approach holds great potential for enabling accurate and personalized GRF estimation in real-world gait analysis applications."
-
 ---
 ## Summary
 

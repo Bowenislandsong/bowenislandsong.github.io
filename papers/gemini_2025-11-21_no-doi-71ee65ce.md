@@ -5,7 +5,7 @@ journal: "Sensors"
 year: 2024
 volume: 24
 issue: 5
-pages: "1234-1245"
+pages: 1234-1245
 doi: "10.3390/s24051234"
 keywords: "ground reaction force, inertial measurement unit, force plate, deep learning, sensor fusion"
 abstract: "This paper presents a novel approach for ground reaction force (GRF) estimation using a hybrid deep learning model that fuses data from multiple inertial measurement units (IMUs) strategically placed on the body. The proposed model combines convolutional neural networks (CNNs) for feature extraction from individual sensor data and recurrent neural networks (RNNs) for temporal sequence modeling across multiple sensors. We evaluate the performance of the proposed model against state-of-the-art methods on a publicly available dataset and demonstrate significant improvements in GRF estimation accuracy across various gait activities. The results highlight the effectiveness of multi-sensor fusion and hybrid deep learning architectures for robust and accurate GRF estimation in real-world applications."

@@ -1,14 +1,14 @@
 ---
-title: 'Subject-Independent Ground Reaction Force Estimation during Walking Using Multi-Kernel Convolutional Neural Networks'
-authors: 'Z. Li, T. Zhao, H. Yang, W. Wang, G. Cui, and W. Zhang'
-journal: 'Sensors'
+title: "Subject-Independent Ground Reaction Force Estimation during Walking Using Multi-Kernel Convolutional Neural Networks"
+authors: "Z. Li, T. Zhao, H. Yang, W. Wang, G. Cui, and W. Zhang"
+journal: "Sensors"
 year: 2022
 volume: 22
 issue: 14
 pages: 5438
-doi: 'https://doi.org/10.3390/s22145438'
-keywords: 'ground reaction force (GRF); inertial measurement unit (IMU); convolutional neural network (CNN); gait analysis; wearable sensors; subject-independent'
-abstract: 'Accurate estimation of ground reaction forces (GRFs) during walking is crucial for gait analysis and biomechanical assessments. Wearable sensors, particularly inertial measurement units (IMUs), offer a convenient and cost-effective solution for GRF estimation. However, subject-specific models are often required to achieve satisfactory accuracy, limiting their practical application. This study proposes a subject-independent GRF estimation method based on multi-kernel convolutional neural networks (MKCNNs) using IMU data collected from the shank and thigh. The MKCNN architecture employs multiple convolutional kernels with varying sizes to extract features at different scales, enhancing the model’s ability to capture the complex relationships between IMU signals and GRFs across different subjects. The performance of the proposed MKCNN model was evaluated on a publicly available dataset, and the results demonstrated its effectiveness in estimating GRFs with reasonable accuracy in a subject-independent manner, showing potential for real-world applications.'
+doi: "https://doi.org/10.3390/s22145438"
+keywords: "ground reaction force (GRF); inertial measurement unit (IMU); convolutional neural network (CNN); gait analysis; wearable sensors; subject-independent"
+abstract: "Accurate estimation of ground reaction forces (GRFs) during walking is crucial for gait analysis and biomechanical assessments. Wearable sensors, particularly inertial measurement units (IMUs), offer a convenient and cost-effective solution for GRF estimation. However, subject-specific models are often required to achieve satisfactory accuracy, limiting their practical application. This study proposes a subject-independent GRF estimation method based on multi-kernel convolutional neural networks (MKCNNs) using IMU data collected from the shank and thigh. The MKCNN architecture employs multiple convolutional kernels with varying sizes to extract features at different scales, enhancing the model’s ability to capture the complex relationships between IMU signals and GRFs across different subjects. The performance of the proposed MKCNN model was evaluated on a publicly available dataset, and the results demonstrated its effectiveness in estimating GRFs with reasonable accuracy in a subject-independent manner, showing potential for real-world applications."
 
 ## Summary
 This paper presents a subject-independent method for estimating Ground Reaction Forces (GRFs) during walking using inertial measurement units (IMUs) placed on the shank and thigh. The approach utilizes a multi-kernel convolutional neural network (MKCNN) to extract features at different scales from the IMU data, aiming to improve generalization across different subjects. The method is evaluated on a publicly available dataset, showing promising results for subject-independent GRF estimation.
