@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Primary SEO -->
-  <title>Bowen Song | AI Scientist for Health, Federated Learning & Biomechanics (USC Viterbi)</title>
-  <meta name="description" content="Bowen Song — AI Scientist & PhD Candidate at USC Viterbi. 8+ years in Machine Learning, Federated Learning, AI for Health, and Explainable AI. Published in IEEE TBME & CLOUD. Open to AI/ML Research & Engineering roles. View publications, projects, and download CV." />
+  <title>Bowen Song | Research Engineer for ML Systems, Embodied AI & Personalization</title>
+  <meta name="description" content="Bowen Song is a USC Viterbi PhD candidate and research engineer working across deployable embodied ML, personalization, ranking, and ML systems. His work includes SVD Embedding Regression and publications in IEEE TBME, CLOUD, and Allerton." />
   <link rel="canonical" href="https://bowenislandsong.github.io/" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
 
@@ -15,21 +15,21 @@
 
   <!-- Icons -->
   <link rel="icon" href="/img/aboutmepic/bio.jpeg" type="image/jpeg" />
-  <link rel="apple-touch-icon" href="/avatar.jpg" />
+  <link rel="apple-touch-icon" href="/img/aboutmepic/bio.jpeg" />
   <meta name="theme-color" content="#ffffff" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Bowen Song — AI for Health & Federated Learning" />
-  <meta property="og:description" content="Researcher at USC Viterbi. Federated learning, biomechanical AI, explainable AI, and multi-modal sensing." />
+  <meta property="og:title" content="Bowen Song — Research Engineer for ML Systems" />
+  <meta property="og:description" content="USC Viterbi PhD candidate working across deployable embodied ML, personalization, ranking, and ML systems, with publications in IEEE TBME, CLOUD, and Allerton." />
   <meta property="og:url" content="https://bowenislandsong.github.io/" />
   <meta property="og:image" content="https://bowenislandsong.github.io/img/aboutmepic/bio.jpeg" />
-  <meta property="og:site_name" content="Bowen Song — AI for Health & Federated Learning" />
+  <meta property="og:site_name" content="Bowen Song — Research Engineer for ML Systems" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bowen Song — AI for Health & Federated Learning" />
-  <meta name="twitter:description" content="USC Viterbi researcher focusing on federated learning and biomechanical signal estimation." />
+  <meta name="twitter:title" content="Bowen Song — Research Engineer for ML Systems" />
+  <meta name="twitter:description" content="Deployable embodied ML, personalization, ranking, and ML systems, with publications in IEEE TBME, CLOUD, and Allerton." />
   <meta name="twitter:image" content="https://bowenislandsong.github.io/img/aboutmepic/bio.jpeg" />
 
   <!-- Site Verification -->
@@ -64,84 +64,155 @@
       "Low-latency inference",
       "Distributed systems"
     ],
-    "description": "AI for Health, Federated Learning, Biomechanics, Explainable AI, Multi-modal sensing."
+    "description": "Research engineer and PhD candidate working across embodied AI, personalized learning, federated learning, ranking, and ML systems."
   }
   </script>
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Minimal critical styles -->
   <style>
+    :root {
+      --page-bg: radial-gradient(circle at top, #f5f1e8 0%, #fcfcfb 42%, #f3f6f8 100%);
+      --page-accent: #0f766e;
+      --page-accent-soft: #ccfbf1;
+      --page-accent-ink: #134e4a;
+      --page-surface: rgba(255, 255, 255, 0.9);
+      --page-border: rgba(15, 23, 42, 0.1);
+      --page-shadow: 0 30px 90px -52px rgba(15, 23, 42, 0.28);
+      --page-muted: #475569;
+    }
     html { scroll-behavior: smooth; }
+    body {
+      background: var(--page-bg);
+      color: #0f172a;
+      font-family: "Manrope", system-ui, sans-serif;
+    }
+    h1, h2, h3, .brand-mark {
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.04em;
+    }
     .hidden { display: none !important; }
-    .main-nav-btn { transition: all 0.2s ease; }
-    .main-nav-btn:hover { background-color: rgb(241 245 249); }
-    .page-content { min-height: 60vh; }
+    ::selection { background: rgba(15, 118, 110, 0.18); }
+    .main-nav-btn {
+      color: var(--page-muted);
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .main-nav-btn:hover {
+      background-color: rgba(255, 255, 255, 0.78);
+      border-color: var(--page-border);
+      color: #0f172a;
+    }
+    .main-nav-btn.bg-slate-200 {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+      box-shadow: 0 16px 40px -28px rgba(15, 23, 42, 0.6);
+    }
+    .page-content { min-height: 70vh; }
+    .subnav-shell {
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
+      padding: 0.9rem 0 1rem;
+    }
+    .subnav-link {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(255, 255, 255, 0.72);
+      color: #334155;
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+      transition: all 0.2s ease;
+    }
+    .subnav-link:hover {
+      background: rgba(255, 255, 255, 0.95);
+      color: #0f172a;
+      border-color: rgba(15, 23, 42, 0.12);
+    }
+    .site-shell {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+    }
+    .inline-link {
+      text-decoration-line: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+      text-decoration-color: rgba(100, 116, 139, 0.65);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+    .inline-link:hover {
+      color: var(--page-accent-ink);
+      text-decoration-color: rgba(15, 118, 110, 0.55);
+    }
     @media (max-width: 768px) {
       .main-nav-btn { padding: 0.5rem 0.75rem; font-size: 0.875rem; }
-      #personal-subnav nav { gap: 1rem; padding-bottom: 0.5rem; }
+      .site-brand-subtitle { display: none; }
     }
   </style>
 </head>
-<body class="bg-white text-slate-800">
+<body class="text-slate-800 antialiased">
   <!-- Header -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/85 border-b border-slate-200">
-    <div class="mx-auto max-w-5xl px-4 md:px-6">
-      <div class="flex items-center justify-between py-3">
-        <a href="#/personal" class="font-semibold tracking-tight">Bowen Song</a>
+  <header class="site-shell sticky top-0 z-50 border-b border-slate-200/80 shadow-[0_10px_40px_-30px_rgba(15,23,42,0.25)]">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 py-3">
+        <a href="#/personal" class="min-w-[180px]">
+          <span class="brand-mark block text-xl text-slate-900">Bowen Song</span>
+          <span class="site-brand-subtitle block text-[11px] uppercase tracking-[0.26em] text-slate-500">Research Engineer · ML Systems</span>
+        </a>
         <nav class="flex gap-2 md:gap-4 text-xs md:text-sm overflow-x-auto">
-          <a href="#/personal" class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="personal">Personal</a>
-          <a href="#/quantum"  class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="quantum">Quantum Computing</a>
-          <!-- <a href="#/genai"    class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="genai">Generative AI</a>
-          <a href="#/health"   class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="health">Smart Health</a>
-          <a href="#/music"    class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="music">Music</a> -->
-          <a href="#/classes"  class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="classes">Classes</a>
-          <a href="#/paper-discovery"   class="px-2 md:px-3 py-1 rounded-lg hover:bg-slate-100 main-nav-btn whitespace-nowrap" data-page="paper-discovery">Paper Discovery</a>
+          <a href="#/personal" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="personal">Overview</a>
+          <a href="#/research" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="research">Research</a>
+          <a href="#/paper-discovery" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="paper-discovery">Reading Map</a>
+          <a href="#/quantum" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="quantum">Quantum Lab</a>
         </nav>
-        <a href="img/resume/Bowen_Song_Resume.pdf" class="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 text-sm font-semibold hover:from-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all flex items-center gap-2" download>
+        <a href="img/resume/Bowen_Song_Resume.pdf" class="rounded-full bg-slate-900 text-white px-4 py-2 text-sm font-semibold hover:bg-slate-800 shadow-md hover:shadow-lg transition-all flex items-center gap-2" download>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
           CV
         </a>
       </div>
 
       <!-- Personal subnav (only when Personal is active) -->
-      <div id="personal-subnav" class="border-t border-slate-200 py-3 hidden">
+      <div id="personal-subnav" class="subnav-shell hidden">
         <nav class="flex flex-wrap gap-2 text-xs md:text-sm">
-          <!-- Primary CTA -->
-          <a href="#/personal#recruiter-summary" class="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium hover:from-blue-700 hover:to-indigo-700 shadow-sm transition-all">
-            👋 For Recruiters
-          </a>
-          <!-- Research & Work -->
-          <a href="#/personal#research" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Research</a>
-          <a href="#/personal#projects" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Projects</a>
-          <a href="#/personal#publications" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Publications</a>
-          <!-- Experience -->
-          <a href="#/personal#experience-ai" class="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors">AI Experience</a>
-          <a href="#/personal#experience-cloud" class="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors">Industry</a>
-          <!-- Background -->
-          <a href="#/personal#education" class="px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 hover:bg-amber-100 transition-colors">Education</a>
-          <a href="#/personal#skills" class="px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 hover:bg-amber-100 transition-colors">Skills</a>
-          <!-- Other -->
-          <a href="#/personal#talks" class="px-3 py-1.5 rounded-full bg-purple-50 text-purple-700 hover:bg-purple-100 transition-colors">Talks</a>
-          <a href="#/personal#teaching" class="px-3 py-1.5 rounded-full bg-purple-50 text-purple-700 hover:bg-purple-100 transition-colors">Teaching</a>
-          <a href="#/personal#contact" class="px-3 py-1.5 rounded-full bg-slate-800 text-white hover:bg-slate-900 transition-colors">Contact</a>
+          <a href="#/personal#overview" class="subnav-link">Overview</a>
+          <a href="#/personal#fit" class="subnav-link">Why Me</a>
+          <a href="#/personal#experience" class="subnav-link">Experience</a>
+          <a href="#/personal#contact" class="subnav-link">Contact</a>
+          <a href="#/research" class="subnav-link">Research</a>
+        </nav>
+      </div>
+
+      <!-- Research subnav (only when Research is active) -->
+      <div id="research-subnav" class="subnav-shell hidden">
+        <nav class="flex flex-wrap gap-2 text-xs md:text-sm">
+          <a href="#/research#research-overview" class="subnav-link">Overview</a>
+          <a href="#/research#agenda" class="subnav-link">Themes</a>
+          <a href="#/research#publications" class="subnav-link">Publications</a>
+          <a href="#/research#projects" class="subnav-link">Projects</a>
+          <a href="#/research#teaching" class="subnav-link">Teaching</a>
+          <a href="#/research#talks" class="subnav-link">Talks</a>
+          <a href="#/paper-discovery" class="subnav-link">Reading Map</a>
         </nav>
       </div>
     </div>
   </header>
 
   <!-- App container where sections load -->
-  <main id="app" class="page-content mx-auto max-w-5xl px-4 md:px-6 py-6">
+  <main id="app" class="page-content mx-auto max-w-6xl px-4 md:px-6 py-6">
     <!-- Static SEO content - visible before JS loads and for search engine crawlers -->
     <noscript>
       <section class="grid grid-cols-1 md:grid-cols-[1fr,220px] gap-8 py-10">
         <div>
           <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Bowen Song</h1>
-          <p class="mt-2 text-lg text-slate-700">AI Scientist | PhD Candidate at USC Viterbi</p>
-          <p class="mt-3 text-slate-600">Specializing in <strong>AI for Health</strong>, <strong>Federated Learning</strong>, <strong>Explainable AI</strong>, and <strong>Scalable ML Systems</strong>.</p>
-          <p class="mt-3 text-slate-600">8+ years of ML research experience with publications in IEEE TBME, IEEE CLOUD, and Allerton. Deployed models for biomechanical signal estimation, privacy-preserving learning, and real-time inference on edge devices.</p>
-          <p class="mt-4"><strong>Open to:</strong> AI/ML Research & Engineering roles in interpretable ML, federated learning, health AI, and scalable ML systems.</p>
+          <p class="mt-2 text-lg text-slate-700">Research Engineer | PhD Candidate at USC Viterbi</p>
+          <p class="mt-3 text-slate-600">Working across <strong>deployable embodied ML</strong>, <strong>personalization</strong>, <strong>ranking</strong>, and <strong>ML systems</strong>.</p>
+          <p class="mt-3 text-slate-600">I build machine learning systems that have to survive noisy data, heterogeneous users, and real deployment constraints. My work includes SVD Embedding Regression for edge-friendly force estimation, formal systems research on hybrid cloud federation, and algorithmic systems work validated against real workloads.</p>
+          <p class="mt-4"><strong>Open to:</strong> Research engineering, applied scientist, and ML systems roles where experimentation, implementation, and engineering judgment all matter.</p>
           <p class="mt-4">📧 <a href="mailto:bowenson@usc.edu">bowenson@usc.edu</a> | <a href="https://www.linkedin.com/in/songbowen">LinkedIn</a> | <a href="img/resume/Bowen_Song_Resume.pdf">Download CV</a></p>
         </div>
       </section>
@@ -150,10 +221,10 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-200">
-    <div class="mx-auto max-w-5xl px-4 md:px-6 py-6 text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
+  <footer class="border-t border-slate-200/80 bg-white/70">
+    <div class="mx-auto max-w-6xl px-4 md:px-6 py-6 text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
       <p>© <span id="year"></span> Bowen Song</p>
-      <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="underline">Back to top</a>
+      <button id="back-to-top" type="button" class="underline">Back to top</button>
     </div>
   </footer>
 
@@ -165,15 +236,18 @@
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 
   <!-- Scripts -->
   <script src="js/router.js"></script>
   <script src="js/section-hooks.js"></script>
   <script src="js/quantum.js"></script>
-  <script src="js/classes.js"></script>
   <script src="js/papers.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>

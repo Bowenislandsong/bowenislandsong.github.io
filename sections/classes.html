@@ -1,11 +1,15 @@
 <!-- sections/classes.html -->
-<div class="classes-section max-w-5xl mx-auto py-10 px-4">
+<section class="classes-section max-w-5xl mx-auto py-10 px-4" data-page-root="classes">
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-3xl font-bold">Class Materials</h1>
-    <p class="text-sm text-slate-600">Open PDFs as slides, draw annotations, or view in fullscreen.</p>
+    <p class="text-sm text-slate-600">Open PDFs, markdown guides, and assembly notes from one place.</p>
   </div>
 
-  <div id="pdf-browser" class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8"></div>
+  <div id="pdf-browser" class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-8">
+    <div class="col-span-full rounded-2xl border border-slate-200 bg-white/90 p-6 text-sm text-slate-500 shadow-sm">
+      Loading class materials...
+    </div>
+  </div>
 
   <!-- PDF Viewer Container -->
   <div id="pdf-viewer-container" class="relative bg-white rounded-xl shadow-lg p-4 border border-slate-200" style="display:none;">
@@ -51,7 +55,4 @@
 
     <!-- Bundled file viewer for multi-file class materials -->
     <div id="file-viewer" class="max-w-5xl mx-auto my-8"></div>
-</div>
-<!-- Load marked.js for markdown rendering -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<!-- PDF.js and custom logic will be loaded by classes.js -->
+</section>

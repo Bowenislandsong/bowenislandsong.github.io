@@ -22,17 +22,23 @@ jobs:
         with:
           environment-file: environment.yml
           auto-activate-base: false
-          activate-environment: quantum-gemini
+          activate-environment: website
       - name: Install pip dependencies (redundant safety)
         run: |
           pip install google-generativeai PyPDF2 matplotlib
       - name: Extract next chapter from PDF
         run: |
           python .github/scripts/extract_chapter.py
+      - name: Generate index files
+        run: |
+          python3 .github/scripts/generate_indexes.py
+      - name: Run full test suite
+        run: |
+          python3 -m unittest discover -s test -q
       - name: Commit new lesson
         run: |
           git config --global user.name "Gemini Bot"
           git config --global user.email "gemini-bot@example.com"
-          git add lessons/*.md lessons/index.json
+          git add lessons/*.md lessons/index.json classes/index.json papers/index.json
           git commit -m "Add new Gemini lesson for next chapter"
           git push

@@ -1,9 +1,16 @@
 // js/classes.js
 // PDF.js viewer with file browser and drawing overlay
 
+window.__classesViewerState = window.__classesViewerState || { controller: null };
+
 // Load PDF.js from CDN
 window.setupClassesViewer = async function setupClassesViewer() {
-  console.log('[Classes] setupClassesViewer called');
+  if (window.__classesViewerState.controller) {
+    window.__classesViewerState.controller.abort();
+  }
+  const controller = new AbortController();
+  const { signal } = controller;
+  window.__classesViewerState.controller = controller;
 
   // Query DOM elements up-front so we don't reference undefined variables.
   const browser = document.getElementById('pdf-browser');
@@ -151,9 +158,21 @@ window.setupClassesViewer = async function setupClassesViewer() {
   // Render file browser with PDF previews and pretty layout
   async function renderBrowser() {
     const files = await listPDFs();
-    browser.innerHTML = `<h2 class="text-lg font-semibold mb-4">Available PDFs</h2>`;
+    browser.innerHTML = `
+      <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 class="text-lg font-semibold text-slate-900">Available Materials</h2>
+          <p class="mt-1 text-sm text-slate-500">Slides, lab guides, and reference files generated from <code>classes/index.json</code>.</p>
+        </div>
+        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">${files.length} items</span>
+      </div>
+    `;
     if (!files.length) {
-      browser.innerHTML += '<div class="text-red-600">No files found in classes/.</div>';
+      browser.innerHTML += `
+        <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
+          No class materials are currently indexed. Regenerate <code>classes/index.json</code> to repopulate this view.
+        </div>
+      `;
       return;
     }
     // Modern grid layout
@@ -588,7 +607,7 @@ window.setupClassesViewer = async function setupClassesViewer() {
           renderPage();
         } catch (e) { console.warn('[Classes] fullscreen resize render failed', e); }
       }, 120);
-    });
+    }, { signal });
   } catch (err) { console.warn('[Classes] fullscreen handler setup failed', err); }
 
   // Page navigation (guarded in case toolbar or buttons are missing)
@@ -805,7 +824,7 @@ window.setupClassesViewer = async function setupClassesViewer() {
         }
       }
     } catch (err) { console.warn('[Classes] keyboard nav error', err); }
-  });
+  }, { signal });
 }
 
 function displayFile(content, type) {
@@ -826,4 +845,3 @@ function displayFile(content, type) {
     viewer.innerHTML = `<embed src="${content}" width="100%" height="600px" type="application/pdf">`;
   }
 }
-

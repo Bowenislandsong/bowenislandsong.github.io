@@ -7,50 +7,339 @@
 
   // ── Topic classifier ────────────────────────────────────────────────────────
   const TOPICS = [
-    { key: 'federated',    label: 'Federated Learning',      color: '#8b5cf6', bg: '#ede9fe', border: '#c4b5fd', icon: '🔐', keywords: ['federat'] },
-    { key: 'transformer',  label: 'Transformer / Attention', color: '#3b82f6', bg: '#dbeafe', border: '#93c5fd', icon: '🤖', keywords: ['transformer', 'attention mechanism', 'multi-head'] },
-    { key: 'domain',       label: 'Domain Adaptation',       color: '#10b981', bg: '#d1fae5', border: '#6ee7b7', icon: '🌐', keywords: ['domain adapt', 'domain generaliz', 'domain-adversar', 'domain invariant'] },
-    { key: 'fewshot',      label: 'Few-Shot / Meta-Learning', color: '#f59e0b', bg: '#fef3c7', border: '#fcd34d', icon: '⚡', keywords: ['few-shot', 'few shot', 'meta-learn', 'meta learn'] },
-    { key: 'transfer',     label: 'Transfer Learning',       color: '#6366f1', bg: '#e0e7ff', border: '#a5b4fc', icon: '↗️', keywords: ['transfer learn'] },
-    { key: 'fusion',       label: 'Sensor Fusion',           color: '#ec4899', bg: '#fce7f3', border: '#f9a8d4', icon: '📡', keywords: ['fusion', 'multi-sensor', 'multi sensor', 'sensor fusion', 'emg', 'pressure'] },
-    { key: 'personalize',  label: 'Personalization',         color: '#06b6d4', bg: '#cffafe', border: '#67e8f9', icon: '👤', keywords: ['personali', 'subject-specific', 'subject specific', 'adaptive', 'individual'] },
-    { key: 'physics',      label: 'Physics / Biomechanics',  color: '#f97316', bg: '#ffedd5', border: '#fdba74', icon: '🔬', keywords: ['physics-inform', 'biomechan', 'musculoskeletal', 'inverse dynamics'] },
-    { key: 'cnn',          label: 'CNN / Convolutional',     color: '#14b8a6', bg: '#ccfbf1', border: '#5eead4', icon: '🧠', keywords: ['cnn', 'convolut', 'tcn', 'temporal convolut'] },
-    { key: 'contrastive',  label: 'Contrastive / Self-Supervised', color: '#a855f7', bg: '#f3e8ff', border: '#d8b4fe', icon: '🔀', keywords: ['contrastive', 'self-supervis', 'unsupervis'] },
+    { key: 'health-biomechanics', label: 'Health AI / Biomechanics', color: '#0f766e', bg: '#ccfbf1', border: '#5eead4', icon: '🩺', keywords: ['gait', 'biomechan', 'rehabilitation', 'walking', 'running', 'wearable', 'clinical'] },
+    { key: 'generalization-robustness', label: 'Generalization / Robustness', color: '#16a34a', bg: '#dcfce7', border: '#86efac', icon: '🌐', keywords: ['domain adapt', 'domain generaliz', 'generalization', 'cross-subject', 'subject-independent', 'robust', 'domain invariant'] },
+    { key: 'personalized-adaptive-ml', label: 'Personalized / Adaptive ML', color: '#0284c7', bg: '#e0f2fe', border: '#7dd3fc', icon: '👤', keywords: ['personali', 'subject-specific', 'subject adaptive', 'adaptive', 'few-shot', 'meta-learning', 'transfer learn'] },
+    { key: 'federated-privacy', label: 'Federated / Privacy', color: '#7c3aed', bg: '#ede9fe', border: '#c4b5fd', icon: '🔐', keywords: ['federat', 'privacy', 'on-device', 'distributed learning', 'client', 'secure aggregation'] },
+    { key: 'multimodal-embodied-ai', label: 'Multi-Sensor / Embodied AI', color: '#db2777', bg: '#fce7f3', border: '#f9a8d4', icon: '📡', keywords: ['sensor fusion', 'multi-sensor', 'multimodal', 'pressure', 'emg', 'vision', 'kinematic', 'robotics'] },
+    { key: 'efficient-interpretable-ml', label: 'Efficient / Interpretable ML', color: '#ea580c', bg: '#ffedd5', border: '#fdba74', icon: '⚙️', keywords: ['efficient', 'real-time', 'lightweight', 'interpretable', 'physics-informed', 'physical prior', 'edge'] },
+    { key: 'graph-structured-learning', label: 'Graph / Structured Learning', color: '#4338ca', bg: '#e0e7ff', border: '#a5b4fc', icon: '🕸️', keywords: ['graph neural', 'graph attention', 'graph', 'structured'] },
+    { key: 'transformer-attention', label: 'Transformer / Attention', color: '#2563eb', bg: '#dbeafe', border: '#93c5fd', icon: '🤖', keywords: ['transformer', 'attention mechanism', 'multi-head', 'self-attention'] },
+    { key: 'platform-ranking-ml', label: 'Platform / Ranking ML', color: '#b45309', bg: '#fef3c7', border: '#fcd34d', icon: '📈', keywords: ['ranking', 'recommend', 'marketplace', 'retrieval', 'online learning', 'ctr'] },
+    { key: 'cloud-systems-ai', label: 'Distributed / Cloud Systems', color: '#475569', bg: '#e2e8f0', border: '#cbd5e1', icon: '☁️', keywords: ['kubernetes', 'openshift', 'cloud', 'resource federation', 'distributed systems', 'mlops', 'platform reliability'] },
   ];
-  const TOPIC_DEFAULT = { key: 'lstm', label: 'Deep Learning (LSTM/RNN)', color: '#64748b', bg: '#f1f5f9', border: '#cbd5e1', icon: '📊' };
+  const TOPIC_DEFAULT = { key: 'applied-ml', label: 'Applied ML / Sensing', color: '#64748b', bg: '#f1f5f9', border: '#cbd5e1', icon: '📊' };
 
   function classifyPaper(meta, content) {
     const text = ((meta.title || '') + ' ' + (meta.keywords || '') + ' ' + (meta.abstract || '') + ' ' + (content || '')).toLowerCase();
-    for (const t of TOPICS) {
-      if (t.keywords.some(k => text.includes(k))) return t;
-    }
-    return TOPIC_DEFAULT;
+    const trackHint = ((meta.curation_track || '') + ' ' + (meta.portfolio_track || '')).toLowerCase();
+    let bestTopic = TOPIC_DEFAULT;
+    let bestScore = 0;
+
+    TOPICS.forEach((topic) => {
+      let score = 0;
+      if (trackHint && trackHint.includes(topic.label.toLowerCase())) score += 8;
+      if (trackHint && trackHint.includes(topic.key)) score += 8;
+      topic.keywords.forEach((keyword) => {
+        if (text.includes(keyword)) score += 2;
+      });
+      if (score > bestScore) {
+        bestScore = score;
+        bestTopic = topic;
+      }
+    });
+
+    return bestScore ? bestTopic : TOPIC_DEFAULT;
   }
 
   // ── Frontmatter parser ──────────────────────────────────────────────────────
-  function parsePaper(md) {
-    const fmMatch = md.match(/^---([\s\S]+?)---/);
-    let meta = {};
-    if (fmMatch) {
-      const fm = fmMatch[1];
-      fm.split('\n').forEach(line => {
-        const m = line.match(/^([a-zA-Z0-9_]+):\s*(.*)$/);
-        if (m) {
-          let key = m[1].trim(), val = m[2].trim();
-          if (val.startsWith('[') && val.endsWith(']')) { try { val = JSON.parse(val); } catch (e) {} }
-          meta[key] = val;
-        }
-      });
+  function escapeRegExp(value) {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function normalizeDocumentSource(md) {
+    let source = (md || '').replace(/\r\n/g, '\n').trim().replace(/^\uFEFF/, '');
+    source = source.replace(/^(?:```+\s*(?:yaml|yml|markdown|md)?|(?:yaml|yml|markdown|md)\s*```+)\s*\n?/i, '');
+    source = source.replace(/\n?```+\s*$/i, '');
+    return source.trim();
+  }
+
+  function normalizeScalar(value) {
+    let next = (value || '').trim();
+    if (!next) return '';
+
+    const unwrapQuotes = (input) => {
+      if ((input.startsWith('"') && input.endsWith('"')) || (input.startsWith('\'') && input.endsWith('\''))) {
+        try { return JSON.parse(input); } catch { return input.slice(1, -1); }
+      }
+      return input;
+    };
+
+    next = unwrapQuotes(next);
+
+    if (Array.isArray(next)) return next.join(', ');
+    if (typeof next !== 'string') return String(next);
+
+    if (next.startsWith('[') && next.endsWith(']')) {
+      try {
+        const parsed = JSON.parse(next);
+        if (Array.isArray(parsed)) return parsed.join(', ');
+      } catch (e) { /* ignore */ }
     }
-    const content = md.replace(/^---([\s\S]+?)---/, '').trim();
+
+    return next.replace(/\\"/g, '"').trim();
+  }
+
+  function collapseMultilineValue(lines) {
+    if (!lines.length) return '';
+
+    const first = (lines[0] || '').trim();
+    const marker = first.replace(/^['"]|['"]$/g, '');
+    if (marker === '|' || marker === '>') {
+      return lines.slice(1).map(line => line.replace(/^\s+/, '')).join('\n').trim();
+    }
+
+    if (lines.length === 1) return first;
+
+    const tail = lines
+      .slice(1)
+      .map(line => line.trim())
+      .filter(Boolean);
+
+    if (tail.length && tail.every(line => line.startsWith('- '))) {
+      const items = [];
+      if (first) items.push(first);
+      tail.forEach(line => items.push(line.replace(/^-+\s*/, '')));
+      return items.join(', ');
+    }
+
+    return [first].concat(tail.map(line => line.replace(/^-+\s*/, ''))).join(' ').trim();
+  }
+
+  function parseFrontmatterLines(lines) {
+    const meta = {};
+    let currentKey = '';
+    let buffer = [];
+
+    const flush = () => {
+      if (!currentKey) return;
+      meta[currentKey] = normalizeScalar(collapseMultilineValue(buffer));
+      currentKey = '';
+      buffer = [];
+    };
+
+    lines.forEach(line => {
+      const match = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+      if (match) {
+        flush();
+        currentKey = match[1].trim();
+        buffer = [match[2] || ''];
+        return;
+      }
+
+      if (currentKey) buffer.push(line);
+    });
+
+    flush();
+    return meta;
+  }
+
+  function parseLeadingMetadata(source) {
+    const lines = (source || '').split('\n');
+    if (!lines.length) return null;
+
+    let index = 0;
+    let fenceStyle = false;
+    if (lines[0].trim() === '---') {
+      fenceStyle = true;
+      index = 1;
+    } else if (!/^[a-zA-Z0-9_-]+:\s*(.*)$/.test(lines[0])) {
+      return null;
+    }
+
+    const metaLines = [];
+    let currentKey = '';
+    let blockScalarMode = false;
+    let sawKey = false;
+    let bodyStart = index;
+
+    for (; index < lines.length; index += 1) {
+      const line = lines[index];
+      const trimmed = line.trim();
+      const keyMatch = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+      const continuation = currentKey && (
+        trimmed === '' ||
+        line.startsWith(' ') ||
+        line.startsWith('\t') ||
+        trimmed.startsWith('- ') ||
+        blockScalarMode
+      );
+
+      if (trimmed === '---') {
+        bodyStart = index + 1;
+        break;
+      }
+      if (keyMatch) {
+        sawKey = true;
+        currentKey = keyMatch[1].trim();
+        blockScalarMode = /^["']?[|>]["']?$/.test((keyMatch[2] || '').trim());
+        metaLines.push(line);
+        bodyStart = index + 1;
+        continue;
+      }
+      if (continuation) {
+        metaLines.push(line);
+        bodyStart = index + 1;
+        continue;
+      }
+      if (!fenceStyle && sawKey) {
+        bodyStart = index;
+      }
+      break;
+    }
+
+    if (!sawKey) return null;
+    const meta = parseFrontmatterLines(metaLines);
+    const content = normalizeMarkdownBody(lines.slice(bodyStart).join('\n'), meta);
     return { meta, content };
   }
 
-  // Extract the first bullet point under a section heading (case-insensitive)
-  function extractFirstBullet(content, headingPattern) {
-    const m = content.match(new RegExp(headingPattern + '[\\s\\S]*?\\*\\s+(.+?)(?:\\n|$)', 'i'));
-    return m ? m[1].replace(/\*\*/g, '').trim() : '';
+  function normalizeMarkdownBody(content, meta) {
+    let body = (content || '')
+      .replace(/^\s*---\s*/, '')
+      .replace(/\s*---\s*$/, '')
+      .replace(/^\s*```(?:markdown|md)?\s*/i, '')
+      .replace(/\s*```\s*$/, '')
+      .trim();
+
+    const headingLabels = [
+      'Summary',
+      'Main Problem',
+      'Key Idea',
+      'Results',
+      'Related Work',
+      'Key Contributions and Insights',
+      'Why This Fits Bowen\'s Research and Engineering Lens',
+      'Why this is State-of-the-Art',
+      'Weaknesses or Limitations and How to Improve',
+    ];
+
+    headingLabels.forEach(label => {
+      const pattern = new RegExp(`^\\s*\\*\\*${escapeRegExp(label)}\\*\\*:?\\s*(.*)$`, 'gmi');
+      body = body.replace(pattern, (_, rest) => {
+        const suffix = (rest || '').trim();
+        return suffix ? `## ${label}\n${suffix}` : `## ${label}`;
+      });
+    });
+
+    if (meta.title) {
+      const titlePattern = new RegExp(`^#\\s+${escapeRegExp(meta.title)}\\s*$`, 'i');
+      const lines = body.split('\n');
+      if (lines.length && titlePattern.test(lines[0].trim())) {
+        lines.shift();
+        while (lines.length && !lines[0].trim()) lines.shift();
+        body = lines.join('\n').trim();
+      }
+    }
+
+    if (!body && meta.abstract) {
+      body = `## Summary\n${meta.abstract}`;
+    }
+
+    return body;
+  }
+
+  function extractLooseField(source, key) {
+    const snippet = (source || '').split('\n').slice(0, 40).join('\n');
+    const match = snippet.match(new RegExp(`^\\s*${escapeRegExp(key)}\\s*:\\s*(.+?)\\s*$`, 'im'));
+    return match ? normalizeScalar(match[1]) : '';
+  }
+
+  function humanizePath(path) {
+    return (path.split('/').pop() || '')
+      .replace(/\.md$/i, '')
+      .replace(/^gemini_\d{4}-\d{2}-\d{2}_/i, '')
+      .replace(/^gemini_\d{4}-\d{2}-\d{2}/i, '')
+      .replace(/^no-doi-/i, '')
+      .replace(/[_-]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function sanitizeTitle(value) {
+    let next = normalizeScalar(value)
+      .replace(/^title\s*:\s*/i, '')
+      .replace(/^(?:```+\s*(?:yaml|yml|markdown|md)?|(?:yaml|yml|markdown|md)\s*```+)\s*/i, '')
+      .replace(/^---\s*/, '')
+      .replace(/\s*```+\s*$/i, '')
+      .trim();
+
+    if (/^(untitled|null|undefined|n\/a)$/i.test(next)) return '';
+    return next;
+  }
+
+  function deriveMeta(meta, content, path, rawSource = '') {
+    const next = Object.assign({}, meta);
+    if (!next.title && rawSource) next.title = extractLooseField(rawSource, 'title');
+    if (!next.authors && rawSource) next.authors = extractLooseField(rawSource, 'authors');
+    if (!next.journal && rawSource) next.journal = extractLooseField(rawSource, 'journal');
+    if (!next.abstract && rawSource) next.abstract = extractLooseField(rawSource, 'abstract');
+    if (!next.keywords && rawSource) next.keywords = extractLooseField(rawSource, 'keywords');
+    next.title = sanitizeTitle(next.title);
+    const headingMatch = content.match(/^\s*#\s+(.+)$/m);
+    if (!next.title && headingMatch) next.title = headingMatch[1].trim();
+    if (!next.title) {
+      next.title = humanizePath(path) || 'Paper summary';
+    }
+    if (next.authors) next.authors = String(next.authors).replace(/;\s*/g, ', ');
+    if (!next.source) next.source = next.journal || '';
+    if (!next.url && next.doi) {
+      next.url = /^https?:\/\//i.test(next.doi) ? next.doi : `https://doi.org/${next.doi}`;
+    }
+    return next;
+  }
+
+  function getPaperTitle(paper) {
+    return paper.meta.title || humanizePath(paper.path) || 'Paper summary';
+  }
+
+  function parsePaper(md) {
+    const source = normalizeDocumentSource(md);
+    const parsed = parseLeadingMetadata(source);
+    if (parsed) return parsed;
+    const content = normalizeMarkdownBody(source, {});
+    return { meta: {}, content };
+  }
+
+  function stripMarkdown(text) {
+    return (text || '')
+      .replace(/[`*_>#-]/g, ' ')
+      .replace(/\[(.*?)\]\((.*?)\)/g, '$1')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function extractSection(content, labels) {
+    for (const label of labels) {
+      const escaped = escapeRegExp(label);
+      const patterns = [
+        new RegExp(`(?:^|\\n)#{1,6}\\s*${escaped}\\s*:?\\s*\\n?([\\s\\S]*?)(?=\\n#{1,6}\\s|\\n\\*\\*[^\\n]+\\*\\*:|$)`, 'i'),
+        new RegExp(`(?:^|\\n)\\*\\*${escaped}\\*\\*:?\\s*\\n?([\\s\\S]*?)(?=\\n#{1,6}\\s|\\n\\*\\*[^\\n]+\\*\\*:|$)`, 'i'),
+      ];
+      for (const pattern of patterns) {
+        const match = content.match(pattern);
+        if (match) return match[1].trim();
+      }
+    }
+    return '';
+  }
+
+  function extractSectionPreview(content, labels) {
+    const section = extractSection(content, labels);
+    if (!section) return '';
+    const bulletMatch = section.match(/^\s*[*-]\s+(.+?)(?:\n|$)/m);
+    if (bulletMatch) return stripMarkdown(bulletMatch[1]);
+
+    const paragraph = section.split(/\n\s*\n/).find(Boolean) || section.split('\n').find(Boolean) || '';
+    return stripMarkdown(paragraph);
+  }
+
+  function extractBowenLensPreview(content) {
+    return extractSectionPreview(content, [
+      'Why This Fits Bowen\'s Research and Engineering Lens',
+      'Why This Fits Bowen\'s Work',
+      'Bowen Lens',
+    ]);
   }
 
   // Extract date from filename like gemini_2025-10-01_...
@@ -64,6 +353,7 @@
   let activeTopics = new Set(['all']);
   let currentView = 'cards';
   let expandedCard = null;
+  let graphResizeFrame = null;
 
   // ── View switcher ───────────────────────────────────────────────────────────
   const VIEW_IDS = {
@@ -73,28 +363,60 @@
     timeline: 'papers-timeline-view',
   };
 
+  function updateViewButtonState(view) {
+    Object.keys(VIEW_IDS).forEach((name) => {
+      const button = document.getElementById(`view-${name}`);
+      if (!button) return;
+      const active = name === view;
+      button.classList.toggle('bg-emerald-600', active);
+      button.classList.toggle('text-white', active);
+      button.classList.toggle('text-slate-600', !active);
+      button.classList.toggle('hover:bg-slate-50', !active);
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+
+  function bindViewButtons() {
+    document.querySelectorAll('[data-papers-view]').forEach((button) => {
+      if (button.dataset.bound === 'true') return;
+      button.dataset.bound = 'true';
+      button.addEventListener('click', () => {
+        window.papersSetView(button.getAttribute('data-papers-view'));
+      });
+    });
+  }
+
+  function bindGraphDetailClose() {
+    const detail = document.getElementById('graph-detail');
+    if (!detail || detail.dataset.bound === 'true') return;
+    detail.dataset.bound = 'true';
+    detail.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-graph-close]')) return;
+      detail.classList.add('hidden');
+    });
+  }
+
+  function scheduleGraphRender() {
+    if (graphResizeFrame) cancelAnimationFrame(graphResizeFrame);
+    graphResizeFrame = requestAnimationFrame(() => {
+      const graphView = document.getElementById('papers-graph-view');
+      if (!graphView || graphView.classList.contains('hidden') || currentView !== 'graph') return;
+      renderGraph();
+    });
+  }
+
   window.papersSetView = function (view) {
-    currentView = view;
+    const nextView = VIEW_IDS[view] ? view : 'cards';
+    currentView = nextView;
     Object.entries(VIEW_IDS).forEach(([v, id]) => {
       const el = document.getElementById(id);
-      if (el) el.classList.toggle('hidden', v !== view);
+      if (el) el.classList.toggle('hidden', v !== nextView);
     });
-    // Update button styles
-    ['cards', 'graph', 'topic', 'timeline'].forEach(v => {
-      const btn = document.getElementById('view-' + v);
-      if (!btn) return;
-      if (v === view) {
-        btn.classList.add('bg-emerald-600', 'text-white');
-        btn.classList.remove('text-slate-600', 'hover:bg-slate-50');
-      } else {
-        btn.classList.remove('bg-emerald-600', 'text-white');
-        btn.classList.add('text-slate-600', 'hover:bg-slate-50');
-      }
-    });
+    updateViewButtonState(nextView);
 
-    if (view === 'graph') renderGraph();
-    if (view === 'topic') renderTopicView();
-    if (view === 'timeline') renderTimeline();
+    if (nextView === 'graph') renderGraph();
+    if (nextView === 'topic') renderTopicView();
+    if (nextView === 'timeline') renderTimeline();
   };
 
   // ── Topic filter ─────────────────────────────────────────────────────────────
@@ -125,11 +447,13 @@
 
   function makePill(key, label, color, bg, count) {
     const btn = document.createElement('button');
+    btn.type = 'button';
     btn.dataset.topicKey = key;
     btn.className = 'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all hover:shadow-sm';
     btn.style.cssText = `background:${bg};color:${color};border-color:${color}40;`;
     btn.innerHTML = `${label} <span class="opacity-70">(${count})</span>`;
-    btn.onclick = () => toggleTopic(key, btn);
+    btn.setAttribute('aria-pressed', key === 'all' ? 'true' : 'false');
+    btn.addEventListener('click', () => toggleTopic(key, btn));
     return btn;
   }
 
@@ -145,8 +469,10 @@
     // Update pill ring styles
     document.querySelectorAll('#topic-filter-bar button').forEach(b => {
       const k = b.dataset.topicKey;
-      b.classList.toggle('ring-2', activeTopics.has(k));
-      b.classList.toggle('ring-offset-1', activeTopics.has(k));
+      const active = activeTopics.has(k);
+      b.classList.toggle('ring-2', active);
+      b.classList.toggle('ring-offset-1', active);
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
     renderCards(filteredPapers());
     if (currentView === 'graph') renderGraph();
@@ -173,6 +499,7 @@
 
     papers.forEach((paper) => {
       const { meta, content, topic } = paper;
+      const displayTitle = getPaperTitle(paper);
       const card = document.createElement('div');
       card.className = 'group rounded-2xl border bg-gradient-to-br p-5 cursor-pointer transition-all hover:shadow-lg';
       card.style.cssText = `background:linear-gradient(135deg,${topic.bg},#ffffff);border-color:${topic.border};`;
@@ -182,19 +509,20 @@
         : '';
       const topicBadge = `<span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:${topic.bg};color:${topic.color}">${topic.icon} ${topic.label}</span>`;
 
-      // Extract first bullet under "Key Contributions"
-      const firstContrib = extractFirstBullet(content, 'key contributions');
+      const bowenLens = extractBowenLensPreview(content);
+      const firstContrib = bowenLens || extractSectionPreview(content, ['Key Contributions and Insights', 'Key Contributions', 'Key Ideas']);
+      const previewIcon = bowenLens ? '🎯' : '💡';
 
       card.innerHTML = `
-        <div class="card-header">
+        <button type="button" class="card-toggle w-full text-left" aria-expanded="false">
           <div class="flex items-start justify-between gap-2 mb-2">
             <div class="flex flex-wrap gap-1">${yearBadge}${topicBadge}</div>
             <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-600 transition-colors flex-shrink-0 mt-0.5 expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </div>
-          <h2 class="text-sm font-bold text-slate-900 leading-snug mb-1 line-clamp-3">${meta.title || 'Untitled'}</h2>
+          <h2 class="text-sm font-bold text-slate-900 leading-snug mb-1 line-clamp-3">${displayTitle}</h2>
           <p class="text-xs text-slate-500 line-clamp-1">${meta.authors || ''}</p>
-          ${firstContrib ? `<p class="mt-2 text-xs text-slate-600 line-clamp-2">💡 ${firstContrib}</p>` : ''}
-        </div>
+          ${firstContrib ? `<p class="mt-2 text-xs text-slate-600 line-clamp-2">${previewIcon} ${firstContrib}</p>` : ''}
+        </button>
         <div class="details hidden mt-4 pt-4 border-t border-slate-200">
           ${meta.url ? `<a href="${meta.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-xs font-medium mb-3" style="color:${topic.color}">
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
@@ -204,27 +532,31 @@
         </div>
       `;
 
-      const header = card.querySelector('.card-header');
+      const header = card.querySelector('.card-toggle');
       const details = card.querySelector('.details');
       const expandIcon = card.querySelector('.expand-icon');
 
-      header.onclick = function (e) {
+      header.addEventListener('click', (e) => {
         e.stopPropagation();
         if (expandedCard && expandedCard !== card) {
           expandedCard.querySelector('.details').classList.add('hidden');
           expandedCard.querySelector('.expand-icon').style.transform = '';
+          const openToggle = expandedCard.querySelector('.card-toggle');
+          if (openToggle) openToggle.setAttribute('aria-expanded', 'false');
         }
         const isHidden = details.classList.contains('hidden');
         if (isHidden) {
           details.classList.remove('hidden');
           expandIcon.style.transform = 'rotate(180deg)';
+          header.setAttribute('aria-expanded', 'true');
           expandedCard = card;
         } else {
           details.classList.add('hidden');
           expandIcon.style.transform = '';
+          header.setAttribute('aria-expanded', 'false');
           expandedCard = null;
         }
-      };
+      });
 
       browser.appendChild(card);
     });
@@ -268,24 +600,30 @@
 
       gPapers.forEach(paper => {
         const { meta, content } = paper;
+        const displayTitle = getPaperTitle(paper);
         const row = document.createElement('div');
-        row.className = 'px-5 py-4 hover:bg-slate-50 cursor-pointer transition-colors';
+        row.className = 'px-5 py-4 transition-colors';
 
-        const firstContrib = extractFirstBullet(content, 'key contributions');
-        const whyText = extractFirstBullet(content, 'why this is state');
+        const bowenLens = extractBowenLensPreview(content);
+        const firstContrib = bowenLens || extractSectionPreview(content, ['Key Contributions and Insights', 'Key Contributions', 'Key Ideas']);
+        const whyText = extractSectionPreview(content, ['Why this is State-of-the-Art', 'Why this is State of the Art']);
 
         row.innerHTML = `
           <div class="flex items-start gap-3">
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-2 mb-0.5">
-                ${meta.year ? `<span class="text-xs font-semibold rounded-full px-2 py-0.5" style="background:${topic.bg};color:${topic.color}">${meta.year}</span>` : ''}
-                ${meta.source ? `<span class="text-xs text-slate-400">${meta.source}</span>` : ''}
+            <button type="button" class="topic-toggle min-w-0 flex-1 text-left hover:bg-slate-50 rounded-xl p-2 -m-2 transition-colors" aria-expanded="false">
+              <div class="flex items-start gap-3">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    ${meta.year ? `<span class="text-xs font-semibold rounded-full px-2 py-0.5" style="background:${topic.bg};color:${topic.color}">${meta.year}</span>` : ''}
+                    ${meta.source ? `<span class="text-xs text-slate-400">${meta.source}</span>` : ''}
+                  </div>
+                  <h3 class="text-sm font-semibold text-slate-900 line-clamp-2">${displayTitle}</h3>
+                  <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">${meta.authors || ''}</p>
+                  ${firstContrib ? `<p class="mt-1.5 text-xs text-slate-600">${bowenLens ? '🎯' : '💡'} <strong>${bowenLens ? 'Bowen lens' : 'Key idea'}:</strong> ${firstContrib}</p>` : ''}
+                  ${whyText ? `<p class="mt-0.5 text-xs text-slate-500">⭐ ${whyText}</p>` : ''}
+                </div>
               </div>
-              <h3 class="text-sm font-semibold text-slate-900 line-clamp-2">${meta.title || 'Untitled'}</h3>
-              <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">${meta.authors || ''}</p>
-              ${firstContrib ? `<p class="mt-1.5 text-xs text-slate-600">💡 <strong>Key idea:</strong> ${firstContrib}</p>` : ''}
-              ${whyText ? `<p class="mt-0.5 text-xs text-slate-500">⭐ ${whyText}</p>` : ''}
-            </div>
+            </button>
             ${meta.url ? `<a href="${meta.url}" target="_blank" rel="noopener" class="shrink-0 text-xs underline mt-0.5" style="color:${topic.color}">View →</a>` : ''}
           </div>
           <div class="details hidden mt-3 pt-3 border-t border-slate-100">
@@ -293,10 +631,12 @@
           </div>
         `;
 
-        row.onclick = function () {
+        const toggle = row.querySelector('.topic-toggle');
+        toggle.addEventListener('click', () => {
           const det = row.querySelector('.details');
           det.classList.toggle('hidden');
-        };
+          toggle.setAttribute('aria-expanded', det.classList.contains('hidden') ? 'false' : 'true');
+        });
 
         list.appendChild(row);
       });
@@ -324,6 +664,7 @@
 
     papers.forEach((paper, i) => {
       const { meta, topic, date } = paper;
+      const displayTitle = getPaperTitle(paper);
       const item = document.createElement('div');
       item.className = 'relative pl-10 pb-6';
 
@@ -334,7 +675,7 @@
             <span class="text-xs text-slate-400 font-mono">${date}</span>
             <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:${topic.bg};color:${topic.color}">${topic.label}</span>
           </div>
-          <h3 class="text-sm font-semibold text-slate-900 line-clamp-2">${meta.title || 'Untitled'}</h3>
+          <h3 class="text-sm font-semibold text-slate-900 line-clamp-2">${displayTitle}</h3>
           <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">${meta.authors || ''}</p>
         </div>
       `;
@@ -351,7 +692,7 @@
     const legend = document.getElementById('graph-legend');
     const tooltip = document.getElementById('graph-tooltip');
     const detail = document.getElementById('graph-detail');
-    if (!origCanvas) return;
+    if (!origCanvas || !origCanvas.parentElement || !origCanvas.parentNode) return;
 
     const papers = filteredPapers();
 
@@ -360,16 +701,34 @@
     const c = origCanvas.cloneNode(false);
     origCanvas.parentNode.replaceChild(c, origCanvas);
     const ctx = c.getContext('2d');
+    if (!ctx) {
+      if (legend) {
+        legend.innerHTML = '<span class="text-slate-500">Canvas rendering is unavailable in this browser.</span>';
+      }
+      return;
+    }
 
     // DPI-aware sizing
     const rect = c.parentElement.getBoundingClientRect();
-    c.width = rect.width * window.devicePixelRatio;
-    c.height = rect.height * window.devicePixelRatio;
-    c.style.width = rect.width + 'px';
-    c.style.height = rect.height + 'px';
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    const W = rect.width;
-    const H = rect.height;
+    const W = Math.max(Math.round(rect.width || c.parentElement.clientWidth || 640), 320);
+    const H = Math.max(Math.round(rect.height || c.parentElement.clientHeight || 520), 320);
+    const dpr = Math.max(window.devicePixelRatio || 1, 1);
+    c.width = W * dpr;
+    c.height = H * dpr;
+    c.style.width = W + 'px';
+    c.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+
+    if (tooltip) tooltip.classList.add('hidden');
+    if (detail) detail.classList.add('hidden');
+
+    if (!papers.length) {
+      if (legend) {
+        legend.innerHTML = '<span class="text-slate-500">No papers match the current topic filter.</span>';
+      }
+      return;
+    }
 
     // Build nodes
     const nodes = papers.map((p) => ({
@@ -483,11 +842,12 @@
       hovering = n;
       c.style.cursor = n ? 'pointer' : 'grab';
       if (n && tooltip) {
+        const displayTitle = getPaperTitle(n.paper);
         tooltip.classList.remove('hidden');
         tooltip.style.left = (x + 12) + 'px';
         tooltip.style.top = (y - 10) + 'px';
         tooltip.innerHTML = `
-          <div class="font-semibold text-slate-900 mb-0.5 line-clamp-2">${n.paper.meta.title || 'Untitled'}</div>
+          <div class="font-semibold text-slate-900 mb-0.5 line-clamp-2">${displayTitle}</div>
           <div class="text-slate-500 line-clamp-1">${n.paper.meta.authors || ''}</div>
           <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-semibold" style="background:${n.paper.topic.bg};color:${n.paper.topic.color}">${n.paper.topic.icon} ${n.paper.topic.label}</span>
         `;
@@ -520,15 +880,16 @@
     if (!detail) return;
     detail.classList.remove('hidden');
     const { meta, content, topic } = paper;
+    const displayTitle = getPaperTitle(paper);
     detail.style.borderColor = topic.border;
     detail.innerHTML = `
       <div class="flex items-start justify-between gap-3 mb-3">
         <div>
           <span class="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold mb-2" style="background:${topic.bg};color:${topic.color};border:1px solid ${topic.border}">${topic.icon} ${topic.label}</span>
-          <h2 class="text-base font-bold text-slate-900">${meta.title || 'Untitled'}</h2>
+          <h2 class="text-base font-bold text-slate-900">${displayTitle}</h2>
           <p class="text-sm text-slate-500 mt-0.5">${meta.authors || ''} ${meta.year ? '· ' + meta.year : ''}</p>
         </div>
-        <button onclick="document.getElementById('graph-detail').classList.add('hidden')" class="text-slate-400 hover:text-slate-600 text-xl leading-none shrink-0">✕</button>
+        <button type="button" data-graph-close class="text-slate-400 hover:text-slate-600 text-xl leading-none shrink-0" aria-label="Close paper details">✕</button>
       </div>
       ${meta.url ? `<a href="${meta.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-xs font-medium mb-3 underline" style="color:${topic.color}">View Paper →</a>` : ''}
       <div class="prose prose-sm max-w-none text-slate-700">${window.marked ? window.marked.parse(content) : content.replace(/\n/g, '<br>')}</div>
@@ -540,6 +901,27 @@
   async function loadPapers() {
     const browser = document.getElementById('papers-browser');
     if (!browser) return;
+    bindViewButtons();
+    bindGraphDetailClose();
+    allPapers = [];
+    activeTopics = new Set(['all']);
+    currentView = 'cards';
+    expandedCard = null;
+
+    const count = document.getElementById('papers-count');
+    if (count) count.textContent = 'Loading papers...';
+    browser.innerHTML = `
+      <div class="col-span-full text-center py-12">
+        <div class="inline-flex items-center gap-2 text-slate-500">
+          <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Loading papers...
+        </div>
+      </div>
+    `;
+    window.papersSetView('cards');
 
     try {
       const res = await fetch('papers/index.json');
@@ -552,7 +934,9 @@
         const r = await fetch(path);
         if (!r.ok) throw new Error(`Could not load ${path}`);
         const md = await r.text();
-        const { meta, content } = parsePaper(md);
+        const parsed = parsePaper(md);
+        const meta = deriveMeta(parsed.meta, parsed.content, path, md);
+        const content = parsed.content;
         const topic = classifyPaper(meta, content);
         const date = dateFromPath(path);
         return { meta, content, topic, path, date };
@@ -563,7 +947,6 @@
         .map(r => r.value)
         .sort((a, b) => b.date.localeCompare(a.date)); // newest first
 
-      const count = document.getElementById('papers-count');
       if (count) count.textContent = `${allPapers.length} papers`;
 
       buildTopicFilter(allPapers);
@@ -576,10 +959,6 @@
     }
   }
 
+  window.addEventListener('resize', scheduleGraphRender);
   window.setupPapersDiscovery = loadPapers;
-
-  // Auto-run when the element is present
-  if (document.getElementById('papers-browser')) {
-    loadPapers();
-  }
 })();

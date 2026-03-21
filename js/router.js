@@ -1,23 +1,22 @@
 // js/router.js
 // Hash router for `#/page#anchor` + smooth in-page anchors.
-// Loads partials from /sections/<page>.html into #app.
+// Loads partials from /sections/<page>.html into #app and then invokes page hooks.
 
 (() => {
   const APP = document.getElementById('app');
   const subnavPersonal = document.getElementById('personal-subnav');
+  const subnavResearch = document.getElementById('research-subnav');
 
   // ---- Config ----
   const DEFAULT_PAGE = 'personal';
   const SECTION_DIR = 'sections';
   const routes = {
     personal: 'sections/personal.html',
+    research: 'sections/research.html',
     quantum: 'sections/quantum.html',
-    genai: 'sections/genai.html',
-    health: 'sections/health.html',
-    music: 'sections/music.html',
-  classes: 'sections/classes.html',
-  'paper-discovery': 'sections/paper-discovery.html',
+    'paper-discovery': 'sections/paper-discovery.html',
   };
+  const routeNames = new Set(Object.keys(routes));
   const CACHE_MODE = 'no-store'; // ensure you always see latest
   const SCROLL_BEHAVIOR = 'smooth';
 
@@ -31,7 +30,7 @@
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
   function pageFromHash(rawHash) {
-    // Supports: "#/personal#research", "#/health", "", "#research" (in-page)
+    // Supports: "#/personal#research", "#/paper-discovery", "", "#research" (in-page)
     const raw = rawHash || '';
     if (raw.startsWith('#/')) {
       const noPrefix = raw.slice(2);                   // "personal#research"
@@ -43,6 +42,14 @@
     return { page: currentPage || DEFAULT_PAGE, anchor };
   }
 
+  function isValidPage(page) {
+    return routeNames.has(page);
+  }
+
+  function canonicalHash(page, anchor) {
+    return `#/` + page + (anchor ? `#${anchor}` : '');
+  }
+
   function highlightNav(page) {
     document.querySelectorAll('.main-nav-btn').forEach(btn => {
       btn.classList.remove('bg-slate-200', 'font-medium');
@@ -52,10 +59,9 @@
     });
   }
 
-  function togglePersonalSubnav(page) {
-    if (!subnavPersonal) return;
-    if (page === 'personal') subnavPersonal.classList.remove('hidden');
-    else subnavPersonal.classList.add('hidden');
+  function toggleSubnavs(page) {
+    if (subnavPersonal) subnavPersonal.classList.toggle('hidden', page !== 'personal');
+    if (subnavResearch) subnavResearch.classList.toggle('hidden', page !== 'research');
   }
 
   function scrollToAnchor(anchor) {
@@ -83,33 +89,13 @@
       const html = await fetchSectionHTML(page);
       if (reqId !== inflightReq) return; // a newer request won
 
-      // Inject HTML and execute any <script> tags
+      // Inject HTML. Section partials are markup-only; page init lives in section hooks.
       APP.innerHTML = html;
-      // Find and execute scripts in the injected HTML
-      const scripts = APP.querySelectorAll('script');
-      scripts.forEach(oldScript => {
-        const newScript = document.createElement('script');
-        // Copy attributes
-        for (const attr of oldScript.attributes) {
-          newScript.setAttribute(attr.name, attr.value);
-        }
-        // Inline script content
-        if (oldScript.textContent) {
-          newScript.textContent = oldScript.textContent;
-        }
-        // Replace old script with new one to trigger execution
-        oldScript.parentNode.replaceChild(newScript, oldScript);
-      });
       currentPage = page;
       loadedPages.add(page);
 
-      togglePersonalSubnav(page);
+      toggleSubnavs(page);
       highlightNav(page);
-
-      // Section hooks (if provided)
-      if (window.sectionHooks && typeof window.sectionHooks[page] === 'function') {
-        try { window.sectionHooks[page](); } catch (e) { /* no-op */ }
-      }
 
       // Re-typeset math if MathJax is loaded
       if (window.MathJax && window.MathJax.typesetPromise) {
@@ -122,23 +108,40 @@
           <p class="font-medium">Could not load this section.</p>
           <p class="mt-1">Error: ${e.message}</p>
         </div>`;
-      togglePersonalSubnav(''); // hide subnav on error
+      toggleSubnavs(''); // hide subnavs on error
     }
   }
 
   async function ensurePage(page) {
-    if (page === currentPage && APP.children.length) return;
+    if (page === currentPage && APP.children.length) return false;
     await loadPage(page);
+    return true;
   }
 
   async function handleRoute(hash) {
-    const { page, anchor } = pageFromHash(hash);
+    const parsed = pageFromHash(hash);
+    const page = isValidPage(parsed.page) ? parsed.page : DEFAULT_PAGE;
+    const anchor = parsed.anchor || '';
+    const desiredHash = canonicalHash(page, anchor);
+
+    if (location.hash !== desiredHash) {
+      history.replaceState(null, '', desiredHash);
+    }
 
     // Ensure correct page is in the DOM
-    await ensurePage(page);
+    const pageChanged = await ensurePage(page);
+
+    // Page hooks own all section-specific boot logic.
+    if (window.sectionHooks && typeof window.sectionHooks[page] === 'function') {
+      try {
+        await window.sectionHooks[page]({ page, anchor, pageChanged });
+      } catch (e) {
+        console.error('[Router] section hook failed:', e);
+      }
+    }
 
     // If returning to a page without an anchor, restore previous scroll
-    if (!anchor && scrollStore.has(page)) {
+    if (!anchor && pageChanged && scrollStore.has(page)) {
       const y = scrollStore.get(page);
       window.scrollTo({ top: y, behavior: 'auto' });
     } else {
@@ -168,9 +171,9 @@
     document.addEventListener('mouseover', (e) => {
       const a = e.target.closest('a[href^="#/"]');
       if (!a) return;
-      const href = a.getAttribute('href');     // "#/genai" or "#/personal#skills"
+      const href = a.getAttribute('href');     // "#/quantum" or "#/personal#skills"
       const page = href.slice(2).split('#')[0] || DEFAULT_PAGE;
-      prefetch(page);
+      if (isValidPage(page)) prefetch(page);
     }, { passive: true });
   }
 
@@ -201,37 +204,11 @@
     }, true);
   }
 
-  // ---- Check if classes should be hidden ----
-  async function checkAndHideClassesTab() {
-    const hideClassesTab = () => {
-      const classesTab = document.querySelector('a[href="#/classes"]');
-      if (classesTab) classesTab.style.display = 'none';
-    };
-
-    try {
-      const res = await fetch('classes/index.json');
-      if (!res.ok) {
-        hideClassesTab();
-        return;
-      }
-      const classes = await res.json();
-      
-      // Hide Classes tab if array is empty
-      if (Array.isArray(classes) && classes.length === 0) {
-        hideClassesTab();
-      }
-    } catch (e) {
-      // On error, hide the classes tab as well
-      hideClassesTab();
-    }
-  }
-
   // ---- Boot ----
   window.addEventListener('hashchange', () => handleRoute(location.hash));
   window.addEventListener('DOMContentLoaded', () => {
     setupPrefetch();
     setupAnchorDelegation();
-    checkAndHideClassesTab();
 
     // If no hash, go to default page
     if (!location.hash) {

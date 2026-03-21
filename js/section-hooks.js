@@ -76,84 +76,23 @@
     });
   }
 
-  // --- GitHub publications auto-loader (Personal page only) ---
-  async function loadPubs() {
-    const GH_USER = 'Bowenislandsong';
-    const GH_REPO = 'bowenislandsong.github.io';
-    const GH_BRANCH = 'main';
-    const API_URL = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/papers?ref=${GH_BRANCH}`;
-
-    const wrap = document.getElementById('pub-list');
-    const hint = document.getElementById('pub-hint');
-    if (!wrap) return;
-
-    try {
-      const res = await fetch(API_URL, { headers: { Accept: 'application/vnd.github.v3+json' } });
-      if (!res.ok) throw new Error('GitHub API not ok');
-      const files = await res.json();
-      const items = (Array.isArray(files) ? files : []).filter(f => /\.(pdf|bib|tex)$/i.test(f.name));
-      if (items.length === 0) {
-        hint?.classList.remove('hidden');
-        return;
-      }
-
-      items.sort((a, b) => a.name.localeCompare(b.name));
-      const frag = document.createDocumentFragment();
-
-      for (const f of items) {
-        const card = document.createElement('div');
-        card.className = 'rounded-2xl border border-slate-200 p-4 flex items-center justify-between gap-4';
-        const title = f.name.replace(/_/g, ' ').replace(/\.(pdf|bib|tex)$/i, '');
-        const fileUrl = `https://${GH_USER}.github.io/publications/${encodeURIComponent(f.name)}`;
-        const rawUrl  = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/publications/${encodeURIComponent(f.name)}`;
-        card.innerHTML = `
-          <div class="min-w-0">
-            <h3 class="font-medium truncate">${title}</h3>
-            <p class="text-xs text-slate-500 truncate">publications/${f.name}</p>
-          </div>
-          <div class="flex flex-wrap gap-2 text-sm shrink-0">
-            <a class="underline" href="${fileUrl}" target="_blank" rel="noopener">Open</a>
-            <a class="underline" href="${rawUrl}" target="_blank" rel="noopener">Raw</a>
-            <a class="underline" href="${fileUrl}?download=1" download>Download</a>
-          </div>`;
-        frag.appendChild(card);
-      }
-      wrap.appendChild(frag);
-    } catch (e) {
-      hint?.classList.remove('hidden');
-      const err = document.createElement('p');
-      err.className = 'text-sm text-red-600 mt-2';
-      err.textContent = 'Could not load publications from GitHub. Try refreshing, or ensure publications/ exists and is public.';
-      wrap.appendChild(err);
-    }
-  }
-
   // --- Public hooks for router ---
   window.sectionHooks = {
     personal() {
       bindDelegation();
-      loadPubs();
       // Ensure only one abstract is visible on load (e.g., after deep link)
       collapseOtherAbstracts();
     },
-    quantum() {
+    research() {
       bindDelegation();
-      // Mount QuantumPage if available
-      const root = document.querySelector('.qfx');
-      if (window.QuantumPage && root) window.QuantumPage.mount(root);
+      collapseOtherAbstracts();
     },
-    genai() {
+    quantum({ anchor } = {}) {
       bindDelegation();
+      if (window.setupQuantumPage) return window.setupQuantumPage({ anchor });
     },
-    health() {
-      bindDelegation();
-    },
-    music() {
-      bindDelegation();
-    },
-    classes() {
-      // No delegation needed, just load the PDF viewer logic
-      if (window.setupClassesViewer) window.setupClassesViewer();
+    'paper-discovery'() {
+      if (window.setupPapersDiscovery) return window.setupPapersDiscovery();
     },
   };
 })();

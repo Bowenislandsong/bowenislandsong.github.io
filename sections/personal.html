@@ -1,1393 +1,258 @@
 <!-- sections/personal.html -->
 
-<!-- Hero -->
-<section id="top" class="relative">
-  <!-- Subtle background gradient -->
-  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
-  
-  <div class="grid grid-cols-1 md:grid-cols-[1fr,220px] gap-8 md:gap-12 py-10 md:py-14">
+<section id="overview" class="py-12 md:py-16">
+  <div class="grid gap-10 lg:grid-cols-[1.15fr,0.85fr] lg:items-start">
     <div>
-      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Bowen Song</h1>
-      <p class="mt-2 text-lg text-slate-600 font-medium">AI Scientist & PhD Candidate · USC Viterbi</p>
-      <p class="mt-1 text-sm text-slate-500">
-        Real-time ML systems · Interpretable models · Edge, federated & open-source ML
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teal-700">
+        Bowen Song · <a href="https://viterbi.usc.edu/" target="_blank" rel="noopener" class="inline-link">USC Viterbi</a>
       </p>
-      <!-- Impact Stats Bar -->
-      <div class="mt-4 flex flex-wrap gap-3">
-        <div class="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-sm">
-          <span class="text-blue-200">📚</span> 8+ Years Research
-        </div>
-        <div class="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-sm">
-          <span class="text-purple-200">💼</span> 3+ Years Industry
-        </div>
-        <div class="flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-3 py-1.5 rounded-lg text-sm font-semibold shadow-sm">
-          <span class="text-emerald-200">📄</span> 5+ First Author Publications
-        </div>
-      </div>
+      <h1 class="mt-5 text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">
+        Research engineer who turns difficult machine learning ideas into systems that stay useful under real constraints.
+      </h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">
+        My strongest work sits where research, evaluation, and implementation all have to be good at once. I work on machine learning problems where the data are noisy, the users are heterogeneous, the compute budget matters, and the result still has to be reliable enough for someone to act on.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+        That pattern shows up across my record. In my work on wearable biomechanics, I introduced <a href="publications/Estimating_Ground_Reaction_Forces_From_Inertial_Sensors.pdf" target="_blank" rel="noopener" class="inline-link">SVD Embedding Regression</a>, a low-rank method that matched or beat heavier LSTM baselines for ground-reaction-force estimation while remaining interpretable and fast enough for edge deployment. In systems work, I built a formal model of <a href="publications/Performance_and_Revenue_Analysis_of_Hybrid_Cloud_Federations_with_QoS_Requirements.pdf" target="_blank" rel="noopener" class="inline-link">hybrid cloud federation under QoS and incentive constraints</a> using Shapley value, and earlier I designed <a href="publications/Scalable_String_Reconciliation_by_Recursive_Content-Dependent_Shingling.pdf" target="_blank" rel="noopener" class="inline-link">RCDS</a>, a reconciliation algorithm that scales linearly with edit distance and beats rsync on a substantial class of realistic workloads.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+        I reinforced that research profile in industry through ranking research at <a href="https://www.ebayinc.com/" target="_blank" rel="noopener" class="inline-link">eBay</a>, streaming infrastructure at <a href="https://www.ebayinc.com/" target="_blank" rel="noopener" class="inline-link">eBay</a>, and platform engineering on <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift" target="_blank" rel="noopener" class="inline-link">OpenShift</a> at <a href="https://www.redhat.com/en" target="_blank" rel="noopener" class="inline-link">Red Hat</a>. The common thread is that I do not want to stop at an idea that sounds smart; I want the result to be measurable, deployable, and strong enough that another team would trust it.
+      </p>
+      <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+        Research context:
+        <a href="https://bourbon.usc.edu/leana/" target="_blank" rel="noopener" class="inline-link">Leana Golubchik</a>
+        ·
+        <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-link">QED Research Group</a>
+        ·
+        <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-link">Google Scholar</a>
+      </p>
 
-      <!-- Target Industries Section -->
-      <div class="mt-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-5 text-white shadow-lg">
-        <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">Direct Applications</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full text-sm font-medium border border-white/20">
-            <span>🏥</span> Health & Wearables
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full text-sm font-medium border border-white/20">
-            <span>🚗</span> Autonomous Driving
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full text-sm font-medium border border-white/20">
-            <span>🤖</span> Robotics & Motion
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full text-sm font-medium border border-white/20">
-            <span>☁️</span> Cloud & Edge Systems
-          </span>
-          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full text-sm font-medium border border-white/20">
-            <span>🛒</span> E-commerce & Ranking
-          </span>
-        </div>
-       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-          <div class="flex items-start gap-2">
-            <span class="text-emerald-400 mt-0.5">✓</span>
-            <span>
-              <strong class="text-white">Real-time sensor & state estimation</strong>
-              — low-latency fusion of IMU, force, and kinematic signals for control, autonomy, and human-in-the-loop systems
-            </span>
-          </div>
-
-          <div class="flex items-start gap-2">
-            <span class="text-emerald-400 mt-0.5">✓</span>
-            <span>
-              <strong class="text-white">Edge-first model design</strong>
-              — ≤50 ms inference, memory-aware models, and graceful degradation under compute constraints
-            </span>
-          </div>
-
-          <div class="flex items-start gap-2">
-            <span class="text-emerald-400 mt-0.5">✓</span>
-            <span>
-              <strong class="text-white">Interpretable & verifiable predictions</strong>
-              — lightweight low-rank models that expose structure for debugging, safety review, and regulatory settings
-            </span>
-          </div>
-
-          <div class="flex items-start gap-2">
-            <span class="text-emerald-400 mt-0.5">✓</span>
-            <span>
-              <strong class="text-white">Robustness under distribution shift</strong>
-              — handling unseen motions, users, and environments without brittle retraining
-            </span>
-          </div>
-
-          <div class="flex items-start gap-2">
-            <span class="text-emerald-400 mt-0.5">✓</span>
-            <span>
-              <strong class="text-white">Privacy-preserving & federated learning</strong>
-              — client-level FL, secure aggregation, and DP-friendly training pipelines
-            </span>
-          </div>
-
-          <div class="flex items-start gap-2">
-            <span class="text-emerald-400 mt-0.5">✓</span>
-            <span>
-              <strong class="text-white">Production ML & infra fluency</strong>
-              — multi-GPU training, scalable pipelines, and end-to-end deployment readiness
-            </span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Availability Banner for Recruiters -->
-      <div class="mt-4 rounded-xl bg-gradient-to-r from-emerald-50 to-green-50 border border-green-200 px-4 py-3">
-        <div class="flex items-start gap-3">
-          <span class="relative flex h-3 w-3 mt-1 flex-shrink-0">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-          </span>
-          <div class="text-sm text-green-800">
-            <p>
-              <strong class="font-semibold">
-                Open to Senior AI/ML Research & Systems Engineering roles
-              </strong>
-            </p>
-            <p class="mt-1 text-green-700 font-medium">
-              Focus areas: <strong>Robotics & Assistive Systems</strong>,
-              <strong>Autonomous Driving</strong>,
-              <strong>AI for Health & Biotech</strong>,
-              <strong>Large-Scale Ranking & Trading Systems</strong>
-            </p>
-            <p class="mt-1 text-green-700">
-              📅 Available: 2026 (PhD graduation)
-            </p>
-          </div>
-        </div>
-      </div>
-
-      
-      <!-- Latest News Banner -->
-      <div class="mt-3 rounded-xl bg-blue-50 border border-blue-200 px-4 py-3">
-        <div class="flex items-start gap-3">
-          <span class="text-xl">🎉</span>
-          <div class="text-sm text-blue-800">
-            <strong>Latest:</strong> Successfully defended thesis proposal — 
-            <a href="https://viterbischool.usc.edu/events/?events_id=107428" target="_blank" rel="noopener" class="underline decoration-blue-300 hover:decoration-blue-500 hover:text-blue-900">
-              "Scalable Biomechanical Modeling Through Federated Learning and Resource Federation"
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA Buttons -->
-      <div class="mt-5 flex flex-wrap gap-3">
-        <a href="img/resume/Bowen_Song_Resume.pdf" download 
-           class="inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2.5 text-sm font-semibold hover:bg-slate-800 shadow-md hover:shadow-lg transition-all">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="#/research" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
+          View Research
+        </a>
+        <a href="img/resume/Bowen_Song_Resume.pdf" download class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
           Download CV
         </a>
-        <a href="mailto:bowenson@usc.edu" 
-           class="inline-flex items-center gap-2 rounded-xl bg-blue-600 text-white px-4 py-2.5 text-sm font-semibold hover:bg-blue-700 shadow-md hover:shadow-lg transition-all">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-          Contact Me
+        <a href="mailto:bowenson@usc.edu" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+          Contact
         </a>
       </div>
-      
-      <ul class="mt-4 flex flex-wrap gap-2 text-sm">
-        <li><a class="rounded-full border px-3 py-1.5 border-slate-300 hover:bg-slate-100 hover:border-slate-400 transition-colors" href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a class="rounded-full border px-3 py-1.5 border-slate-300 hover:bg-slate-100 hover:border-slate-400 transition-colors" href="https://github.com/Bowenislandsong" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a class="rounded-full border px-3 py-1.5 border-slate-300 hover:bg-slate-100 hover:border-slate-400 transition-colors" href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
-        <li><a class="rounded-full border px-3 py-1.5 border-slate-300 hover:bg-slate-100 hover:border-slate-400 transition-colors" href="https://orcid.org/0000-0002-5071-3880" target="_blank" rel="noopener">ORCID</a></li>
-        <li><a class="rounded-full border px-3 py-1.5 border-slate-300 hover:bg-slate-100 hover:border-slate-400 transition-colors" href="https://qed.usc.edu" target="_blank" rel="noopener">QED Lab</a></li>
-      </ul>
-    </div>
-    <div class="flex md:justify-end">
-      <div class="relative">
-        <div class="absolute -inset-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-3xl blur opacity-20"></div>
-        <img src="img/aboutmepic/bio.jpeg" alt="Bowen Song - AI Scientist and PhD Candidate at USC" class="relative h-44 w-44 md:h-56 md:w-56 rounded-3xl object-cover ring-4 ring-white shadow-xl" />
+
+      <div class="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500">TBME result</p>
+          <p class="mt-2 text-lg font-semibold text-slate-900">SER matched or beat LSTMs with far lower cost</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500">CLOUD result</p>
+          <p class="mt-2 text-lg font-semibold text-slate-900">QoS + incentive analysis for hybrid cloud federation</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Allerton result</p>
+          <p class="mt-2 text-lg font-semibold text-slate-900">RCDS scales with edit distance and beats rsync</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Industry signal</p>
+          <p class="mt-2 text-lg font-semibold text-slate-900">Ranking research, streaming infra, Kubernetes platform</p>
+        </div>
       </div>
     </div>
+
+    <aside class="rounded-[2rem] border border-slate-200 bg-[rgba(255,255,255,0.86)] p-6 shadow-[0_30px_90px_-52px_rgba(15,23,42,0.28)] backdrop-blur">
+      <div class="flex items-center gap-4">
+        <img src="img/aboutmepic/bio.jpeg" alt="Bowen Song portrait" class="h-24 w-24 rounded-[1.5rem] object-cover" />
+        <div>
+          <p class="text-sm font-semibold text-slate-900">Best fit</p>
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Research Engineer, Applied Scientist, or ML Systems roles where a team wants scientific rigor, strong implementation, and honest evaluation in the same person.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Strongest evidence</p>
+        <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-700">
+          <li>I introduced SVD Embedding Regression, showing that a simpler low-rank model could match or outperform heavier LSTMs for wearable force estimation while staying interpretable and edge-friendly.</li>
+          <li>I developed a queueing-theoretic and incentive-aware framework for hybrid cloud federation with QoS constraints and Shapley-based revenue sharing.</li>
+          <li>I designed RCDS, an algorithmic systems contribution that scales linearly with edit distance and outperformed rsync on a meaningful class of realistic workloads.</li>
+        </ul>
+      </div>
+
+      <div class="mt-6 rounded-[1.5rem] bg-slate-950 p-5 text-white">
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-400">What I bring</p>
+        <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-200">
+          <li>I am comfortable with ambiguous technical problems where the hard part is not only picking a model, but deciding what to measure, what to simplify, and which failure modes are serious enough to change the entire design.</li>
+          <li>I have a consistent research instinct toward leverage: if a simpler, clearer, faster method can win, I would rather prove that than add complexity for style points.</li>
+          <li>I have worked on embodied and personalized ML problems where noisy time-series data, domain shift, personalization, and low-latency inference are the real problem, not cleanup work after the paper.</li>
+          <li>I have also built ranking systems, streaming data pipelines, and Kubernetes-platform features, which means I understand how scale, reliability, observability, and operability shape what a model can actually become.</li>
+          <li>I am often most useful on teams that need someone to own the glue around the model too: evaluation design, ablations, baselines, reproducibility, implementation quality, and deployment-minded tradeoffs.</li>
+        </ul>
+      </div>
+
+      <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Why this transfers</p>
+        <p class="mt-3 text-sm leading-6 text-slate-600">
+          Even though my PhD domain is health and biomechanics, the underlying strengths transfer directly to broader AI work: learning from imperfect multimodal data, building adaptation into the system, challenging expensive defaults with stronger evidence, and implementing ideas well enough that another engineer can reproduce, stress-test, and extend them.
+        </p>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2 text-sm">
+        <a href="https://github.com/Bowenislandsong" target="_blank" rel="noopener" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-slate-700 transition-colors hover:bg-slate-50">Scholar</a>
+        <a href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-slate-700 transition-colors hover:bg-slate-50">LinkedIn</a>
+      </div>
+    </aside>
   </div>
 </section>
 
-<!-- Research Interests -->
-<section id="research" class="scroll-mt-24 py-8">
-  <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-    <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-    </span>
-    Research Interests
-  </h2>
-  
-  <p class="mt-4 text-slate-700 text-base leading-relaxed">
-    PhD candidate at <a href="https://qed.usc.edu/index.html" class="text-blue-600 hover:text-blue-800 font-semibold">Quantitative Evaluation & Design (QED)</a> research group at USC, advised by Prof. <a href="https://viterbi.usc.edu/directory/faculty/Golubchik/Leana" class="text-blue-600 hover:text-blue-800 font-semibold">Leana Golubchik</a>
-  </p>
+<section id="fit" class="scroll-mt-24 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Why Me</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">What is unusual about the profile.</h2>
 
-  <!-- Focus Area Pills -->
-  <div class="mt-4 flex flex-wrap gap-2">
-    <span class="inline-flex items-center rounded-full bg-blue-100 border border-blue-200 px-3 py-1.5 text-sm font-semibold text-blue-800">Machine Learning</span>
-    <span class="inline-flex items-center rounded-full bg-purple-100 border border-purple-200 px-3 py-1.5 text-sm font-semibold text-purple-800">AI for Health</span>
-    <span class="inline-flex items-center rounded-full bg-green-100 border border-green-200 px-3 py-1.5 text-sm font-semibold text-green-800">Explainable AI</span>
-    <span class="inline-flex items-center rounded-full bg-amber-100 border border-amber-200 px-3 py-1.5 text-sm font-semibold text-amber-800">Real-Time Inference</span>
-    <span class="inline-flex items-center rounded-full bg-rose-100 border border-rose-200 px-3 py-1.5 text-sm font-semibold text-rose-800">Multi-Modal Sensing</span>
-    <span class="inline-flex items-center rounded-full bg-cyan-100 border border-cyan-200 px-3 py-1.5 text-sm font-semibold text-cyan-800">Distributed Systems</span>
-    <span class="inline-flex items-center rounded-full bg-indigo-100 border border-indigo-200 px-3 py-1.5 text-sm font-semibold text-indigo-800">Privacy-Preserving AI</span>
+  <div class="mt-6 grid gap-4 lg:grid-cols-2">
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Research instinct</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">I look for the simplification that creates leverage.</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        My work usually starts with an ambiguous question, moves through data and modeling choices, and ends with a result that is reproducible enough to trust and iterate on. In my best work, that means identifying when the field is over-paying for complexity and proving that a simpler approach can preserve or improve the result.
+      </p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        That matters because high-end research organizations do not only need clever ideas. They need people who can turn those ideas into legible, measurable, extensible systems so the next experiment starts from a stronger place.
+      </p>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Breadth with a through-line</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">The topics are broad, but the technical habit is consistent.</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        My papers span wearable ML, federated and personalized learning, cloud federation, and distributed reconciliation, and my industry work spans ranking, streaming infrastructure, and Kubernetes platforms. That range is not random. It reflects one technical preference: work on systems that have to stay correct and useful when constraints start to dominate.
+      </p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        That is part of why I translate well to ambitious AI teams. The surface area changes, but the underlying work of reasoning under uncertainty, evaluating honestly, and shipping robust systems does not.
+      </p>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Systems credibility</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">I do not treat infrastructure as somebody else’s problem.</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        I have worked on ranking systems, streaming analytics, Kubernetes platforms, and reliability tooling, which means I think about scale, cost, debugging, observability, and operational safety early. I do not see those as downstream concerns; I see them as part of technical quality from the start.
+      </p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        That is often the difference between research that looks promising in isolation and research that a team can actually build on, integrate, and ship with confidence.
+      </p>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Force multiplier</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">I make the work easier for other strong people to build on.</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        My best work happens when a team expects rigor, speed, and ownership at the same time. I like environments where people care about ablations, strong writing, useful code review, and the discipline to revise a weak idea instead of over-selling it.
+      </p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        I also like being the person who helps keep that bar intact: mentoring students, tightening experiments, clarifying the story, packaging ideas into code, and making sure the implementation is as defensible as the claim.
+      </p>
+    </article>
   </div>
-
-  <!-- Research Areas as Cards with Bullets -->
-  <div class="mt-6 grid md:grid-cols-2 gap-4">
-
-    <!-- ML for Biomechanics -->
-    <div class="rounded-2xl border border-slate-200 p-5 bg-gradient-to-br from-blue-50/50 to-white hover:shadow-md transition-shadow">
-      <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
-        <span class="text-blue-500">🏃</span> ML for Biomechanics & Wearables
-      </h3>
-      <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-        I develop <strong>fast, interpretable machine learning models</strong> that turn raw
-        <strong>wearable sensor data</strong> into meaningful biomechanical signals.
-        My work focuses on estimating <strong>ground reaction forces, joint moments, and joint kinematics</strong>
-        from IMUs—without relying on lab-grade hardware or heavy deep learning models.
-      </p>
-      <ul class="mt-3 space-y-2 text-sm text-slate-700">
-        <li class="flex items-start gap-2">
-          <span class="text-blue-500 mt-1">→</span>
-          <span>
-            <strong>Applications:</strong> athlete performance analysis, injury risk assessment,
-            rehabilitation feedback, and real-time control of assistive and robotic systems
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-1">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            SVD Embedding Regression matches deep learning accuracy while enabling
-            <strong>real-time inference on edge devices</strong> with <strong>orders-of-magnitude lower compute</strong>
-          </span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Federated & Privacy-Preserving -->
-    <div class="rounded-2xl border border-slate-200 p-5 bg-gradient-to-br from-purple-50/50 to-white hover:shadow-md transition-shadow">
-      <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
-        <span class="text-purple-500">🔐</span> On-Device Federated & Privacy-Preserving AI
-      </h3>
-      <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-        Building on SER, I design <strong>federated and on-device learning systems</strong> that scale
-        biomechanical modeling across users and institutions while
-        <strong>keeping raw data local</strong>. These methods are lightweight by design, making them practical
-        for deployment on phones, wearables, and embedded systems.
-      </p>
-      <ul class="mt-3 space-y-2 text-sm text-slate-700">
-        <li class="flex items-start gap-2">
-          <span class="text-purple-500 mt-1">→</span>
-          <span>
-            <strong>Robust multi-task learning:</strong> supports heterogeneous data,
-            limited samples, and <strong>unseen actions or users</strong> without retraining from scratch
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-1">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            Enables <strong>privacy-preserving, collaborative learning</strong> for health and movement analysis
-            in real-world settings—moving biomechanical intelligence beyond controlled labs
-          </span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Cloud & Distributed Systems -->
-    <div class="rounded-2xl border border-slate-200 p-5 bg-gradient-to-br from-green-50/50 to-white hover:shadow-md transition-shadow">
-      <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
-        <span class="text-green-500">☁️</span> Cloud & Distributed Systems
-      </h3>
-
-      <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-        Beyond health applications, I work on <strong>cloud and distributed systems</strong> that combine
-        <strong>systems design with rigorous guarantees</strong>. My research spans <strong>datacenter performance modeling</strong>,
-        <strong>bandwidth-efficient synchronization</strong>, and <strong>cloud resource federation</strong>.
-      </p>
-
-      <ul class="mt-3 space-y-2 text-sm text-slate-700">
-        <li class="flex items-start gap-2">
-          <span class="text-green-500 mt-1">→</span>
-          <span>
-            <strong>Cloud Federation Framework:</strong> proved that independent cloud providers can safely
-            share resources to <strong>improve performance</strong> and <strong>fairly share profits</strong>—
-            without relying on a trusted middleman
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-green-500 mt-1">→</span>
-          <span>
-            <strong>Queueing-theoretic modeling:</strong> analyzed datacenter capacity and performance under
-            shared and federated resources
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-green-500 mt-1">→</span>
-          <span>
-            <strong>RCDS protocol:</strong> bandwidth-efficient data synchronization that outperforms rsync
-            for frequent updates
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-1">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            <strong>51% of top 5000 GitHub repositories</strong> sync faster with RCDS
-          </span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Applied ML & Ranking -->
-    <div class="rounded-2xl border border-slate-200 p-5 bg-gradient-to-br from-amber-50/50 to-white hover:shadow-md transition-shadow">
-      <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
-        <span class="text-amber-500">🎯</span> Applied LLM Reasoning & Recommendation Systems
-      </h3>
-      <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-        I build <strong>production-grade ranking and recommendation systems</strong> for large-scale
-        e-commerce and information retrieval. My work includes <strong>Mixture-of-Experts ranking architectures</strong>
-        and <strong>reasoning-aware reranking</strong>, where LLM outputs are structured, scored, and selected
-        using learning-to-rank principles.
-      </p>
-      <ul class="mt-3 space-y-2 text-sm text-slate-700">
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-1">→</span>
-          <span>
-            <strong>Scalable ranking systems:</strong> Mixture of Rankers for natural segmentation,
-            expert specialization, and efficient multi-GPU training
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-1">→</span>
-          <span>
-            <strong>LLM reasoning via ranking:</strong> improve decision quality by reranking candidate
-            responses using structured signals rather than raw generation alone
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-1">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            <strong>Production deployment</strong> at eBay, delivering multi-objective lifts across
-            conversion, click-through rate, and user engagement
-          </span>
-        </li>
-      </ul>
-    </div>
-
 </section>
 
-<!-- Education -->
-<section id="education" class="scroll-mt-24 py-8">
-  <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-    <span class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
-    </span>
-    Education
-  </h2>
-  <ul class="mt-6 space-y-4">
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-blue-200 transition-all">
-      <div class="flex flex-wrap items-baseline justify-between gap-4">
-        <h3 class="font-bold text-lg text-slate-900">PhD in Computer Science, University of Southern California</h3>
-        <span class="text-sm font-medium text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">2020–Present (Expected: 2026)</span>
-      </div>
-      <p class="text-sm text-slate-500 mt-1">Los Angeles, CA</p>
-      <p class="text-sm text-slate-700 mt-2">AI for Health, Explainable AI, Queueing Theory, Datacenter Networking.</p>
-    </li>
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-slate-300 transition-all">
-      <div class="flex flex-wrap items-baseline justify-between gap-4">
-        <h3 class="font-bold text-lg text-slate-900">MS in Electrical &amp; Computer Engineering, Boston University</h3>
-        <span class="text-sm font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">2019</span>
-      </div>
-      <p class="text-sm text-slate-500 mt-1">Boston, MA</p>
-      <p class="text-sm text-slate-700 mt-2">Information Theory, Cloud Computing, Data Structures, Machine Learning.</p>
-    </li>
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-slate-300 transition-all">
-      <div class="flex flex-wrap items-baseline justify-between gap-4">
-        <h3 class="font-bold text-lg text-slate-900">BEng in Electrical Engineering, University of Victoria</h3>
-        <span class="text-sm font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">2017</span>
-      </div>
-      <p class="text-sm text-slate-500 mt-1">Victoria, BC</p>
-      <p class="text-sm text-slate-700 mt-2">Wireless, Radar, Signal &amp; Image Processing, Optimization.</p>
-    </li>
-  </ul>
-</section>
-
-<!-- Publications -->
-<section id="publications" class="scroll-mt-24 py-8">
-  <div class="flex items-center justify-between">
-    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-      <span class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-      </span>
-      Selected Publications
-    </h2>
-    <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" 
-       class="text-sm font-medium text-blue-600 hover:text-blue-700 flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-full hover:bg-blue-100 transition-colors">
-      View all on Scholar
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+<section id="experience" class="scroll-mt-24 py-10">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Selected Experience</p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">The fastest way to see the range and the pattern.</h2>
+    </div>
+    <a href="#/research" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+      Open full research page
     </a>
   </div>
 
-  <div class="mt-6 space-y-4">
-
-    <!-- 1) TBME 2024 -->
-    <article class="rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-blue-200 transition-all">
-      <div class="flex flex-wrap items-center gap-2 mb-3">
-        <span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-1 text-xs font-semibold text-blue-700">IEEE TBME</span>
-        <span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-700">Health AI</span>
-        <span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">2024</span>
-      </div>
-
-      <h3 class="font-bold text-lg text-slate-900">
-        Estimating Ground Reaction Forces From Inertial Sensors
-      </h3>
-
-      <p class="text-sm text-slate-600 mt-1">
-        B. Song, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, D. Shah
+  <div class="mt-6 grid gap-4 lg:grid-cols-2">
+    <article class="rounded-[2rem] border border-teal-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">USC · 2020 to present</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">Personalized AI for Health</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Led end-to-end research on real-time biomechanical estimation from wearable signals in the <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-link">QED Research Group</a>, with an emphasis on interpretable models, personalization, and deployable inference. The work sits at the intersection of modeling, sensing, and systems because none of those pieces can be weak if the result is supposed to matter outside a lab study.
       </p>
-
-      <!-- Impact -->
-      <p class="mt-2 text-sm text-emerald-600 font-semibold flex items-center gap-1">
-        <span>⚡</span>
-        1000× faster inference than LSTM baselines with comparable accuracy
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        The work led to first-author publications and to methods like SVD Embedding Regression, which showed that lightweight models could stay competitive while reducing inference cost dramatically. This is where I learned to treat data pipelines, model design, evaluation, and deployment constraints as one problem rather than four separate ones.
       </p>
-
-      <!-- Why it matters (UNCHANGED) -->
-      <p class="mt-2 text-sm text-slate-700">
-        Introduces <strong>SVD Embedding Regression (SER)</strong>, a low-rank, interpretable alternative
-        to deep neural networks, designed for <strong>latency-critical, safety-relevant systems</strong>
-        such as wearables, assistive robotics, and human-in-the-loop control.
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        It also shaped the kind of research engineer I am now: someone who wants the paper to be strong, but also wants the model to be fast enough, inspectable enough, and stable enough that another team could realistically build on it.
       </p>
-
-      <div class="mt-3 flex flex-wrap gap-2">
-        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-          href="publications/Estimating_Ground_Reaction_Forces_From_Inertial_Sensors.pdf"
-          target="_blank" rel="noopener">PDF</a>
-
-        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-          href="https://ieeexplore.ieee.org/abstract/document/10684546"
-          target="_blank" rel="noopener">IEEE Xplore</a>
-
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-                data-toggle="#abs-grf">Abstract</button>
-
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-                data-copy="#bib-grf">BibTeX</button>
-
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-                data-copy="#cite-grf">Cite</button>
-      </div>
-
-      <p id="abs-grf" class="mt-3 text-sm text-slate-700 hidden">
-        Objective: Our aim is to determine if data collected with inertial measurement units (IMUs) during steady-state running could be used to estimate ground reaction forces (GRFs) and to derive biomechanical variables (e.g., contact time, impulse, change in velocity) using lightweight machine-learning approaches. In contrast, state-of-the-art estimation using LSTMs suffers from prohibitive inference times on edge devices, requires expensive training and hyperparameter optimization, and results in black box models. 
-        Methods: We proposed a novel lightweight solution, SVD Embedding Regression (SER), using linear regression between SVD embeddings of IMU data and GRF data. We also compared lightweight solutions including SER and k-Nearest-Neighbors (KNN) regression with state-of-the-art LSTMs. 
-        Results: We performed extensive experiments to evaluate these techniques under multiple scenarios and combinations of IMU signals and quantified estimation errors for predicting GRFs and biomechanical variables. We did this using training data from different athletes, from the same athlete, or both, and we explored the use of acceleration and angular velocity data from sensors at different locations (sacrum and shanks). 
-        Conclusion: Our results illustrated that lightweight solutions such as SER and KNN can be similarly accurate or more accurate than LSTMs. The use of personal data reduced estimation errors of all methods, particularly for most biomechanical variables (as compared to GRFs); moreover, this gain was more pronounced in the lightweight methods. 
-        Significance: The study of GRFs is used to characterize the mechanical loading experienced by individuals in movements such as running, which is clinically applicable to identify athletes at risk for stress-related injuries.
-      </p>
-
-      <pre id="bib-grf" class="sr-only">@ARTICLE{song2024grf,
-      author={Song, B. and Paolieri, M. and Stewart, H. E. and Golubchik, L. and McNitt-Gray, J. L. and Misra, V. and Shah, D.},
-      journal={IEEE Transactions on Biomedical Engineering},
-      title={Estimating Ground Reaction Forces from Inertial Sensors},
-      year={2024},
-      pages={1--14},
-      doi={10.1109/TBME.2024.3465373}
-    }</pre>
-      <pre id="cite-grf" class="sr-only">Song, B., Paolieri, M., Stewart, H. E., Golubchik, L., McNitt-Gray, J. L., Misra, V., & Shah, D. (2025).
-Estimating Ground Reaction Forces From Inertial Sensors. IEEE Trans. Biomed. Eng., 72(2).</pre>
     </article>
 
-    <!-- 2) CLOUD 2022 -->
-    <article class="rounded-2xl border border-slate-200 p-4">
-      <div class="flex flex-wrap items-center gap-2 mb-3">
-        <span class="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-1 text-xs font-semibold text-purple-700">IEEE CLOUD</span>
-        <span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">Cloud Systems</span>
-        <span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">2022</span>
-      </div>
-
-      <h3 class="font-semibold text-slate-900">
-        Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements
-      </h3>
-
-      <p class="text-sm text-slate-600 mt-1 truncate">
-        Bowen Song, Marco Paolieri, Leana Golubchik
+    <article class="rounded-[2rem] border border-violet-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">eBay · 2024</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">Core Ranking Research Intern</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Worked on mixture-of-experts ranking models, large-scale evaluation, and training workflows that reflected production ranking constraints instead of toy offline settings at <a href="https://www.ebayinc.com/" target="_blank" rel="noopener" class="inline-link">eBay</a>. Ranking is a great training ground for research engineering because every gain has to justify itself against strong baselines, business constraints, and heterogeneous traffic.
       </p>
-
-      <!-- Impact -->
-      <p class="mt-2 text-sm text-emerald-600 font-semibold flex items-center gap-1">
-        <span>📈</span>
-        Proves when federating hybrid clouds <strong>improves QoS and reduces public cloud cost</strong>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        That experience sharpened my instincts for large-scale experimentation, multi-objective optimization, and the reality that a good model has to earn its place against strong baselines, traffic heterogeneity, and operational limits.
       </p>
-
-      <!-- Why it matters -->
-      <p class="mt-2 text-sm text-slate-700">
-        Provides a <strong>principled, incentive-aware framework</strong> for hybrid cloud resource sharing—modeling
-        <strong>performance, cost, and fairness</strong> so federated systems can scale without free-rider behavior or broken QoS.
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        It made me better at the kind of judgment ambitious AI teams need: knowing when a modeling idea is truly better, when the evaluation is lying, and when the system around the model is the real bottleneck.
       </p>
-
-      <div class="mt-3 flex flex-wrap gap-2">
-        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-          href="publications/Performance_and_Revenue_Analysis_of_Hybrid_Cloud_Federations_with_QoS_Requirements.pdf"
-          target="_blank" rel="noopener">PDF</a>
-
-        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-          href="https://ieeexplore.ieee.org/abstract/document/9860670"
-          target="_blank" rel="noopener">IEEE Xplore</a>
-
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-                data-toggle="#abs-cloud">Abstract</button>
-
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-                data-copy="#bib-cloud">BibTeX</button>
-
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-                data-copy="#cite-cloud">Cite</button>
-      </div>
-
-      <p id="abs-cloud" class="mt-3 text-sm text-slate-700 hidden">
-        Hybrid cloud architectures, where private clouds or data centers forward part of their workload to public cloud providers to satisfy quality of service (QoS) requirements, are increasingly common due to the availability of on-demand cloud resources that can be provisioned automatically through programming APIs. 
-        In this paper, we analyze performance and revenue in federations of hybrid clouds, where private clouds agree to share part of their local computing resources with other members of the federation. 
-        Through resource sharing, underprovisioned members can save on public cloud costs, while overprovisioned members can put their idle resources to work. 
-        To reward all hybrid clouds for their contributions (computing resources or workload), public cloud savings due to the federation are distributed among members according to Shapley value.
-        We model this cloud architecture with a continuous-time Markov chain and prove that, if all hybrid clouds have the same QoS requirements, their profits are maximized when they join the federation and share all resources. 
-        We also show that this result does not hold when hybrid clouds have different QoS requirements, and we provide a solution to evaluate profit for different resource sharing decisions. Finally, our experimental evaluation compares the distribution of public cloud savings according to Shapley value with alternative approaches, illustrating its ability to discourage free riders of the federation.
-      </p>
-
-      <pre id="bib-cloud" class="sr-only">@INPROCEEDINGS{cloud_qos,
-      author={Song, Bowen and Paolieri, Marco and Golubchik, Leana},
-      booktitle={2022 IEEE 15th International Conference on Cloud Computing (CLOUD)},
-      title={Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements},
-      year={2022},
-      pages={321-330},
-      doi={10.1109/CLOUD55607.2022.00055}
-    }</pre>
-
-      <pre id="cite-cloud" class="sr-only">Song, B., Paolieri, M., & Golubchik, L. (2022). Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements. In IEEE CLOUD 2022.</pre>
     </article>
 
-
-    <!-- 3) RCDS Allerton 2019 -->
-    <article class="rounded-2xl border border-slate-200 p-4">
-      <div class="flex flex-wrap items-center gap-2 mb-3">
-        <span class="inline-flex items-center rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-700">Allerton</span>
-        <span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">Distributed Systems</span>
-        <span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">2019</span>
-      </div>
-
-      <h3 class="font-semibold text-slate-900">
-        Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS)
-      </h3>
-
-      <p class="text-sm text-slate-600 mt-1 truncate">
-        Bowen Song, Ari Trachtenberg
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">eBay · 2023</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">Infrastructure Intern</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Owned a Kafka-to-ClickHouse streaming pipeline for a multi-datacenter analytics stack with strong attention to exactly-once behavior, schema evolution, and operability at <a href="https://www.ebayinc.com/" target="_blank" rel="noopener" class="inline-link">eBay</a>. It was not glamorous work, but it was the kind of work that determines whether a data-driven system can be trusted day after day.
       </p>
-
-      <!-- Impact -->
-      <p class="mt-2 text-sm text-emerald-600 font-semibold flex items-center gap-1">
-        <span>🔁</span>
-        Cuts synchronization cost for <strong>large scale ML datasets,</strong> outperforming <code>rsync</code> on <strong>51%</strong> of real-world workloads
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        It gave me direct responsibility for a production-flavored data system where reliability mattered more than cleverness, and it reinforced that I can contribute in the systems layer, not only the model layer.
       </p>
-
-      <!-- Why it matters -->
-      <p class="mt-2 text-sm text-slate-700">
-        Introduces a <strong>practical, bandwidth-efficient reconciliation protocol</strong> for large, frequently updated data—
-        directly applicable to <strong>distributed storage, CI/CD artifacts, and large-scale ML data pipelines</strong>.
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        That experience still shows up in how I work now: I care about interfaces, observability, failure recovery, and the boring details that separate a convincing demo from a dependable system.
       </p>
-
-      <div class="mt-3 flex flex-wrap gap-2">
-        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-           href="publications/Scalable_String_Reconciliation_by_Recursive_Content-Dependent_Shingling.pdf" target="_blank" rel="noopener">PDF</a>
-        <a class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50"
-           href="https://ieeexplore.ieee.org/document/8919901" target="_blank" rel="noopener">IEEE Xplore</a>
-
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-toggle="#abs-rcds">Abstract</button>
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-copy="#bib-rcds">BibTeX</button>
-        <button class="rounded-lg border px-3 py-1 text-sm hover:bg-slate-50" data-copy="#cite-rcds">Cite</button>
-      </div>
-
-      <p id="abs-rcds" class="mt-3 text-sm text-slate-700 hidden">
-        We consider the problem of reconciling similar, but remote, strings with minimum communication complexity. This “string reconciliation” problem is a fundamental building block for a variety of networking applications, including those that maintain large-scale distributed networks and perform remote file synchronization. 
-        We present the novel Recursive Content-Dependent Shingling (RCDS) protocol that is computationally practical for large strings and scales linearly with the edit distance between the remote strings. We provide comparisons to the performance of rsync, one of the most popular file synchronization tools in active use. 
-        Our experiments show that, with minimal engineering, RCDS outperforms the heavily optimized rsync in reconciling release revisions for about 51% of the 5000 top starred git repositories on GitHub. The improvement is particularly evident for repositories that see frequent, but small, updates.
-      </p>
-
-      <pre id="bib-rcds" class="sr-only">@inproceedings{song2019scalable,
-  title={Scalable string reconciliation by recursive content-dependent shingling},
-  author={Song, Bowen and Trachtenberg, Ari},
-  booktitle={2019 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
-  pages={623--630},
-  year={2019},
-  organization={IEEE}
-}</pre>
-      <pre id="cite-rcds" class="sr-only">Song, B., & Trachtenberg, A. (2019). Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS). Allerton 2019.</pre>
     </article>
 
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Red Hat · 2019 to 2020</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">Software Engineer, OpenShift</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Contributed to Operator Lifecycle Manager, Helm integration, dependency management, and flaky-test detection across the <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift" target="_blank" rel="noopener" class="inline-link">OpenShift</a> Kubernetes platform at <a href="https://www.redhat.com/en" target="_blank" rel="noopener" class="inline-link">Red Hat</a>. OpenShift taught me how mature platform teams manage complexity without accepting fragility as the price of scale.
+      </p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        That work gave me strong instincts around maintainability, versioning, release safety, and operational correctness, which still shape how I approach research code and infrastructure today.
+      </p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        It is also one reason I care so much about software quality in research settings: the best ideas compound faster when the codebase is something other people can trust.
+      </p>
+    </article>
   </div>
 </section>
 
-<!-- AI Industry & Research Experience -->
-<section id="experience-ai" class="scroll-mt-24 py-8">
-  <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-    <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-    </span>
-    AI Industry &amp; Research Experience
-  </h2>
-
-  <ul class="mt-5 space-y-4">
-
-    <!-- USC / QEDLAB -->
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-blue-200 transition-all bg-gradient-to-br from-blue-50/30 to-white">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">Personalized AI for Health</h3>
-          <span class="text-xs font-semibold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">Research Lead</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">QEDLAB, USC · Aug 2020 – Present</span>
+<section id="contact" class="scroll-mt-24 py-10">
+  <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_30px_90px_-52px_rgba(15,23,42,0.28)] md:p-10">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Contact</p>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">If the role needs exceptional research taste backed by real engineering, I am interested.</h2>
+        <p class="mt-4 text-base leading-7 text-slate-600">
+          The overview page is intentionally short. The deeper technical story lives in Research and Reading Map, where I explain the agenda, publications, and projects that best represent how I work. If you are evaluating me for a role where model quality, experimental rigor, and systems reliability all matter, those pages are the fastest way to see whether my strongest work matches the bar you care about.
+        </p>
       </div>
-
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-blue-500 mt-0.5">→</span>
-          <span>
-            Led end-to-end development of <strong>real-time, interpretable ML systems</strong> for biomechanical risk estimation from IMU/GRF data, deployed via a <strong>clinician-in-the-loop web platform</strong>
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-blue-500 mt-0.5">→</span>
-          <span>
-            Designed <strong>robust multi-sensor time synchronization</strong> across heterogeneous modalities, correcting drift and lag to enable <strong>causally grounded cross-modal forecasting</strong>
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-0.5">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            Introduced <strong>linear, low-rank personalized models</strong> that <strong>outperformed LSTM baselines</strong> while enabling real-time edge inference; <strong>mentored 10+ student teams</strong> across ML systems and deployment
-          </span>
-        </li>
-      </ul>
-    </li>
-
-    <!-- eBay -->
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-purple-200 transition-all">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">PhD Research Intern — Core Ranking</h3>
-          <span class="text-xs font-semibold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">Industry</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">eBay · May – Aug 2024 · San Jose, CA</span>
+      <div class="rounded-[1.5rem] bg-slate-950 px-5 py-4 text-sm text-slate-200">
+        <p class="font-semibold text-white">Looking ahead</p>
+        <p class="mt-1">Open to 2026 roles in research engineering, applied science, and ML systems.</p>
       </div>
-
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-purple-500 mt-0.5">→</span>
-          <span>
-            Designed and evaluated <strong>Mixture-of-Experts ranking models</strong> for large-scale organic search, jointly optimizing <strong>conversion, click-through, and engagement</strong> metrics
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-purple-500 mt-0.5">→</span>
-          <span>
-            Investigated <strong>natural segmentation and expert capacity allocation</strong> using Mixture of Rankers to improve efficiency and generalization under heterogeneous traffic
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-0.5">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            Built a <strong>scalable multi-GPU training pipeline</strong> using enterprise Krylov, enabling rapid experimentation and production-aligned evaluation of ranking models
-          </span>
-        </li>
-      </ul>
-    </li>
-
-  </ul>
-</section>
-
-
-<!-- Cloud & Industry Experience -->
-<section id="experience-cloud" class="scroll-mt-24 py-8">
-  <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-    <span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
-    </span>
-    Cloud Industry &amp; Research Experience
-  </h2>
-
-  <ul class="mt-5 space-y-4">
-
-    <!-- eBay Infra -->
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-purple-200 transition-all">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">PhD Research Intern — Infrastructure</h3>
-          <span class="text-xs font-semibold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">Industry</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">eBay · May – Aug 2023 · San Jose, CA</span>
-      </div>
-
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-purple-500 mt-0.5">→</span>
-          <span>
-            <strong>Owned and productionized</strong> a Kafka Connector streaming pipeline into a
-            <strong>multi–data center ClickHouse deployment</strong>, supporting <strong>real-time ingestion</strong>
-            with <strong>exactly-once semantics</strong>
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-purple-500 mt-0.5">→</span>
-          <span>
-            Designed for <strong>fault tolerance, schema evolution, and operational simplicity</strong>
-            across heterogeneous production environments
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-0.5">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            Enabled reliable, low-latency analytics on streaming marketplace events across eBay’s
-            distributed infrastructure
-          </span>
-        </li>
-      </ul>
-    </li>
-
-    <!-- Red Hat -->
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-red-200 transition-all">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">Software Engineer — OpenShift</h3>
-          <span class="text-xs font-semibold text-red-600 bg-red-100 px-2 py-0.5 rounded-full">Full-time</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">Red Hat (IBM) · Jun 2019 – Aug 2020 · Boston, MA</span>
-      </div>
-
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-red-500 mt-0.5">→</span>
-          <span>
-            Core contributor to <strong>Operator Lifecycle Manager (OLM)</strong>, responsible for
-            <strong>operator dependency resolution, versioning, and upgrade safety</strong> across
-            large Kubernetes clusters
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-red-500 mt-0.5">→</span>
-          <span>
-            Led integration of <strong>Helm charts</strong> into the Operator Framework, enabling
-            bidirectional import/export between Helm and Kubernetes-native operators
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-red-500 mt-0.5">→</span>
-          <span>
-            Built <strong>automated flaky-test detection and alerting pipelines</strong> using
-            statistical analysis to distinguish nondeterministic failures from real regressions
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-red-500 mt-0.5">→</span>
-          <span>
-            Contributed to the <strong>Kubernetes scheduler and descheduler</strong>, improving
-            workload placement and cluster utilization in production environments
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-0.5">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            Shipped production features used by enterprise OpenShift customers;
-            <strong>mentored distributed systems projects</strong> and served as a
-            <strong>DevConf.US 2020 speaker</strong>
-          </span>
-        </li>
-      </ul>
-    </li>
-
-    <!-- Cloud Federation Research -->
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-green-200 transition-all bg-gradient-to-br from-green-50/30 to-white">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">Cloud Resource Management</h3>
-          <span class="text-xs font-semibold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Research</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">QEDLAB, USC · 2020 – 2022</span>
-      </div>
-
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-green-500 mt-0.5">→</span>
-          <span>
-            Analyzed <strong>performance–cost–QoS trade-offs</strong> in hybrid cloud federations using
-            queueing models and stochastic analysis
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-green-500 mt-0.5">→</span>
-          <span>
-            Designed <strong>fair and incentive-compatible revenue sharing</strong> mechanisms based on
-            <strong>Shapley value</strong> to discourage free-riding
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-0.5">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            Published at IEEE CLOUD; mentored students building
-            <strong>queueing simulators</strong> for large-scale cloud systems
-          </span>
-        </li>
-      </ul>
-    </li>
-
-    <!-- RCDS -->
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-cyan-200 transition-all">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">Efficient String Reconciliation</h3>
-          <span class="text-xs font-semibold text-cyan-600 bg-cyan-100 px-2 py-0.5 rounded-full">Research</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">NISLAB, Boston University · May 2018 – May 2019</span>
-      </div>
-
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-0.5">⚡</span>
-          <span>
-            <strong class="text-emerald-600">Impact:</strong>
-            Designed RCDS, a communication-efficient synchronization protocol that
-            <strong>reduces data movement for large, incrementally updated datasets</strong>
-            and <strong>outperforms rsync in ~50% of realistic workloads</strong>
-          </span>
-        </li>
-      </ul>
-    </li>
-
-  </ul>
-</section>
-
-
-<!-- Skills (Expanded + Recruiter/ATS Friendly) -->
-<section id="skills" class="scroll-mt-24 py-8">
-  <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-    <span class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-    </span>
-    Technical Skills
-  </h2>
-
-  <!-- Core Competencies - Visual Tags -->
-  <div class="mt-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-5">
-    <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">Core Competencies (Recruiter Keywords)</p>
-    <div class="flex flex-wrap gap-2">
-      <span class="inline-flex items-center gap-1.5 bg-blue-500/20 text-blue-200 border border-blue-400/30 px-3 py-1.5 rounded-full text-sm font-medium">⚡ Edge / On-device ML</span>
-      <span class="inline-flex items-center gap-1.5 bg-purple-500/20 text-purple-200 border border-purple-400/30 px-3 py-1.5 rounded-full text-sm font-medium">🔐 Federated + Privacy</span>
-      <span class="inline-flex items-center gap-1.5 bg-green-500/20 text-green-200 border border-green-400/30 px-3 py-1.5 rounded-full text-sm font-medium">📡 Streaming + Real-time</span>
-      <span class="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-200 border border-amber-400/30 px-3 py-1.5 rounded-full text-sm font-medium">🧭 Robotics / Control / Estimation</span>
-      <span class="inline-flex items-center gap-1.5 bg-rose-500/20 text-rose-200 border border-rose-400/30 px-3 py-1.5 rounded-full text-sm font-medium">🚗 AV / Autonomy-ready ML</span>
-      <span class="inline-flex items-center gap-1.5 bg-cyan-500/20 text-cyan-200 border border-cyan-400/30 px-3 py-1.5 rounded-full text-sm font-medium">☁️ Kubernetes + Cloud Systems</span>
-      <span class="inline-flex items-center gap-1.5 bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 px-3 py-1.5 rounded-full text-sm font-medium">📈 Ranking / Recsys / MoE</span>
-      <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 px-3 py-1.5 rounded-full text-sm font-medium">🧪 Reliability / Production Ops</span>
-    </div>
-  </div>
-
-  <!-- Skills Grid -->
-  <div class="mt-5 grid md:grid-cols-3 gap-4">
-
-    <!-- ML / Modeling / Robotics-ready -->
-    <div class="rounded-2xl border border-slate-200 p-4 bg-gradient-to-br from-blue-50/50 to-white hover:shadow-md transition-shadow group">
-      <h3 class="font-bold text-slate-900 flex items-center gap-2 text-base">
-        <span class="text-blue-500">🧠</span> ML + Modeling (Robotics/AV-ready)
-      </h3>
-      <div class="mt-3 flex flex-wrap gap-1.5">
-        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Representation Learning</span>
-        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Low-rank / SVD</span>
-        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Time-series</span>
-        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Multi-task / Multi-modal</span>
-        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Domain Shift</span>
-        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Uncertainty / Calibration</span>
-        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Causal / Counterfactual</span>
-        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Deep Models (CNN/LSTM/Transformer)</span>
-      </div>
-      <details class="mt-3 text-xs text-slate-600">
-        <summary class="cursor-pointer font-medium text-slate-500 hover:text-blue-600">Show details →</summary>
-        <ul class="mt-2 space-y-1 pl-3 border-l-2 border-blue-200">
-          <li><strong>Estimation</strong>: IMU/force/insole signals → GRF, joint moments/angles; latency-optimized inference</li>
-          <li><strong>State / dynamics intuition</strong>: filtering-style thinking, residual modeling, stability-minded evaluation</li>
-          <li><strong>Adaptation</strong>: per-user / per-domain linear adaptation and lightweight personalization</li>
-          <li><strong>Robotics/AV transfer</strong>: sensor fusion patterns, drift/lag compensation, real-time constraints</li>
-          <li><strong>Optimization</strong>: convex objectives, closed-form solvers, L-BFGS/AdamW; careful ablations</li>
-        </ul>
-      </details>
     </div>
 
-    <!-- Systems / Infra / MLOps -->
-    <div class="rounded-2xl border border-slate-200 p-4 bg-gradient-to-br from-purple-50/50 to-white hover:shadow-md transition-shadow group">
-      <h3 class="font-bold text-slate-900 flex items-center gap-2 text-base">
-        <span class="text-purple-500">⚙️</span> ML Systems + Infra
-      </h3>
-      <div class="mt-3 flex flex-wrap gap-1.5">
-        <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">Kubernetes / OpenShift</span>
-        <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">Operator Framework / OLM</span>
-        <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">Docker / Containers</span>
-        <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">Ray / Kubeflow</span>
-        <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">Streaming (Kafka)</span>
-        <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">ClickHouse</span>
-        <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">CI/CD + Testing</span>
-        <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">Observability</span>
-      </div>
-      <details class="mt-3 text-xs text-slate-600">
-        <summary class="cursor-pointer font-medium text-slate-500 hover:text-purple-600">Show details →</summary>
-        <ul class="mt-2 space-y-1 pl-3 border-l-2 border-purple-200">
-          <li><strong>Production K8s</strong>: operator dependency resolution, versioning, Helm integration</li>
-          <li><strong>Data infra</strong>: Kafka connector → distributed column store with exactly-once semantics</li>
-          <li><strong>ML pipelines</strong>: multi-GPU + distributed training workflows; experiment tracking & reproducibility</li>
-          <li><strong>Reliability</strong>: flaky-test detection/monitoring, build health, incident-friendly tooling</li>
-          <li><strong>Cloud + networking</strong>: capacity planning mindset, datacenter/networking exposure</li>
-        </ul>
-      </details>
-    </div>
-
-    <!-- Privacy / Federated / Theory -->
-    <div class="rounded-2xl border border-slate-200 p-4 bg-gradient-to-br from-emerald-50/50 to-white hover:shadow-md transition-shadow group">
-      <h3 class="font-bold text-slate-900 flex items-center gap-2 text-base">
-        <span class="text-emerald-600">🛡️</span> Federated + Privacy + Theory
-      </h3>
-      <div class="mt-3 flex flex-wrap gap-1.5">
-        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-medium">Federated Learning</span>
-        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-medium">Personalization</span>
-        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-medium">Privacy Mechanisms</span>
-        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-medium">Communication Efficiency</span>
-        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-medium">Queueing Theory</span>
-        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-medium">Hybrid Cloud Federation</span>
-        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-medium">QoS / Cost / Revenue</span>
-      </div>
-      <details class="mt-3 text-xs text-slate-600">
-        <summary class="cursor-pointer font-medium text-slate-500 hover:text-emerald-700">Show details →</summary>
-        <ul class="mt-2 space-y-1 pl-3 border-l-2 border-emerald-200">
-          <li><strong>Federated</strong>: aggregation + personalization under bandwidth/latency constraints</li>
-          <li><strong>Privacy-aware ML</strong>: threat-model thinking, DP-ready design (budgeting + evaluation)</li>
-          <li><strong>Systems theory</strong>: queueing + QoS analysis for cloud federation and capacity trade-offs</li>
-          <li><strong>Pragmatic research</strong>: not just theory—end-to-end pipelines and deployable patterns</li>
-        </ul>
-      </details>
-    </div>
-
-  </div>
-
-  <!-- Programming / Languages / Tools (ATS heavy hitters) -->
-  <div class="mt-5 rounded-2xl border border-slate-200 p-5 bg-gradient-to-br from-slate-50 to-white">
-    <h3 class="font-bold text-slate-900 flex items-center gap-2">
-      <span>💻</span> Languages & Tooling
-    </h3>
-    <div class="mt-3 flex flex-wrap gap-2">
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">Python</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">Go</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">C/C++</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">Java</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">Scala</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">R</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">MATLAB</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">SQL</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">Git / GitHub Actions</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">CI-CD / ML Pipelines / ML Ops</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">Linux / Bash</span>
-      <span class="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">LaTeX / Beamer</span>
-    </div>
-  </div>
-
-  <!-- Engineering Wins & Credibility -->
-  <div class="mt-5 grid md:grid-cols-2 gap-4">
-    <div class="rounded-2xl border-2 border-amber-200 p-5 bg-gradient-to-br from-amber-50 to-white">
-      <h3 class="font-bold text-slate-900 flex items-center gap-2">
-        <span>🏆</span> ML Engineering
-      </h3>
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-0.5">⚡</span>
-          <span><strong class="text-amber-700">Low-latency</strong> multi-sensor estimation pipeline (signal sync, drift/lag handling, real-time readiness)</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-0.5">📡</span>
-          <span><strong class="text-amber-700">Exactly-once</strong> Kafka → ClickHouse connector for real-time ingestion at scale</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-0.5">🧩</span>
-          <span><strong class="text-amber-700">MoE at scale</strong> for ranking (multi-objective optimization: clicks / conversion / watches)</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-0.5">☁️</span>
-          <span><strong class="text-amber-700">Kubernetes platform work</strong>: Operator Lifecycle Manager, Helm integration, dependency/version resolution</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-0.5">📈</span>
-          <span><strong class="text-amber-700">Queueing/QoS</strong> thinking applied to cloud federation performance, cost, and reliability tradeoffs</span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="rounded-2xl border border-slate-200 p-5 bg-gradient-to-br from-slate-50 to-white">
-      <h3 class="font-bold text-slate-900 flex items-center gap-2">
-        <span>🎯</span> Outside Work
-      </h3>
-
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-slate-400 mt-0.5">🏃</span>
-          <span>
-            Marathon runner — LA Marathon (2022, 2024), Rose Half, Catalina Marathon
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-slate-400 mt-0.5">🏊</span>
-          <span>
-            Open-water & distance swimmer; occasional surfer
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-slate-400 mt-0.5">🥾</span>
-          <span>
-            Hiking and trail exploration (deserts, coastlines, and mountains)
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-slate-400 mt-0.5">🎹</span>
-          <span>
-            Pianist — classical training, ensemble and solo
-          </span>
-        </li>
-
-        <li class="flex items-start gap-2">
-          <span class="text-slate-400 mt-0.5">🎒</span>
-          <span>
-            Curious traveler; into food, local culture, and learning places deeply
-          </span>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- Teaching & Mentoring -->
-<section id="teaching" class="scroll-mt-24 py-8">
-  <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-    <span class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-    </span>
-    Mentoring &amp; Teaching Experience
-  </h2>
-  <ul class="mt-5 space-y-4">
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-amber-200 transition-all bg-gradient-to-br from-amber-50/30 to-white">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">Mentoring — Academic & Industry</h3>
-          <span class="text-xs font-semibold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">2017–2025</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">USC · BU · Red Hat</span>
-      </div>
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-0.5">→</span>
-          <span>Supervised and mentored <strong class="text-amber-700">10+ MS and undergraduate students</strong> on projects in ML for biomechanics, cloud simulation, and distributed systems</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500 mt-0.5">→</span>
-          <span>Guided students across the full pipeline — from data preprocessing and model design to training and evaluation — resulting in <strong class="text-amber-700">publishable research</strong></span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-0.5">⚡</span>
-          <span><strong class="text-emerald-600">Impact:</strong> Built lab onboarding tutorials for multi-sensor data handling, federated ML, and managing GPU cluster (now a <strong>lab standard</strong>)</span>
-        </li>
-      </ul>
-      <div class="mt-4 pt-3 border-t border-amber-100">
-        <div class="flex items-center gap-3">
-          <a href="https://www.youtube.com/watch?v=6FnfpbiwJTo" target="_blank" rel="noopener"
-             class="inline-flex items-center gap-2 rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-100 transition-colors">
-            📺 Watch Teaching Demo on YouTube
-          </a>
-          <span class="text-xs text-slate-500">Cloud Computing TA role at BU</span>
-        </div>
-      </div>
-    </li>
-
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-blue-200 transition-all">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">Teaching Assistant</h3>
-          <span class="text-xs font-semibold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">2020–2026</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">University of Southern California</span>
-      </div>
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-blue-500 mt-0.5">→</span>
-          <span>TA for 
-            <a class="text-blue-600 underline hover:text-blue-800" href="https://merlot.usc.edu/cs353-s25/" target="_blank" rel="noopener">CSCI 353 (Networking)</a>, 
-            <a class="text-blue-600 underline hover:text-blue-800" href="https://bytes.usc.edu/cs356/" target="_blank" rel="noopener">CSCI 356 (Systems)</a>, 
-            <a class="text-blue-600 underline hover:text-blue-800" href="https://merlot.usc.edu/cs402-m25/" target="_blank" rel="noopener">CSCI 402 (OS)</a>
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-blue-500 mt-0.5">→</span>
-          <span>Led weekly discussions and office hours for <strong class="text-blue-700">100+ students</strong></span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-emerald-500 mt-0.5">⚡</span>
-          <span><strong class="text-emerald-600">Impact:</strong> Built <strong>auto-grading system</strong> reducing manual grading by ~60%</span>
-        </li>
-      </ul>
-    </li>
-
-    <li class="rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-slate-300 transition-all">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <h3 class="font-bold text-lg text-slate-900">Teaching Assistant</h3>
-          <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full">2017–2019</span>
-        </div>
-        <span class="text-sm font-medium text-slate-500">Boston University</span>
-      </div>
-      <ul class="mt-3 space-y-2 text-sm">
-        <li class="flex items-start gap-2">
-          <span class="text-slate-400 mt-0.5">→</span>
-          <span>TA for <a class="text-blue-600 underline hover:text-blue-800" href="https://okrieg.github.io/cc/cc.html" target="_blank" rel="noopener">Cloud Computing (EC 528)</a> — designed labs/projects, hardware deployment</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-slate-400 mt-0.5">→</span>
-          <span>TA for <a class="text-blue-600 underline hover:text-blue-800" href="https://www.bu.edu/academics/eng/courses/eng-ec-601/" target="_blank" rel="noopener">Product Design (EC 601)</a> — led project-based learning, team evaluations</span>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</section>
-
-<!-- Talks & Presentations -->
-<section id="talks" class="scroll-mt-24 py-8">
-  <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-    <span class="w-10 h-10 rounded-xl bg-red-100 text-red-600 flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-      </svg>
-    </span>
-    Talks &amp; Presentations
-  </h2>
-
-  <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-
-    <!-- Red Hat Internal Summit (Host) -->
-    <div class="rounded-2xl border border-slate-200 p-5 text-center bg-white hover:shadow-md hover:border-red-200 transition-all">
-      <div class="flex items-center justify-center gap-2">
-        <span class="text-3xl">🎤</span>
-        <span class="inline-flex items-center rounded-full bg-red-50 text-red-700 border border-red-200 px-2 py-0.5 text-xs font-semibold">
-          Host
-        </span>
-      </div>
-      <h3 class="mt-2 font-bold text-slate-900">Red Hat Summit 2020</h3>
-      <p class="text-sm text-slate-600 mt-1">May 2020 · Boston, MA</p>
-      <p class="text-sm text-slate-500 mt-2">
-        Co-organized Red Hat's flagship week-long summit and served as a host for one full day.
-      </p>
-    </div>
-
-    <!-- DevConf.US 2020 (Sched link) -->
-    <div class="rounded-2xl border border-slate-200 p-5 text-center bg-white hover:shadow-md hover:border-blue-200 transition-all">
-      <span class="text-3xl">🎙️</span>
-      <h3 class="mt-2 font-bold text-slate-900">DevConf.US 2020</h3>
-      <p class="text-sm text-slate-600 mt-1">Sep 2020 · Boston, MA</p>
-      <p class="text-sm text-slate-500 mt-2">
-        Presented work on an eventually-consistent distributed database project (RCDS)
-        and reliability under limited connectivity/topology constraints.
-      </p>
-      <a
-        href="https://devconfus2020.sched.com/event/dkXZ"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center gap-1 mt-3 text-sm font-medium text-blue-600 hover:text-blue-700 underline"
-      >
-        Session link →
-      </a>
-    </div>
-
-    <!-- IEEE CLOUD 2022 -->
-    <div class="rounded-2xl border border-slate-200 p-5 text-center bg-white hover:shadow-md hover:border-indigo-200 transition-all">
-      <span class="text-3xl">📊</span>
-      <h3 class="mt-2 font-bold text-slate-900">IEEE CLOUD 2022</h3>
-      <p class="text-sm text-slate-600 mt-1">Jul 2022 · Barcelona, Spain</p>
-      <p class="text-sm text-slate-500 mt-2">
-        Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements.
-      </p>
-    </div>
-
-    <!-- Allerton 2019 -->
-    <div class="rounded-2xl border border-slate-200 p-5 text-center bg-white hover:shadow-md hover:border-emerald-200 transition-all">
-      <span class="text-3xl">🔬</span>
-      <h3 class="mt-2 font-bold text-slate-900">Allerton 2019</h3>
-      <p class="text-sm text-slate-600 mt-1">Sep 2019 · Monticello, IL</p>
-      <p class="text-sm text-slate-500 mt-2">
-        Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS).
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- Personal Projects -->
-<section id="projects" class="scroll-mt-24 py-8">
-  <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
-    <span class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-    </span>
-    Personal Projects
-  </h2>
-  <p class="mt-3 max-w-3xl text-sm md:text-base text-slate-600 leading-relaxed">
-    I build production-grade open-source tools, including Python and Go libraries, that turn advanced research in
-    privacy-preserving ML, federated and distributed systems, explainable AI, and efficient data reconciliation into
-    practical systems people can actually use. My work emphasizes reusable design, strong testing, CLI workflows,
-    structured reporting, and clear documentation so researchers, students, and engineers can evaluate, adopt, and
-    deploy these ideas with confidence.
-  </p>
-  <div class="mt-6 grid md:grid-cols-2 gap-4">
-
-    <!-- Shapley Value -->
-    <article class="group rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-blue-300 transition-all">
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">Python Package</span>
-        <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-      </div>
-      <h3 class="mt-3 font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">Shapley Value Calculator</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        A comprehensive Python package for calculating Shapley values in cooperative game theory. Provides a mathematically principled method for fairly distributing payoffs among players based on their marginal contributions to coalitions.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2">
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://bowenislandsong.github.io/shapley-value/" target="_blank" rel="noopener">Project Page</a>
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://github.com/Bowenislandsong/shapley-value" target="_blank" rel="noopener">GitHub</a>
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://pypi.org/project/shapley-value/" target="_blank" rel="noopener">PyPI</a>
-      </div>
-    </article>
-
-    <!-- CoT-Rec -->
-    <article class="group rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-purple-300 transition-all">
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-semibold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full">Research Framework</span>
-        <svg class="w-5 h-5 text-slate-400 group-hover:text-purple-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-      </div>
-      <h3 class="mt-3 font-bold text-lg text-slate-900 group-hover:text-purple-600 transition-colors">CoT-Rec: Chain-of-Thought Recommendation</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        A recommendation framework that leverages Chain-of-Thought reasoning to enhance decision-making by incorporating step-by-step logical reasoning into the recommendation process. Improves interpretability, adaptability, and performance in various recommendation scenarios.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2">
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://bowenislandsong.github.io/CoT-Rec/" target="_blank" rel="noopener">Project Page</a>
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://github.com/Bowenislandsong/CoT-Rec" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </article>
-
-    <!-- NeuroNetes -->
-    <article class="group rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-green-300 transition-all">
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-semibold text-green-600 bg-green-50 px-2.5 py-1 rounded-full">Infrastructure</span>
-        <svg class="w-5 h-5 text-slate-400 group-hover:text-green-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-      </div>
-      <h3 class="mt-3 font-bold text-lg text-slate-900 group-hover:text-green-600 transition-colors">NeuroNetes: Agent-Native Kubernetes Framework</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        A comprehensive Kubernetes extension framework designed specifically for AI agent workloads. Addresses the unique requirements of LLM-based applications with agent-aware scheduling, token-based autoscaling, GPU-first orchestration, and conversation-level routing.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2">
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://bowenislandsong.github.io/NeuroNetes/" target="_blank" rel="noopener">Project Page</a>
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://github.com/Bowenislandsong/NeuroNetes" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </article>
-
-    <!-- RCDS_GO -->
-    <article class="group rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-cyan-300 transition-all">
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-semibold text-cyan-600 bg-cyan-50 px-2.5 py-1 rounded-full">Go Implementation</span>
-        <svg class="w-5 h-5 text-slate-400 group-hover:text-cyan-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-      </div>
-      <h3 class="mt-3 font-bold text-lg text-slate-900 group-hover:text-cyan-600 transition-colors">RCDS: Recursive Content-Dependent Shingling</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        A scalable string reconciliation protocol for distributed systems. This Go implementation breaks files into data sets and uses set reconciliation primitives to efficiently synchronize remote files with minimal communication overhead.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2">
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </article>
-
-    <!-- Distributed Random Forest -->
-    <article class="group rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-indigo-300 transition-all">
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Privacy-Preserving ML</span>
-        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-      </div>
-      <h3 class="mt-3 font-bold text-lg text-slate-900 group-hover:text-indigo-600 transition-colors">Distributed Random Forest</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        A production-grade federated Random Forest library that integrates <strong>validation-driven tree aggregation</strong>, realistic <strong>non-IID partitioning</strong> (Dirichlet, label-skew, feature-based, etc.), and configurable <strong>differential privacy</strong> into a unified, reusable workflow.
-
-        It delivers near-centralized performance under challenging data heterogeneity, preserving a large fraction of centralized accuracy even on difficult non-IID splits while enforcing formal privacy guarantees. The package includes parallel training backends, a flexible CLI, comprehensive JSON run reports for auditing and benchmarking, full test coverage, and clean documentation, making it suitable for both research experimentation and real-world federated deployments where interpretability, privacy, and data decentralization matter.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2">
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://bowenislandsong.github.io/distributed_random_forest/" target="_blank" rel="noopener">Project Page</a>
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://github.com/Bowenislandsong/distributed_random_forest" target="_blank" rel="noopener">GitHub</a>
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://pypi.org/project/distributed-random-forest/" target="_blank" rel="noopener">PyPI</a>
-      </div>
-    </article>
-
-    <!-- SER -->
-    <article class="group rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-amber-300 transition-all">
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">Python Library</span>
-        <svg class="w-5 h-5 text-slate-400 group-hover:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-      </div>
-      <h3 class="mt-3 font-bold text-lg text-slate-900 group-hover:text-amber-600 transition-colors">SER: SVD Embedding Regression</h3>
-      <p class="mt-2 text-sm text-slate-600">
-        A Python library providing advanced machine learning algorithms including SVD Embedding Regression, Distributed SVD, and Federated SVD. Combines dimensionality reduction with regression for efficient, privacy-preserving predictions from wearable sensor data.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2">
-        <a class="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-200 transition-colors"
-           href="https://github.com/Bowenislandsong/SER" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="scroll-mt-24 py-8">
-  <div class="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-8 md:p-10">
-    <h2 class="text-2xl md:text-3xl font-bold">Let's Connect</h2>
-    <p class="mt-3 text-slate-300 max-w-xl">I'm always open to discussing new opportunities, research collaborations, or just chatting about ML and systems.</p>
-    
-    <div class="mt-6 flex flex-wrap gap-4">
-      <a href="mailto:bowenson@usc.edu" 
-         class="inline-flex items-center gap-2 rounded-xl bg-white text-slate-900 px-5 py-3 font-semibold hover:bg-slate-100 transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="mailto:bowenson@usc.edu" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-slate-800">
         bowenson@usc.edu
       </a>
-      <a href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 rounded-xl bg-blue-600 text-white px-5 py-3 font-semibold hover:bg-blue-500 transition-colors">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <a href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-50">
         LinkedIn
       </a>
+      <a href="#/research" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        Research
+      </a>
     </div>
-    
-    <p class="mt-6 text-sm text-slate-400 flex items-center gap-2">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-      Los Angeles, CA 90007
-    </p>
-  </div>
-</section>
-
-<!-- Affiliations -->
-<section id="affiliations" class="py-10">
-  <h2 class="text-xl font-bold text-slate-500 text-center mb-6">Affiliations</h2>
-  <div class="flex flex-wrap gap-10 items-center justify-center">
-    <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="grayscale hover:grayscale-0 opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300">
-      <img src="img/Affiliation/qed_logo.png" alt="QED Lab Logo" class="h-14 md:h-20 max-w-xs object-contain" title="QED Lab" />
-    </a>
-    <a href="https://www.usc.edu/" target="_blank" rel="noopener" class="grayscale hover:grayscale-0 opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300">
-      <img src="img/Affiliation/usc_logo.png" alt="USC Logo" class="h-14 md:h-20 max-w-xs object-contain" title="University of Southern California" />
-    </a>
-    <a href="https://www.bu.edu/" target="_blank" rel="noopener" class="grayscale hover:grayscale-0 opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300">
-      <img src="img/Affiliation/master_logo.gif" alt="BU Logo" class="h-14 md:h-20 max-w-xs object-contain" title="BU" />
-    </a>
-    <a href="https://www.uvic.ca/" target="_blank" rel="noopener" class="grayscale hover:grayscale-0 opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300">
-      <img src="img/Affiliation/uvic_logo.png" alt="UVic Logo" class="h-14 md:h-20 max-w-xs object-contain" title="University of Victoria" />
-    </a>
   </div>
 </section>

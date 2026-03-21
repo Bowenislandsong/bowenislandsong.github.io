@@ -1,6 +1,9 @@
 import os
 import json
 
+def sort_entries(entries):
+    return sorted(entries, key=lambda item: (item["path"].lower(), item["name"].lower()))
+
 def generate_index(root, ext, out_path):
     files = []
     for dirpath, _, filenames in os.walk(root):
@@ -9,7 +12,8 @@ def generate_index(root, ext, out_path):
                 path = os.path.join(dirpath, f).replace("\\", "/")
                 files.append({"name": f, "path": path})
     with open(out_path, "w") as out:
-        json.dump(files, out, indent=2)
+        json.dump(sort_entries(files), out, indent=2)
+        out.write("\n")
 
 def generate_classes_index():
     """Generate classes index with both PDF and markdown files"""
@@ -21,7 +25,8 @@ def generate_classes_index():
                 file_type = "pdf" if f.lower().endswith('.pdf') else "markdown" if f.lower().endswith('.md') else "asm"
                 files.append({"name": f, "path": path, "type": file_type})
     with open("classes/index.json", "w") as out:
-        json.dump(files, out, indent=2)
+        json.dump(sort_entries(files), out, indent=2)
+        out.write("\n")
 
 if __name__ == "__main__":
     generate_classes_index()

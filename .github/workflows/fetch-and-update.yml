@@ -16,13 +16,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - name: Install dependencies
-        run: pip install requests
       - name: Fetch paper via Gemini
-        run: python test/test_gemini_fetch.py
+        run: python3 .github/scripts/fetch_paper.py
       - name: Generate index files
         run: |
           python3 .github/scripts/generate_indexes.py
+      - name: Run full test suite
+        run: |
+          python3 -m unittest discover -s test -q
       - name: Commit new paper and updated indexes
         run: |
           git config --global user.name "github-actions"

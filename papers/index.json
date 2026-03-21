@@ -1,63 +1,311 @@
 [
   {
-    "name": "gemini_2025-11-11_10-1109-TIM-2024-3370900.md",
-    "path": "papers/gemini_2025-11-11_10-1109-TIM-2024-3370900.md"
+    "name": "2311.02287.md",
+    "path": "papers/2311.02287.md"
   },
   {
-    "name": "gemini_2025-10-14_no-doi-0a6d4fc4.md",
-    "path": "papers/gemini_2025-10-14_no-doi-0a6d4fc4.md"
+    "name": "gemini_2025-09-16.md",
+    "path": "papers/gemini_2025-09-16.md"
   },
   {
-    "name": "gemini_2025-12-02_no-doi-d881849d.md",
-    "path": "papers/gemini_2025-12-02_no-doi-d881849d.md"
+    "name": "gemini_2025-09-16_10-3390-s22155674.md",
+    "path": "papers/gemini_2025-09-16_10-3390-s22155674.md"
   },
   {
-    "name": "gemini_2025-11-22_10-1109-TNSRE-2024-3361370.md",
-    "path": "papers/gemini_2025-11-22_10-1109-TNSRE-2024-3361370.md"
+    "name": "gemini_2025-09-16_10.1109-TBME.2023.3248160.md",
+    "path": "papers/gemini_2025-09-16_10.1109-TBME.2023.3248160.md"
   },
   {
-    "name": "gemini_2025-10-16_no-doi-177451f1.md",
-    "path": "papers/gemini_2025-10-16_no-doi-177451f1.md"
+    "name": "gemini_2025-09-16_no-doi-24ff9731.md",
+    "path": "papers/gemini_2025-09-16_no-doi-24ff9731.md"
   },
   {
-    "name": "gemini_2025-10-09_no-doi-c778107d.md",
-    "path": "papers/gemini_2025-10-09_no-doi-c778107d.md"
-  },
-  {
-    "name": "gemini_2025-11-12_no-doi-33396121.md",
-    "path": "papers/gemini_2025-11-12_no-doi-33396121.md"
-  },
-  {
-    "name": "gemini_2025-11-14_no-doi-4a743586.md",
-    "path": "papers/gemini_2025-11-14_no-doi-4a743586.md"
-  },
-  {
-    "name": "gemini_2025-11-04_no-doi-b519b139.md",
-    "path": "papers/gemini_2025-11-04_no-doi-b519b139.md"
-  },
-  {
-    "name": "gemini_2025-12-06_10-1109-TNSRE-2024-3372300.md",
-    "path": "papers/gemini_2025-12-06_10-1109-TNSRE-2024-3372300.md"
-  },
-  {
-    "name": "gemini_2025-10-24_10-1109-TBME-2020-3000576.md",
-    "path": "papers/gemini_2025-10-24_10-1109-TBME-2020-3000576.md"
-  },
-  {
-    "name": "gemini_2025-11-09_no-doi-66e350ff.md",
-    "path": "papers/gemini_2025-11-09_no-doi-66e350ff.md"
-  },
-  {
-    "name": "gemini_2025-10-06_10-3390-s22166172.md",
-    "path": "papers/gemini_2025-10-06_10-3390-s22166172.md"
+    "name": "gemini_2025-09-16_no-doi-eb72d658.md",
+    "path": "papers/gemini_2025-09-16_no-doi-eb72d658.md"
   },
   {
     "name": "gemini_2025-09-16_no-doi-fc9b848f.md",
     "path": "papers/gemini_2025-09-16_no-doi-fc9b848f.md"
   },
   {
+    "name": "gemini_2025-09-17_no-doi-71c5ef30.md",
+    "path": "papers/gemini_2025-09-17_no-doi-71c5ef30.md"
+  },
+  {
+    "name": "gemini_2025-09-18_10-3390-s22176704.md",
+    "path": "papers/gemini_2025-09-18_10-3390-s22176704.md"
+  },
+  {
+    "name": "gemini_2025-09-19_no-doi-6c83c7d0.md",
+    "path": "papers/gemini_2025-09-19_no-doi-6c83c7d0.md"
+  },
+  {
+    "name": "gemini_2025-09-20_10-3390-s23156951.md",
+    "path": "papers/gemini_2025-09-20_10-3390-s23156951.md"
+  },
+  {
+    "name": "gemini_2025-09-21_10-3390-s22020461.md",
+    "path": "papers/gemini_2025-09-21_10-3390-s22020461.md"
+  },
+  {
+    "name": "gemini_2025-09-22_no-doi-a91cf673.md",
+    "path": "papers/gemini_2025-09-22_no-doi-a91cf673.md"
+  },
+  {
+    "name": "gemini_2025-09-23_10-3390-s22197226.md",
+    "path": "papers/gemini_2025-09-23_10-3390-s22197226.md"
+  },
+  {
+    "name": "gemini_2025-09-24_10-3390-s22166218.md",
+    "path": "papers/gemini_2025-09-24_10-3390-s22166218.md"
+  },
+  {
+    "name": "gemini_2025-09-25_no-doi-65afb97b.md",
+    "path": "papers/gemini_2025-09-25_no-doi-65afb97b.md"
+  },
+  {
+    "name": "gemini_2025-09-26_no-doi-cda6208f.md",
+    "path": "papers/gemini_2025-09-26_no-doi-cda6208f.md"
+  },
+  {
+    "name": "gemini_2025-09-27_no-doi-446d3579.md",
+    "path": "papers/gemini_2025-09-27_no-doi-446d3579.md"
+  },
+  {
+    "name": "gemini_2025-09-28_no-doi-fef2a70f.md",
+    "path": "papers/gemini_2025-09-28_no-doi-fef2a70f.md"
+  },
+  {
+    "name": "gemini_2025-09-29_no-doi-c22085a5.md",
+    "path": "papers/gemini_2025-09-29_no-doi-c22085a5.md"
+  },
+  {
+    "name": "gemini_2025-09-30_no-doi-47a79091.md",
+    "path": "papers/gemini_2025-09-30_no-doi-47a79091.md"
+  },
+  {
+    "name": "gemini_2025-10-01_10-1109-TBME-2023-3332590.md",
+    "path": "papers/gemini_2025-10-01_10-1109-TBME-2023-3332590.md"
+  },
+  {
+    "name": "gemini_2025-10-02_no-doi-d4db86d4.md",
+    "path": "papers/gemini_2025-10-02_no-doi-d4db86d4.md"
+  },
+  {
+    "name": "gemini_2025-10-03_10-1109-TBME-2022-3154321.md",
+    "path": "papers/gemini_2025-10-03_10-1109-TBME-2022-3154321.md"
+  },
+  {
+    "name": "gemini_2025-10-04_10-1109-TIM-2023-3293331.md",
+    "path": "papers/gemini_2025-10-04_10-1109-TIM-2023-3293331.md"
+  },
+  {
+    "name": "gemini_2025-10-05_no-doi-5661174d.md",
+    "path": "papers/gemini_2025-10-05_no-doi-5661174d.md"
+  },
+  {
+    "name": "gemini_2025-10-06_10-3390-s22166172.md",
+    "path": "papers/gemini_2025-10-06_10-3390-s22166172.md"
+  },
+  {
+    "name": "gemini_2025-10-07_no-doi-6280cdb4.md",
+    "path": "papers/gemini_2025-10-07_no-doi-6280cdb4.md"
+  },
+  {
+    "name": "gemini_2025-10-08_10-1109-TBME-2022-3169614.md",
+    "path": "papers/gemini_2025-10-08_10-1109-TBME-2022-3169614.md"
+  },
+  {
+    "name": "gemini_2025-10-09_no-doi-c778107d.md",
+    "path": "papers/gemini_2025-10-09_no-doi-c778107d.md"
+  },
+  {
+    "name": "gemini_2025-10-10_no-doi-b0a4bc4c.md",
+    "path": "papers/gemini_2025-10-10_no-doi-b0a4bc4c.md"
+  },
+  {
+    "name": "gemini_2025-10-11_no-doi-86895b1a.md",
+    "path": "papers/gemini_2025-10-11_no-doi-86895b1a.md"
+  },
+  {
+    "name": "gemini_2025-10-12_10-3390-s22114067.md",
+    "path": "papers/gemini_2025-10-12_10-3390-s22114067.md"
+  },
+  {
+    "name": "gemini_2025-10-13_10-3390-s22166180.md",
+    "path": "papers/gemini_2025-10-13_10-3390-s22166180.md"
+  },
+  {
+    "name": "gemini_2025-10-14_no-doi-0a6d4fc4.md",
+    "path": "papers/gemini_2025-10-14_no-doi-0a6d4fc4.md"
+  },
+  {
+    "name": "gemini_2025-10-15_no-doi-e0f05554.md",
+    "path": "papers/gemini_2025-10-15_no-doi-e0f05554.md"
+  },
+  {
+    "name": "gemini_2025-10-16_no-doi-177451f1.md",
+    "path": "papers/gemini_2025-10-16_no-doi-177451f1.md"
+  },
+  {
+    "name": "gemini_2025-10-17_10-1109-TBME-2023-3295467.md",
+    "path": "papers/gemini_2025-10-17_10-1109-TBME-2023-3295467.md"
+  },
+  {
+    "name": "gemini_2025-10-18_no-doi-9a0796c9.md",
+    "path": "papers/gemini_2025-10-18_no-doi-9a0796c9.md"
+  },
+  {
+    "name": "gemini_2025-10-19_no-doi-dc5d81f6.md",
+    "path": "papers/gemini_2025-10-19_no-doi-dc5d81f6.md"
+  },
+  {
+    "name": "gemini_2025-10-20_no-doi-74664007.md",
+    "path": "papers/gemini_2025-10-20_no-doi-74664007.md"
+  },
+  {
+    "name": "gemini_2025-10-21_no-doi-13b3d707.md",
+    "path": "papers/gemini_2025-10-21_no-doi-13b3d707.md"
+  },
+  {
+    "name": "gemini_2025-10-22_no-doi-af0d914e.md",
+    "path": "papers/gemini_2025-10-22_no-doi-af0d914e.md"
+  },
+  {
+    "name": "gemini_2025-10-23_10-1109-TNSRE-2023-3332053.md",
+    "path": "papers/gemini_2025-10-23_10-1109-TNSRE-2023-3332053.md"
+  },
+  {
+    "name": "gemini_2025-10-24_10-1109-TBME-2020-3000576.md",
+    "path": "papers/gemini_2025-10-24_10-1109-TBME-2020-3000576.md"
+  },
+  {
+    "name": "gemini_2025-10-25_10-3390-s24072345.md",
+    "path": "papers/gemini_2025-10-25_10-3390-s24072345.md"
+  },
+  {
+    "name": "gemini_2025-10-26_no-doi-a5c802b3.md",
+    "path": "papers/gemini_2025-10-26_no-doi-a5c802b3.md"
+  },
+  {
+    "name": "gemini_2025-10-27_10-3390-s22176503.md",
+    "path": "papers/gemini_2025-10-27_10-3390-s22176503.md"
+  },
+  {
+    "name": "gemini_2025-10-28_10-1109-TIM-2023-3275610.md",
+    "path": "papers/gemini_2025-10-28_10-1109-TIM-2023-3275610.md"
+  },
+  {
+    "name": "gemini_2025-10-29_no-doi-0a3a2b3d.md",
+    "path": "papers/gemini_2025-10-29_no-doi-0a3a2b3d.md"
+  },
+  {
+    "name": "gemini_2025-10-30_10-3390-s22186920.md",
+    "path": "papers/gemini_2025-10-30_10-3390-s22186920.md"
+  },
+  {
+    "name": "gemini_2025-10-31_no-doi-b2e3651b.md",
+    "path": "papers/gemini_2025-10-31_no-doi-b2e3651b.md"
+  },
+  {
+    "name": "gemini_2025-11-01_10-1109-TNSRE-2023-3280304.md",
+    "path": "papers/gemini_2025-11-01_10-1109-TNSRE-2023-3280304.md"
+  },
+  {
+    "name": "gemini_2025-11-02_no-doi-7abe7a53.md",
+    "path": "papers/gemini_2025-11-02_no-doi-7abe7a53.md"
+  },
+  {
+    "name": "gemini_2025-11-03_10-1109-TNSRE-2024-3366302.md",
+    "path": "papers/gemini_2025-11-03_10-1109-TNSRE-2024-3366302.md"
+  },
+  {
+    "name": "gemini_2025-11-04_no-doi-b519b139.md",
+    "path": "papers/gemini_2025-11-04_no-doi-b519b139.md"
+  },
+  {
+    "name": "gemini_2025-11-05_10-3390-s22093209.md",
+    "path": "papers/gemini_2025-11-05_10-3390-s22093209.md"
+  },
+  {
+    "name": "gemini_2025-11-06_10-1109-TNSRE-2024-3371355.md",
+    "path": "papers/gemini_2025-11-06_10-1109-TNSRE-2024-3371355.md"
+  },
+  {
+    "name": "gemini_2025-11-07_no-doi-e2bd4916.md",
+    "path": "papers/gemini_2025-11-07_no-doi-e2bd4916.md"
+  },
+  {
+    "name": "gemini_2025-11-08_10-1109-TNSRE-2024-3368980.md",
+    "path": "papers/gemini_2025-11-08_10-1109-TNSRE-2024-3368980.md"
+  },
+  {
+    "name": "gemini_2025-11-09_no-doi-66e350ff.md",
+    "path": "papers/gemini_2025-11-09_no-doi-66e350ff.md"
+  },
+  {
+    "name": "gemini_2025-11-10_10-1016-j-jbiomech-2022-111085.md",
+    "path": "papers/gemini_2025-11-10_10-1016-j-jbiomech-2022-111085.md"
+  },
+  {
+    "name": "gemini_2025-11-11_10-1109-TIM-2024-3370900.md",
+    "path": "papers/gemini_2025-11-11_10-1109-TIM-2024-3370900.md"
+  },
+  {
+    "name": "gemini_2025-11-12_no-doi-33396121.md",
+    "path": "papers/gemini_2025-11-12_no-doi-33396121.md"
+  },
+  {
     "name": "gemini_2025-11-13_10-3390-s24072284.md",
     "path": "papers/gemini_2025-11-13_10-3390-s24072284.md"
+  },
+  {
+    "name": "gemini_2025-11-14_no-doi-4a743586.md",
+    "path": "papers/gemini_2025-11-14_no-doi-4a743586.md"
+  },
+  {
+    "name": "gemini_2025-11-15_10-1109-TIM-2024-3375298.md",
+    "path": "papers/gemini_2025-11-15_10-1109-TIM-2024-3375298.md"
+  },
+  {
+    "name": "gemini_2025-11-16_no-doi-5cf5da23.md",
+    "path": "papers/gemini_2025-11-16_no-doi-5cf5da23.md"
+  },
+  {
+    "name": "gemini_2025-11-17_no-doi-da23c476.md",
+    "path": "papers/gemini_2025-11-17_no-doi-da23c476.md"
+  },
+  {
+    "name": "gemini_2025-11-18_no-doi-61d7a990.md",
+    "path": "papers/gemini_2025-11-18_no-doi-61d7a990.md"
+  },
+  {
+    "name": "gemini_2025-11-19_10-3390-s22197591.md",
+    "path": "papers/gemini_2025-11-19_10-3390-s22197591.md"
+  },
+  {
+    "name": "gemini_2025-11-20_10-3390-s24082570.md",
+    "path": "papers/gemini_2025-11-20_10-3390-s24082570.md"
+  },
+  {
+    "name": "gemini_2025-11-21_no-doi-71ee65ce.md",
+    "path": "papers/gemini_2025-11-21_no-doi-71ee65ce.md"
+  },
+  {
+    "name": "gemini_2025-11-22_10-1109-TNSRE-2024-3361370.md",
+    "path": "papers/gemini_2025-11-22_10-1109-TNSRE-2024-3361370.md"
+  },
+  {
+    "name": "gemini_2025-11-23_no-doi-1a26e6ae.md",
+    "path": "papers/gemini_2025-11-23_no-doi-1a26e6ae.md"
+  },
+  {
+    "name": "gemini_2025-11-24_10-1109-TNSRE-2024-3366670.md",
+    "path": "papers/gemini_2025-11-24_10-1109-TNSRE-2024-3366670.md"
+  },
+  {
+    "name": "gemini_2025-11-25_no-doi-0d6a8afe.md",
+    "path": "papers/gemini_2025-11-25_no-doi-0d6a8afe.md"
   },
   {
     "name": "gemini_2025-11-26_no-doi-9c0a6f5b.md",
@@ -68,287 +316,39 @@
     "path": "papers/gemini_2025-11-27_10-3390-s24072255.md"
   },
   {
-    "name": "gemini_2025-10-03_10-1109-TBME-2022-3154321.md",
-    "path": "papers/gemini_2025-10-03_10-1109-TBME-2022-3154321.md"
-  },
-  {
-    "name": "gemini_2025-11-07_no-doi-e2bd4916.md",
-    "path": "papers/gemini_2025-11-07_no-doi-e2bd4916.md"
-  },
-  {
-    "name": "gemini_2025-11-21_no-doi-71ee65ce.md",
-    "path": "papers/gemini_2025-11-21_no-doi-71ee65ce.md"
-  },
-  {
-    "name": "gemini_2025-09-29_no-doi-c22085a5.md",
-    "path": "papers/gemini_2025-09-29_no-doi-c22085a5.md"
-  },
-  {
-    "name": "gemini_2025-10-27_10-3390-s22176503.md",
-    "path": "papers/gemini_2025-10-27_10-3390-s22176503.md"
-  },
-  {
-    "name": "gemini_2025-09-17_no-doi-71c5ef30.md",
-    "path": "papers/gemini_2025-09-17_no-doi-71c5ef30.md"
-  },
-  {
-    "name": "gemini_2025-11-05_10-3390-s22093209.md",
-    "path": "papers/gemini_2025-11-05_10-3390-s22093209.md"
-  },
-  {
-    "name": "gemini_2025-09-22_no-doi-a91cf673.md",
-    "path": "papers/gemini_2025-09-22_no-doi-a91cf673.md"
-  },
-  {
-    "name": "gemini_2025-09-20_10-3390-s23156951.md",
-    "path": "papers/gemini_2025-09-20_10-3390-s23156951.md"
-  },
-  {
-    "name": "gemini_2025-11-17_no-doi-da23c476.md",
-    "path": "papers/gemini_2025-11-17_no-doi-da23c476.md"
-  },
-  {
-    "name": "gemini_2025-11-30_no-doi-b9046454.md",
-    "path": "papers/gemini_2025-11-30_no-doi-b9046454.md"
-  },
-  {
     "name": "gemini_2025-11-28_no-doi-cd69bbbf.md",
     "path": "papers/gemini_2025-11-28_no-doi-cd69bbbf.md"
-  },
-  {
-    "name": "gemini_2025-09-21_10-3390-s22020461.md",
-    "path": "papers/gemini_2025-09-21_10-3390-s22020461.md"
-  },
-  {
-    "name": "gemini_2025-10-05_no-doi-5661174d.md",
-    "path": "papers/gemini_2025-10-05_no-doi-5661174d.md"
-  },
-  {
-    "name": "gemini_2025-10-15_no-doi-e0f05554.md",
-    "path": "papers/gemini_2025-10-15_no-doi-e0f05554.md"
-  },
-  {
-    "name": "gemini_2025-10-29_no-doi-0a3a2b3d.md",
-    "path": "papers/gemini_2025-10-29_no-doi-0a3a2b3d.md"
   },
   {
     "name": "gemini_2025-11-29_10-3390-s24072167.md",
     "path": "papers/gemini_2025-11-29_10-3390-s24072167.md"
   },
   {
-    "name": "gemini_2025-12-05_no-doi-c3c77a8f.md",
-    "path": "papers/gemini_2025-12-05_no-doi-c3c77a8f.md"
-  },
-  {
-    "name": "gemini_2025-09-25_no-doi-65afb97b.md",
-    "path": "papers/gemini_2025-09-25_no-doi-65afb97b.md"
-  },
-  {
-    "name": "gemini_2025-10-26_no-doi-a5c802b3.md",
-    "path": "papers/gemini_2025-10-26_no-doi-a5c802b3.md"
-  },
-  {
-    "name": "gemini_2025-09-28_no-doi-fef2a70f.md",
-    "path": "papers/gemini_2025-09-28_no-doi-fef2a70f.md"
-  },
-  {
-    "name": "gemini_2025-10-22_no-doi-af0d914e.md",
-    "path": "papers/gemini_2025-10-22_no-doi-af0d914e.md"
-  },
-  {
-    "name": "gemini_2025-09-23_10-3390-s22197226.md",
-    "path": "papers/gemini_2025-09-23_10-3390-s22197226.md"
-  },
-  {
-    "name": "gemini_2025-11-03_10-1109-TNSRE-2024-3366302.md",
-    "path": "papers/gemini_2025-11-03_10-1109-TNSRE-2024-3366302.md"
-  },
-  {
-    "name": "gemini_2025-09-30_no-doi-47a79091.md",
-    "path": "papers/gemini_2025-09-30_no-doi-47a79091.md"
-  },
-  {
-    "name": "gemini_2025-09-16_no-doi-24ff9731.md",
-    "path": "papers/gemini_2025-09-16_no-doi-24ff9731.md"
-  },
-  {
-    "name": "gemini_2025-09-24_10-3390-s22166218.md",
-    "path": "papers/gemini_2025-09-24_10-3390-s22166218.md"
-  },
-  {
-    "name": "gemini_2025-10-01_10-1109-TBME-2023-3332590.md",
-    "path": "papers/gemini_2025-10-01_10-1109-TBME-2023-3332590.md"
-  },
-  {
-    "name": "gemini_2025-10-19_no-doi-dc5d81f6.md",
-    "path": "papers/gemini_2025-10-19_no-doi-dc5d81f6.md"
-  },
-  {
-    "name": "gemini_2025-09-16_10-3390-s22155674.md",
-    "path": "papers/gemini_2025-09-16_10-3390-s22155674.md"
-  },
-  {
-    "name": "gemini_2025-09-16_no-doi-eb72d658.md",
-    "path": "papers/gemini_2025-09-16_no-doi-eb72d658.md"
-  },
-  {
-    "name": "2311.02287.md",
-    "path": "papers/2311.02287.md"
-  },
-  {
-    "name": "gemini_2025-09-27_no-doi-446d3579.md",
-    "path": "papers/gemini_2025-09-27_no-doi-446d3579.md"
-  },
-  {
-    "name": "gemini_2025-09-19_no-doi-6c83c7d0.md",
-    "path": "papers/gemini_2025-09-19_no-doi-6c83c7d0.md"
-  },
-  {
-    "name": "gemini_2025-10-17_10-1109-TBME-2023-3295467.md",
-    "path": "papers/gemini_2025-10-17_10-1109-TBME-2023-3295467.md"
-  },
-  {
-    "name": "gemini_2025-10-20_no-doi-74664007.md",
-    "path": "papers/gemini_2025-10-20_no-doi-74664007.md"
-  },
-  {
-    "name": "gemini_2025-11-16_no-doi-5cf5da23.md",
-    "path": "papers/gemini_2025-11-16_no-doi-5cf5da23.md"
-  },
-  {
-    "name": "gemini_2025-12-04_no-doi-ba56d4d7.md",
-    "path": "papers/gemini_2025-12-04_no-doi-ba56d4d7.md"
-  },
-  {
-    "name": "gemini_2025-11-25_no-doi-0d6a8afe.md",
-    "path": "papers/gemini_2025-11-25_no-doi-0d6a8afe.md"
-  },
-  {
-    "name": "gemini_2025-10-13_10-3390-s22166180.md",
-    "path": "papers/gemini_2025-10-13_10-3390-s22166180.md"
-  },
-  {
-    "name": "gemini_2025-09-26_no-doi-cda6208f.md",
-    "path": "papers/gemini_2025-09-26_no-doi-cda6208f.md"
-  },
-  {
-    "name": "gemini_2025-09-16.md",
-    "path": "papers/gemini_2025-09-16.md"
-  },
-  {
-    "name": "gemini_2025-10-11_no-doi-86895b1a.md",
-    "path": "papers/gemini_2025-10-11_no-doi-86895b1a.md"
-  },
-  {
-    "name": "gemini_2025-11-02_no-doi-7abe7a53.md",
-    "path": "papers/gemini_2025-11-02_no-doi-7abe7a53.md"
-  },
-  {
-    "name": "gemini_2025-10-28_10-1109-TIM-2023-3275610.md",
-    "path": "papers/gemini_2025-10-28_10-1109-TIM-2023-3275610.md"
-  },
-  {
-    "name": "gemini_2025-10-30_10-3390-s22186920.md",
-    "path": "papers/gemini_2025-10-30_10-3390-s22186920.md"
-  },
-  {
-    "name": "gemini_2025-12-03_10-1016-j-jbiomech-2024-111928.md",
-    "path": "papers/gemini_2025-12-03_10-1016-j-jbiomech-2024-111928.md"
-  },
-  {
-    "name": "gemini_2025-10-23_10-1109-TNSRE-2023-3332053.md",
-    "path": "papers/gemini_2025-10-23_10-1109-TNSRE-2023-3332053.md"
-  },
-  {
-    "name": "gemini_2025-10-25_10-3390-s24072345.md",
-    "path": "papers/gemini_2025-10-25_10-3390-s24072345.md"
-  },
-  {
-    "name": "gemini_2025-11-01_10-1109-TNSRE-2023-3280304.md",
-    "path": "papers/gemini_2025-11-01_10-1109-TNSRE-2023-3280304.md"
-  },
-  {
-    "name": "gemini_2025-11-23_no-doi-1a26e6ae.md",
-    "path": "papers/gemini_2025-11-23_no-doi-1a26e6ae.md"
-  },
-  {
-    "name": "gemini_2025-11-19_10-3390-s22197591.md",
-    "path": "papers/gemini_2025-11-19_10-3390-s22197591.md"
-  },
-  {
-    "name": "gemini_2025-10-10_no-doi-b0a4bc4c.md",
-    "path": "papers/gemini_2025-10-10_no-doi-b0a4bc4c.md"
-  },
-  {
-    "name": "gemini_2025-10-08_10-1109-TBME-2022-3169614.md",
-    "path": "papers/gemini_2025-10-08_10-1109-TBME-2022-3169614.md"
+    "name": "gemini_2025-11-30_no-doi-b9046454.md",
+    "path": "papers/gemini_2025-11-30_no-doi-b9046454.md"
   },
   {
     "name": "gemini_2025-12-01_no-doi-1399c227.md",
     "path": "papers/gemini_2025-12-01_no-doi-1399c227.md"
   },
   {
-    "name": "gemini_2025-11-18_no-doi-61d7a990.md",
-    "path": "papers/gemini_2025-11-18_no-doi-61d7a990.md"
+    "name": "gemini_2025-12-02_no-doi-d881849d.md",
+    "path": "papers/gemini_2025-12-02_no-doi-d881849d.md"
   },
   {
-    "name": "gemini_2025-11-24_10-1109-TNSRE-2024-3366670.md",
-    "path": "papers/gemini_2025-11-24_10-1109-TNSRE-2024-3366670.md"
+    "name": "gemini_2025-12-03_10-1016-j-jbiomech-2024-111928.md",
+    "path": "papers/gemini_2025-12-03_10-1016-j-jbiomech-2024-111928.md"
   },
   {
-    "name": "gemini_2025-11-08_10-1109-TNSRE-2024-3368980.md",
-    "path": "papers/gemini_2025-11-08_10-1109-TNSRE-2024-3368980.md"
+    "name": "gemini_2025-12-04_no-doi-ba56d4d7.md",
+    "path": "papers/gemini_2025-12-04_no-doi-ba56d4d7.md"
   },
   {
-    "name": "gemini_2025-10-04_10-1109-TIM-2023-3293331.md",
-    "path": "papers/gemini_2025-10-04_10-1109-TIM-2023-3293331.md"
+    "name": "gemini_2025-12-05_no-doi-c3c77a8f.md",
+    "path": "papers/gemini_2025-12-05_no-doi-c3c77a8f.md"
   },
   {
-    "name": "gemini_2025-10-21_no-doi-13b3d707.md",
-    "path": "papers/gemini_2025-10-21_no-doi-13b3d707.md"
-  },
-  {
-    "name": "gemini_2025-09-16_10.1109-TBME.2023.3248160.md",
-    "path": "papers/gemini_2025-09-16_10.1109-TBME.2023.3248160.md"
-  },
-  {
-    "name": "gemini_2025-11-20_10-3390-s24082570.md",
-    "path": "papers/gemini_2025-11-20_10-3390-s24082570.md"
-  },
-  {
-    "name": "gemini_2025-11-06_10-1109-TNSRE-2024-3371355.md",
-    "path": "papers/gemini_2025-11-06_10-1109-TNSRE-2024-3371355.md"
-  },
-  {
-    "name": "gemini_2025-09-18_10-3390-s22176704.md",
-    "path": "papers/gemini_2025-09-18_10-3390-s22176704.md"
-  },
-  {
-    "name": "gemini_2025-10-07_no-doi-6280cdb4.md",
-    "path": "papers/gemini_2025-10-07_no-doi-6280cdb4.md"
-  },
-  {
-    "name": "gemini_2025-10-31_no-doi-b2e3651b.md",
-    "path": "papers/gemini_2025-10-31_no-doi-b2e3651b.md"
-  },
-  {
-    "name": "gemini_2025-10-18_no-doi-9a0796c9.md",
-    "path": "papers/gemini_2025-10-18_no-doi-9a0796c9.md"
-  },
-  {
-    "name": "gemini_2025-11-15_10-1109-TIM-2024-3375298.md",
-    "path": "papers/gemini_2025-11-15_10-1109-TIM-2024-3375298.md"
-  },
-  {
-    "name": "gemini_2025-11-10_10-1016-j-jbiomech-2022-111085.md",
-    "path": "papers/gemini_2025-11-10_10-1016-j-jbiomech-2022-111085.md"
-  },
-  {
-    "name": "gemini_2025-10-02_no-doi-d4db86d4.md",
-    "path": "papers/gemini_2025-10-02_no-doi-d4db86d4.md"
-  },
-  {
-    "name": "gemini_2025-10-12_10-3390-s22114067.md",
-    "path": "papers/gemini_2025-10-12_10-3390-s22114067.md"
+    "name": "gemini_2025-12-06_10-1109-TNSRE-2024-3372300.md",
+    "path": "papers/gemini_2025-12-06_10-1109-TNSRE-2024-3372300.md"
   }
 ]
