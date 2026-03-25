@@ -28,7 +28,7 @@ def parse_router_routes():
 
 class SiteIntegrityTest(unittest.TestCase):
     def test_supported_routes_match_sections(self):
-        expected = {"personal", "research", "quantum", "paper-discovery"}
+        expected = {"personal", "research", "news", "quantum", "paper-discovery"}
         routes = parse_router_routes()
         self.assertEqual({name for name, _ in routes}, expected)
         for name, section in routes:
@@ -86,6 +86,32 @@ class SiteIntegrityTest(unittest.TestCase):
         }
         self.assertTrue(expected.issubset(ids), f"Missing research anchors: {sorted(expected - ids)}")
 
+    def test_news_anchor_contract(self):
+        news_html = read("sections/news.html")
+        ids = set(re.findall(r'id="([^"]+)"', news_html))
+        expected = {
+            "news-overview",
+            "featured",
+            "latest",
+            "archive",
+        }
+        self.assertTrue(expected.issubset(ids), f"Missing news anchors: {sorted(expected - ids)}")
+
+    def test_news_manifest_featured_item_and_assets_exist(self):
+        data = json.loads(read("news/index.json"))
+        items = data.get("items", [])
+        self.assertGreaterEqual(len(items), 1, "news/index.json should contain at least one item")
+
+        slugs = {item["slug"] for item in items}
+        self.assertIn(data.get("featuredSlug"), slugs)
+
+        for item in items:
+            for key in ("poster_image", "poster_pdf"):
+                value = item.get(key)
+                if not value:
+                    continue
+                self.assertTrue((ROOT / value).exists(), f"Missing news asset for {item['slug']}: {value}")
+
     def test_classes_manifest_matches_repo(self):
         actual = []
         for path in sorted((ROOT / "classes").rglob("*")):
@@ -122,7 +148,7 @@ class SiteIntegrityTest(unittest.TestCase):
 
     def test_sitemap_includes_live_routes(self):
         sitemap = read("sitemap.xml")
-        for route in ["#/personal", "#/research", "#/quantum", "#/paper-discovery"]:
+        for route in ["#/personal", "#/research", "#/news", "#/quantum", "#/paper-discovery"]:
             self.assertIn(route, sitemap)
 
 

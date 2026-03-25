@@ -1,9 +1,10 @@
 # Bowen Song Portfolio Site
 
-Static GitHub Pages site for Bowen Song with four live experiences:
+Static GitHub Pages site for Bowen Song with five live experiences:
 
 - `#/personal` for the fast, recruiter-friendly overview
 - `#/research` for publications, agenda, projects, teaching, and talks
+- `#/news` for current updates, poster spotlights, and the archive
 - `#/paper-discovery` for the focused reading map, graph, topic view, and timeline
 - `#/quantum` for the quantum lab / structured learning track
 
@@ -18,7 +19,7 @@ The `classes/` content is still in the repository, but it is archived and not su
 - Static HTML partials in `sections/`
 - Client-side hash routing in `js/router.js`
 - Page boot hooks in `js/section-hooks.js`
-- Dedicated page logic in `js/quantum.js` and `js/papers.js`
+- Dedicated page logic in `js/news.js`, `js/quantum.js`, and `js/papers.js`
 - Tailwind CDN for page styling
 - GitHub Pages-compatible assets and JSON manifests
 
@@ -26,12 +27,14 @@ The `classes/` content is still in the repository, but it is archived and not su
 
 - `#/personal`
 - `#/research`
+- `#/news`
 - `#/quantum`
 - `#/paper-discovery`
 
 Examples:
 
 - `#/personal#fit`
+- `#/news#archive`
 - `#/research#publications`
 - `#/quantum#chapter1`
 
@@ -43,15 +46,19 @@ Examples:
 ├── sections/
 │   ├── personal.html
 │   ├── research.html
+│   ├── news.html
 │   ├── quantum.html
 │   ├── paper-discovery.html
 │   └── classes.html              # archived, not live
 ├── js/
 │   ├── router.js
 │   ├── section-hooks.js
+│   ├── news.js
 │   ├── quantum.js
 │   ├── papers.js
 │   └── classes.js                # archived, not live
+├── news/
+│   └── index.json
 ├── lessons/
 ├── papers/
 ├── classes/                      # archived source materials
@@ -106,6 +113,13 @@ Some automation-related tests are optional and skip unless their external depend
 - Manifest is stored in `lessons/index.json`
 - Reading flow is rendered by `js/quantum.js`
 
+### News
+
+- Short-form updates live in `news/index.json`
+- The featured card, recent feed, and archive are rendered by `js/news.js`
+- Poster assets can live in `publications/` and `img/news/`
+- Older items can be moved into the archive by setting `"archived": true`
+
 ### Archived Classes
 
 - Archived course files remain under `classes/`
@@ -129,6 +143,7 @@ python3 .github/scripts/fetch_paper.py
 ## Notes
 
 - Section partials are markup-only; page behavior is booted through shared hooks.
+- `#/news` is the lightweight home for announcements, posters, and archived updates.
 - Paper Discovery includes four views: cards, graph, by-topic, and timeline.
 - `#/personal` is intentionally short; `#/research` is the deeper academic and technical view.
 - `#/paper-discovery` is framed as a focused reading map rather than a broad survey.

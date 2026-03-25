@@ -87,6 +87,9 @@
       bindDelegation();
       collapseOtherAbstracts();
     },
+    news() {
+      if (window.setupNewsPage) return window.setupNewsPage();
+    },
     quantum({ anchor } = {}) {
       bindDelegation();
       if (window.setupQuantumPage) return window.setupQuantumPage({ anchor });

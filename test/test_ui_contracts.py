@@ -164,6 +164,7 @@ class UIContractTest(unittest.TestCase):
         for rel_path in [
             "sections/personal.html",
             "sections/research.html",
+            "sections/news.html",
             "sections/quantum.html",
             "sections/paper-discovery.html",
         ]:
@@ -294,15 +295,16 @@ Body text
             "index.html",
             "sections/personal.html",
             "sections/research.html",
+            "sections/news.html",
             "sections/quantum.html",
             "sections/paper-discovery.html",
         ]:
             self.assertNotIn("onclick=", read(rel_path), f"{rel_path} should not use inline click handlers")
 
-    def test_index_navigation_exposes_four_live_tabs(self):
+    def test_index_navigation_exposes_live_tabs(self):
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
-        self.assertEqual(tabs, {"personal", "research", "quantum", "paper-discovery"})
+        self.assertEqual(tabs, {"personal", "research", "news", "quantum", "paper-discovery"})
 
     def test_quantum_controls_cover_toggle_search_jumps_and_paging(self):
         parser = parse_html("sections/quantum.html")
