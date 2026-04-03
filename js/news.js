@@ -61,15 +61,11 @@
     return cachedNews;
   }
 
-  function renderTags(tags, tone) {
+  function renderTags(tags) {
     if (!tags.length) return '';
-    const className = tone === 'dark'
-      ? 'bg-white/14 text-white ring-1 ring-white/15'
-      : 'bg-slate-100 text-slate-700';
-
     return `
       <div class="mt-4 flex flex-wrap gap-2">
-        ${tags.map((tag) => `<span class="rounded-full px-3 py-1 text-xs font-semibold ${className}">${escapeHtml(tag)}</span>`).join('')}
+        ${tags.map((tag) => `<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">${escapeHtml(tag)}</span>`).join('')}
       </div>
     `;
   }
@@ -94,9 +90,7 @@
     `;
   }
 
-  function renderMetaRow(item, dark) {
-    const labelClass = dark ? 'text-slate-300' : 'text-slate-500';
-    const valueClass = dark ? 'text-white' : 'text-slate-900';
+  function renderMetaRow(item) {
     const rows = [
       { label: 'Posted', value: formatDate(item.date) },
       { label: 'Event', value: item.event_date ? formatDate(item.event_date, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) : '' },
@@ -107,23 +101,45 @@
     return `
       <dl class="mt-6 grid gap-4 sm:grid-cols-2">
         ${rows.map((row) => `
-          <div class="rounded-[1.5rem] border ${dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-slate-50'} p-4">
-            <dt class="text-xs font-semibold uppercase tracking-[0.18em] ${labelClass}">${escapeHtml(row.label)}</dt>
-            <dd class="mt-2 text-sm font-semibold ${valueClass}">${escapeHtml(row.value)}</dd>
+          <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
+            <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">${escapeHtml(row.label)}</dt>
+            <dd class="mt-2 text-sm font-semibold text-slate-900">${escapeHtml(row.value)}</dd>
           </div>
         `).join('')}
       </dl>
     `;
   }
 
-  function renderBodyParagraphs(paragraphs, dark) {
+  function renderBodyParagraphs(paragraphs) {
     if (!paragraphs.length) return '';
-    const className = dark ? 'text-slate-200' : 'text-slate-600';
     return paragraphs.map((paragraph) => `
-      <p class="mt-4 text-base leading-7 ${className}">
+      <p class="mt-3 text-sm leading-6 text-slate-600">
         ${escapeHtml(paragraph)}
       </p>
     `).join('');
+  }
+
+  function renderFeaturedDetails(item) {
+    if (!item.body.length) return '';
+    const panelId = `news-body-${item.slug}`;
+
+    return `
+      <div class="mt-5">
+        <button
+          type="button"
+          class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
+          data-toggle="#${escapeHtml(panelId)}"
+          data-toggle-group="news-featured"
+          aria-controls="${escapeHtml(panelId)}"
+          aria-expanded="false"
+        >
+          Details
+        </button>
+      </div>
+      <div id="${escapeHtml(panelId)}" class="mt-4 hidden border-t border-slate-200 pt-4">
+        ${renderBodyParagraphs(item.body)}
+      </div>
+    `;
   }
 
   function renderFeatured(item) {
@@ -136,23 +152,23 @@
     }
 
     return `
-      <article class="overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-[0_32px_100px_-48px_rgba(15,23,42,0.82)]">
-        <div class="grid gap-0 lg:grid-cols-[1.08fr,0.92fr]">
+      <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_30px_90px_-52px_rgba(15,23,42,0.28)]">
+        <div class="grid gap-0 lg:grid-cols-[1.02fr,0.98fr]">
           <div class="p-8 md:p-10">
             <div class="flex flex-wrap gap-2">
-              <span class="rounded-full bg-teal-400/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-teal-200">${escapeHtml(item.category || 'Update')}</span>
-              <span class="rounded-full bg-white/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-100">${escapeHtml(item.status || 'Live')}</span>
+              <span class="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">${escapeHtml(item.category || 'Update')}</span>
+              <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">${escapeHtml(item.status || 'Live')}</span>
             </div>
-            <h3 class="mt-5 text-3xl font-semibold tracking-tight md:text-4xl">${escapeHtml(item.title)}</h3>
-            <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-200">${escapeHtml(item.summary || '')}</p>
-            ${renderMetaRow(item, true)}
-            ${renderTags(item.tags, 'dark')}
-            ${renderBodyParagraphs(item.body, true)}
+            <h3 class="mt-5 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">${escapeHtml(item.title)}</h3>
+            <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-700">${escapeHtml(item.summary || '')}</p>
+            ${renderMetaRow(item)}
+            ${renderTags(item.tags)}
             ${renderLinks(item.links, 'primary')}
+            ${renderFeaturedDetails(item)}
           </div>
 
-          <div class="border-t border-white/10 bg-white/6 p-6 lg:border-l lg:border-t-0 lg:p-8">
-            <div class="overflow-hidden rounded-[1.5rem] border border-white/10 bg-white shadow-[0_24px_80px_-52px_rgba(255,255,255,0.28)]">
+          <div class="border-t border-slate-200 bg-[linear-gradient(180deg,rgba(248,250,252,0.96),rgba(255,255,255,1))] p-6 lg:border-l lg:border-t-0 lg:p-8">
+            <div class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-[0_24px_80px_-52px_rgba(15,23,42,0.24)]">
               <img
                 src="${escapeHtml(item.poster_image || '')}"
                 alt="${escapeHtml(item.poster_alt || item.title)}"
@@ -160,12 +176,12 @@
                 loading="lazy"
               />
             </div>
-            <p class="mt-4 text-sm leading-6 text-slate-300">
-              Poster preview from the ShowCAIS 2026 announcement. The full PDF stays linked here so this page can also serve as a durable archive for future reference.
+            <p class="mt-4 text-sm leading-6 text-slate-600">
+              Poster preview for the current announcement. The full PDF stays linked below for direct access.
             </p>
             <div class="mt-4 flex flex-wrap gap-3">
-              <a href="${escapeHtml(item.poster_pdf || '#')}" download class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition-colors hover:bg-slate-100">Download poster</a>
-              <a href="#/news#archive" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/8">Jump to archive</a>
+              <a href="${escapeHtml(item.poster_pdf || '#')}" download class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-slate-800">Download poster</a>
+              <a href="#/news#archive" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">Jump to archive</a>
             </div>
           </div>
         </div>
@@ -182,7 +198,6 @@
         </div>
         <h3 class="mt-3 text-2xl font-semibold text-slate-900">${escapeHtml(item.title)}</h3>
         <p class="mt-3 text-sm leading-6 text-slate-600">${escapeHtml(item.summary || '')}</p>
-        ${renderTags(item.tags, 'light')}
         ${renderLinks(item.links, 'secondary')}
       </article>
     `;
@@ -279,12 +294,14 @@
       ? state.current.map(renderCurrentCard).join('')
       : renderEmptyState(query
         ? 'No current updates match this search yet.'
-        : 'No additional current updates yet. New announcements will appear here as this page grows.');
+        : 'The current feed begins with the featured update above. Additional public updates will appear here over time.');
 
     const archiveMarkup = groupArchiveItems(state.archive).map(([year, items]) => renderArchiveGroup(year, items)).join('');
     archiveGroups.innerHTML = archiveMarkup || renderEmptyState(query
       ? 'No archived updates match this search yet.'
-      : 'No archived updates yet. Older news items can move here later without changing the layout.');
+      : 'No archived updates yet. Older announcements will appear here as the News page grows.');
+
+    if (window.syncToggleButtons) window.syncToggleButtons();
   }
 
   function renderError(message) {

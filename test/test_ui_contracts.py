@@ -205,6 +205,13 @@ class UIContractTest(unittest.TestCase):
             missing_targets = [selector for selector, target_id in selectors if target_id not in parser.ids]
             self.assertEqual(missing_targets, [], f"Broken selectors in {rel_path}: {missing_targets}")
 
+    def test_news_featured_details_contract(self):
+        news_js = read("js/news.js")
+        self.assertIn('const panelId = `news-body-${item.slug}`;', news_js)
+        self.assertIn('data-toggle-group="news-featured"', news_js)
+        self.assertIn('aria-controls="${escapeHtml(panelId)}"', news_js)
+        self.assertIn('window.syncToggleButtons', news_js)
+
     def test_papers_component_contracts_cover_views_and_graph(self):
         parser = parse_html("sections/paper-discovery.html")
         discovery_html = read("sections/paper-discovery.html")
