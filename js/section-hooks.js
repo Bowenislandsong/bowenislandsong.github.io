@@ -2,19 +2,34 @@
 (() => {
   let isDelegated = false;
 
-  // Collapse all abstract panels except an optional target selector
-  function collapseOtherAbstracts(exceptSel) {
-    const all = document.querySelectorAll('[id^="abs-"]');
-    all.forEach(el => {
-      if (!exceptSel || !el.matches(exceptSel)) el.classList.add('hidden');
-    });
+  function getTogglePanel(button) {
+    const selector = button && button.getAttribute('data-toggle');
+    return selector ? document.querySelector(selector) : null;
+  }
 
-    // Sync aria-expanded on any abstract toggle buttons
-    const allBtns = document.querySelectorAll('[data-toggle^="#abs-"]');
-    allBtns.forEach(btn => {
-      const sel = btn.getAttribute('data-toggle');
-      const panel = sel ? document.querySelector(sel) : null;
-      btn.setAttribute('aria-expanded', panel && !panel.classList.contains('hidden') ? 'true' : 'false');
+  function syncToggleButtons() {
+    document.querySelectorAll('[data-toggle]').forEach((button) => {
+      const selector = button.getAttribute('data-toggle');
+      const panel = getTogglePanel(button);
+      const expanded = Boolean(panel) && !panel.classList.contains('hidden');
+      button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+
+      if (selector && selector.startsWith('#') && !button.hasAttribute('aria-controls')) {
+        button.setAttribute('aria-controls', selector.slice(1));
+      }
+    });
+  }
+
+  function collapseToggleGroup(groupName, exceptButton) {
+    if (!groupName) return;
+
+    document.querySelectorAll('[data-toggle-group]').forEach((button) => {
+      if (button === exceptButton) return;
+      if (button.getAttribute('data-toggle-group') !== groupName) return;
+
+      const panel = getTogglePanel(button);
+      if (panel) panel.classList.add('hidden');
+      button.setAttribute('aria-expanded', 'false');
     });
   }
 
@@ -23,75 +38,67 @@
     isDelegated = true;
 
     document.addEventListener('click', async (e) => {
-      const t = e.target.closest('[data-toggle],[data-copy]');
-      if (!t) return;
+      const target = e.target.closest('[data-toggle],[data-copy]');
+      if (!target) return;
 
-      // --- Toggle / Abstract handling ---
-      const toggleSel = t.getAttribute('data-toggle');
-      if (toggleSel) {
+      const toggleSelector = target.getAttribute('data-toggle');
+      if (toggleSelector) {
         e.preventDefault();
-        const el = document.querySelector(toggleSel);
-        if (!el) return;
 
-        const isAbstract = toggleSel.startsWith('#abs-');
-        const currentlyHidden = el.classList.contains('hidden');
+        const panel = document.querySelector(toggleSelector);
+        if (!panel) return;
 
-        if (isAbstract) {
-          // If opening a new abstract, collapse others first
-          if (currentlyHidden) {
-            collapseOtherAbstracts(toggleSel);
-            el.classList.remove('hidden');           // open the requested one
-            t.setAttribute('aria-expanded', 'true');
-          } else {
-            // Clicking the same open abstract closes it
-            el.classList.add('hidden');
-            t.setAttribute('aria-expanded', 'false');
-          }
-        } else {
-          // Generic toggles (non-abstract)
-          el.classList.toggle('hidden');
-          t.setAttribute('aria-expanded', el.classList.contains('hidden') ? 'false' : 'true');
+        const opening = panel.classList.contains('hidden');
+        const groupName = target.getAttribute('data-toggle-group') || (toggleSelector.startsWith('#abs-') ? 'abstracts' : '');
+
+        if (opening && groupName) {
+          collapseToggleGroup(groupName, target);
         }
+
+        panel.classList.toggle('hidden');
+        syncToggleButtons();
         return;
       }
 
-      // --- Copy BibTeX / Cite (or any text target) ---
-      const copySel = t.getAttribute('data-copy');
-      if (copySel) {
+      const copySelector = target.getAttribute('data-copy');
+      if (copySelector) {
         e.preventDefault();
-        const src = document.querySelector(copySel);
-        if (!src) return;
-        const txt = src.innerText || src.textContent || '';
+        const source = document.querySelector(copySelector);
+        if (!source) return;
+
+        const text = source.innerText || source.textContent || '';
 
         try {
-          await navigator.clipboard.writeText(txt);
-          const old = t.textContent;
-          t.textContent = 'Copied!';
-          setTimeout(() => (t.textContent = old), 1200);
+          await navigator.clipboard.writeText(text);
+          const oldText = target.textContent;
+          target.textContent = 'Copied!';
+          setTimeout(() => (target.textContent = oldText), 1200);
         } catch {
-          // Fallback
-          window.prompt('Copy to clipboard:', txt);
+          window.prompt('Copy to clipboard:', text);
         }
       }
     });
   }
 
-  // --- Public hooks for router ---
+  window.syncToggleButtons = syncToggleButtons;
+
   window.sectionHooks = {
     personal() {
       bindDelegation();
-      // Ensure only one abstract is visible on load (e.g., after deep link)
-      collapseOtherAbstracts();
+      syncToggleButtons();
     },
     research() {
       bindDelegation();
-      collapseOtherAbstracts();
+      syncToggleButtons();
     },
     news() {
+      bindDelegation();
+      syncToggleButtons();
       if (window.setupNewsPage) return window.setupNewsPage();
     },
     quantum({ anchor } = {}) {
       bindDelegation();
+      syncToggleButtons();
       if (window.setupQuantumPage) return window.setupQuantumPage({ anchor });
     },
     'paper-discovery'() {
