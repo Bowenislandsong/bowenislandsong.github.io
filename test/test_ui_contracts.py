@@ -164,7 +164,12 @@ class UIContractTest(unittest.TestCase):
         for rel_path in [
             "sections/personal.html",
             "sections/research.html",
+            "sections/engineering.html",
             "sections/news.html",
+            "sections/resume.html",
+            "sections/resume-engineering.html",
+            "sections/resume-embodied-ml.html",
+            "sections/resume-advanced-ml.html",
             "sections/quantum.html",
             "sections/paper-discovery.html",
         ]:
@@ -198,12 +203,22 @@ class UIContractTest(unittest.TestCase):
         for rel_path in [
             "sections/personal.html",
             "sections/research.html",
+            "sections/engineering.html",
         ]:
             html = read(rel_path)
             parser = parse_html(rel_path)
             selectors = re.findall(r'data-(?:toggle|copy)="(#([^"]+))"', html)
             missing_targets = [selector for selector, target_id in selectors if target_id not in parser.ids]
             self.assertEqual(missing_targets, [], f"Broken selectors in {rel_path}: {missing_targets}")
+
+    def test_resume_renderer_contract(self):
+        resume_js = read("js/resume.js")
+        self.assertIn("window.setupResumeLanding = async function", resume_js)
+        self.assertIn("window.setupResumePage = async function", resume_js)
+        self.assertIn("const RESUME_URL = 'resume/index.json';", resume_js)
+        self.assertIn("data-resume-pdf", resume_js)
+        self.assertIn("pdfHref", resume_js)
+        self.assertIn("featuredExperienceIds", read("resume/index.json"))
 
     def test_news_featured_details_contract(self):
         news_js = read("js/news.js")
@@ -292,7 +307,9 @@ Body text
     def test_route_hooks_cover_live_pages(self):
         hooks = read("js/section-hooks.js")
         for route_name, _ in parse_router_routes():
-            if route_name == "paper-discovery":
+            if "-" in route_name:
+                self.assertIn(f"'{route_name}'(", hooks)
+            elif route_name == "paper-discovery":
                 self.assertIn("'paper-discovery'()", hooks)
             else:
                 self.assertRegex(hooks, rf"\b{re.escape(route_name)}\([^)]*\)\s*\{{")
@@ -302,7 +319,12 @@ Body text
             "index.html",
             "sections/personal.html",
             "sections/research.html",
+            "sections/engineering.html",
             "sections/news.html",
+            "sections/resume.html",
+            "sections/resume-engineering.html",
+            "sections/resume-embodied-ml.html",
+            "sections/resume-advanced-ml.html",
             "sections/quantum.html",
             "sections/paper-discovery.html",
         ]:
@@ -311,7 +333,7 @@ Body text
     def test_index_navigation_exposes_live_tabs(self):
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
-        self.assertEqual(tabs, {"personal", "research", "news", "quantum", "paper-discovery"})
+        self.assertEqual(tabs, {"personal", "research", "engineering", "resume", "news", "quantum", "paper-discovery"})
 
     def test_quantum_controls_cover_toggle_search_jumps_and_paging(self):
         parser = parse_html("sections/quantum.html")

@@ -1,0 +1,116 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Pages /Kids [6 0 R] /Count 1 >>
+endobj
+5 0 obj
+<< /Length 8485 >>
+stream
+1.000 1.000 1.000 rg 0.00 0.00 612.00 792.00 re f
+0.970 0.980 0.990 rg 34.00 666.00 544.00 92.00 re f
+0.070 0.430 0.400 rg 34.00 666.00 8.00 92.00 re f
+0.000 0.000 0.000 rg BT /F2 22.00 Tf 1 0 0 1 54.00 734.00 Tm (Bowen Song) Tj ET
+0.060 0.440 0.410 rg BT /F2 10.60 Tf 1 0 0 1 54.00 716.00 Tm (Advanced Modeling / LLM / Ranking) Tj ET
+0.180 0.220 0.290 rg BT /F3 9.60 Tf 1 0 0 1 54.00 701.00 Tm (Research engineer building ranking and reranking systems that survive strong baselines and real traffic.) Tj ET
+0.290 0.330 0.380 rg BT /F1 8.70 Tf 1 0 0 1 54.00 689.80 Tm (Modern models need real evaluation, so I build ranking and reranking systems that survive strong baselines and traffic shifts.) Tj ET
+0.360 0.400 0.460 rg BT /F1 8.00 Tf 1 0 0 1 54.00 679.60 Tm (bowenson@usc.edu | bowenislandsong.github.io | linkedin.com/in/songbowen | github.com/Bowenislandsong) Tj ET
+0.920 0.970 0.960 rg 42.00 648.00 67.89 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 652.00 Tm (EXPERIENCE) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 643.00 m 570.00 643.00 l S
+0.060 0.090 0.140 rg BT /F2 10.00 Tf 1 0 0 1 42.00 632.00 Tm (PhD Research Intern, Core Ranking) Tj ET
+0.340 0.400 0.460 rg BT /F2 8.30 Tf 1 0 0 1 551.74 632.00 Tm (2024) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.50 Tf 1 0 0 1 42.00 620.00 Tm (eBay | San Jose, CA) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 609.60 Tm (Ranking gains had to survive real traffic and strong baselines, so I built production-constrained model and evaluation workflows that) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 599.00 Tm (made improvements worth trusting.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 588.40 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 588.40 Tm (Multi-objective ranking needed more selective capacity, so I designed Transformer MoE models that fused text and structured signals) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 578.10 Tm (and created a scalable path to specialization.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 567.80 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 567.80 Tm (Traffic heterogeneity kept breaking naive expert routing, so I built distributed training and evaluation loops that preserved specialization) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 557.50 Tm (gains under capacity limits and shifting demand.) Tj ET
+0.060 0.090 0.140 rg BT /F2 10.00 Tf 1 0 0 1 42.00 543.20 Tm (Graduate Researcher, Personalized AI for Health) Tj ET
+0.340 0.400 0.460 rg BT /F2 8.30 Tf 1 0 0 1 517.54 543.20 Tm (2020-Present) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.50 Tf 1 0 0 1 42.00 531.20 Tm (University of Southern California | Los Angeles, CA) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 520.80 Tm (Wearable sensing is noisy and deployment is constrained, so I built multimodal pipelines and personalized models that stay interpretable) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 510.20 Tm (on device and useful across users.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 499.60 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 499.60 Tm (Wearable force estimation needed a smaller baseline, so I led SER and showed low-rank models could match or beat heavier LSTMs) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 489.30 Tm (while staying interpretable and credible for edge deployment.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 479.00 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 479.00 Tm (Research pipelines were fragmented across sensing modalities, so I built end-to-end data, training, and evaluation workflows that) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 468.70 Tm (made comparison under noise and subject shift reliable enough to guide model decisions.) Tj ET
+0.060 0.090 0.140 rg BT /F2 10.00 Tf 1 0 0 1 42.00 454.40 Tm (Software Engineer, OpenShift) Tj ET
+0.340 0.400 0.460 rg BT /F2 8.30 Tf 1 0 0 1 528.91 454.40 Tm (2019-2020) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.50 Tf 1 0 0 1 42.00 442.40 Tm (Red Hat \(IBM\) | Boston, MA) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 432.00 Tm (Production clusters need upgrades and debugging to be boring, so I shipped Kubernetes platform features and CI tooling that made) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 421.40 Tm (operations safer and easier to trust.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 410.80 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 410.80 Tm (Ecosystem integration slowed teams adopting operators, so I led Helm and Operator Framework integration and widened the path for) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 400.50 Tm (interoperability across tools.) Tj ET
+0.920 0.970 0.960 rg 42.00 382.20 58.80 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 386.20 Tm (PROJECTS) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 377.20 m 570.00 377.20 l S
+0.950 0.970 0.990 rg 42.00 362.20 63.87 12.00 re f
+0.340 0.400 0.460 rg BT /F2 7.30 Tf 1 0 0 1 47.00 366.20 Tm (COT + RANKING) Tj ET
+0.060 0.090 0.140 rg BT /F2 9.60 Tf 1 0 0 1 42.00 353.20 Tm (CoT-Rec) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.70 Tf 1 0 0 1 42.00 341.90 Tm (Chain-of-thought generation is noisy, so I turned reasoning traces into ranking candidates and improved final selection with reranking) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.70 Tf 1 0 0 1 42.00 331.60 Tm (instead of trusting decode order.) Tj ET
+0.950 0.970 0.990 rg 42.00 313.30 118.77 12.00 re f
+0.340 0.400 0.460 rg BT /F2 7.30 Tf 1 0 0 1 47.00 317.30 Tm (SER PAPER IMPLEMENTATION) Tj ET
+0.060 0.090 0.140 rg BT /F2 9.60 Tf 1 0 0 1 42.00 304.30 Tm (SER) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.70 Tf 1 0 0 1 42.00 293.00 Tm (Wearable GRF estimation needed a lighter baseline, so I implemented SER and showed interpretable low-rank modeling could stay) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.70 Tf 1 0 0 1 42.00 282.70 Tm (accurate enough for deployment-minded biomechanics work.) Tj ET
+0.920 0.970 0.960 rg 42.00 264.40 44.49 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 268.40 Tm (SKILLS) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 259.40 m 570.00 259.40 l S
+0.060 0.090 0.140 rg BT /F2 8.80 Tf 1 0 0 1 42.00 248.40 Tm (Modeling: Transformers, ranking, mixture-of-experts, reranking, and evaluation design for selection-heavy models) Tj ET
+0.060 0.090 0.140 rg BT /F2 8.80 Tf 1 0 0 1 42.00 234.00 Tm (ML Platform: PyTorch, TensorFlow, distributed training, experiment pipelines, and GPU clusters for production-minded ML; Krylov, Ray,) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.60 Tf 1 0 0 1 42.00 223.60 Tm (Kubeflow, and evaluation loops for large-scale production ML iteration) Tj ET
+0.920 0.970 0.960 rg 42.00 205.20 76.98 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 209.20 Tm (PUBLICATIONS) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 200.20 m 570.00 200.20 l S
+0.060 0.090 0.140 rg BT /F2 9.20 Tf 1 0 0 1 42.00 189.20 Tm (Estimating Ground Reaction Forces From Inertial Sensors) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.10 Tf 1 0 0 1 42.00 178.20 Tm (IEEE TBME 2024 | B. Song, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, D. Shah) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.50 Tf 1 0 0 1 42.00 168.40 Tm (Sequence models are not always right, and this paper shows honest evaluation can favor a smaller architecture with clearer behavior.) Tj ET
+0.060 0.090 0.140 rg BT /F2 9.20 Tf 1 0 0 1 42.00 154.10 Tm (Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.10 Tf 1 0 0 1 42.00 143.10 Tm (IEEE CLOUD 2022 | Bowen Song, Marco Paolieri, Leana Golubchik) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.50 Tf 1 0 0 1 42.00 133.30 Tm (Optimization alone is not enough, and this paper connects performance analysis to incentives and the tradeoffs operators actually face.) Tj ET
+0.920 0.970 0.960 rg 42.00 115.00 62.04 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 119.00 Tm (EDUCATION) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 110.00 m 570.00 110.00 l S
+0.060 0.090 0.140 rg BT /F2 9.20 Tf 1 0 0 1 42.00 99.00 Tm (PhD in Computer Science) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.40 Tf 1 0 0 1 42.00 88.00 Tm (University of Southern California | Los Angeles, CA | 2020-2026 \(expected\)) Tj ET
+0.60 w 0.860 0.890 0.910 RG 42.00 30.00 m 570.00 30.00 l S
+0.430 0.470 0.520 rg BT /F1 7.40 Tf 1 0 0 1 547.95 21.00 Tm (Page 1) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Type /Catalog /Pages 4 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000319 00000 n 
+0000000376 00000 n 
+0000008913 00000 n 
+0000009059 00000 n 
+trailer
+<< /Size 8 /Root 7 0 R >>
+startxref
+9108
+%%EOF

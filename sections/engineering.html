@@ -1,0 +1,331 @@
+<!-- sections/engineering.html -->
+
+<section id="engineering-overview" class="py-12 md:py-16">
+  <div class="grid gap-10 lg:grid-cols-[1.15fr,0.85fr] lg:items-start">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teal-700">Engineering</p>
+      <h1 class="mt-5 text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">
+        Systems, ML infrastructure, and production judgment.
+      </h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">
+        This page is the engineering side of the profile: platform ownership, cloud and data systems, MLOps judgment, and model-adjacent infrastructure that has to keep working when complexity arrives.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+        The research side still matters here, but it shows up as deployment discipline, measurement quality, and a bias toward systems that teams can actually trust and extend.
+      </p>
+
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="#/resume-engineering" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
+          Engineering resume
+        </a>
+        <a href="#/research" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+          Research page
+        </a>
+        <a href="#/resume" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+          Resume chooser
+        </a>
+        <a href="https://github.com/Bowenislandsong" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <aside class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_30px_90px_-52px_rgba(15,23,42,0.28)]">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">At a glance</p>
+      <div class="mt-5 space-y-4">
+        <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
+          <p class="text-sm font-semibold text-slate-900">Platform ownership</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600">OpenShift operator lifecycle, upgrade safety, Helm integration, and CI reliability.</p>
+        </div>
+        <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
+          <p class="text-sm font-semibold text-slate-900">Data and streaming systems</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Kafka to ClickHouse ingestion, exactly-once semantics, schema evolution, and multi-datacenter concerns.</p>
+        </div>
+        <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
+          <p class="text-sm font-semibold text-slate-900">ML infrastructure transfer</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Distributed training, ranking evaluation, and research pipelines built for reproducibility and operational realism.</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="systems" class="scroll-mt-24 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Systems Strengths</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">What I emphasize on the engineering side.</h2>
+
+  <div class="mt-6 grid gap-4 lg:grid-cols-3">
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-xl font-semibold text-slate-900">Platform ownership</h3>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-platform-detail" data-toggle-group="engineering-systems" aria-controls="engineering-platform-detail" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        I am comfortable owning the release, dependency, and interoperability problems that make platforms hard to keep stable.
+      </p>
+      <div id="engineering-platform-detail" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          The OpenShift work is the cleanest proof here: complex operator packaging, upgrade safety, and cross-team integration all had to be right at the same time.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-xl font-semibold text-slate-900">Reliable data movement</h3>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-streaming-detail" data-toggle-group="engineering-systems" aria-controls="engineering-streaming-detail" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Streaming and analytics systems only help if they stay correct through upgrade paths, failures, and schema drift.
+      </p>
+      <div id="engineering-streaming-detail" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          The eBay infrastructure internship was especially useful because exactly-once semantics, ClickHouse ingestion, and multi-datacenter realities made correctness a first-order concern.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-xl font-semibold text-slate-900">Evaluation and operability</h3>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-eval-detail" data-toggle-group="engineering-systems" aria-controls="engineering-eval-detail" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        I do not separate model quality from the infrastructure and measurement quality around the model.
+      </p>
+      <div id="engineering-eval-detail" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          That carries from flaky-test detection to ranking evaluation to research pipelines: if the surrounding loop is weak, the result is weak too.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="ml-infra" class="scroll-mt-24 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">ML Infrastructure</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Model-adjacent systems work that still counts as engineering proof.</h2>
+
+  <div class="mt-6 grid gap-4 lg:grid-cols-3">
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-xl font-semibold text-slate-900">Ranking under production constraints</h3>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-ranking-infra" data-toggle-group="engineering-ml-infra" aria-controls="engineering-ranking-infra" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        The eBay ranking internship was not only modeling work; it also required scalable training, routing, and evaluation workflows.
+      </p>
+      <div id="engineering-ranking-infra" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          Traffic heterogeneity, capacity limits, and experiment reliability changed how the models were built and measured.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-xl font-semibold text-slate-900">Research infrastructure that ships</h3>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-research-infra" data-toggle-group="engineering-ml-infra" aria-controls="engineering-research-infra" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        My research work tends to produce reusable pipelines, benchmark suites, and deployability constraints instead of paper-only artifacts.
+      </p>
+      <div id="engineering-research-infra" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          That is why the research and engineering sides overlap honestly: the same experiments become stronger when the surrounding system is reproducible and legible.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-xl font-semibold text-slate-900">Cloud and incentive thinking</h3>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-cloud-infra" data-toggle-group="engineering-ml-infra" aria-controls="engineering-cloud-infra" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        I also care about the policy layer: when to share resources, how to keep tenants aligned, and where incentives break a system.
+      </p>
+      <div id="engineering-cloud-infra" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          The cloud federation line of work is a good example. It is formal, but it still informs how I think about multi-tenant ML systems in practice.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="engineering-experience" class="scroll-mt-24 py-10">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Experience</p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Experience with the engineering framing left intact.</h2>
+    </div>
+    <a href="#/resume-engineering" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+      Open engineering resume
+    </a>
+  </div>
+
+  <div class="mt-6 grid gap-4 lg:grid-cols-2">
+    <article class="rounded-[2rem] border border-teal-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">USC · 2020 to present</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Researcher with deployability constraints</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-exp-usc" data-toggle-group="engineering-experience" aria-controls="engineering-exp-usc" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm font-semibold text-slate-900">Turned research work into pipelines and evaluations other people can rerun, challenge, and extend.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        The research domain is biomechanics, but the engineering habit is general: cleaner baselines, reusable code, and constraints acknowledged early.
+      </p>
+      <div id="engineering-exp-usc" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          This overlap is intentional. My research credibility is stronger because the supporting pipeline and system thinking are stronger too.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-violet-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">eBay · 2024</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Core Ranking Research Intern</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-exp-ebay-ranking" data-toggle-group="engineering-experience" aria-controls="engineering-exp-ebay-ranking" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm font-semibold text-slate-900">Built ranking workflows where training, routing, and evaluation were all production concerns.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Worked on mixture-of-experts ranking and the distributed infrastructure needed to test it honestly under traffic heterogeneity.
+      </p>
+      <div id="engineering-exp-ebay-ranking" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          The systems part was real: capacity allocation, experiment trust, and cluster-backed training all shaped the work.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">eBay · 2023</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Infrastructure Intern</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-exp-ebay-infra" data-toggle-group="engineering-experience" aria-controls="engineering-exp-ebay-infra" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm font-semibold text-slate-900">Owned ingestion paths where correctness and operability mattered more than novelty.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Built Kafka to ClickHouse ingestion with exactly-once semantics, schema evolution handling, and multi-datacenter awareness.
+      </p>
+      <div id="engineering-exp-ebay-infra" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          That work is important on this page because it proves I am comfortable below the model layer, especially where state, interfaces, and recovery behavior decide trust.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Red Hat · 2019 to 2020</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Software Engineer, OpenShift</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-exp-redhat" data-toggle-group="engineering-experience" aria-controls="engineering-exp-redhat" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm font-semibold text-slate-900">Owned operator-platform features with release and upgrade discipline.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Worked on dependency resolution, Helm integration, scheduler-adjacent changes, and CI flake detection for production clusters.
+      </p>
+      <div id="engineering-exp-redhat" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          This is still the clearest signal that I know how mature platform teams handle complexity without normalizing fragility.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="engineering-projects" class="scroll-mt-24 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Projects</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Open-source and systems projects that reinforce the engineering lane.</h2>
+
+  <div class="mt-6 grid gap-4 md:grid-cols-2">
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Kubernetes platform</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Operator Lifecycle Manager</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-project-olm" data-toggle-group="engineering-projects" aria-controls="engineering-project-olm" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Core operator-platform contribution work for installing and upgrading software safely on clusters.
+      </p>
+      <div id="engineering-project-olm" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          Dependency resolution, upgrade safety, and packaging interoperability are the core platform problems here.
+        </p>
+      </div>
+      <a href="https://github.com/operator-framework/operator-lifecycle-manager" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">CI reliability</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Flake Analyzer</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-project-flake" data-toggle-group="engineering-projects" aria-controls="engineering-project-flake" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Statistical tooling for classifying flaky tests and improving developer trust in CI results.
+      </p>
+      <div id="engineering-project-flake" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          Flaky-failure classification makes CI results more trustworthy and shortens distributed-system debugging loops.
+        </p>
+      </div>
+      <a href="https://github.com/operator-framework/flake-analyzer" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Large-scale reconciliation</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">RCDS_GO</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-project-rcds" data-toggle-group="engineering-projects" aria-controls="engineering-project-rcds" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Go implementation of remote large-file reconciliation designed to sync huge payloads efficiently by sending differences instead of whole files.
+      </p>
+      <div id="engineering-project-rcds" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          Efficient reconciliation helps anywhere synchronization is expensive, from distributed hosts to future model-state transfer for giant checkpoints or KV-cache-like state.
+        </p>
+      </div>
+      <a href="https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Incentives + systems</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Shapley Value Calculator</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#engineering-project-shapley" data-toggle-group="engineering-projects" aria-controls="engineering-project-shapley" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Package for payoff allocation in resource-sharing settings where fairness and incentives affect adoption.
+      </p>
+      <div id="engineering-project-shapley" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          Fair payoff allocation makes shared systems easier to adopt and harder to game.
+        </p>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <a href="https://github.com/Bowenislandsong/shapley-value" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
+        <a href="https://pypi.org/project/shapley-value/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">PyPI</a>
+      </div>
+    </article>
+  </div>
+</section>
