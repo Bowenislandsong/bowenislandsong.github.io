@@ -7,10 +7,10 @@
         Bowen Song · <a href="https://viterbi.usc.edu/" target="_blank" rel="noopener" class="inline-link">USC Viterbi</a>
       </p>
       <h1 class="mt-5 text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">
-        Research engineer for deployable ML under real constraints.
+        Research and engineering for deployable ML under real constraints.
       </h1>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">
-        I build and evaluate machine learning systems where noisy data, heterogeneous users, latency, and reliability all matter at once.
+        I build and evaluate machine learning systems where noisy data, heterogeneous users, latency, reliability, and platform constraints all matter at once.
       </p>
       <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
         USC PhD ·
@@ -25,14 +25,14 @@
         <a href="#/research" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
           View Research
         </a>
-        <a href="#/news#featured" class="inline-flex items-center gap-2 rounded-full border border-teal-300 bg-teal-50 px-5 py-3 text-sm font-semibold text-teal-900 transition-colors hover:bg-teal-100">
+        <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-teal-300 bg-teal-50 px-5 py-3 text-sm font-semibold text-teal-900 transition-colors hover:bg-teal-100">
+          View Engineering
+        </a>
+        <a href="#/resume" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+          View Resume
+        </a>
+        <a href="#/news#featured" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
           Latest News
-        </a>
-        <a href="img/resume/Bowen_Song_Resume.pdf" download class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          Download CV
-        </a>
-        <a href="mailto:bowenson@usc.edu" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          Contact
         </a>
       </div>
 
@@ -87,7 +87,7 @@
         </div>
       </div>
 
-      <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+      <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5" data-card-toggle="#personal-evidence-details">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div class="max-w-xl">
             <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Strongest evidence</p>
@@ -105,7 +105,7 @@
         </div>
       </div>
 
-      <div class="mt-6 rounded-[1.5rem] bg-slate-950 p-5 text-white">
+      <div class="mt-6 rounded-[1.5rem] bg-slate-950 p-5 text-white" data-card-toggle="#personal-bring-details">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div class="max-w-xl">
             <p class="text-xs uppercase tracking-[0.18em] text-slate-400">What I bring</p>
@@ -123,7 +123,7 @@
         </div>
       </div>
 
-      <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+      <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5" data-card-toggle="#personal-transfer-details">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div class="max-w-xl">
             <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Why this transfers</p>
@@ -231,11 +231,16 @@
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div>
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Selected Experience</p>
-      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Range, with a clear through-line.</h2>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Range, with separate doors for research and engineering.</h2>
     </div>
-    <a href="#/research" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-      Open full research page
-    </a>
+    <div class="flex flex-wrap gap-2">
+      <a href="#/research" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        Open research page
+      </a>
+      <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        Open engineering page
+      </a>
+    </div>
   </div>
 
   <div class="mt-6 grid gap-4 lg:grid-cols-2">
@@ -340,8 +345,11 @@
       <a href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-50">
         LinkedIn
       </a>
-      <a href="#/research" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-        Research
+      <a href="#/resume" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        Resume
+      </a>
+      <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        Engineering
       </a>
     </div>
   </div>

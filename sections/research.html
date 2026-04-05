@@ -11,7 +11,7 @@
         I study how models stay useful when latency, heterogeneity, privacy, and evaluation quality stop being side issues.
       </p>
       <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
-        The same judgment transfers from wearable ML to ranking, cloud systems, and production infrastructure: prefer honest evaluation, simpler wins, and systems people can actually extend.
+        This page stays research-first. The engineering page carries the fuller platform, cloud, and ML infrastructure story behind the same work.
       </p>
       <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
         USC Viterbi ·
@@ -29,14 +29,14 @@
         <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
           QED Lab
         </a>
-        <a href="https://bourbon.usc.edu/leana/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          Advisor
+        <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+          Engineering
         </a>
         <a href="#/paper-discovery" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
           Reading Map
         </a>
-        <a href="img/resume/Bowen_Song_Resume.pdf" download class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          Download CV
+        <a href="#/resume-embodied-ml" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+          Embodied ML resume
         </a>
       </div>
     </div>
@@ -68,45 +68,45 @@
   <div class="mt-6 grid gap-4 lg:grid-cols-3">
     <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
       <div class="flex items-start justify-between gap-4">
-        <h3 class="text-xl font-semibold text-slate-900">Embodied ML that can leave the lab</h3>
+        <h3 class="text-xl font-semibold text-slate-900">Embodied ML that stays meaningful on device</h3>
         <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#agenda-embodied" data-toggle-group="research-agenda" aria-controls="agenda-embodied" aria-expanded="false">Details</button>
       </div>
       <p class="mt-3 text-sm leading-6 text-slate-600">
-        Build fast, interpretable models that survive messy sensing, user shift, and deployment constraints.
+        Build interpretable, physically meaningful models that stay efficient enough for edge devices and robust enough for messy sensing.
       </p>
       <div id="agenda-embodied" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          Wearable and motion data are a demanding testbed because the model has to stay stable when the person, sensor placement, and environment all change at once.
+          Wearable and motion data are a demanding testbed because the model has to respect physics, stay legible, and still run efficiently when the person, sensor placement, and environment all change at once.
         </p>
       </div>
     </article>
 
     <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
       <div class="flex items-start justify-between gap-4">
-        <h3 class="text-xl font-semibold text-slate-900">Personalization without brittle retraining</h3>
+        <h3 class="text-xl font-semibold text-slate-900">Personalization with privacy built in</h3>
         <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#agenda-personalization" data-toggle-group="research-agenda" aria-controls="agenda-personalization" aria-expanded="false">Details</button>
       </div>
       <p class="mt-3 text-sm leading-6 text-slate-600">
-        Adapt to users, devices, and settings without unrealistic data, compute, or privacy costs.
+        Adapt to users, devices, and settings without brittle retraining or privacy assumptions that break in real deployment.
       </p>
       <div id="agenda-personalization" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          I keep returning to lightweight adaptation, few-shot personalization, and federated learning because average-case performance is often the wrong target for real systems.
+          I keep returning to lightweight adaptation, few-shot personalization, and federated learning because average-case performance is often the wrong target, and private user data rarely lives in one clean training loop.
         </p>
       </div>
     </article>
 
     <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
       <div class="flex items-start justify-between gap-4">
-        <h3 class="text-xl font-semibold text-slate-900">Research systems that survive reality</h3>
+        <h3 class="text-xl font-semibold text-slate-900">Research systems that scale in reality</h3>
         <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#agenda-systems" data-toggle-group="research-agenda" aria-controls="agenda-systems" aria-expanded="false">Details</button>
       </div>
       <p class="mt-3 text-sm leading-6 text-slate-600">
-        Build infrastructure and evaluation that make research faster to trust, extend, and ship.
+        Build scalable infrastructure and evaluation so research stays reliable as data, workloads, and deployment demands grow.
       </p>
       <div id="agenda-systems" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          This is the through-line from cloud theory to ranking to OpenShift: good systems reduce accidental shortcuts and create leverage for the next experiment.
+          This is the through-line from cloud theory to ranking to OpenShift: scale is the main systems question, and reliability only matters if the model and surrounding pipeline still hold up as the problem gets bigger.
         </p>
       </div>
     </article>
@@ -182,7 +182,7 @@
       </div>
       <div id="pub-cloud-detail" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          This work shows I am comfortable with multi-agent systems, mechanism design, and operational tradeoffs, not just training a model and reporting metrics.
+          Queueing analysis, QoS, and revenue sharing are all treated as one federation problem instead of separate side issues.
         </p>
       </div>
       <p id="abs-cloud" class="mt-4 hidden text-sm leading-6 text-slate-700">
@@ -218,7 +218,7 @@
       </div>
       <div id="pub-rcds-detail" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          I still value this paper because it captures a pattern that has stayed constant in my work: prove enough to trust the idea, then implement enough to see where reality pushes back.
+          The algorithm is paired with real revision-history benchmarks against rsync, not just theory.
         </p>
       </div>
       <p id="abs-rcds" class="mt-4 hidden text-sm leading-6 text-slate-700">
@@ -242,17 +242,17 @@
     <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Modeling</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">SER paper implementation</p>
           <h3 class="mt-2 text-xl font-semibold text-slate-900">SER</h3>
         </div>
         <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#project-ser" data-toggle-group="research-projects" aria-controls="project-ser" aria-expanded="false">Details</button>
       </div>
       <p class="mt-3 text-sm leading-6 text-slate-600">
-        Python implementation of efficient wearable ML ideas built for inspection and reuse.
+        Code for SVD Embedding Regression, using SVD embeddings and lightweight regression to estimate ground reaction forces from IMU signals.
       </p>
       <div id="project-ser" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          I care about turning research ideas into code other people can challenge instead of leaving the contribution trapped inside a paper narrative.
+          SVD embeddings and lightweight regression keep the model inspectable, efficient, and realistic for on-device biomechanics.
         </p>
       </div>
       <a href="https://github.com/Bowenislandsong/SER" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
@@ -271,7 +271,7 @@
       </p>
       <div id="project-shapley" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          It reflects the systems side of my research taste: badly aligned incentives often break a system long before raw model quality does.
+          Shapley value turns fairness in shared-resource systems into a concrete allocation rule instead of a vague intuition.
         </p>
       </div>
       <div class="mt-4 flex flex-wrap gap-2">
@@ -283,17 +283,17 @@
     <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Distributed systems</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Large-scale reconciliation</p>
           <h3 class="mt-2 text-xl font-semibold text-slate-900">RCDS_GO</h3>
         </div>
         <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#project-rcds-go" data-toggle-group="research-projects" aria-controls="project-rcds-go" aria-expanded="false">Details</button>
       </div>
       <p class="mt-3 text-sm leading-6 text-slate-600">
-        Go implementation of RCDS for practical synchronization experiments.
+        Go implementation of remote large-string reconciliation for synchronizing huge files by transferring differences instead of whole payloads.
       </p>
       <div id="project-rcds-go" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          I like algorithms more when I can put them inside a real system, expose the tradeoffs, and measure how they behave under realistic workloads.
+          Efficient reconciliation is useful anywhere synchronization is expensive, from cloud hosts to DNA or RNA sequences, and potentially to future model-state transfer for very large weights or KV-cache-like state.
         </p>
       </div>
       <a href="https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
@@ -302,17 +302,17 @@
     <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Ranking + reasoning</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Chain-of-thought + ranking</p>
           <h3 class="mt-2 text-xl font-semibold text-slate-900">CoT-Rec</h3>
         </div>
         <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#project-cot-rec" data-toggle-group="research-projects" aria-controls="project-cot-rec" aria-expanded="false">Details</button>
       </div>
       <p class="mt-3 text-sm leading-6 text-slate-600">
-        Ranking framework exploring how structured reasoning signals affect recommendation quality.
+        Framework combining chain-of-thought generation with ranking models so candidate reasoning paths can be scored, reranked, and selected.
       </p>
       <div id="project-cot-rec" class="mt-4 hidden border-t border-slate-200 pt-4">
         <p class="text-sm leading-6 text-slate-700">
-          It reflects my interest in bringing newer model behavior into decision systems without giving up control, measurement, or interpretability.
+          Multiple reasoning traces become candidates that can be scored, ranked, and selected instead of accepted in generation order.
         </p>
       </div>
       <a href="https://github.com/Bowenislandsong/CoT-Rec" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>

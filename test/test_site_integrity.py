@@ -28,7 +28,18 @@ def parse_router_routes():
 
 class SiteIntegrityTest(unittest.TestCase):
     def test_supported_routes_match_sections(self):
-        expected = {"personal", "research", "news", "quantum", "paper-discovery"}
+        expected = {
+            "personal",
+            "research",
+            "engineering",
+            "news",
+            "resume",
+            "resume-engineering",
+            "resume-embodied-ml",
+            "resume-advanced-ml",
+            "quantum",
+            "paper-discovery",
+        }
         routes = parse_router_routes()
         self.assertEqual({name for name, _ in routes}, expected)
         for name, section in routes:
@@ -86,6 +97,18 @@ class SiteIntegrityTest(unittest.TestCase):
         }
         self.assertTrue(expected.issubset(ids), f"Missing research anchors: {sorted(expected - ids)}")
 
+    def test_engineering_anchor_contract(self):
+        engineering_html = read("sections/engineering.html")
+        ids = set(re.findall(r'id="([^"]+)"', engineering_html))
+        expected = {
+            "engineering-overview",
+            "systems",
+            "ml-infra",
+            "engineering-experience",
+            "engineering-projects",
+        }
+        self.assertTrue(expected.issubset(ids), f"Missing engineering anchors: {sorted(expected - ids)}")
+
     def test_news_anchor_contract(self):
         news_html = read("sections/news.html")
         ids = set(re.findall(r'id="([^"]+)"', news_html))
@@ -96,6 +119,33 @@ class SiteIntegrityTest(unittest.TestCase):
             "archive",
         }
         self.assertTrue(expected.issubset(ids), f"Missing news anchors: {sorted(expected - ids)}")
+
+    def test_resume_landing_anchor_contract(self):
+        resume_html = read("sections/resume.html")
+        ids = set(re.findall(r'id="([^"]+)"', resume_html))
+        expected = {
+            "resume-overview",
+            "resume-directions",
+        }
+        self.assertTrue(expected.issubset(ids), f"Missing resume landing anchors: {sorted(expected - ids)}")
+
+    def test_resume_variant_anchor_contract(self):
+        expected = {
+            "summary",
+            "experience",
+            "projects",
+            "publications",
+            "education",
+            "skills",
+        }
+
+        for rel_path in [
+            "sections/resume-engineering.html",
+            "sections/resume-embodied-ml.html",
+            "sections/resume-advanced-ml.html",
+        ]:
+            ids = set(re.findall(r'id="([^"]+)"', read(rel_path)))
+            self.assertTrue(expected.issubset(ids), f"Missing resume anchors in {rel_path}: {sorted(expected - ids)}")
 
     def test_news_manifest_featured_item_and_assets_exist(self):
         data = json.loads(read("news/index.json"))
@@ -146,9 +196,49 @@ class SiteIntegrityTest(unittest.TestCase):
         self.assertIn("#/quantum#", quantum_js)
         self.assertNotIn("window.location.hash = `chapter", quantum_js)
 
+    def test_resume_manifest_references_real_entries(self):
+        data = json.loads(read("resume/index.json"))
+
+        variants = data.get("variants", {})
+        self.assertEqual(
+            set(variants),
+            {"resume-engineering", "resume-embodied-ml", "resume-advanced-ml"},
+        )
+
+        experience_ids = {item["id"] for item in data.get("experience", [])}
+        project_ids = {item["id"] for item in data.get("projects", [])}
+        publication_ids = {item["id"] for item in data.get("publications", [])}
+        skill_group_ids = {item["id"] for item in data.get("skills", [])}
+        allowed_sections = {"experience", "projects", "publications", "education", "skills"}
+
+        for variant_name, variant in variants.items():
+            self.assertTrue(set(variant.get("sectionOrder", [])).issubset(allowed_sections), variant_name)
+            self.assertTrue(set(variant.get("featuredExperienceIds", [])).issubset(experience_ids), variant_name)
+            self.assertTrue(set(variant.get("featuredProjectIds", [])).issubset(project_ids), variant_name)
+            self.assertTrue(set(variant.get("featuredPublicationIds", [])).issubset(publication_ids), variant_name)
+            self.assertTrue(set(variant.get("featuredSkillGroupIds", [])).issubset(skill_group_ids), variant_name)
+            self.assertTrue(set(variant.get("printFeaturedExperienceIds", [])).issubset(experience_ids), variant_name)
+            self.assertTrue(set(variant.get("printFeaturedProjectIds", [])).issubset(project_ids), variant_name)
+            self.assertTrue(set(variant.get("printFeaturedPublicationIds", [])).issubset(publication_ids), variant_name)
+            self.assertTrue(set(variant.get("printFeaturedSkillGroupIds", [])).issubset(skill_group_ids), variant_name)
+            pdf_href = variant.get("pdfHref", "")
+            self.assertTrue(pdf_href, f"{variant_name} should define pdfHref")
+            self.assertTrue((ROOT / pdf_href).exists(), f"Missing resume PDF for {variant_name}: {pdf_href}")
+
     def test_sitemap_includes_live_routes(self):
         sitemap = read("sitemap.xml")
-        for route in ["#/personal", "#/research", "#/news", "#/quantum", "#/paper-discovery"]:
+        for route in [
+            "#/personal",
+            "#/research",
+            "#/engineering",
+            "#/news",
+            "#/resume",
+            "#/resume-engineering",
+            "#/resume-embodied-ml",
+            "#/resume-advanced-ml",
+            "#/quantum",
+            "#/paper-discovery",
+        ]:
             self.assertIn(route, sitemap)
 
 

@@ -1,0 +1,118 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Pages /Kids [6 0 R] /Count 1 >>
+endobj
+5 0 obj
+<< /Length 8688 >>
+stream
+1.000 1.000 1.000 rg 0.00 0.00 612.00 792.00 re f
+0.970 0.980 0.990 rg 34.00 666.00 544.00 92.00 re f
+0.070 0.430 0.400 rg 34.00 666.00 8.00 92.00 re f
+0.000 0.000 0.000 rg BT /F2 22.00 Tf 1 0 0 1 54.00 734.00 Tm (Bowen Song) Tj ET
+0.060 0.440 0.410 rg BT /F2 10.60 Tf 1 0 0 1 54.00 716.00 Tm (Embodied / Biomechanics / Interpretable Time-Series) Tj ET
+0.180 0.220 0.290 rg BT /F3 9.60 Tf 1 0 0 1 54.00 701.00 Tm (Research engineer building interpretable wearable ML that survives noisy sensing and edge limits.) Tj ET
+0.290 0.330 0.380 rg BT /F1 8.70 Tf 1 0 0 1 54.00 689.80 Tm (Embodied sensing is noisy, personalized, and resource-constrained, so I build interpretable multimodal models that can leave the lab) Tj ET
+0.290 0.330 0.380 rg BT /F1 8.70 Tf 1 0 0 1 54.00 679.60 Tm (and run under edge limits.) Tj ET
+0.360 0.400 0.460 rg BT /F1 8.00 Tf 1 0 0 1 54.00 669.40 Tm (bowenson@usc.edu | bowenislandsong.github.io | linkedin.com/in/songbowen | github.com/Bowenislandsong) Tj ET
+0.920 0.970 0.960 rg 42.00 648.00 67.89 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 652.00 Tm (EXPERIENCE) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 643.00 m 570.00 643.00 l S
+0.060 0.090 0.140 rg BT /F2 10.00 Tf 1 0 0 1 42.00 632.00 Tm (Graduate Researcher, Personalized AI for Health) Tj ET
+0.340 0.400 0.460 rg BT /F2 8.30 Tf 1 0 0 1 517.54 632.00 Tm (2020-Present) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.50 Tf 1 0 0 1 42.00 620.00 Tm (University of Southern California | Los Angeles, CA) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 609.60 Tm (Wearable sensing is noisy and deployment is constrained, so I built multimodal pipelines and personalized models that stay interpretable) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 599.00 Tm (on device and useful across users.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 588.40 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 588.40 Tm (Wearable force estimation needed a smaller baseline, so I led SER and showed low-rank models could match or beat heavier LSTMs) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 578.10 Tm (while staying interpretable and credible for edge deployment.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 567.80 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 567.80 Tm (Research pipelines were fragmented across sensing modalities, so I built end-to-end data, training, and evaluation workflows that) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 557.50 Tm (made comparison under noise and subject shift reliable enough to guide model decisions.) Tj ET
+0.060 0.090 0.140 rg BT /F2 10.00 Tf 1 0 0 1 42.00 543.20 Tm (Researcher, Cloud Resource Management) Tj ET
+0.340 0.400 0.460 rg BT /F2 8.30 Tf 1 0 0 1 528.91 543.20 Tm (2020-2022) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.50 Tf 1 0 0 1 42.00 531.20 Tm (University of Southern California | Los Angeles, CA) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 520.80 Tm (Resource sharing across clouds is hard to trust, so I modeled QoS and incentive constraints to show when federation actually improves) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 510.20 Tm (system utility and adoption.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 499.60 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 499.60 Tm (Hybrid-cloud federation can shift load without helping users, so I built a queueing framework that identified when QoS-constrained) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 489.30 Tm (sharing improves utility enough to be worth deploying.) Tj ET
+0.060 0.090 0.140 rg BT /F2 10.00 Tf 1 0 0 1 42.00 475.00 Tm (PhD Research Intern, Core Ranking) Tj ET
+0.340 0.400 0.460 rg BT /F2 8.30 Tf 1 0 0 1 551.74 475.00 Tm (2024) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.50 Tf 1 0 0 1 42.00 463.00 Tm (eBay | San Jose, CA) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 452.60 Tm (Ranking gains had to survive real traffic and strong baselines, so I built production-constrained model and evaluation workflows that) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.80 Tf 1 0 0 1 42.00 442.00 Tm (made improvements worth trusting.) Tj ET
+0.070 0.430 0.400 rg BT /F2 9.00 Tf 1 0 0 1 42.00 431.40 Tm (∑) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 431.40 Tm (Model novelty can hide weak measurement, so I carried research-style evaluation discipline into ranking and kept decisions tied to) Tj ET
+0.130 0.160 0.210 rg BT /F1 8.55 Tf 1 0 0 1 54.00 421.10 Tm (operationally realistic metrics the team could trust.) Tj ET
+0.920 0.970 0.960 rg 42.00 402.80 76.98 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 406.80 Tm (PUBLICATIONS) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 397.80 m 570.00 397.80 l S
+0.060 0.090 0.140 rg BT /F2 9.20 Tf 1 0 0 1 42.00 386.80 Tm (Estimating Ground Reaction Forces From Inertial Sensors) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.10 Tf 1 0 0 1 42.00 375.80 Tm (IEEE TBME 2024 | B. Song, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, D. Shah) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.50 Tf 1 0 0 1 42.00 366.00 Tm (Ground-reaction estimation from IMUs is noisy and resource-constrained, and this paper shows SER can stay interpretable, lightweight, and) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.50 Tf 1 0 0 1 42.00 355.70 Tm (credible outside the lab.) Tj ET
+0.060 0.090 0.140 rg BT /F2 9.20 Tf 1 0 0 1 42.00 341.40 Tm (Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.10 Tf 1 0 0 1 42.00 330.40 Tm (IEEE CLOUD 2022 | Bowen Song, Marco Paolieri, Leana Golubchik) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.50 Tf 1 0 0 1 42.00 320.60 Tm (Deployable ML inherits systems constraints, and this paper shows the resource and incentive reasoning behind how I think about scaling) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.50 Tf 1 0 0 1 42.00 310.30 Tm (under limits.) Tj ET
+0.920 0.970 0.960 rg 42.00 292.00 58.80 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 296.00 Tm (PROJECTS) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 287.00 m 570.00 287.00 l S
+0.950 0.970 0.990 rg 42.00 272.00 118.77 12.00 re f
+0.340 0.400 0.460 rg BT /F2 7.30 Tf 1 0 0 1 47.00 276.00 Tm (SER PAPER IMPLEMENTATION) Tj ET
+0.060 0.090 0.140 rg BT /F2 9.60 Tf 1 0 0 1 42.00 263.00 Tm (SER) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.70 Tf 1 0 0 1 42.00 251.70 Tm (Wearable GRF estimation needed a lighter baseline, so I implemented SER and showed interpretable low-rank modeling could stay) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.70 Tf 1 0 0 1 42.00 241.40 Tm (accurate enough for deployment-minded biomechanics work.) Tj ET
+0.950 0.970 0.990 rg 42.00 223.10 123.81 12.00 re f
+0.340 0.400 0.460 rg BT /F2 7.30 Tf 1 0 0 1 47.00 227.10 Tm (LARGE-SCALE RECONCILIATION) Tj ET
+0.060 0.090 0.140 rg BT /F2 9.60 Tf 1 0 0 1 42.00 214.10 Tm (RCDS_GO) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.70 Tf 1 0 0 1 42.00 202.80 Tm (Large remote states are expensive to resync, so I implemented content-aware reconciliation that sends differences instead of whole) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.70 Tf 1 0 0 1 42.00 192.50 Tm (payloads and makes huge-file sync more practical.) Tj ET
+0.920 0.970 0.960 rg 42.00 174.20 62.04 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 178.20 Tm (EDUCATION) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 169.20 m 570.00 169.20 l S
+0.060 0.090 0.140 rg BT /F2 9.20 Tf 1 0 0 1 42.00 158.20 Tm (PhD in Computer Science) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.40 Tf 1 0 0 1 42.00 147.20 Tm (University of Southern California | Los Angeles, CA | 2020-2026 \(expected\)) Tj ET
+0.060 0.090 0.140 rg BT /F2 9.20 Tf 1 0 0 1 42.00 133.10 Tm (MS in Electrical and Computer Engineering) Tj ET
+0.390 0.430 0.490 rg BT /F1 8.40 Tf 1 0 0 1 42.00 122.10 Tm (Boston University | Boston, MA | 2019) Tj ET
+0.920 0.970 0.960 rg 42.00 104.00 44.49 14.00 re f
+0.060 0.440 0.410 rg BT /F2 9.00 Tf 1 0 0 1 48.00 108.00 Tm (SKILLS) Tj ET
+0.60 w 0.820 0.850 0.880 RG 42.00 99.00 m 570.00 99.00 l S
+0.060 0.090 0.140 rg BT /F2 8.80 Tf 1 0 0 1 42.00 88.00 Tm (Modeling: Multimodal and time-series modeling for noisy wearable sensing and interpretable low-rank inference; Federated personalization,) Tj ET
+0.240 0.270 0.320 rg BT /F1 8.60 Tf 1 0 0 1 42.00 77.60 Tm (subject adaptation, and edge-aware model design for heterogeneous users) Tj ET
+0.060 0.090 0.140 rg BT /F2 8.80 Tf 1 0 0 1 42.00 63.20 Tm (Systems: Cloud federation, QoS reasoning, benchmarking, and reproducible infrastructure for scalable shared systems) Tj ET
+0.60 w 0.860 0.890 0.910 RG 42.00 30.00 m 570.00 30.00 l S
+0.430 0.470 0.520 rg BT /F1 7.40 Tf 1 0 0 1 547.95 21.00 Tm (Page 1) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Type /Catalog /Pages 4 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000319 00000 n 
+0000000376 00000 n 
+0000009116 00000 n 
+0000009262 00000 n 
+trailer
+<< /Size 8 /Root 7 0 R >>
+startxref
+9311
+%%EOF
