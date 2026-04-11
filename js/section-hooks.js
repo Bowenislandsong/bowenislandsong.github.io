@@ -139,6 +139,9 @@
       bindDelegation();
       syncToggleButtons();
     },
+    'interview-prep'() {
+      if (window.setupInterviewPrep) return window.setupInterviewPrep();
+    },
     news() {
       bindDelegation();
       syncToggleButtons();

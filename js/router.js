@@ -8,6 +8,7 @@
   const subnavResearch = document.getElementById('research-subnav');
   const subnavNews = document.getElementById('news-subnav');
   const subnavEngineering = document.getElementById('engineering-subnav');
+  const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
   const subnavResume = document.getElementById('resume-subnav');
   const subnavResumeVariant = document.getElementById('resume-variant-subnav');
 
@@ -18,6 +19,7 @@
     personal: 'sections/personal.html',
     research: 'sections/research.html',
     engineering: 'sections/engineering.html',
+    'interview-prep': 'sections/interview-prep.html',
     news: 'sections/news.html',
     resume: 'sections/resume.html',
     'resume-engineering': 'sections/resume-engineering.html',
@@ -91,6 +93,7 @@
     if (subnavResearch) subnavResearch.classList.toggle('hidden', page !== 'research');
     if (subnavNews) subnavNews.classList.toggle('hidden', page !== 'news');
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
+    if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
     if (subnavResume) subnavResume.classList.toggle('hidden', page !== 'resume');
     if (subnavResumeVariant) subnavResumeVariant.classList.toggle('hidden', !isResumeVariant(page));
 

@@ -165,6 +165,7 @@ class UIContractTest(unittest.TestCase):
             "sections/personal.html",
             "sections/research.html",
             "sections/engineering.html",
+            "sections/interview-prep.html",
             "sections/news.html",
             "sections/resume.html",
             "sections/resume-engineering.html",
@@ -258,7 +259,28 @@ class UIContractTest(unittest.TestCase):
         self.assertIn("getContext('2d')", papers_js)
         self.assertIn("requestAnimationFrame(tick)", papers_js)
         self.assertIn("data-graph-close", papers_js)
-        self.assertNotIn("onclick=", discovery_html)
+
+    def test_interview_prep_component_contracts_cover_filters(self):
+        parser = parse_html("sections/interview-prep.html")
+        interview_js = read("js/interview-prep.js")
+
+        required_ids = {
+            "interview-category-summary",
+            "interview-approach-summary",
+            "interview-search",
+            "interview-sort",
+            "interview-category-filters",
+            "interview-approach-filters",
+            "interview-result-stats",
+            "interview-problem-grid",
+        }
+        self.assertTrue(required_ids.issubset(parser.ids), f"Missing interview prep ids: {sorted(required_ids - parser.ids)}")
+
+        self.assertIn("window.setupInterviewPrep = function", interview_js)
+        self.assertIn("data-filter-kind", interview_js)
+        self.assertIn("Official LeetCode", interview_js)
+        self.assertIn("Edge cases and Big O", interview_js)
+        self.assertNotIn("onclick=", read("sections/interview-prep.html"))
 
     def test_each_indexed_paper_has_a_renderable_title_and_body(self):
         indexed = json.loads(read("papers/index.json"))
@@ -326,6 +348,7 @@ Body text
             "sections/resume-embodied-ml.html",
             "sections/resume-advanced-ml.html",
             "sections/quantum.html",
+            "sections/interview-prep.html",
             "sections/paper-discovery.html",
         ]:
             self.assertNotIn("onclick=", read(rel_path), f"{rel_path} should not use inline click handlers")
@@ -333,7 +356,7 @@ Body text
     def test_index_navigation_exposes_live_tabs(self):
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
-        self.assertEqual(tabs, {"personal", "research", "engineering", "resume", "news", "quantum", "paper-discovery"})
+        self.assertEqual(tabs, {"personal", "research", "engineering", "interview-prep", "resume", "news", "quantum", "paper-discovery"})
 
     def test_quantum_controls_cover_toggle_search_jumps_and_paging(self):
         parser = parse_html("sections/quantum.html")

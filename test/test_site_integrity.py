@@ -32,6 +32,7 @@ class SiteIntegrityTest(unittest.TestCase):
             "personal",
             "research",
             "engineering",
+            "interview-prep",
             "news",
             "resume",
             "resume-engineering",
@@ -72,6 +73,12 @@ class SiteIntegrityTest(unittest.TestCase):
 
         missing = [ref for ref, target in local_refs if not target.exists()]
         self.assertEqual(missing, [], f"Missing local refs in index.html: {missing}")
+
+    def test_index_seo_mentions_interview_prep(self):
+        index_html = read("index.html").lower()
+        self.assertIn("coding interview prep", index_html)
+        self.assertIn("leetcode", index_html)
+        self.assertIn("google interview prep", index_html)
 
     def test_personal_anchor_contract(self):
         personal_html = read("sections/personal.html")
@@ -119,6 +126,18 @@ class SiteIntegrityTest(unittest.TestCase):
             "archive",
         }
         self.assertTrue(expected.issubset(ids), f"Missing news anchors: {sorted(expected - ids)}")
+
+    def test_interview_prep_anchor_contract(self):
+        interview_html = read("sections/interview-prep.html")
+        ids = set(re.findall(r'id="([^"]+)"', interview_html))
+        expected = {
+            "prep-overview",
+            "category-map",
+            "approach-map",
+            "problem-browser",
+            "study-playbook",
+        }
+        self.assertTrue(expected.issubset(ids), f"Missing interview prep anchors: {sorted(expected - ids)}")
 
     def test_resume_landing_anchor_contract(self):
         resume_html = read("sections/resume.html")
@@ -231,6 +250,7 @@ class SiteIntegrityTest(unittest.TestCase):
             "#/personal",
             "#/research",
             "#/engineering",
+            "#/interview-prep",
             "#/news",
             "#/resume",
             "#/resume-engineering",
