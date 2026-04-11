@@ -14,6 +14,9 @@
       <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
         Every problem links to the official LeetCode page and includes the instinct, the core move, the edge cases to call out, and the Big O analysis you should be able to say out loud in an interview.
       </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+        The drill set now spans arrays and windows, binary search, intervals, greedy reasoning, monotonic stacks, trees, heaps, graphs, dynamic programming, linked lists, strings, backtracking, bit tricks, and tries.
+      </p>
 
       <div class="mt-7 flex flex-wrap gap-3">
         <a href="#/interview-prep#problem-browser" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
@@ -33,19 +36,19 @@
       <div class="mt-5 space-y-4">
         <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
           <p class="text-sm font-semibold text-slate-900">1. Start with the smell</p>
-          <p class="mt-2 text-sm leading-6 text-slate-600">Ask what structure is hidden: interval, graph, linked list cycle, prefix tree, bounded search, or sequence alignment.</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Ask what structure is hidden: sliding window, interval list, sorted array, tree, heap frontier, graph, linked list cycle, prefix tree, bounded search, or sequence alignment.</p>
         </div>
         <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
           <p class="text-sm font-semibold text-slate-900">2. Say the invariant</p>
-          <p class="mt-2 text-sm leading-6 text-slate-600">A strong interview answer names the state clearly before writing code: what a DP cell means, what a pointer means, or what a shortest-path distance means.</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600">A strong interview answer names the invariant clearly before writing code: what a DP cell means, what a window means, what BST bounds mean, what a pointer means, or what a shortest-path distance means.</p>
         </div>
         <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
           <p class="text-sm font-semibold text-slate-900">3. Mention the traps</p>
-          <p class="mt-2 text-sm leading-6 text-slate-600">Leading zeros, duplicate generation, off-by-one interval boundaries, disconnected graphs, and odd-length linked lists are the kinds of edge cases interviewers want to hear proactively.</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Leading zeros, duplicate skipping in 3Sum, off-by-one binary-search boundaries, stale heap entries, disconnected graphs, and odd-length linked lists are the kinds of edge cases interviewers want to hear proactively.</p>
         </div>
       </div>
       <div class="mt-5 rounded-[1.5rem] border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900">
-        This is framed as a high-signal public prep set for Google-style interviews, not as a live official company ranking. Company question frequency shifts over time.
+        This is framed as a high-signal public prep set for Google-style interviews. It is intentionally broader now, but it is still representative rather than exhaustive, and company question frequency shifts over time.
       </div>
     </aside>
   </div>
@@ -58,7 +61,7 @@
       <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Choose the family before you choose the code.</h2>
     </div>
     <p class="max-w-2xl text-sm leading-6 text-slate-600">
-      Category filters answer: what kind of object am I really working with? A sequence, a graph, a linked list, a combinatorial search tree, or a prefix structure?
+      Category filters answer: what kind of object am I really working with? A sequence or interval list, a graph, a tree, a linked list, a combinatorial search tree, or a prefix structure?
     </p>
   </div>
 
@@ -72,7 +75,7 @@
       <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Train pattern recognition by technique.</h2>
     </div>
     <p class="max-w-2xl text-sm leading-6 text-slate-600">
-      Approach filters answer: what move unlocks the problem? Reverse time, compress rows, relax edges, reverse the list, enumerate only the first split, or prune by prefix.
+      Approach filters answer: what move unlocks the problem? Reverse time, slide a window, binary search the answer, relax edges, use a heap frontier, peel indegrees, reverse the list, or prune by prefix.
     </p>
   </div>
 
@@ -92,7 +95,7 @@
     <div class="grid gap-4 lg:grid-cols-[1.4fr,1fr]">
       <label class="block">
         <span class="text-sm font-semibold text-slate-900">Search</span>
-        <input id="interview-search" type="search" placeholder="Try: graph, trie, interval, carry, duplicate, google-style..." class="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200" />
+        <input id="interview-search" type="search" placeholder="Try: window, tree, heap, union-find, interval, carry, duplicate..." class="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200" />
       </label>
       <label class="block">
         <span class="text-sm font-semibold text-slate-900">Sort</span>
@@ -125,11 +128,17 @@
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Study Playbook</p>
     <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">What to practice out loud.</h2>
 
-    <div class="mt-6 grid gap-4 lg:grid-cols-3">
+    <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
       <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
         <h3 class="text-lg font-semibold text-slate-900">Name the state</h3>
         <p class="mt-3 text-sm leading-6 text-slate-600">
           Before coding, say what each state means. Examples: “dp[i][j] is the cost to convert prefixes,” “dist[node] is the best known arrival time,” or “slow and fast are walking a hidden cycle.”
+        </p>
+      </article>
+      <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+        <h3 class="text-lg font-semibold text-slate-900">Name the monotone property</h3>
+        <p class="mt-3 text-sm leading-6 text-slate-600">
+          Before using binary search, a monotonic stack, or greedy reachability, say what stays ordered. Examples: “if speed s works, any larger speed works,” “the stack stays decreasing by temperature,” or “furthest reach summarizes every jump choice so far.”
         </p>
       </article>
       <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">

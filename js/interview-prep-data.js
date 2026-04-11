@@ -2,6 +2,89 @@
   'use strict';
 
   window.interviewPrepCodeByLc = {
+    3: String.raw`def lengthOfLongestSubstring(s):
+    last_seen = {}
+    left = 0
+    best = 0
+
+    for right, ch in enumerate(s):
+        if ch in last_seen and last_seen[ch] >= left:
+            left = last_seen[ch] + 1
+        last_seen[ch] = right
+        best = max(best, right - left + 1)
+
+    return best`,
+    15: String.raw`def threeSum(nums):
+    nums.sort()
+    result = []
+
+    for i, value in enumerate(nums):
+        if i > 0 and value == nums[i - 1]:
+            continue
+        if value > 0:
+            break
+
+        left, right = i + 1, len(nums) - 1
+        while left < right:
+            total = value + nums[left] + nums[right]
+            if total < 0:
+                left += 1
+            elif total > 0:
+                right -= 1
+            else:
+                result.append([value, nums[left], nums[right]])
+                left += 1
+                right -= 1
+
+                while left < right and nums[left] == nums[left - 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right + 1]:
+                    right -= 1
+
+    return result`,
+    33: String.raw`def search(nums, target):
+    left, right = 0, len(nums) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+
+        if nums[left] <= nums[mid]:
+            if nums[left] <= target < nums[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        else:
+            if nums[mid] < target <= nums[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+    return -1`,
+    55: String.raw`def canJump(nums):
+    furthest = 0
+
+    for index, jump in enumerate(nums):
+        if index > furthest:
+            return False
+        furthest = max(furthest, index + jump)
+
+    return True`,
+    56: String.raw`def merge(intervals):
+    if not intervals:
+        return []
+
+    intervals.sort(key=lambda interval: interval[0])
+    merged = [intervals[0][:]]
+
+    for start, end in intervals[1:]:
+        if start <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], end)
+        else:
+            merged.append([start, end])
+
+    return merged`,
     39: String.raw`def combinationSum(candidates, target):
     result = []
     candidates.sort()
@@ -128,6 +211,37 @@
             dp[j] = take_s1 or take_s2
 
     return dp[-1]`,
+    98: String.raw`def isValidBST(root):
+    def dfs(node, low, high):
+        if node is None:
+            return True
+        if not (low < node.val < high):
+            return False
+        return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)
+
+    return dfs(root, float('-inf'), float('inf'))`,
+    102: String.raw`from collections import deque
+
+
+def levelOrder(root):
+    if root is None:
+        return []
+
+    queue = deque([root])
+    result = []
+
+    while queue:
+        level = []
+        for _ in range(len(queue)):
+            node = queue.popleft()
+            level.append(node.val)
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
+        result.append(level)
+
+    return result`,
     137: String.raw`def singleNumber(nums):
     answer = 0
 
@@ -211,6 +325,29 @@
                         stack.append((nr, nc))
 
     return islands`,
+    207: String.raw`from collections import defaultdict, deque
+
+
+def canFinish(numCourses, prerequisites):
+    graph = defaultdict(list)
+    indegree = [0] * numCourses
+
+    for course, prereq in prerequisites:
+        graph[prereq].append(course)
+        indegree[course] += 1
+
+    queue = deque([course for course in range(numCourses) if indegree[course] == 0])
+    completed = 0
+
+    while queue:
+        course = queue.popleft()
+        completed += 1
+        for nxt in graph[course]:
+            indegree[nxt] -= 1
+            if indegree[nxt] == 0:
+                queue.append(nxt)
+
+    return completed == numCourses`,
     208: String.raw`class TrieNode:
     def __init__(self):
         self.children = {}
@@ -395,6 +532,20 @@ def longestIncreasingPath(matrix):
     for value in range(1, n + 1):
         bits[value] = bits[value >> 1] + (value & 1)
     return bits`,
+    347: String.raw`import heapq
+from collections import Counter
+
+
+def topKFrequent(nums, k):
+    counts = Counter(nums)
+    heap = []
+
+    for value, freq in counts.items():
+        heapq.heappush(heap, (freq, value))
+        if len(heap) > k:
+            heapq.heappop(heap)
+
+    return [value for _, value in heap]`,
     415: String.raw`def addStrings(num1, num2):
     i = len(num1) - 1
     j = len(num2) - 1
@@ -427,6 +578,58 @@ def longestIncreasingPath(matrix):
                 dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
 
     return dp[0][n - 1]`,
+    560: String.raw`from collections import defaultdict
+
+
+def subarraySum(nums, k):
+    prefix_counts = defaultdict(int)
+    prefix_counts[0] = 1
+
+    prefix = 0
+    total = 0
+    for num in nums:
+        prefix += num
+        total += prefix_counts[prefix - k]
+        prefix_counts[prefix] += 1
+
+    return total`,
+    684: String.raw`def findRedundantConnection(edges):
+    parent = list(range(len(edges) + 1))
+    rank = [0] * (len(edges) + 1)
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a, b):
+        root_a = find(a)
+        root_b = find(b)
+        if root_a == root_b:
+            return False
+
+        if rank[root_a] < rank[root_b]:
+            root_a, root_b = root_b, root_a
+        parent[root_b] = root_a
+        if rank[root_a] == rank[root_b]:
+            rank[root_a] += 1
+        return True
+
+    for a, b in edges:
+        if not union(a, b):
+            return [a, b]`,
+    739: String.raw`def dailyTemperatures(temperatures):
+    answer = [0] * len(temperatures)
+    stack = []
+
+    for index, temperature in enumerate(temperatures):
+        while stack and temperature > temperatures[stack[-1]]:
+            prev = stack.pop()
+            answer[prev] = index - prev
+        stack.append(index)
+
+    return answer`,
     743: String.raw`import heapq
 from collections import defaultdict
 
@@ -466,6 +669,46 @@ def networkDelayTime(times, n, k):
         dist = next_dist
 
     return -1 if dist[dst] == float('inf') else dist[dst]`,
+    875: String.raw`def minEatingSpeed(piles, h):
+    left, right = 1, max(piles)
+
+    def hours_needed(speed):
+        return sum((pile + speed - 1) // speed for pile in piles)
+
+    while left < right:
+        mid = (left + right) // 2
+        if hours_needed(mid) <= h:
+            right = mid
+        else:
+            left = mid + 1
+
+    return left`,
+    994: String.raw`from collections import deque
+
+
+def orangesRotting(grid):
+    rows, cols = len(grid), len(grid[0])
+    queue = deque()
+    fresh = 0
+
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == 2:
+                queue.append((r, c, 0))
+            elif grid[r][c] == 1:
+                fresh += 1
+
+    minutes = 0
+    while queue:
+        r, c, dist = queue.popleft()
+        minutes = max(minutes, dist)
+        for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
+            if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 1:
+                grid[nr][nc] = 2
+                fresh -= 1
+                queue.append((nr, nc, dist + 1))
+
+    return -1 if fresh else minutes`,
     1631: String.raw`import heapq
 
 
