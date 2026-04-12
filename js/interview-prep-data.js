@@ -254,6 +254,27 @@ def levelOrder(root):
         answer -= 1 << 32
 
     return answer`,
+    146: String.raw`from collections import OrderedDict
+
+
+class LRUCache:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.cache = OrderedDict()
+
+    def get(self, key):
+        if key not in self.cache:
+            return -1
+        self.cache.move_to_end(key)
+        return self.cache[key]
+
+    def put(self, key, value):
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = value
+
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)`,
     142: String.raw`def detectCycle(head):
     slow = fast = head
 
@@ -440,6 +461,25 @@ class Trie:
         right = right.next
 
     return True`,
+    253: String.raw`def minMeetingRooms(intervals):
+    if not intervals:
+        return 0
+
+    starts = sorted(start for start, _ in intervals)
+    ends = sorted(end for _, end in intervals)
+
+    rooms = 0
+    best = 0
+    end_ptr = 0
+
+    for start in starts:
+        while end_ptr < len(ends) and start >= ends[end_ptr]:
+            rooms -= 1
+            end_ptr += 1
+        rooms += 1
+        best = max(best, rooms)
+
+    return best`,
     287: String.raw`def findDuplicate(nums):
     slow = nums[0]
     fast = nums[nums[0]]
@@ -454,6 +494,33 @@ class Trie:
         fast = nums[fast]
 
     return slow`,
+    307: String.raw`class NumArray:
+    def __init__(self, nums):
+        self.n = len(nums)
+        self.nums = nums[:]
+        self.bit = [0] * (self.n + 1)
+        for index, value in enumerate(nums, 1):
+            self._add(index, value)
+
+    def _add(self, index, delta):
+        while index <= self.n:
+            self.bit[index] += delta
+            index += index & -index
+
+    def _prefix_sum(self, index):
+        total = 0
+        while index > 0:
+            total += self.bit[index]
+            index -= index & -index
+        return total
+
+    def update(self, index, val):
+        delta = val - self.nums[index]
+        self.nums[index] = val
+        self._add(index + 1, delta)
+
+    def sumRange(self, left, right):
+        return self._prefix_sum(right + 1) - self._prefix_sum(left)`,
     306: String.raw`def isAdditiveNumber(num):
     def add_strings(a, b):
         i = len(a) - 1
@@ -683,6 +750,62 @@ def networkDelayTime(times, n, k):
             left = mid + 1
 
     return left`,
+    973: String.raw`def kClosest(points, k):
+    def distance(index):
+        x, y = points[index]
+        return x * x + y * y
+
+    def partition(left, right, pivot_index):
+        pivot_distance = distance(pivot_index)
+        points[pivot_index], points[right] = points[right], points[pivot_index]
+        store = left
+
+        for index in range(left, right):
+            if distance(index) <= pivot_distance:
+                points[store], points[index] = points[index], points[store]
+                store += 1
+
+        points[store], points[right] = points[right], points[store]
+        return store
+
+    left, right = 0, len(points) - 1
+    target = k - 1
+
+    while left <= right:
+        pivot_index = (left + right) // 2
+        pivot_index = partition(left, right, pivot_index)
+        if pivot_index == target:
+            break
+        if pivot_index < target:
+            left = pivot_index + 1
+        else:
+            right = pivot_index - 1
+
+    return points[:k]`,
+    981: String.raw`from collections import defaultdict
+
+
+class TimeMap:
+    def __init__(self):
+        self.store = defaultdict(list)
+
+    def set(self, key, value, timestamp):
+        self.store[key].append((timestamp, value))
+
+    def get(self, key, timestamp):
+        items = self.store.get(key, [])
+        left, right = 0, len(items) - 1
+        answer = ''
+
+        while left <= right:
+            mid = (left + right) // 2
+            if items[mid][0] <= timestamp:
+                answer = items[mid][1]
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return answer`,
     994: String.raw`from collections import deque
 
 
@@ -709,6 +832,21 @@ def orangesRotting(grid):
                 queue.append((nr, nc, dist + 1))
 
     return -1 if fresh else minutes`,
+    1094: String.raw`def carPooling(trips, capacity):
+    events = []
+    for passengers, start, end in trips:
+        events.append((start, passengers))
+        events.append((end, -passengers))
+
+    events.sort(key=lambda event: (event[0], event[1]))
+
+    load = 0
+    for _, delta in events:
+        load += delta
+        if load > capacity:
+            return False
+
+    return True`,
     1631: String.raw`import heapq
 
 

@@ -92,7 +92,9 @@ class InterviewPrepSampleTest(unittest.TestCase):
             97: self.check_97,
             98: self.check_98,
             102: self.check_102,
+            1094: self.check_1094,
             137: self.check_137,
+            146: self.check_146,
             142: self.check_142,
             143: self.check_143,
             200: self.check_200,
@@ -100,7 +102,9 @@ class InterviewPrepSampleTest(unittest.TestCase):
             208: self.check_208,
             212: self.check_212,
             234: self.check_234,
+            253: self.check_253,
             287: self.check_287,
+            307: self.check_307,
             306: self.check_306,
             312: self.check_312,
             329: self.check_329,
@@ -114,6 +118,8 @@ class InterviewPrepSampleTest(unittest.TestCase):
             743: self.check_743,
             787: self.check_787,
             875: self.check_875,
+            973: self.check_973,
+            981: self.check_981,
             994: self.check_994,
             1631: self.check_1631,
         }
@@ -190,6 +196,12 @@ class InterviewPrepSampleTest(unittest.TestCase):
         self.assertEqual(ns["singleNumber"]([2, 2, 3, 2]), 3)
         self.assertEqual(ns["singleNumber"]([-2, -2, -2, -7]), -7)
 
+    def check_1094(self):
+        ns = self.exec_snippet(1094)
+        trips = [[2, 1, 5], [3, 3, 7]]
+        self.assertFalse(ns["carPooling"](trips, 4))
+        self.assertTrue(ns["carPooling"](trips, 5))
+
     def check_98(self):
         ns = self.exec_snippet(98)
         valid = TreeNode(2, TreeNode(1), TreeNode(3))
@@ -203,6 +215,19 @@ class InterviewPrepSampleTest(unittest.TestCase):
         root.left = TreeNode(9)
         root.right = TreeNode(20, TreeNode(15), TreeNode(7))
         self.assertEqual(ns["levelOrder"](root), [[3], [9, 20], [15, 7]])
+
+    def check_146(self):
+        ns = self.exec_snippet(146)
+        cache = ns["LRUCache"](2)
+        cache.put(1, 1)
+        cache.put(2, 2)
+        self.assertEqual(cache.get(1), 1)
+        cache.put(3, 3)
+        self.assertEqual(cache.get(2), -1)
+        cache.put(4, 4)
+        self.assertEqual(cache.get(1), -1)
+        self.assertEqual(cache.get(3), 3)
+        self.assertEqual(cache.get(4), 4)
 
     def check_142(self):
         ns = self.exec_snippet(142)
@@ -259,9 +284,22 @@ class InterviewPrepSampleTest(unittest.TestCase):
         head, _ = linked_list([1, 2])
         self.assertFalse(ns["isPalindrome"](head))
 
+    def check_253(self):
+        ns = self.exec_snippet(253)
+        intervals = [[0, 30], [5, 10], [15, 20]]
+        self.assertEqual(ns["minMeetingRooms"](intervals), 2)
+
     def check_287(self):
         ns = self.exec_snippet(287)
         self.assertEqual(ns["findDuplicate"]([1, 3, 4, 2, 2]), 2)
+
+    def check_307(self):
+        ns = self.exec_snippet(307)
+        arr = ns["NumArray"]([1, 3, 5])
+        self.assertEqual(arr.sumRange(0, 2), 9)
+        arr.update(1, 2)
+        self.assertEqual(arr.sumRange(0, 2), 8)
+        self.assertEqual(arr.sumRange(1, 1), 2)
 
     def check_306(self):
         ns = self.exec_snippet(306)
@@ -322,6 +360,22 @@ class InterviewPrepSampleTest(unittest.TestCase):
     def check_875(self):
         ns = self.exec_snippet(875)
         self.assertEqual(ns["minEatingSpeed"]([3, 6, 7, 11], 8), 4)
+
+    def check_973(self):
+        ns = self.exec_snippet(973)
+        points = [[1, 3], [-2, 2], [2, -2]]
+        result = ns["kClosest"]([point[:] for point in points], 2)
+        self.assertEqual({tuple(point) for point in result}, {(-2, 2), (2, -2)})
+
+    def check_981(self):
+        ns = self.exec_snippet(981)
+        store = ns["TimeMap"]()
+        store.set("foo", "bar", 1)
+        self.assertEqual(store.get("foo", 1), "bar")
+        self.assertEqual(store.get("foo", 3), "bar")
+        store.set("foo", "bar2", 4)
+        self.assertEqual(store.get("foo", 4), "bar2")
+        self.assertEqual(store.get("foo", 5), "bar2")
 
     def check_994(self):
         ns = self.exec_snippet(994)

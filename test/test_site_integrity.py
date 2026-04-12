@@ -132,6 +132,7 @@ class SiteIntegrityTest(unittest.TestCase):
         ids = set(re.findall(r'id="([^"]+)"', interview_html))
         expected = {
             "prep-overview",
+            "python-toolkit",
             "category-map",
             "approach-map",
             "problem-browser",

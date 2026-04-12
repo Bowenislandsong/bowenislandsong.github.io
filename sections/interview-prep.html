@@ -15,7 +15,10 @@
         Every problem links to the official LeetCode page and includes the instinct, the core move, the edge cases to call out, and the Big O analysis you should be able to say out loud in an interview.
       </p>
       <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
-        The drill set now spans arrays and windows, binary search, intervals, greedy reasoning, monotonic stacks, trees, heaps, graphs, dynamic programming, linked lists, strings, backtracking, bit tricks, and tries.
+        The drill set now covers the major interview families: arrays and windows, binary search, intervals, greedy reasoning, monotonic stacks, trees, heaps, graphs, dynamic programming, linked lists, strings, backtracking, bit tricks, and tries.
+      </p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+        It also now includes a smaller niche layer: line sweep, Fenwick or segment trees, geometry and selection patterns like quickselect, and design-heavy cache or system-style prompts. It still does not claim to be literally exhaustive. The next layer after this would be things like lazy propagation, MST and SCC variants, harder geometry, bitmask DP, and concurrency-heavy design prompts.
       </p>
 
       <div class="mt-7 flex flex-wrap gap-3">
@@ -54,6 +57,125 @@
   </div>
 </section>
 
+<section id="python-toolkit" class="scroll-mt-24 py-10">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Python Interview Toolbox</p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Short things worth remembering cold.</h2>
+    </div>
+    <p class="max-w-2xl text-sm leading-6 text-slate-600">
+      These are not full patterns by themselves. They are the small language tools that make common interview solutions cleaner, faster to write, and easier to explain.
+    </p>
+  </div>
+
+  <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-lg font-semibold text-slate-950"><code class="font-mono text-[0.95em]">collections.deque</code></h3>
+        <span class="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700">Queue</span>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Double-ended queue with O(1) append and pop from both ends.</p>
+      <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Remember</p>
+      <pre class="mt-2 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs leading-6 text-slate-100"><code>from collections import deque
+q = deque([start])
+q.append(x)
+node = q.popleft()</code></pre>
+      <p class="mt-3 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Useful for:</span> BFS, level-order traversal, fixed-size windows, monotonic queues.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Typical prompts:</span> Number of Islands with BFS, Rotting Oranges, Binary Tree Level Order Traversal.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">When not to use:</span> not for random indexed access in the middle; a list or array is better there.</p>
+    </article>
+
+    <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-lg font-semibold text-slate-950"><code class="font-mono text-[0.95em]">collections.defaultdict</code></h3>
+        <span class="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-sky-700">Map</span>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Dictionary with an automatic default value factory, so you do not need repetitive existence checks.</p>
+      <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Remember</p>
+      <pre class="mt-2 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs leading-6 text-slate-100"><code>from collections import defaultdict
+graph = defaultdict(list)
+count = defaultdict(int)</code></pre>
+      <p class="mt-3 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Useful for:</span> adjacency lists, frequency maps, grouping values.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Typical prompts:</span> graphs, topological sort, prefix-sum counting, anagram grouping.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">When not to use:</span> avoid it when accidental key creation would hide bugs, especially in stateful design questions.</p>
+    </article>
+
+    <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-lg font-semibold text-slate-950"><code class="font-mono text-[0.95em]">collections.Counter</code></h3>
+        <span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-amber-700">Count</span>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Frequency table for hashable items. Great when the main state is just counts.</p>
+      <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Remember</p>
+      <pre class="mt-2 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs leading-6 text-slate-100"><code>from collections import Counter
+freq = Counter(nums)
+same = Counter(s) == Counter(t)</code></pre>
+      <p class="mt-3 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Useful for:</span> frequency matching, top-k setup, multiset comparison.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Typical prompts:</span> valid anagram, top-k frequent elements, sliding-window count matching.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">When not to use:</span> not ideal when the alphabet is tiny and fixed, because a small array can be simpler and faster.</p>
+    </article>
+
+    <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-lg font-semibold text-slate-950"><code class="font-mono text-[0.95em]">heapq</code></h3>
+        <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-violet-700">Heap</span>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Min-heap in Python. The smallest item comes out first, so push negative values when you want max-heap behavior.</p>
+      <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Remember</p>
+      <pre class="mt-2 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs leading-6 text-slate-100"><code>import heapq
+heapq.heappush(heap, (priority, node))
+priority, node = heapq.heappop(heap)</code></pre>
+      <p class="mt-3 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Useful for:</span> Dijkstra, merge-k structures, streaming top-k, always-take-smallest problems.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Typical prompts:</span> Network Delay Time, Top K Frequent Elements, meeting rooms, kth largest.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">When not to use:</span> if you need fast deletion or update of arbitrary existing entries, a plain heap gets awkward and usually needs stale-entry handling.</p>
+    </article>
+
+    <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-lg font-semibold text-slate-950"><code class="font-mono text-[0.95em]">bisect_left</code></h3>
+        <span class="rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-rose-700">Binary Search</span>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Returns the first index where <code class="font-mono text-[0.95em]">x</code> could be inserted while keeping the array sorted, which means the first index with value <code class="font-mono text-[0.95em]">&gt;= x</code>.</p>
+      <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Remember</p>
+      <pre class="mt-2 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs leading-6 text-slate-100"><code>from bisect import bisect_left
+i = bisect_left(nums, target)</code></pre>
+      <p class="mt-3 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Useful for:</span> lower-bound search, insertion position, patience-sorting style LIS solutions.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Typical prompts:</span> search insert position, LIS optimization, first valid position in sorted data. Its sibling <code class="font-mono text-[0.95em]">bisect_right</code> is the one to remember for “latest timestamp &lt;= t” lookups like TimeMap.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">When not to use:</span> it only helps if the data is already sorted or maintained in sorted order; otherwise the setup cost can erase the benefit.</p>
+    </article>
+
+    <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-lg font-semibold text-slate-950"><code class="font-mono text-[0.95em]">OrderedDict</code></h3>
+        <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">LRU</span>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Modern <code class="font-mono text-[0.95em]">dict</code> already preserves insertion order, but <code class="font-mono text-[0.95em]">OrderedDict</code> is still useful when you need explicit recency operations.</p>
+      <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Remember</p>
+      <pre class="mt-2 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs leading-6 text-slate-100"><code>from collections import OrderedDict
+cache.move_to_end(key)
+oldest_key, _ = cache.popitem(last=False)</code></pre>
+      <p class="mt-3 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Useful for:</span> LRU cache style questions where keys must be moved to “most recent” and evicted from the “least recent” side.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Typical prompts:</span> LRU Cache, explicit recency tracking, ordered eviction logic.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">When not to use:</span> do not reach for it just because you want insertion order; plain <code class="font-mono text-[0.95em]">dict</code> already gives that in modern Python.</p>
+    </article>
+
+    <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-lg font-semibold text-slate-950"><code class="font-mono text-[0.95em]">functools.lru_cache</code></h3>
+        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700">Memo</span>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Memoizes a pure recursive function by caching arguments, which can collapse exponential recursion into polynomial time.</p>
+      <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Remember</p>
+      <pre class="mt-2 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs leading-6 text-slate-100"><code>from functools import lru_cache
+@lru_cache(None)
+def dfs(i, j): ...</code></pre>
+      <p class="mt-3 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Useful for:</span> DFS on DAG-like state spaces, DP with recursion, repeated subproblems.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">Typical prompts:</span> Longest Increasing Path in a Matrix, word break variants, recursive DP on indices.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-700"><span class="font-semibold text-slate-900">When not to use:</span> avoid it if the function depends on mutable external state or if the cached state space is too large to fit comfortably in memory.</p>
+    </article>
+  </div>
+</section>
+
 <section id="category-map" class="scroll-mt-24 py-10">
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div>
@@ -61,7 +183,7 @@
       <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Choose the family before you choose the code.</h2>
     </div>
     <p class="max-w-2xl text-sm leading-6 text-slate-600">
-      Category filters answer: what kind of object am I really working with? A sequence or interval list, a graph, a tree, a linked list, a combinatorial search tree, or a prefix structure?
+      Category filters answer: what kind of object am I really working with? A sequence or interval list, a graph, a tree, a mutable range-query structure, a linked list, a coordinate geometry object, a combinatorial search tree, a prefix structure, or an API with operation constraints.
     </p>
   </div>
 
@@ -75,7 +197,7 @@
       <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Train pattern recognition by technique.</h2>
     </div>
     <p class="max-w-2xl text-sm leading-6 text-slate-600">
-      Approach filters answer: what move unlocks the problem? Reverse time, slide a window, binary search the answer, relax edges, use a heap frontier, peel indegrees, reverse the list, or prune by prefix.
+      Approach filters answer: what move unlocks the problem? Sweep events, slide a window, binary search the answer, partition around the kth boundary, relax edges, use a heap frontier, update a Fenwick tree, peel indegrees, reverse the list, or prune by prefix.
     </p>
   </div>
 
@@ -95,7 +217,7 @@
     <div class="grid gap-4 lg:grid-cols-[1.4fr,1fr]">
       <label class="block">
         <span class="text-sm font-semibold text-slate-900">Search</span>
-        <input id="interview-search" type="search" placeholder="Try: window, tree, heap, union-find, interval, carry, duplicate..." class="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200" />
+        <input id="interview-search" type="search" placeholder="Try: line sweep, fenwick, quickselect, ordereddict, union-find..." class="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200" />
       </label>
       <label class="block">
         <span class="text-sm font-semibold text-slate-900">Sort</span>
