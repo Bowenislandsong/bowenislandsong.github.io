@@ -1,44 +1,52 @@
 # Bowen Song Portfolio Site
 
-Static GitHub Pages site for Bowen Song with five live experiences:
+Static GitHub Pages portfolio for Bowen Song, built as a hash-routed single-page site with focused sections for research, engineering, interview prep, resume views, news, and structured reading tracks.
 
-- `#/personal` for the fast, recruiter-friendly overview
-- `#/research` for publications, agenda, projects, teaching, and talks
-- `#/news` for current updates, poster spotlights, and the archive
-- `#/paper-discovery` for the focused reading map, graph, topic view, and timeline
-- `#/quantum` for the quantum lab / structured learning track
+Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 
-The `classes/` content is still in the repository, but it is archived and not surfaced in the live site navigation.
+## What This Repo Is
 
-## Live Site
+- A public portfolio and research site that runs on GitHub Pages without a server backend.
+- A small front-end app where `index.html` is the shell and `#/page#anchor` routes load section partials from `sections/`.
+- A content-heavy repo with handwritten and generated data for papers, lessons, news, and resume views.
+- A repo that still keeps `classes/` around for archival integrity, even though that material is archived and intentionally hidden from the live navigation.
 
-[bowenislandsong.github.io](https://bowenislandsong.github.io)
+## Live Route Map
 
-## Current Stack
+| Route | Purpose |
+| --- | --- |
+| `#/personal` | Fast overview for recruiters and first-time visitors |
+| `#/research` | Publications, research agenda, projects, teaching, and talks |
+| `#/engineering` | Engineering-focused portfolio page |
+| `#/interview-prep` | Coding interview drill board with categories, approaches, filters, and examples |
+| `#/news` | Updates, poster highlights, and archive |
+| `#/quantum` | Quantum learning track and lesson flow |
+| `#/paper-discovery` | Paper browser with cards, graph, topic view, and timeline |
+| `#/resume` | Resume landing page |
+| `#/resume-engineering` | Engineering resume variant |
+| `#/resume-embodied-ml` | Embodied ML resume variant |
+| `#/resume-advanced-ml` | Advanced ML resume variant |
 
-- Static HTML partials in `sections/`
-- Client-side hash routing in `js/router.js`
-- Page boot hooks in `js/section-hooks.js`
-- Dedicated page logic in `js/news.js`, `js/quantum.js`, and `js/papers.js`
-- Tailwind CDN for page styling
-- GitHub Pages-compatible assets and JSON manifests
-
-## Live Routes
-
-- `#/personal`
-- `#/research`
-- `#/news`
-- `#/quantum`
-- `#/paper-discovery`
-
-Examples:
+Example deep links:
 
 - `#/personal#fit`
-- `#/news#archive`
 - `#/research#publications`
+- `#/engineering#systems`
+- `#/interview-prep#problem-browser`
+- `#/news#archive`
 - `#/quantum#chapter1`
+- `#/paper-discovery#papers-graph-view`
 
-## Project Layout
+## Architecture
+
+- `index.html` provides the shared shell, navigation, subnavs, and script loading.
+- `js/router.js` resolves `#/page#anchor`, swaps in the correct partial from `sections/`, and preserves smooth in-page anchors.
+- `js/section-hooks.js` boots page-specific behavior after a section is loaded.
+- `sections/` contains markup-only partials for each live experience.
+- Page logic lives in specialized scripts such as `js/news.js`, `js/quantum.js`, `js/papers.js`, `js/resume.js`, and `js/interview-prep.js`.
+- JSON and Markdown content under `news/`, `papers/`, `lessons/`, `resume/`, and `classes/` feed the live UI and integrity tests.
+
+## Repository Layout
 
 ```text
 .
@@ -46,29 +54,37 @@ Examples:
 ├── sections/
 │   ├── personal.html
 │   ├── research.html
+│   ├── engineering.html
+│   ├── interview-prep.html
 │   ├── news.html
 │   ├── quantum.html
 │   ├── paper-discovery.html
-│   └── classes.html              # archived, not live
+│   ├── resume.html
+│   ├── resume-engineering.html
+│   ├── resume-embodied-ml.html
+│   ├── resume-advanced-ml.html
+│   └── classes.html                 # archived, not live
 ├── js/
 │   ├── router.js
 │   ├── section-hooks.js
 │   ├── news.js
 │   ├── quantum.js
 │   ├── papers.js
-│   └── classes.js                # archived, not live
+│   ├── resume.js
+│   ├── interview-prep.js
+│   └── interview-prep-data.js
 ├── news/
-│   └── index.json
 ├── lessons/
 ├── papers/
-├── classes/                      # archived source materials
+├── resume/
+├── classes/                         # archived source materials
 ├── test/
 └── .github/scripts/
 ```
 
-## Local Preview
+## Local Development
 
-You do not need Conda just to view the site.
+### Preview the Site
 
 ```bash
 python3 -m http.server 8000
@@ -76,65 +92,65 @@ python3 -m http.server 8000
 
 Then open [http://localhost:8000](http://localhost:8000).
 
-## Testing
-
-Run the full local test suite:
+### Run the Test Suite
 
 ```bash
 python3 -m unittest discover -s test -q
 ```
 
-The test suite now covers:
+The tests cover:
 
 - route-to-section consistency
 - live hash links and anchor contracts
-- Personal and Research button/anchor contracts
-- Paper Discovery view controls and graph-rendering contracts
-- quantum search, jump, and paging controls
-- manifest consistency for `papers/` and archived `classes/`
-- README accuracy for the current workflow
+- page-level UI contracts for buttons, filters, jumps, and rendered content
+- news, papers, lessons, resume, and archived `classes/` manifest integrity
+- README accuracy for the documented local workflow
 
-Some automation-related tests are optional and skip unless their external dependencies or API credentials are present.
+Some automation-related checks are optional and skip unless their external dependencies or credentials are present.
 
 ## Content Workflows
 
 ### Papers
 
-- Source summaries live in `papers/*.md`
-- Manifest is stored in `papers/index.json`
-- Discovery UI is rendered by `js/papers.js`
-- Automated fetching is handled by `.github/scripts/fetch_paper.py`
-- New fetches rotate across portfolio-aligned tracks instead of staying locked to one narrow paper lane
-- Gemini responses are sanitized before saving so fenced YAML output still becomes valid frontmatter
+- Source summaries live in `papers/*.md`.
+- The checked-in manifest lives in `papers/index.json`.
+- The Paper Discovery experience is rendered by `js/papers.js`.
+- Automated fetching is handled by `.github/scripts/fetch_paper.py`.
+- Recent workflow improvements sanitize fenced YAML output before saving and rotate fetches across portfolio-aligned tracks.
 
 ### Quantum Lessons
 
-- Source lessons live in `lessons/*.md`
-- Manifest is stored in `lessons/index.json`
-- Reading flow is rendered by `js/quantum.js`
+- Source lessons live in `lessons/*.md`.
+- The lesson manifest lives in `lessons/index.json`.
+- The reading flow is rendered by `js/quantum.js`.
 
 ### News
 
-- Short-form updates live in `news/index.json`
-- The featured card, recent feed, and archive are rendered by `js/news.js`
-- Poster assets can live in `publications/` and `img/news/`
-- Older items can be moved into the archive by setting `"archived": true`
+- Updates live in `news/index.json`.
+- The featured card, latest feed, and archive are rendered by `js/news.js`.
+- Older items can be moved out of the main feed by setting `"archived": true`.
 
-### Archived Classes
+### Resume Views
 
-- Archived course files remain under `classes/`
-- `classes/index.json` is still maintained for integrity checks
-- The archive is intentionally hidden from the live site
+- Resume content is sourced from `resume/`.
+- `js/resume.js` powers both the landing page and the resume variants.
+- The three specialized resume pages share one shell but expose different narratives for different audiences.
 
-## Regenerating Indexes
+### Archived Material
 
-If files were added or removed from `papers/` or `classes/`, regenerate the checked-in manifests:
+- `classes/` remains in the repo for archival completeness and integrity tests.
+- `classes/index.json` is still maintained.
+- The archive is deliberately archived and hidden from the live navigation.
+
+## Maintenance Commands
+
+If files are added or removed under `papers/` or `classes/`, regenerate the manifests:
 
 ```bash
 python3 .github/scripts/generate_indexes.py
 ```
 
-To run the portfolio-driven paper fetch manually:
+To run the paper fetch manually:
 
 ```bash
 python3 .github/scripts/fetch_paper.py
@@ -142,8 +158,8 @@ python3 .github/scripts/fetch_paper.py
 
 ## Notes
 
-- Section partials are markup-only; page behavior is booted through shared hooks.
-- `#/news` is the lightweight home for announcements, posters, and archived updates.
-- Paper Discovery includes four views: cards, graph, by-topic, and timeline.
-- `#/personal` is intentionally short; `#/research` is the deeper academic and technical view.
-- `#/paper-discovery` is framed as a focused reading map rather than a broad survey.
+- Section partials stay markup-only by design; behavior is attached after routing.
+- `#/personal` stays intentionally concise, while `#/research` and `#/engineering` go deeper.
+- `#/interview-prep` is organized both by problem family and by solution approach.
+- `#/paper-discovery` is framed as a reading map rather than a generic publication dump.
+- The archived material is preserved for reference, not treated as a live product surface.
