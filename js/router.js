@@ -9,8 +9,6 @@
   const subnavNews = document.getElementById('news-subnav');
   const subnavEngineering = document.getElementById('engineering-subnav');
   const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
-  const subnavResume = document.getElementById('resume-subnav');
-  const subnavResumeVariant = document.getElementById('resume-variant-subnav');
 
   // ---- Config ----
   const DEFAULT_PAGE = 'personal';
@@ -21,10 +19,6 @@
     engineering: 'sections/engineering.html',
     'interview-prep': 'sections/interview-prep.html',
     news: 'sections/news.html',
-    resume: 'sections/resume.html',
-    'resume-engineering': 'sections/resume-engineering.html',
-    'resume-embodied-ml': 'sections/resume-embodied-ml.html',
-    'resume-advanced-ml': 'sections/resume-advanced-ml.html',
     quantum: 'sections/quantum.html',
     'paper-discovery': 'sections/paper-discovery.html',
   };
@@ -62,29 +56,13 @@
     return `#/` + page + (anchor ? `#${anchor}` : '');
   }
 
-  function navPageFor(page) {
-    return page && page.startsWith('resume') ? 'resume' : page;
-  }
-
-  function isResumeVariant(page) {
-    return Boolean(page) && page.startsWith('resume-');
-  }
-
   function highlightNav(page) {
-    const navPage = navPageFor(page);
+    const navPage = page;
     document.querySelectorAll('.main-nav-btn').forEach(btn => {
       btn.classList.remove('bg-slate-200', 'font-medium');
       if (btn.getAttribute('data-page') === navPage) {
         btn.classList.add('bg-slate-200', 'font-medium');
       }
-    });
-  }
-
-  function syncResumeVariantSubnav(page) {
-    if (!subnavResumeVariant) return;
-    subnavResumeVariant.querySelectorAll('[data-resume-anchor]').forEach((link) => {
-      const anchor = link.getAttribute('data-resume-anchor');
-      link.setAttribute('href', canonicalHash(page, anchor));
     });
   }
 
@@ -94,12 +72,6 @@
     if (subnavNews) subnavNews.classList.toggle('hidden', page !== 'news');
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
-    if (subnavResume) subnavResume.classList.toggle('hidden', page !== 'resume');
-    if (subnavResumeVariant) subnavResumeVariant.classList.toggle('hidden', !isResumeVariant(page));
-
-    if (isResumeVariant(page)) {
-      syncResumeVariantSubnav(page);
-    }
   }
 
   function scrollToAnchor(anchor) {
