@@ -417,10 +417,15 @@ Body text
     def test_ci_workflows_use_curated_fetch_and_full_test_suite(self):
         fetch_workflow = read(".github/workflows/fetch-and-update.yml")
         lesson_workflow = read(".github/workflows/daily_gemini_lesson.yml")
+        ci_workflow = read(".github/workflows/ci.yml")
 
         self.assertIn(".github/scripts/fetch_paper.py", fetch_workflow)
         self.assertIn("python3 -m unittest discover -s test -q", fetch_workflow)
         self.assertIn("python3 -m unittest discover -s test -q", lesson_workflow)
+        self.assertIn("pull_request:", ci_workflow)
+        self.assertIn("unit-tests:", ci_workflow)
+        self.assertIn("ui-contracts:", ci_workflow)
+        self.assertIn("static-site-smoke:", ci_workflow)
 
     def test_readme_matches_current_site_and_test_workflow(self):
         readme = read("README.md")
