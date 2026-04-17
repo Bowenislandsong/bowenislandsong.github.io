@@ -1,6 +1,6 @@
 # Bowen Song Portfolio Site
 
-Static GitHub Pages portfolio for Bowen Song, built as a hash-routed single-page site with focused sections for research, engineering, interview prep, resume views, news, and structured reading tracks.
+Static GitHub Pages portfolio for Bowen Song, built as a hash-routed single-page site with focused sections for research, engineering, interview prep, news, and structured reading tracks.
 
 Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 
@@ -8,7 +8,7 @@ Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 
 - A public portfolio and research site that runs on GitHub Pages without a server backend.
 - A small front-end app where `index.html` is the shell and `#/page#anchor` routes load section partials from `sections/`.
-- A content-heavy repo with handwritten and generated data for papers, lessons, news, and resume views.
+- A content-heavy repo with handwritten and generated data for papers, lessons, and news.
 - A repo that still keeps `classes/` around for archival integrity, even though that material is archived and intentionally hidden from the live navigation.
 
 ## Live Route Map
@@ -22,10 +22,6 @@ Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 | `#/news` | Updates, poster highlights, and archive |
 | `#/quantum` | Quantum learning track and lesson flow |
 | `#/paper-discovery` | Paper browser with cards, graph, topic view, and timeline |
-| `#/resume` | Resume landing page |
-| `#/resume-engineering` | Engineering resume variant |
-| `#/resume-embodied-ml` | Embodied ML resume variant |
-| `#/resume-advanced-ml` | Advanced ML resume variant |
 
 Example deep links:
 
@@ -43,8 +39,8 @@ Example deep links:
 - `js/router.js` resolves `#/page#anchor`, swaps in the correct partial from `sections/`, and preserves smooth in-page anchors.
 - `js/section-hooks.js` boots page-specific behavior after a section is loaded.
 - `sections/` contains markup-only partials for each live experience.
-- Page logic lives in specialized scripts such as `js/news.js`, `js/quantum.js`, `js/papers.js`, `js/resume.js`, and `js/interview-prep.js`.
-- JSON and Markdown content under `news/`, `papers/`, `lessons/`, `resume/`, and `classes/` feed the live UI and integrity tests.
+- Page logic lives in specialized scripts such as `js/news.js`, `js/quantum.js`, `js/papers.js`, and `js/interview-prep.js`.
+- JSON and Markdown content under `news/`, `papers/`, `lessons/`, and `classes/` feed the live UI and integrity tests.
 
 ## Repository Layout
 
@@ -59,10 +55,6 @@ Example deep links:
 │   ├── news.html
 │   ├── quantum.html
 │   ├── paper-discovery.html
-│   ├── resume.html
-│   ├── resume-engineering.html
-│   ├── resume-embodied-ml.html
-│   ├── resume-advanced-ml.html
 │   └── classes.html                 # archived, not live
 ├── js/
 │   ├── router.js
@@ -70,13 +62,11 @@ Example deep links:
 │   ├── news.js
 │   ├── quantum.js
 │   ├── papers.js
-│   ├── resume.js
 │   ├── interview-prep.js
 │   └── interview-prep-data.js
 ├── news/
 ├── lessons/
 ├── papers/
-├── resume/
 ├── classes/                         # archived source materials
 ├── test/
 └── .github/scripts/
@@ -103,7 +93,7 @@ The tests cover:
 - route-to-section consistency
 - live hash links and anchor contracts
 - page-level UI contracts for buttons, filters, jumps, and rendered content
-- news, papers, lessons, resume, and archived `classes/` manifest integrity
+- news, papers, lessons, and archived `classes/` manifest integrity
 - README accuracy for the documented local workflow
 
 Some automation-related checks are optional and skip unless their external dependencies or credentials are present.
@@ -129,12 +119,6 @@ Some automation-related checks are optional and skip unless their external depen
 - Updates live in `news/index.json`.
 - The featured card, latest feed, and archive are rendered by `js/news.js`.
 - Older items can be moved out of the main feed by setting `"archived": true`.
-
-### Resume Views
-
-- Resume content is sourced from `resume/`.
-- `js/resume.js` powers both the landing page and the resume variants.
-- The three specialized resume pages share one shell but expose different narratives for different audiences.
 
 ### Archived Material
 
