@@ -341,6 +341,46 @@ Body text
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
         self.assertEqual(tabs, {"personal", "research", "engineering", "interview-prep", "news", "quantum", "paper-discovery"})
 
+    def test_subnavs_are_retractable_with_accessible_toggle(self):
+        index_html = read("index.html")
+        router_js = read("js/router.js")
+
+        self.assertIn('id="subnav-toggle"', index_html)
+        self.assertIn('id="subnav-toggle-label"', index_html)
+        self.assertIn('aria-expanded="true"', index_html)
+        for page in ["personal", "research", "engineering", "interview-prep", "news"]:
+            self.assertIn(f'data-subnav-for="{page}"', index_html)
+
+        for expected in [
+            "const SUBNAV_COLLAPSE_KEY = 'site.subnav.collapsed.v1';",
+            "function toggleSubnavCollapsedForPage(page)",
+            "subnavToggleBtn.addEventListener('click'",
+            "subnavToggleBtn.setAttribute('aria-expanded'",
+        ]:
+            self.assertIn(expected, router_js)
+
+    def test_nav_styles_include_phone_tablet_and_desktop_workflow_hints(self):
+        index_html = read("index.html")
+        for token in [
+            "@media (max-width: 768px)",
+            "@media (max-width: 1024px)",
+            "@media (min-width: 769px) and (max-width: 1200px)",
+            "scroll-snap-type: x proximity;",
+            "flex-wrap: nowrap !important;",
+        ]:
+            self.assertIn(token, index_html)
+
+    def test_personal_profile_links_use_larger_tap_targets(self):
+        personal_html = read("sections/personal.html")
+        for token in [
+            "md:px-5",
+            "md:py-2.5",
+            "md:text-base",
+            "inline-flex items-center justify-center",
+            "font-semibold",
+        ]:
+            self.assertIn(token, personal_html)
+
     def test_quantum_controls_cover_toggle_search_jumps_and_paging(self):
         parser = parse_html("sections/quantum.html")
         quantum_html = read("sections/quantum.html")
