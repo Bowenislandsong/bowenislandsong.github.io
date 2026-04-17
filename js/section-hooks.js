@@ -147,26 +147,6 @@
       syncToggleButtons();
       if (window.setupNewsPage) return window.setupNewsPage();
     },
-    resume() {
-      bindDelegation();
-      syncToggleButtons();
-      if (window.setupResumeLanding) return window.setupResumeLanding();
-    },
-    'resume-engineering'({ page } = {}) {
-      bindDelegation();
-      syncToggleButtons();
-      if (window.setupResumePage) return window.setupResumePage({ page });
-    },
-    'resume-embodied-ml'({ page } = {}) {
-      bindDelegation();
-      syncToggleButtons();
-      if (window.setupResumePage) return window.setupResumePage({ page });
-    },
-    'resume-advanced-ml'({ page } = {}) {
-      bindDelegation();
-      syncToggleButtons();
-      if (window.setupResumePage) return window.setupResumePage({ page });
-    },
     quantum({ anchor } = {}) {
       bindDelegation();
       syncToggleButtons();

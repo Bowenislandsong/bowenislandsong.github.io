@@ -167,10 +167,6 @@ class UIContractTest(unittest.TestCase):
             "sections/engineering.html",
             "sections/interview-prep.html",
             "sections/news.html",
-            "sections/resume.html",
-            "sections/resume-engineering.html",
-            "sections/resume-embodied-ml.html",
-            "sections/resume-advanced-ml.html",
             "sections/quantum.html",
             "sections/paper-discovery.html",
         ]:
@@ -211,15 +207,6 @@ class UIContractTest(unittest.TestCase):
             selectors = re.findall(r'data-(?:toggle|copy)="(#([^"]+))"', html)
             missing_targets = [selector for selector, target_id in selectors if target_id not in parser.ids]
             self.assertEqual(missing_targets, [], f"Broken selectors in {rel_path}: {missing_targets}")
-
-    def test_resume_renderer_contract(self):
-        resume_js = read("js/resume.js")
-        self.assertIn("window.setupResumeLanding = async function", resume_js)
-        self.assertIn("window.setupResumePage = async function", resume_js)
-        self.assertIn("const RESUME_URL = 'resume/index.json';", resume_js)
-        self.assertIn("data-resume-pdf", resume_js)
-        self.assertIn("pdfHref", resume_js)
-        self.assertIn("featuredExperienceIds", read("resume/index.json"))
 
     def test_news_featured_details_contract(self):
         news_js = read("js/news.js")
@@ -343,10 +330,6 @@ Body text
             "sections/research.html",
             "sections/engineering.html",
             "sections/news.html",
-            "sections/resume.html",
-            "sections/resume-engineering.html",
-            "sections/resume-embodied-ml.html",
-            "sections/resume-advanced-ml.html",
             "sections/quantum.html",
             "sections/interview-prep.html",
             "sections/paper-discovery.html",
@@ -356,7 +339,7 @@ Body text
     def test_index_navigation_exposes_live_tabs(self):
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
-        self.assertEqual(tabs, {"personal", "research", "engineering", "interview-prep", "resume", "news", "quantum", "paper-discovery"})
+        self.assertEqual(tabs, {"personal", "research", "engineering", "interview-prep", "news", "quantum", "paper-discovery"})
 
     def test_quantum_controls_cover_toggle_search_jumps_and_paging(self):
         parser = parse_html("sections/quantum.html")
