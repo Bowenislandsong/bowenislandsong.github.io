@@ -41,7 +41,7 @@ jobs:
           python-version: "3.11"
 
       - name: Run UI contract tests
-        run: python3 -m unittest test.test_ui_contracts -q
+        run: python3 -m unittest discover -s test -p "test_ui_contracts.py" -q
 
   static-site-smoke:
     name: Static site smoke test
