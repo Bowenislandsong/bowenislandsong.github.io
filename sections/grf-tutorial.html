@@ -24,16 +24,101 @@
     <aside class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-28">
       <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Fast navigation</p>
       <nav class="mt-4 grid gap-2 text-sm">
-        <a href="#/grf-tutorial#grf-what-is" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">1. What GRF is</a>
-        <a href="#/grf-tutorial#grf-measurement" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">2. How force plates measure it</a>
-        <a href="#/grf-tutorial#grf-waveforms" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">3. How to read GRF curves</a>
-        <a href="#/grf-tutorial#grf-imu" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">4. IMU estimation limits</a>
-        <a href="#/grf-tutorial#grf-joint-moments" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">5. Joint-moment meaning</a>
-        <a href="#/grf-tutorial#grf-by-joint" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">6. Ankle, knee, hip</a>
-        <a href="#/grf-tutorial#grf-inverse-dynamics" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">7. Inverse dynamics</a>
-        <a href="#/grf-tutorial#grf-validation" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">8. Validation checklist</a>
+        <a href="#/grf-tutorial#grf-big-picture" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">1. Big-picture diagram</a>
+        <a href="#/grf-tutorial#grf-what-is" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">2. What GRF is</a>
+        <a href="#/grf-tutorial#grf-measurement" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">3. How force plates measure it</a>
+        <a href="#/grf-tutorial#grf-waveforms" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">4. How to read GRF curves</a>
+        <a href="#/grf-tutorial#grf-imu" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">5. IMU estimation limits</a>
+        <a href="#/grf-tutorial#grf-joint-moments" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">6. Joint-moment meaning</a>
+        <a href="#/grf-tutorial#grf-by-joint" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">7. Ankle, knee, hip</a>
+        <a href="#/grf-tutorial#grf-inverse-dynamics" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">8. Inverse dynamics</a>
+        <a href="#/grf-tutorial#grf-validation" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">9. Validation checklist</a>
       </nav>
     </aside>
+  </div>
+</section>
+
+<section id="grf-big-picture" class="scroll-mt-28 py-10">
+  <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Big Picture</p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">From ground contact to joint moments</h2>
+    </div>
+    <p class="max-w-2xl text-sm leading-6 text-slate-600">Read this diagram left to right. The lab measures external loading, the motion system estimates segment motion, and inverse dynamics combines both to compute net ankle, knee, and hip moments.</p>
+  </div>
+
+  <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+    <svg viewBox="0 0 1100 620" class="min-w-[860px] w-full" role="img" aria-label="Complete biomechanics workflow from force plate and motion data to joint moments">
+      <defs>
+        <marker id="overview-arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+          <path d="M0,0 L12,6 L0,12 Z" fill="#334155"/>
+        </marker>
+        <linearGradient id="overview-force" x1="0" x2="0" y1="1" y2="0">
+          <stop offset="0%" stop-color="#14b8a6"/>
+          <stop offset="100%" stop-color="#0f766e"/>
+        </linearGradient>
+      </defs>
+
+      <rect x="28" y="34" width="318" height="530" rx="24" fill="#f8fafc" stroke="#cbd5e1"/>
+      <rect x="390" y="34" width="318" height="530" rx="24" fill="#f8fafc" stroke="#cbd5e1"/>
+      <rect x="754" y="34" width="318" height="530" rx="24" fill="#f8fafc" stroke="#cbd5e1"/>
+
+      <text x="58" y="76" fill="#0f766e" font-size="22" font-weight="800">1. Measured external load</text>
+      <text x="420" y="76" fill="#1d4ed8" font-size="22" font-weight="800">2. Measured body motion</text>
+      <text x="784" y="76" fill="#7c3aed" font-size="22" font-weight="800">3. Computed joint demand</text>
+
+      <rect x="76" y="394" width="222" height="34" rx="17" fill="#e2e8f0"/>
+      <path d="M126 354 C160 332 230 330 268 348 C284 356 280 374 260 376 L130 377 C111 377 106 365 126 354 Z" fill="#475569"/>
+      <circle cx="209" cy="394" r="8" fill="#0f766e"/>
+      <line x1="209" y1="394" x2="209" y2="178" stroke="url(#overview-force)" stroke-width="10" stroke-linecap="round" marker-end="url(#overview-arrow)"/>
+      <line x1="209" y1="394" x2="276" y2="342" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" marker-end="url(#overview-arrow)"/>
+      <text x="226" y="202" fill="#0f766e" font-size="16" font-weight="800">Fz</text>
+      <text x="282" y="344" fill="#7c3aed" font-size="16" font-weight="800">Fx/Fy</text>
+      <text x="229" y="422" fill="#0f766e" font-size="14" font-weight="800">CoP</text>
+      <rect x="70" y="464" width="236" height="68" rx="16" fill="#ecfdf5" stroke="#99f6e4"/>
+      <text x="94" y="492" fill="#134e4a" font-size="15" font-weight="800">Force plate / treadmill</text>
+      <text x="94" y="517" fill="#134e4a" font-size="13">Fx, Fy, Fz, Mx, My, Mz, CoP</text>
+
+      <circle cx="548" cy="118" r="18" fill="#0f172a"/>
+      <line x1="548" y1="136" x2="575" y2="226" stroke="#334155" stroke-width="12" stroke-linecap="round"/>
+      <line x1="575" y1="226" x2="540" y2="326" stroke="#475569" stroke-width="12" stroke-linecap="round"/>
+      <line x1="540" y1="326" x2="532" y2="422" stroke="#475569" stroke-width="12" stroke-linecap="round"/>
+      <path d="M532 422 C574 444 624 443 662 425" stroke="#475569" stroke-width="14" stroke-linecap="round" fill="none"/>
+      <circle cx="575" cy="226" r="12" fill="#7c3aed"/>
+      <circle cx="540" cy="326" r="12" fill="#2563eb"/>
+      <circle cx="532" cy="422" r="12" fill="#0f766e"/>
+      <rect x="440" y="464" width="224" height="68" rx="16" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="466" y="492" fill="#1e3a8a" font-size="15" font-weight="800">Kinematics + model</text>
+      <text x="466" y="517" fill="#1e3a8a" font-size="13">joint centers, segment pose, mass, inertia</text>
+      <text x="590" y="224" fill="#7c3aed" font-size="14" font-weight="800">hip</text>
+      <text x="555" y="328" fill="#2563eb" font-size="14" font-weight="800">knee</text>
+      <text x="546" y="421" fill="#0f766e" font-size="14" font-weight="800">ankle</text>
+
+      <rect x="808" y="118" width="208" height="98" rx="18" fill="#f5f3ff" stroke="#ddd6fe"/>
+      <text x="836" y="152" fill="#5b21b6" font-size="17" font-weight="800">Inverse dynamics</text>
+      <text x="836" y="178" fill="#5b21b6" font-size="13">Newton-Euler equations</text>
+      <text x="836" y="198" fill="#5b21b6" font-size="13">distal to proximal</text>
+
+      <rect x="806" y="254" width="214" height="58" rx="16" fill="#ecfdf5" stroke="#99f6e4"/>
+      <text x="836" y="290" fill="#0f766e" font-size="17" font-weight="800">ankle moment</text>
+      <rect x="806" y="332" width="214" height="58" rx="16" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="836" y="368" fill="#1d4ed8" font-size="17" font-weight="800">knee moment</text>
+      <rect x="806" y="410" width="214" height="58" rx="16" fill="#fdf2f8" stroke="#fbcfe8"/>
+      <text x="836" y="446" fill="#be185d" font-size="17" font-weight="800">hip moment</text>
+      <text x="795" y="520" fill="#64748b" font-size="14">Outputs are net moments, not individual muscle forces.</text>
+
+      <line x1="346" y1="296" x2="386" y2="296" stroke="#334155" stroke-width="3" marker-end="url(#overview-arrow)"/>
+      <line x1="708" y1="296" x2="748" y2="296" stroke="#334155" stroke-width="3" marker-end="url(#overview-arrow)"/>
+      <text x="354" y="278" fill="#334155" font-size="13" font-weight="800">external loads</text>
+      <text x="716" y="278" fill="#334155" font-size="13" font-weight="800">solve dynamics</text>
+
+      <rect x="76" y="102" width="228" height="46" rx="14" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="98" y="131" fill="#334155" font-size="14" font-weight="800">Direct measurement</text>
+      <rect x="438" y="102" width="228" height="46" rx="14" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="460" y="131" fill="#334155" font-size="14" font-weight="800">Measured or estimated</text>
+      <rect x="806" y="64" width="214" height="34" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="836" y="87" fill="#334155" font-size="14" font-weight="800">Model output</text>
+    </svg>
   </div>
 </section>
 
