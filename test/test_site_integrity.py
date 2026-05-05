@@ -36,6 +36,7 @@ class SiteIntegrityTest(unittest.TestCase):
             "news",
             "quantum",
             "paper-discovery",
+            "grf-tutorial",
         }
         routes = parse_router_routes()
         self.assertEqual({name for name, _ in routes}, expected)

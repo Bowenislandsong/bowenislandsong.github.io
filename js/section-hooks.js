@@ -155,5 +155,9 @@
     'paper-discovery'() {
       if (window.setupPapersDiscovery) return window.setupPapersDiscovery();
     },
+    'grf-tutorial'() {
+      bindDelegation();
+      syncToggleButtons();
+    },
   };
 })();
