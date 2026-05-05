@@ -9,6 +9,7 @@
   const subnavNews = document.getElementById('news-subnav');
   const subnavEngineering = document.getElementById('engineering-subnav');
   const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
+  const subnavGrfTutorial = document.getElementById('grf-tutorial-subnav');
   const subnavToggleBtn = document.getElementById('subnav-toggle');
   const subnavToggleLabel = document.getElementById('subnav-toggle-label');
 
@@ -23,6 +24,7 @@
     news: 'sections/news.html',
     quantum: 'sections/quantum.html',
     'paper-discovery': 'sections/paper-discovery.html',
+    'grf-tutorial': 'sections/grf-tutorial.html',
   };
   const routeNames = new Set(Object.keys(routes));
   const CACHE_MODE = 'no-store'; // ensure you always see latest
@@ -95,6 +97,7 @@
     if (subnavNews) subnavNews.classList.toggle('hidden', page !== 'news');
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
+    if (subnavGrfTutorial) subnavGrfTutorial.classList.toggle('hidden', page !== 'grf-tutorial');
     applySubnavCollapsedState(page);
     updateSubnavToggle(page);
   }
