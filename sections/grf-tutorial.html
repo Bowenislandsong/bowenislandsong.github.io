@@ -1,109 +1,307 @@
 <section id="grf-overview" class="py-12 md:py-16">
-  <div class="grid gap-8 lg:grid-cols-[1.08fr,0.92fr] lg:items-start">
+  <div class="grid gap-8 lg:grid-cols-[1.05fr,0.95fr] lg:items-start">
     <div>
       <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teal-700">Biomechanics Tutorial</p>
-      <h1 class="mt-2 text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">Ground reaction force and joint moments, step by step.</h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">A professional quick-start tutorial for estimating vertical GRF from IMUs and calculating sagittal-plane hip and knee moments using inverse dynamics.</p>
-      <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">Start with biomechanics fundamentals, then move through coordinate systems, free-body diagrams, and net joint moment calculations with consistent sign conventions.</p>
+      <h1 class="mt-2 text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">Ground reaction force and joint moments, from first principles to measurement.</h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">This tutorial explains what GRF is, how researchers measure it, what joint moments mean, and how ankle, knee, and hip moments are computed from movement data.</p>
+      <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">The central idea is simple: GRF is an external force you can measure at the ground. Joint moments are usually not measured directly; they are estimated with inverse dynamics from body motion, body-segment properties, and external loads such as GRF and center of pressure.</p>
       <div class="mt-6 flex flex-wrap gap-2">
-        <span class="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">Biomechanics fundamentals</span>
-        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">IMU + inverse dynamics</span>
-        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Hip/Knee moments</span>
-        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Practical checklist</span>
+        <span class="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">GRF basics</span>
+        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Force plates</span>
+        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">IMU estimates</span>
+        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Ankle / knee / hip moments</span>
       </div>
     </div>
-    <aside class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Before you start</p>
-      <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-700">
-        <li>• Define segment coordinate systems (foot, shank, thigh, pelvis).</li>
-        <li>• Sample IMU and force plate at known frequencies.</li>
-        <li>• Calibrate accelerometer bias and orientation drift.</li>
-        <li>• Keep one convention for joint moment signs.</li>
-        <li>• Validate against synchronized force-plate trials.</li>
-      </ul>
+
+    <aside class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-28">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Tutorial map</p>
+      <nav class="mt-4 grid gap-2 text-sm">
+        <a href="#/grf-tutorial#grf-what-is" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">1. What GRF is</a>
+        <a href="#/grf-tutorial#grf-measurement" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">2. How GRF is measured</a>
+        <a href="#/grf-tutorial#grf-imu" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">3. What IMUs can estimate</a>
+        <a href="#/grf-tutorial#grf-joint-moments" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">4. What joint moments are</a>
+        <a href="#/grf-tutorial#grf-by-joint" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">5. Ankle, knee, hip moments</a>
+        <a href="#/grf-tutorial#grf-inverse-dynamics" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">6. Inverse-dynamics workflow</a>
+        <a href="#/grf-tutorial#grf-validation" class="rounded-xl border border-slate-200 px-3 py-2 font-semibold text-slate-700 hover:border-teal-200 hover:bg-teal-50">7. Validation checklist</a>
+      </nav>
     </aside>
   </div>
 </section>
 
-<section id="grf-fundamentals" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Fundamentals</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Biomechanics concepts you need first</h2>
+<section id="grf-what-is" class="scroll-mt-28 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Step 1</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">What is ground reaction force?</h2>
+  <div class="mt-6 grid gap-5 lg:grid-cols-[0.95fr,1.05fr] lg:items-start">
+    <div class="space-y-4 text-base leading-7 text-slate-700">
+      <p>Ground reaction force (GRF) is the force the ground applies back to the body while the body is in contact with it. It is the reaction side of the foot pushing on the ground.</p>
+      <p>GRF is a vector, not a single number. In gait and sports biomechanics it is commonly decomposed into vertical, anterior-posterior, and medial-lateral components. The vertical component is usually the largest during walking and running.</p>
+      <p>The force also has a point of application: the center of pressure (CoP). For joint moments, CoP is critical because moment depends on both the force magnitude and the force's lever arm relative to a joint center.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-5">
+      <svg viewBox="0 0 740 330" class="w-full" role="img" aria-label="Ground reaction force components and center of pressure">
+        <rect x="60" y="265" width="620" height="18" rx="9" fill="#e2e8f0"/>
+        <ellipse cx="350" cy="250" rx="82" ry="20" fill="#475569"/>
+        <circle cx="350" cy="255" r="8" fill="#0f766e"/>
+        <path d="M350 255 L350 110" stroke="#0f766e" stroke-width="9" stroke-linecap="round"/>
+        <polygon points="350,88 332,120 368,120" fill="#0f766e"/>
+        <path d="M350 255 L445 255" stroke="#7c3aed" stroke-width="7" stroke-linecap="round"/>
+        <polygon points="466,255 435,239 435,271" fill="#7c3aed"/>
+        <path d="M350 255 L300 217" stroke="#db2777" stroke-width="7" stroke-linecap="round"/>
+        <polygon points="282,204 314,211 294,237" fill="#db2777"/>
+        <text x="371" y="125" fill="#0f766e" font-size="17" font-weight="700">Fz vertical</text>
+        <text x="472" y="260" fill="#7c3aed" font-size="16" font-weight="700">Fx forward/back</text>
+        <text x="198" y="210" fill="#db2777" font-size="16" font-weight="700">Fy side-to-side</text>
+        <text x="366" y="292" fill="#0f766e" font-size="15" font-weight="700">CoP</text>
+      </svg>
+      <p class="mt-3 text-sm leading-6 text-slate-600">A force plate reports the resultant force vector and where it acts on the plate. The CoP-to-joint distance is the lever arm used in moment calculations.</p>
+    </div>
+  </div>
+</section>
+
+<section id="grf-measurement" class="scroll-mt-28 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Step 2</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">How do you measure GRF?</h2>
+  <p class="mt-4 max-w-4xl text-base leading-7 text-slate-700">The direct measurement is a force plate or instrumented treadmill. These systems measure the interaction between the foot and ground, usually reporting three force components, moments at the plate, and CoP. Pressure insoles can estimate plantar pressure and CoP-like quantities, but they are not the same as a calibrated 3D force plate.</p>
+
+  <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">01</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Zero and calibrate</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Remove baseline offsets before the trial. Confirm plate axes and units: force in N, CoP in m or mm, moments in N*m.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">02</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Synchronize sensors</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Sync force data with motion capture, video, or IMUs. Small timing errors can shift peak forces and joint moments.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">03</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Detect stance</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Use a vertical-force threshold to identify foot contact. Outside stance, GRF should be zero for that foot.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">04</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Report clearly</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Normalize force to body weight when comparing people. Report axes, filtering, footwear, task, speed, and contact assignment.</p>
+    </article>
+  </div>
+
+  <div class="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+    <table class="w-full text-left text-sm">
+      <thead class="bg-slate-50 text-xs uppercase tracking-[0.14em] text-slate-500">
+        <tr>
+          <th class="px-4 py-3 font-semibold">Instrument</th>
+          <th class="px-4 py-3 font-semibold">What it gives you</th>
+          <th class="px-4 py-3 font-semibold">Main caution</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100 text-slate-700">
+        <tr>
+          <td class="px-4 py-4 font-semibold text-slate-900">Force plate</td>
+          <td class="px-4 py-4">3D force, CoP, and plate moments for overground steps, jumps, landings, and balance.</td>
+          <td class="px-4 py-4">Foot must land cleanly on the plate; partial foot strikes corrupt CoP and force assignment.</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-4 font-semibold text-slate-900">Instrumented treadmill</td>
+          <td class="px-4 py-4">Continuous left/right GRF during many gait cycles, often with split belts.</td>
+          <td class="px-4 py-4">Treadmill gait can differ from overground gait; belt and coordinate conventions must be documented.</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-4 font-semibold text-slate-900">Pressure insole</td>
+          <td class="px-4 py-4">Foot pressure distribution, contact timing, approximate load distribution, and CoP trajectory.</td>
+          <td class="px-4 py-4">It is generally not a full 3D GRF measurement; shear forces and calibration drift are hard.</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-4 font-semibold text-slate-900">IMU system</td>
+          <td class="px-4 py-4">Segment acceleration, angular velocity, orientation estimates, and contact-event features.</td>
+          <td class="px-4 py-4">An IMU estimates GRF through a model or machine-learning mapping; it does not directly measure external force.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="grf-imu" class="scroll-mt-28 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Step 3</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">What can IMUs estimate?</h2>
+  <div class="mt-6 grid gap-5 md:grid-cols-3">
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <h3 class="font-semibold text-slate-900">Good at</h3>
+      <ul class="mt-3 space-y-2 text-sm leading-6 text-slate-600">
+        <li>&bull; Gait events such as heel strike and toe-off.</li>
+        <li>&bull; Segment orientation, angular velocity, and acceleration.</li>
+        <li>&bull; Features for estimating vertical GRF when trained and validated against force plates.</li>
+      </ul>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <h3 class="font-semibold text-slate-900">Not directly observed</h3>
+      <ul class="mt-3 space-y-2 text-sm leading-6 text-slate-600">
+        <li>&bull; CoP under the foot.</li>
+        <li>&bull; Foot-ground shear force without additional assumptions.</li>
+        <li>&bull; Left/right force split from one body-mounted sensor during double support.</li>
+      </ul>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <h3 class="font-semibold text-slate-900">Useful approximation</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">For whole-body vertical force, a simplified relation is \(F_z \approx m(a_{COM,z} + g)\). This requires a reliable center-of-mass acceleration estimate and does not by itself provide CoP or joint moments.</p>
+    </article>
+  </div>
+  <div class="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-amber-900">
+    <strong>Language matters:</strong> force-plate GRF is measured. IMU-derived GRF is estimated or predicted unless the IMU is part of a calibrated system with explicit force-sensing hardware.
+  </div>
+</section>
+
+<section id="grf-joint-moments" class="scroll-mt-28 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Step 4</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">What is a joint moment?</h2>
+  <div class="mt-6 grid gap-5 lg:grid-cols-[1fr,1fr]">
+    <div class="space-y-4 text-base leading-7 text-slate-700">
+      <p>A moment is the rotational effect of a force about an axis. For a force acting at a distance from a joint center, the basic vector relation is \( \mathbf{M} = \mathbf{r} \times \mathbf{F} \), where \( \mathbf{r} \) is the lever arm from the joint to the point of force application.</p>
+      <p>A net joint moment is the combined effect needed at the joint to explain the observed segment motion. It is not the force of one muscle. Many muscles, ligaments, contact forces, and passive structures can contribute to the same net moment.</p>
+      <p>Most gait labs report internal joint moments: the net muscular/passive moment that balances the external moment from GRF, gravity, and segment inertia. Some software reports external moments instead, so signs must be defined.</p>
+    </div>
+    <div class="rounded-2xl border border-slate-200 bg-white p-5">
+      <h3 class="font-semibold text-slate-900">Coordinate axes you will see</h3>
+      <div class="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
+        <p><strong>Sagittal plane:</strong> flexion/extension moments. Common for ankle plantarflexion/dorsiflexion, knee flexion/extension, and hip flexion/extension.</p>
+        <p><strong>Frontal plane:</strong> abduction/adduction moments, including knee adduction moment and hip abduction moment.</p>
+        <p><strong>Transverse plane:</strong> internal/external rotation moments. These need reliable 3D kinematics and careful marker/sensor alignment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="grf-by-joint" class="scroll-mt-28 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Step 5</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Joint moments by lower-limb joint</h2>
+  <p class="mt-4 max-w-4xl text-base leading-7 text-slate-700">The same physics applies at every joint, but the required inputs and interpretation differ. A full 3D analysis can report moments about each joint coordinate. A first tutorial usually begins with sagittal-plane ankle, knee, and hip moments because they are central to walking, running, jumping, and sit-to-stand tasks.</p>
+
+  <div class="mt-6 grid gap-4">
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <div class="grid gap-4 lg:grid-cols-[0.8fr,1.2fr]">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">Ankle</p>
+          <h3 class="mt-1 text-xl font-semibold text-slate-950">Plantarflexion / dorsiflexion moment</h3>
+        </div>
+        <p class="text-sm leading-6 text-slate-600">The ankle moment is strongly affected by where the CoP sits under the foot relative to the ankle joint center. During push-off, the net internal plantarflexor moment reflects the demand commonly met by the calf muscle group. To compute it, you need foot kinematics, foot inertial parameters, GRF, CoP, and the ankle joint center.</p>
+      </div>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <div class="grid gap-4 lg:grid-cols-[0.8fr,1.2fr]">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">Knee</p>
+          <h3 class="mt-1 text-xl font-semibold text-slate-950">Flexion / extension and adduction moments</h3>
+        </div>
+        <p class="text-sm leading-6 text-slate-600">The knee moment depends on the shank's motion and on forces/moments transmitted from the foot-ankle segment. Sagittal-plane knee flexion/extension moments are common in gait and landing studies. Frontal-plane knee adduction moment is also widely reported, but it requires reliable 3D alignment and should not be inferred from a sagittal-only model.</p>
+      </div>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <div class="grid gap-4 lg:grid-cols-[0.8fr,1.2fr]">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">Hip</p>
+          <h3 class="mt-1 text-xl font-semibold text-slate-950">Flexion / extension, abduction / adduction, rotation</h3>
+        </div>
+        <p class="text-sm leading-6 text-slate-600">The hip moment is computed from thigh and pelvis kinematics plus the reaction terms propagated from the knee. Hip flexion/extension is central in sagittal analyses. Hip abduction/adduction and rotation moments require 3D kinematics, a pelvis coordinate system, and careful sign conventions.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="grf-inverse-dynamics" class="scroll-mt-28 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Step 6</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">How joint moments are computed</h2>
+  <p class="mt-4 max-w-4xl text-base leading-7 text-slate-700">Inverse dynamics works backward from measured motion and external loads. In the lower limb, calculations usually proceed distal-to-proximal: foot to shank to thigh to pelvis. Each segment is treated as a rigid body with known mass, center of mass, and moment of inertia.</p>
+
+  <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">01</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Collect kinematics</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Measure joint centers, segment poses, velocities, and accelerations from motion capture or validated IMU models.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">02</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Collect external loads</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Use measured GRF, CoP, and free moment when available. Without external loads, lower-limb joint moments become underconstrained.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">03</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Filter consistently</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Differentiation amplifies noise, so kinematics are commonly low-pass filtered. Report cutoffs and filtering order.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">04</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Solve foot first</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">GRF and CoP define the external loading on the foot. Segment equations solve ankle reaction force and ankle moment.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">05</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Propagate upward</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Use ankle terms to solve shank dynamics and knee moment. Use knee terms to solve thigh dynamics and hip moment.</p>
+    </article>
+    <article class="rounded-2xl border border-slate-200 bg-white p-5">
+      <p class="text-xs font-semibold text-teal-700">06</p>
+      <h3 class="mt-2 font-semibold text-slate-900">Normalize and interpret</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Report moments in N*m and often N*m/kg. Compare waveform shape, peak magnitude, and timing to reference data.</p>
+    </article>
+  </div>
+
+  <div id="grf-equations" class="mt-7 scroll-mt-28 rounded-2xl border border-slate-200 bg-white p-6">
+    <h3 class="text-xl font-semibold text-slate-950">Core equations</h3>
+    <div class="mt-4 grid gap-3 text-sm leading-7 text-slate-700">
+      <p><strong>Linear dynamics:</strong> \(\sum \mathbf{F} = m\mathbf{a}_{COM}\)</p>
+      <p><strong>Angular dynamics about joint \(j\):</strong> \(\sum \mathbf{M}_j = \mathbf{I}\boldsymbol{\alpha} + \boldsymbol{\omega} \times \mathbf{I}\boldsymbol{\omega}\)</p>
+      <p><strong>Moment from GRF:</strong> \(\mathbf{M}_{GRF,j} = \mathbf{r}_{CoP/j} \times \mathbf{F}_{GRF}\)</p>
+      <p><strong>Sagittal first pass:</strong> use the out-of-plane component of \(\mathbf{r} \times \mathbf{F}\), then keep the same flexion/extension sign convention for every trial.</p>
+    </div>
+  </div>
+</section>
+
+<section id="grf-validation" class="scroll-mt-28 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Step 7</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Validation and factual guardrails</h2>
   <div class="mt-6 grid gap-4 md:grid-cols-2">
     <article class="rounded-2xl border border-slate-200 bg-white p-5">
-      <h3 class="font-semibold text-slate-900">Kinetics vs kinematics</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">Kinematics describes motion (joint angles, angular velocity, acceleration). Kinetics explains the causes of motion (forces and moments). GRF and joint moments are kinetic variables.</p>
+      <h3 class="font-semibold text-slate-900">Validate signals</h3>
+      <ul class="mt-3 space-y-2 text-sm leading-6 text-slate-600">
+        <li>&bull; Compare estimated GRF against force-plate GRF on synchronized trials.</li>
+        <li>&bull; Report RMSE/MAE, correlation, peak error, loading-rate error, and timing error.</li>
+        <li>&bull; Check left/right foot assignment and CoP location for every contact.</li>
+        <li>&bull; Inspect whether GRF goes to zero during swing.</li>
+      </ul>
     </article>
     <article class="rounded-2xl border border-slate-200 bg-white p-5">
-      <h3 class="font-semibold text-slate-900">Sagittal-plane assumptions</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">This tutorial uses a 2D sagittal model for clarity. Hip and knee are treated as hinge-like in flexion/extension, while frontal/transverse-plane terms are ignored in the first pass.</p>
-    </article>
-    <article class="rounded-2xl border border-slate-200 bg-white p-5">
-      <h3 class="font-semibold text-slate-900">Free-body diagrams</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">For each segment, draw all external forces, the segment weight, and unknown joint reaction/moment terms. Inverse dynamics solves these unknowns from distal to proximal.</p>
-    </article>
-    <article class="rounded-2xl border border-slate-200 bg-white p-5">
-      <h3 class="font-semibold text-slate-900">Anthropometrics</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">Segment mass fraction, COM location, and segment moment of inertia strongly affect results. Use one published anthropometric table consistently across subjects.</p>
+      <h3 class="font-semibold text-slate-900">Avoid common mistakes</h3>
+      <ul class="mt-3 space-y-2 text-sm leading-6 text-slate-600">
+        <li>&bull; Do not mix coordinate systems without transforming vectors into one frame.</li>
+        <li>&bull; Do not compute joint moments from force magnitude alone; the lever arm matters.</li>
+        <li>&bull; Do not call a net joint moment a single muscle torque.</li>
+        <li>&bull; Do not compare moments unless body-mass normalization and sign conventions match.</li>
+      </ul>
     </article>
   </div>
 </section>
 
-<section id="grf-steps" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Workflow</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Six-step inverse-dynamics pipeline</h2>
-  <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-    <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="text-xs font-semibold text-teal-700">01</p><h3 class="mt-2 font-semibold text-slate-900">Filter</h3><p class="mt-2 text-sm text-slate-600">Low-pass filter raw IMU signals and align all timestamps.</p></article>
-    <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="text-xs font-semibold text-teal-700">02</p><h3 class="mt-2 font-semibold text-slate-900">Orient</h3><p class="mt-2 text-sm text-slate-600">Estimate sensor-to-global rotation and remove gravity from acceleration.</p></article>
-    <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="text-xs font-semibold text-teal-700">03</p><h3 class="mt-2 font-semibold text-slate-900">Detect stance</h3><p class="mt-2 text-sm text-slate-600">Identify foot contact windows where GRF is non-zero and COP is valid.</p></article>
-    <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="text-xs font-semibold text-teal-700">04</p><h3 class="mt-2 font-semibold text-slate-900">Estimate GRF + COP</h3><p class="mt-2 text-sm text-slate-600">Compute or learn vertical GRF and center-of-pressure trajectory.</p></article>
-    <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="text-xs font-semibold text-teal-700">05</p><h3 class="mt-2 font-semibold text-slate-900">Build moments</h3><p class="mt-2 text-sm text-slate-600">Apply segment equilibrium from foot to shank to thigh.</p></article>
-    <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="text-xs font-semibold text-teal-700">06</p><h3 class="mt-2 font-semibold text-slate-900">Normalize + validate</h3><p class="mt-2 text-sm text-slate-600">Normalize by body mass, compare waveform shape, peaks, and timing.</p></article>
-  </div>
-</section>
-
-<section id="grf-equations" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Core Equations</p>
-  <div class="mt-3 rounded-[2rem] border border-slate-200 bg-white p-6">
-    <p class="text-sm leading-7 text-slate-700"><strong>Linear dynamics:</strong> \(\sum \mathbf{F} = m\mathbf{a}_{COM}\)</p>
-    <p class="mt-2 text-sm leading-7 text-slate-700"><strong>Angular dynamics:</strong> \(\sum M_j = I_j\alpha + \mathbf{r}_{COM/j} \times m\mathbf{a}_{COM}\)</p>
-    <p class="mt-2 text-sm leading-7 text-slate-700"><strong>Vertical GRF approximation:</strong> \(F_z \approx m(a_z + g)\)</p>
-    <p class="mt-2 text-sm leading-7 text-slate-700"><strong>Knee moment (2D distal-to-proximal):</strong> \(M_{knee} = I_{shank}\alpha_{shank} + \mathbf{r}_{COM/knee} \times m_{shank}\mathbf{a}_{COM} - \mathbf{r}_{GRF/knee} \times \mathbf{F}_{GRF}\)</p>
-    <p class="mt-4 text-sm leading-7 text-slate-600">For the hip, apply the same balance on the thigh using known knee reaction terms from the previous step. Keep flexion-extension sign definitions fixed throughout the entire pipeline.</p>
-  </div>
-</section>
-
-<section id="grf-animation" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Animated Diagram</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Stance phase free-body intuition</h2>
-  <div class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-5">
-    <svg viewBox="0 0 740 300" class="w-full" role="img" aria-label="Animated ground reaction force and joint moments diagram">
-      <line x1="50" y1="250" x2="700" y2="250" stroke="#94a3b8" stroke-width="2"/>
-      <circle cx="280" cy="85" r="17" fill="#0f172a"/>
-      <line x1="280" y1="102" x2="320" y2="165" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
-      <line x1="320" y1="165" x2="300" y2="232" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
-      <ellipse cx="303" cy="240" rx="34" ry="10" fill="#475569"/>
-      <path d="M300 250 L300 210" stroke="#0f766e" stroke-width="8" stroke-linecap="round" class="grf-arrow"/>
-      <polygon points="300,198 286,220 314,220" fill="#0f766e" class="grf-arrow"/>
-      <path d="M350 163 Q390 135 430 162" stroke="#7c3aed" stroke-width="5" fill="none" class="moment-wave"/>
-      <path d="M278 102 Q235 130 250 175" stroke="#db2777" stroke-width="5" fill="none" class="moment-wave"/>
-      <text x="318" y="206" fill="#0f766e" font-size="14" font-weight="600">F<tspan baseline-shift="sub">GRF</tspan></text>
-      <text x="436" y="165" fill="#7c3aed" font-size="13">M<tspan baseline-shift="sub">knee</tspan></text>
-      <text x="210" y="168" fill="#db2777" font-size="13">M<tspan baseline-shift="sub">hip</tspan></text>
-    </svg>
-    <p class="mt-3 text-sm leading-6 text-slate-600">The animated arrow represents rising vertical GRF through mid-stance. Colored arcs represent changing internal net joint moments needed to balance segment dynamics.</p>
-  </div>
-  <style>
-    .grf-arrow { transform-origin: 300px 250px; animation: grfPulse 1.8s ease-in-out infinite; }
-    .moment-wave { animation: momentShift 2.1s ease-in-out infinite; }
-    @keyframes grfPulse { 0%,100% { transform: scaleY(0.65); opacity: .65;} 50% { transform: scaleY(1.14); opacity: 1;} }
-    @keyframes momentShift { 0%,100% { opacity: .45; } 50% { opacity: 1; stroke-width: 6; } }
-  </style>
-</section>
-
-<section id="grf-checklist" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Implementation Checklist</p>
+<section id="grf-sources" class="scroll-mt-28 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">References</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Sources for the tutorial</h2>
   <div class="mt-5 grid gap-4 md:grid-cols-2">
-    <article class="rounded-2xl border border-slate-200 bg-white p-5"><h3 class="font-semibold text-slate-900">Signal quality</h3><ul class="mt-3 space-y-2 text-sm text-slate-600"><li>• Static calibration before each session.</li><li>• Drift checks over long runs.</li><li>• Contact-event synchronization verification.</li></ul></article>
-    <article class="rounded-2xl border border-slate-200 bg-white p-5"><h3 class="font-semibold text-slate-900">Model quality</h3><ul class="mt-3 space-y-2 text-sm text-slate-600"><li>• Report MAE/RMSE and waveform correlation.</li><li>• Evaluate peak-force and peak-moment error.</li><li>• Report moments in Nm/kg for comparability.</li></ul></article>
+    <a class="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-700 hover:border-teal-200 hover:bg-teal-50" href="https://opensimconfluence.atlassian.net/wiki/spaces/OpenSim/pages/53090063/Getting%2BStarted%2Bwith%2BInverse%2BDynamics" target="_blank" rel="noopener">
+      <strong class="block text-slate-950">OpenSim inverse dynamics documentation</strong>
+      Inputs, outputs, filtering guidance, and external-load requirements for inverse-dynamics joint torque calculations.
+    </a>
+    <a class="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-700 hover:border-teal-200 hover:bg-teal-50" href="https://opensimconfluence.atlassian.net/wiki/spaces/OpenSim/pages/53084195/Part%2BI%3A%2BComputing%2BJoint%2BMoments%2Bwith%2BOpenSim" target="_blank" rel="noopener">
+      <strong class="block text-slate-950">OpenSim joint moment workflow</strong>
+      A practical example pipeline using scaling, inverse kinematics, and inverse dynamics.
+    </a>
+    <a class="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-700 hover:border-teal-200 hover:bg-teal-50" href="https://www.kistler.com/US/en/ground-reaction-force-grf-/C00000115" target="_blank" rel="noopener">
+      <strong class="block text-slate-950">Kistler GRF overview</strong>
+      Force-plate oriented explanation of ground reaction force and common measurement use cases.
+    </a>
+    <a class="rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-700 hover:border-teal-200 hover:bg-teal-50" href="https://www.mdpi.com/1424-8220/20/15/4345" target="_blank" rel="noopener">
+      <strong class="block text-slate-950">Single-IMU vertical GRF estimation paper</strong>
+      Example of estimating vertical GRF during walking and validating against force-plate measurement.
+    </a>
   </div>
 </section>
