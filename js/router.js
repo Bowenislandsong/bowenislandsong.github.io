@@ -10,8 +10,6 @@
   const subnavEngineering = document.getElementById('engineering-subnav');
   const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
   const subnavGrfTutorial = document.getElementById('grf-tutorial-subnav');
-  const subnavToggleBtn = document.getElementById('subnav-toggle');
-  const subnavToggleLabel = document.getElementById('subnav-toggle-label');
 
   // ---- Config ----
   const DEFAULT_PAGE = 'personal';
@@ -29,33 +27,12 @@
   const routeNames = new Set(Object.keys(routes));
   const CACHE_MODE = 'no-store'; // ensure you always see latest
   const SCROLL_BEHAVIOR = 'smooth';
-  const SUBNAV_COLLAPSE_KEY = 'site.subnav.collapsed.v1';
 
   // ---- State ----
   let currentPage = null;
   let inflightReq = 0;                     // race guard
   const scrollStore = new Map();           // page -> scrollTop
   const loadedPages = new Set();           // basic cache of what's been loaded
-  let subnavCollapsedByPage = {};
-
-  function readSubnavCollapseState() {
-    try {
-      const parsed = JSON.parse(localStorage.getItem(SUBNAV_COLLAPSE_KEY) || '{}');
-      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-        subnavCollapsedByPage = parsed;
-      }
-    } catch {
-      subnavCollapsedByPage = {};
-    }
-  }
-
-  function persistSubnavCollapseState() {
-    try {
-      localStorage.setItem(SUBNAV_COLLAPSE_KEY, JSON.stringify(subnavCollapsedByPage));
-    } catch {
-      // best-effort
-    }
-  }
 
   // ---- Utilities ----
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -98,44 +75,6 @@
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
     if (subnavGrfTutorial) subnavGrfTutorial.classList.toggle('hidden', page !== 'grf-tutorial');
-    applySubnavCollapsedState(page);
-    updateSubnavToggle(page);
-  }
-
-  function activeSubnavElement(page) {
-    return document.querySelector(`.subnav-shell[data-subnav-for="${page}"]`);
-  }
-
-  function applySubnavCollapsedState(page) {
-    const currentSubnav = activeSubnavElement(page);
-    if (!currentSubnav) return;
-    const collapsed = Boolean(subnavCollapsedByPage[page]);
-    currentSubnav.classList.toggle('is-collapsed', collapsed);
-  }
-
-  function updateSubnavToggle(page) {
-    if (!subnavToggleBtn || !subnavToggleLabel) return;
-    const currentSubnav = activeSubnavElement(page);
-    if (!currentSubnav || currentSubnav.classList.contains('hidden')) {
-      subnavToggleBtn.classList.add('hidden');
-      subnavToggleBtn.setAttribute('aria-controls', '');
-      return;
-    }
-    const collapsed = currentSubnav.classList.contains('is-collapsed');
-    subnavToggleBtn.classList.remove('hidden');
-    subnavToggleBtn.setAttribute('aria-controls', currentSubnav.id);
-    subnavToggleBtn.setAttribute('aria-expanded', String(!collapsed));
-    subnavToggleLabel.textContent = collapsed ? 'Show section links' : 'Hide section links';
-  }
-
-  function toggleSubnavCollapsedForPage(page) {
-    const currentSubnav = activeSubnavElement(page);
-    if (!currentSubnav) return;
-    const nextCollapsed = !currentSubnav.classList.contains('is-collapsed');
-    currentSubnav.classList.toggle('is-collapsed', nextCollapsed);
-    subnavCollapsedByPage[page] = nextCollapsed;
-    persistSubnavCollapseState();
-    updateSubnavToggle(page);
   }
 
   function scrollToAnchor(anchor) {
@@ -281,14 +220,8 @@
   // ---- Boot ----
   window.addEventListener('hashchange', () => handleRoute(location.hash));
   window.addEventListener('DOMContentLoaded', () => {
-    readSubnavCollapseState();
     setupPrefetch();
     setupAnchorDelegation();
-    if (subnavToggleBtn) {
-      subnavToggleBtn.addEventListener('click', () => {
-        toggleSubnavCollapsedForPage(currentPage || DEFAULT_PAGE);
-      });
-    }
 
     // If no hash, go to default page
     if (!location.hash) {

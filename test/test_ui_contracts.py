@@ -169,6 +169,7 @@ class UIContractTest(unittest.TestCase):
             "sections/news.html",
             "sections/quantum.html",
             "sections/paper-discovery.html",
+            "sections/grf-tutorial.html",
         ]:
             parser = parse_html(rel_path)
             missing = [button for button in parser.buttons if button.get("type") != "button"]
@@ -333,31 +334,34 @@ Body text
             "sections/quantum.html",
             "sections/interview-prep.html",
             "sections/paper-discovery.html",
+            "sections/grf-tutorial.html",
         ]:
             self.assertNotIn("onclick=", read(rel_path), f"{rel_path} should not use inline click handlers")
 
     def test_index_navigation_exposes_live_tabs(self):
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
-        self.assertEqual(tabs, {"personal", "research", "engineering", "interview-prep", "news", "quantum", "paper-discovery"})
+        self.assertEqual(tabs, {"personal", "research", "engineering", "interview-prep", "news", "quantum", "paper-discovery", "grf-tutorial"})
 
-    def test_subnavs_are_retractable_with_accessible_toggle(self):
+    def test_subnavs_reveal_on_header_hover_without_toggle_button(self):
         index_html = read("index.html")
         router_js = read("js/router.js")
 
-        self.assertIn('id="subnav-toggle"', index_html)
-        self.assertIn('id="subnav-toggle-label"', index_html)
-        self.assertIn('aria-expanded="true"', index_html)
-        for page in ["personal", "research", "engineering", "interview-prep", "news"]:
+        self.assertNotIn('id="subnav-toggle"', index_html)
+        self.assertNotIn('id="subnav-toggle-label"', index_html)
+        self.assertIn(".site-shell:hover .subnav-shell:not(.hidden)", index_html)
+        self.assertIn(".site-shell:focus-within .subnav-shell:not(.hidden)", index_html)
+        self.assertIn("@media (hover: none), (pointer: coarse)", index_html)
+        for page in ["personal", "research", "engineering", "interview-prep", "news", "grf-tutorial"]:
             self.assertIn(f'data-subnav-for="{page}"', index_html)
 
-        for expected in [
-            "const SUBNAV_COLLAPSE_KEY = 'site.subnav.collapsed.v1';",
-            "function toggleSubnavCollapsedForPage(page)",
-            "subnavToggleBtn.addEventListener('click'",
-            "subnavToggleBtn.setAttribute('aria-expanded'",
+        for removed in [
+            "SUBNAV_COLLAPSE_KEY",
+            "toggleSubnavCollapsedForPage",
+            "subnavToggleBtn",
+            "aria-expanded",
         ]:
-            self.assertIn(expected, router_js)
+            self.assertNotIn(removed, router_js)
 
     def test_nav_styles_include_phone_tablet_and_desktop_workflow_hints(self):
         index_html = read("index.html")
