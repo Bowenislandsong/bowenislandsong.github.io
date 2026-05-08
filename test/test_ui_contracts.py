@@ -345,6 +345,13 @@ Body text
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
         self.assertEqual(tabs, {"personal", "research", "engineering", "resume", "news"})
 
+    def test_router_handles_same_hash_route_clicks(self):
+        router_js = read("js/router.js")
+        self.assertIn("function setupRouteDelegation()", router_js)
+        self.assertIn("a[href^=\"#/\"]", router_js)
+        self.assertIn("handleRoute(href);", router_js)
+        self.assertIn("window.addEventListener('popstate'", router_js)
+
     def test_navigation_and_page_labels_are_specific(self):
         files = [
             "index.html",

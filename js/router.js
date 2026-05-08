@@ -191,6 +191,25 @@
   }
 
   // ---- In-page anchor delegation (plain "#anchor") ----
+  function setupRouteDelegation() {
+    document.addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      const a = e.target.closest('a[href^="#/"]');
+      if (!a) return;
+      if (a.target && a.target !== '_self') return;
+
+      const href = a.getAttribute('href');
+      if (!href) return;
+
+      e.preventDefault();
+      if (location.hash !== href) {
+        history.pushState(null, '', href);
+      }
+      handleRoute(href);
+    });
+  }
+
   function setupAnchorDelegation() {
     document.addEventListener('click', (e) => {
       const a = e.target.closest('a[href^="#"]');
@@ -219,8 +238,10 @@
 
   // ---- Boot ----
   window.addEventListener('hashchange', () => handleRoute(location.hash));
+  window.addEventListener('popstate', () => handleRoute(location.hash));
   window.addEventListener('DOMContentLoaded', () => {
     setupPrefetch();
+    setupRouteDelegation();
     setupAnchorDelegation();
 
     // If no hash, go to default page
