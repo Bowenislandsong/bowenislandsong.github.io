@@ -9,7 +9,7 @@
   const subnavNews = document.getElementById('news-subnav');
   const subnavEngineering = document.getElementById('engineering-subnav');
   const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
-  const subnavGrfTutorial = document.getElementById('grf-tutorial-subnav');
+  const subnavResume = document.getElementById('resume-subnav');
 
   // ---- Config ----
   const DEFAULT_PAGE = 'personal';
@@ -20,9 +20,9 @@
     engineering: 'sections/engineering.html',
     'interview-prep': 'sections/interview-prep.html',
     news: 'sections/news.html',
+    resume: 'sections/resume.html',
     quantum: 'sections/quantum.html',
     'paper-discovery': 'sections/paper-discovery.html',
-    'grf-tutorial': 'sections/grf-tutorial.html',
   };
   const routeNames = new Set(Object.keys(routes));
   const CACHE_MODE = 'no-store'; // ensure you always see latest
@@ -74,7 +74,7 @@
     if (subnavNews) subnavNews.classList.toggle('hidden', page !== 'news');
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
-    if (subnavGrfTutorial) subnavGrfTutorial.classList.toggle('hidden', page !== 'grf-tutorial');
+    if (subnavResume) subnavResume.classList.toggle('hidden', page !== 'resume');
   }
 
   function scrollToAnchor(anchor) {

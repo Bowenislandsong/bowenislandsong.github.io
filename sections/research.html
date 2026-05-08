@@ -1,111 +1,63 @@
 <!-- sections/research.html -->
 
-<section id="research-overview" class="py-12 md:py-16">
-  <div class="grid gap-10 lg:grid-cols-[1.15fr,0.85fr] lg:items-start">
+<section id="research-overview" class="py-10 md:py-14">
+  <div class="grid gap-8 lg:grid-cols-[1.25fr,0.75fr] lg:items-start">
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teal-700">Research</p>
-      <h1 class="text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">
-        Deployable ML, personalization, and systems under real constraints.
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-teal-700">Research</p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+        Deployable ML for sensing, personalization, and systems constraints.
       </h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">
-        I study how models stay useful when latency, heterogeneity, privacy, and evaluation quality stop being side issues.
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
+        My research asks how models stay useful when the data are noisy, users differ, privacy matters, latency matters, and evaluation has to survive contact with real systems.
       </p>
       <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
-        This page stays research-first. The engineering page carries the fuller platform, cloud, and ML infrastructure story behind the same work.
-      </p>
-      <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
-        USC Viterbi ·
-        <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-link">QED Research Group</a>
-        ·
-        <a href="https://bourbon.usc.edu/leana/" target="_blank" rel="noopener" class="inline-link">Leana Golubchik</a>
-        ·
-        <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-link">Google Scholar</a>
+        The current center of gravity is personalized AI for health, especially wearable sensing and biomechanical estimation. The broader through-line is efficient modeling plus systems judgment.
       </p>
 
       <div class="mt-7 flex flex-wrap gap-3">
-        <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
-          Google Scholar
-        </a>
-        <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          QED Lab
-        </a>
-        <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          Engineering
-        </a>
-        <a href="#/paper-discovery" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          Reading Map
-        </a>
+        <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">Google Scholar</a>
+        <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">QED Lab</a>
+        <a href="#/research#publications" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">Publications</a>
+        <a href="#/paper-discovery" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">Reading Map</a>
       </div>
     </div>
 
-    <aside class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_30px_90px_-52px_rgba(15,23,42,0.28)]">
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Why this work stands out</p>
-      <div class="mt-5 space-y-4">
-        <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
-          <p class="text-sm font-semibold text-slate-900">Smaller models can still win.</p>
-          <p class="mt-2 text-sm leading-6 text-slate-600">SVD Embedding Regression matched or outperformed heavier LSTM baselines while staying interpretable and deployment-friendly.</p>
+    <aside class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">At a glance</p>
+      <dl class="mt-5 space-y-4 text-sm">
+        <div>
+          <dt class="font-semibold text-slate-900">Institution</dt>
+          <dd class="mt-1 leading-6 text-slate-600">USC Viterbi, QED Research Group.</dd>
         </div>
-        <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
-          <p class="text-sm font-semibold text-slate-900">I can reason formally about systems.</p>
-          <p class="mt-2 text-sm leading-6 text-slate-600">The CLOUD paper combines queueing analysis, QoS reasoning, and incentives to show when federation actually helps.</p>
+        <div>
+          <dt class="font-semibold text-slate-900">Advisor</dt>
+          <dd class="mt-1 leading-6 text-slate-600"><a href="https://bourbon.usc.edu/leana/" target="_blank" rel="noopener" class="inline-link">Leana Golubchik</a>.</dd>
         </div>
-        <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
-          <p class="text-sm font-semibold text-slate-900">I test algorithms against reality.</p>
-          <p class="mt-2 text-sm leading-6 text-slate-600">RCDS was validated on real revision histories and beat rsync on a meaningful class of practical workloads.</p>
+        <div>
+          <dt class="font-semibold text-slate-900">Research signal</dt>
+          <dd class="mt-1 leading-6 text-slate-600">Smaller models, formal systems reasoning, and real-workload validation.</dd>
         </div>
-      </div>
+      </dl>
     </aside>
   </div>
 </section>
 
 <section id="agenda" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Research Agenda</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Three themes behind the publication list.</h2>
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Research Themes</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Three problems I keep returning to.</h2>
 
   <div class="mt-6 grid gap-4 lg:grid-cols-3">
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex items-start justify-between gap-4">
-        <h3 class="text-xl font-semibold text-slate-900">Embodied ML that stays meaningful on device</h3>
-        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#agenda-embodied" data-toggle-group="research-agenda" aria-controls="agenda-embodied" aria-expanded="false">Details</button>
-      </div>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Build interpretable, physically meaningful models that stay efficient enough for edge devices and robust enough for messy sensing.
-      </p>
-      <div id="agenda-embodied" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          Wearable and motion data are a demanding testbed because the model has to respect physics, stay legible, and still run efficiently when the person, sensor placement, and environment all change at once.
-        </p>
-      </div>
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <h3 class="text-xl font-semibold text-slate-900">Embodied ML that stays meaningful on device</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Wearable and motion data are useful only when the model respects physics, sensor placement, and limited deployment budgets.</p>
     </article>
-
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex items-start justify-between gap-4">
-        <h3 class="text-xl font-semibold text-slate-900">Personalization with privacy built in</h3>
-        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#agenda-personalization" data-toggle-group="research-agenda" aria-controls="agenda-personalization" aria-expanded="false">Details</button>
-      </div>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Adapt to users, devices, and settings without brittle retraining or privacy assumptions that break in real deployment.
-      </p>
-      <div id="agenda-personalization" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          I keep returning to lightweight adaptation, few-shot personalization, and federated learning because average-case performance is often the wrong target, and private user data rarely lives in one clean training loop.
-        </p>
-      </div>
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <h3 class="text-xl font-semibold text-slate-900">Personalization with privacy built in</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Average-case performance is often the wrong target. I care about adaptation across users and devices without assuming private data can be pooled freely.</p>
     </article>
-
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex items-start justify-between gap-4">
-        <h3 class="text-xl font-semibold text-slate-900">Research systems that scale in reality</h3>
-        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#agenda-systems" data-toggle-group="research-agenda" aria-controls="agenda-systems" aria-expanded="false">Details</button>
-      </div>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Build scalable infrastructure and evaluation so research stays reliable as data, workloads, and deployment demands grow.
-      </p>
-      <div id="agenda-systems" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          This is the through-line from cloud theory to ranking to OpenShift: scale is the main systems question, and reliability only matters if the model and surrounding pipeline still hold up as the problem gets bigger.
-        </p>
-      </div>
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <h3 class="text-xl font-semibold text-slate-900">Research systems that scale in reality</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">The infrastructure around a model determines whether experiments are reproducible, evaluations are trustworthy, and results can be extended.</p>
     </article>
   </div>
 </section>
@@ -114,15 +66,13 @@
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div>
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Selected Publications</p>
-      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Three papers that show the pattern.</h2>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Representative papers.</h2>
     </div>
-    <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-      Full publication list
-    </a>
+    <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">Full publication list</a>
   </div>
 
-  <div class="mt-6 space-y-4">
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+  <div class="mt-6 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white shadow-sm">
+    <article class="p-6">
       <div class="flex flex-wrap gap-2">
         <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">IEEE TBME</span>
         <span class="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-semibold text-teal-700">Health AI</span>
@@ -130,35 +80,14 @@
       </div>
       <h3 class="mt-3 text-xl font-semibold text-slate-900">Estimating Ground Reaction Forces From Inertial Sensors</h3>
       <p class="mt-1 text-sm text-slate-500">B. Song, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, D. Shah</p>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Introduces SVD Embedding Regression, a low-rank alternative to heavy sequence models for latency-sensitive wearable sensing.
-      </p>
-      <p class="mt-3 text-sm font-semibold text-slate-900">Signal: I challenge the assumption that a bigger sequence model is automatically better.</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Introduces SVD Embedding Regression, a low-rank alternative to heavy sequence models for latency-sensitive wearable sensing. The main point is practical: a smaller, clearer model can match or beat heavier LSTM baselines.</p>
       <div class="mt-4 flex flex-wrap gap-2">
         <a href="publications/Estimating_Ground_Reaction_Forces_From_Inertial_Sensors.pdf" target="_blank" rel="noopener" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">PDF</a>
         <a href="https://ieeexplore.ieee.org/abstract/document/10684546" target="_blank" rel="noopener" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">IEEE Xplore</a>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#pub-grf-detail" data-toggle-group="research-publication-details" aria-controls="pub-grf-detail" aria-expanded="false">Details</button>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#abs-grf" data-toggle-group="research-publication-abstracts" aria-controls="abs-grf" aria-expanded="false">Abstract</button>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-copy="#bib-grf">BibTeX</button>
       </div>
-      <div id="pub-grf-detail" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          This paper matters beyond biomechanics because it shows a habit I trust: when deployment is constrained, a smaller and clearer model can be more valuable than a heavier one with marginal gains.
-        </p>
-      </div>
-      <p id="abs-grf" class="mt-4 hidden text-sm leading-6 text-slate-700">
-        We study whether inertial measurement units collected during steady-state running can estimate ground reaction forces and derived biomechanical variables with lightweight models. The paper proposes SVD Embedding Regression and shows that low-rank methods can match or beat LSTM baselines while remaining practical for edge deployment and personalization.
-      </p>
-      <pre id="bib-grf" class="sr-only">@ARTICLE{song2024grf,
-  author={Song, B. and Paolieri, M. and Stewart, H. E. and Golubchik, L. and McNitt-Gray, J. L. and Misra, V. and Shah, D.},
-  journal={IEEE Transactions on Biomedical Engineering},
-  title={Estimating Ground Reaction Forces from Inertial Sensors},
-  year={2024},
-  doi={10.1109/TBME.2024.3465373}
-}</pre>
     </article>
 
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+    <article class="p-6">
       <div class="flex flex-wrap gap-2">
         <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">IEEE CLOUD</span>
         <span class="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-semibold text-teal-700">Cloud systems</span>
@@ -166,35 +95,14 @@
       </div>
       <h3 class="mt-3 text-xl font-semibold text-slate-900">Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements</h3>
       <p class="mt-1 text-sm text-slate-500">Bowen Song, Marco Paolieri, Leana Golubchik</p>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        A queueing-theoretic and incentive-aware framework for when federated hybrid clouds improve QoS, cost, and fairness.
-      </p>
-      <p class="mt-3 text-sm font-semibold text-slate-900">Signal: I can combine formal modeling, incentives, and systems thinking in one contribution.</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">A queueing-theoretic and incentive-aware framework for deciding when federated hybrid clouds improve QoS, cost, and fairness.</p>
       <div class="mt-4 flex flex-wrap gap-2">
         <a href="publications/Performance_and_Revenue_Analysis_of_Hybrid_Cloud_Federations_with_QoS_Requirements.pdf" target="_blank" rel="noopener" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">PDF</a>
         <a href="https://ieeexplore.ieee.org/abstract/document/9860670" target="_blank" rel="noopener" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">IEEE Xplore</a>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#pub-cloud-detail" data-toggle-group="research-publication-details" aria-controls="pub-cloud-detail" aria-expanded="false">Details</button>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#abs-cloud" data-toggle-group="research-publication-abstracts" aria-controls="abs-cloud" aria-expanded="false">Abstract</button>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-copy="#bib-cloud">BibTeX</button>
       </div>
-      <div id="pub-cloud-detail" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          Queueing analysis, QoS, and revenue sharing are all treated as one federation problem instead of separate side issues.
-        </p>
-      </div>
-      <p id="abs-cloud" class="mt-4 hidden text-sm leading-6 text-slate-700">
-        This paper analyzes hybrid cloud federations where members share local resources and distribute savings according to Shapley value. It characterizes when full sharing is optimal, when heterogeneous QoS makes the problem harder, and how to discourage free riders without central trust.
-      </p>
-      <pre id="bib-cloud" class="sr-only">@INPROCEEDINGS{cloud_qos,
-  author={Song, Bowen and Paolieri, Marco and Golubchik, Leana},
-  booktitle={2022 IEEE 15th International Conference on Cloud Computing (CLOUD)},
-  title={Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements},
-  year={2022},
-  doi={10.1109/CLOUD55607.2022.00055}
-}</pre>
     </article>
 
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+    <article class="p-6">
       <div class="flex flex-wrap gap-2">
         <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">Allerton</span>
         <span class="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-semibold text-teal-700">Distributed data</span>
@@ -202,149 +110,67 @@
       </div>
       <h3 class="mt-3 text-xl font-semibold text-slate-900">Scalable String Reconciliation by Recursive Content-Dependent Shingling (RCDS)</h3>
       <p class="mt-1 text-sm text-slate-500">Bowen Song, Ari Trachtenberg</p>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        A communication-efficient reconciliation protocol for large, incrementally changing data, tested against real revision histories.
-      </p>
-      <p class="mt-3 text-sm font-semibold text-slate-900">Signal: I can take an algorithmic idea all the way to real-workload evidence against a standard tool.</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">A communication-efficient reconciliation protocol for large, incrementally changing data, evaluated on real revision histories and compared against rsync.</p>
       <div class="mt-4 flex flex-wrap gap-2">
         <a href="publications/Scalable_String_Reconciliation_by_Recursive_Content-Dependent_Shingling.pdf" target="_blank" rel="noopener" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">PDF</a>
         <a href="https://ieeexplore.ieee.org/document/8919901" target="_blank" rel="noopener" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">IEEE Xplore</a>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#pub-rcds-detail" data-toggle-group="research-publication-details" aria-controls="pub-rcds-detail" aria-expanded="false">Details</button>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#abs-rcds" data-toggle-group="research-publication-abstracts" aria-controls="abs-rcds" aria-expanded="false">Abstract</button>
-        <button type="button" class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-copy="#bib-rcds">BibTeX</button>
       </div>
-      <div id="pub-rcds-detail" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          The algorithm is paired with real revision-history benchmarks against rsync, not just theory.
-        </p>
-      </div>
-      <p id="abs-rcds" class="mt-4 hidden text-sm leading-6 text-slate-700">
-        RCDS addresses the remote reconciliation of similar strings with low communication cost. It scales linearly with edit distance, is practical on large strings, and outperforms rsync on a substantial fraction of realistic workloads.
-      </p>
-      <pre id="bib-rcds" class="sr-only">@inproceedings{song2019scalable,
-  title={Scalable string reconciliation by recursive content-dependent shingling},
-  author={Song, Bowen and Trachtenberg, Ari},
-  booktitle={2019 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
-  year={2019}
-}</pre>
     </article>
   </div>
 </section>
 
 <section id="projects" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Selected Projects</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Projects that show the same judgment.</h2>
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Software And Projects</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Artifacts behind the research.</h2>
 
   <div class="mt-6 grid gap-4 md:grid-cols-2">
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">SER paper implementation</p>
-          <h3 class="mt-2 text-xl font-semibold text-slate-900">SER</h3>
-        </div>
-        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#project-ser" data-toggle-group="research-projects" aria-controls="project-ser" aria-expanded="false">Details</button>
-      </div>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Code for SVD Embedding Regression, using SVD embeddings and lightweight regression to estimate ground reaction forces from IMU signals.
-      </p>
-      <div id="project-ser" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          SVD embeddings and lightweight regression keep the model inspectable, efficient, and realistic for on-device biomechanics.
-        </p>
-      </div>
-      <a href="https://github.com/Bowenislandsong/SER" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">SER paper implementation</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">SER</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Code for SVD Embedding Regression, using SVD embeddings and lightweight regression to estimate ground reaction forces from IMU signals.</p>
+      <a href="https://github.com/Bowenislandsong/SER" target="_blank" rel="noopener" class="mt-4 inline-flex text-sm font-semibold text-teal-700 hover:text-teal-800">GitHub</a>
     </article>
 
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Incentives + systems</p>
-          <h3 class="mt-2 text-xl font-semibold text-slate-900">Shapley Value Calculator</h3>
-        </div>
-        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#project-shapley" data-toggle-group="research-projects" aria-controls="project-shapley" aria-expanded="false">Details</button>
-      </div>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Reusable payoff allocation package for federation, resource sharing, and incentives.
-      </p>
-      <div id="project-shapley" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          Shapley value turns fairness in shared-resource systems into a concrete allocation rule instead of a vague intuition.
-        </p>
-      </div>
-      <div class="mt-4 flex flex-wrap gap-2">
-        <a href="https://github.com/Bowenislandsong/shapley-value" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
-        <a href="https://pypi.org/project/shapley-value/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">PyPI</a>
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Incentives and systems</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">Shapley Value Calculator</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Reusable payoff allocation package for federation, resource sharing, and incentive analysis.</p>
+      <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold text-teal-700">
+        <a href="https://github.com/Bowenislandsong/shapley-value" target="_blank" rel="noopener" class="hover:text-teal-800">GitHub</a>
+        <a href="https://pypi.org/project/shapley-value/" target="_blank" rel="noopener" class="hover:text-teal-800">PyPI</a>
       </div>
     </article>
 
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Large-scale reconciliation</p>
-          <h3 class="mt-2 text-xl font-semibold text-slate-900">RCDS_GO</h3>
-        </div>
-        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#project-rcds-go" data-toggle-group="research-projects" aria-controls="project-rcds-go" aria-expanded="false">Details</button>
-      </div>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Go implementation of remote large-string reconciliation for synchronizing huge files by transferring differences instead of whole payloads.
-      </p>
-      <div id="project-rcds-go" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          Efficient reconciliation is useful anywhere synchronization is expensive, from cloud hosts to DNA or RNA sequences, and potentially to future model-state transfer for very large weights or KV-cache-like state.
-        </p>
-      </div>
-      <a href="https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Large-scale reconciliation</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">RCDS_GO</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Go implementation of remote large-string reconciliation for synchronizing huge files by transferring differences instead of whole payloads.</p>
+      <a href="https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO" target="_blank" rel="noopener" class="mt-4 inline-flex text-sm font-semibold text-teal-700 hover:text-teal-800">GitHub</a>
     </article>
 
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Chain-of-thought + ranking</p>
-          <h3 class="mt-2 text-xl font-semibold text-slate-900">CoT-Rec</h3>
-        </div>
-        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#project-cot-rec" data-toggle-group="research-projects" aria-controls="project-cot-rec" aria-expanded="false">Details</button>
-      </div>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Framework combining chain-of-thought generation with ranking models so candidate reasoning paths can be scored, reranked, and selected.
-      </p>
-      <div id="project-cot-rec" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          Multiple reasoning traces become candidates that can be scored, ranked, and selected instead of accepted in generation order.
-        </p>
-      </div>
-      <a href="https://github.com/Bowenislandsong/CoT-Rec" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">GitHub</a>
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Chain-of-thought and ranking</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">CoT-Rec</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Framework for generating, scoring, reranking, and selecting candidate reasoning paths.</p>
+      <a href="https://github.com/Bowenislandsong/CoT-Rec" target="_blank" rel="noopener" class="mt-4 inline-flex text-sm font-semibold text-teal-700 hover:text-teal-800">GitHub</a>
     </article>
   </div>
 </section>
 
 <section id="teaching" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Teaching and Mentorship</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Helping other people build is part of the profile.</h2>
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Teaching And Mentorship</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Helping other people build is part of the work.</h2>
 
   <div class="mt-6 grid gap-4 lg:grid-cols-[1.1fr,0.9fr]">
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div class="flex items-start justify-between gap-4">
-        <h3 class="text-xl font-semibold text-slate-900">Mentorship across research and systems</h3>
-        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#teaching-mentorship" data-toggle-group="research-teaching" aria-controls="teaching-mentorship" aria-expanded="false">Details</button>
-      </div>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        I have mentored 10+ students and collaborators across biomechanics, cloud systems, and ML infrastructure.
-      </p>
-      <div id="teaching-mentorship" class="mt-4 hidden border-t border-slate-200 pt-4">
-        <p class="text-sm leading-6 text-slate-700">
-          At USC and BU, I supported networking, systems, operating systems, cloud computing, and product-design teaching because clear feedback and good materials make strong teams stronger.
-        </p>
-      </div>
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+      <h3 class="text-xl font-semibold text-slate-900">Mentorship across research and systems</h3>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Mentored 10+ students and collaborators across biomechanics, cloud systems, and ML infrastructure. Supported teaching in networking, operating systems, cloud computing, and product design.</p>
     </article>
 
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
       <h3 class="text-xl font-semibold text-slate-900">Teaching demo</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">
-        Boston University cloud computing demo showing the explanation style I bring to mentoring.
-      </p>
-      <a href="https://www.youtube.com/watch?v=6FnfpbiwJTo" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
-        Watch demo
-      </a>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Boston University cloud computing demo showing the explanation style I bring to mentoring.</p>
+      <a href="https://www.youtube.com/watch?v=6FnfpbiwJTo" target="_blank" rel="noopener" class="mt-4 inline-flex rounded-full bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800">Watch demo</a>
     </article>
   </div>
 </section>
@@ -354,20 +180,20 @@
   <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Selected presentations and public-facing work.</h2>
 
   <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm">
+    <article class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <h3 class="text-lg font-semibold text-slate-900">Red Hat Summit 2020</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">Hosted a full day of summit programming and practiced explaining technical work clearly to a broad audience.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Hosted a full day of summit programming and explained technical work to a broad audience.</p>
     </article>
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm">
+    <article class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <h3 class="text-lg font-semibold text-slate-900">DevConf.US 2020</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">Presented distributed systems work rooted in string reconciliation and reliability.</p>
-      <a href="https://devconfus2020.sched.com/event/dkXZ" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-teal-800">Session link</a>
+      <a href="https://devconfus2020.sched.com/event/dkXZ" target="_blank" rel="noopener" class="mt-3 inline-flex text-sm font-semibold text-teal-700 hover:text-teal-800">Session link</a>
     </article>
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm">
+    <article class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <h3 class="text-lg font-semibold text-slate-900">IEEE CLOUD 2022</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">Presented hybrid-cloud federation work on incentives, QoS, and deployable coordination.</p>
     </article>
-    <article class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm">
+    <article class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <h3 class="text-lg font-semibold text-slate-900">Allerton 2019</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">Presented RCDS and its implications for practical synchronization at scale.</p>
     </article>

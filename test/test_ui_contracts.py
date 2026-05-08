@@ -167,9 +167,9 @@ class UIContractTest(unittest.TestCase):
             "sections/engineering.html",
             "sections/interview-prep.html",
             "sections/news.html",
+            "sections/resume.html",
             "sections/quantum.html",
             "sections/paper-discovery.html",
-            "sections/grf-tutorial.html",
         ]:
             parser = parse_html(rel_path)
             missing = [button for button in parser.buttons if button.get("type") != "button"]
@@ -331,17 +331,17 @@ Body text
             "sections/research.html",
             "sections/engineering.html",
             "sections/news.html",
+            "sections/resume.html",
             "sections/quantum.html",
             "sections/interview-prep.html",
             "sections/paper-discovery.html",
-            "sections/grf-tutorial.html",
         ]:
             self.assertNotIn("onclick=", read(rel_path), f"{rel_path} should not use inline click handlers")
 
     def test_index_navigation_exposes_live_tabs(self):
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
-        self.assertEqual(tabs, {"personal", "research", "engineering", "interview-prep", "news", "quantum", "paper-discovery", "grf-tutorial"})
+        self.assertEqual(tabs, {"personal", "research", "engineering", "resume", "news"})
 
     def test_subnavs_reveal_on_header_hover_without_toggle_button(self):
         index_html = read("index.html")
@@ -352,8 +352,10 @@ Body text
         self.assertIn(".site-shell:hover .subnav-shell:not(.hidden)", index_html)
         self.assertIn(".site-shell:focus-within .subnav-shell:not(.hidden)", index_html)
         self.assertIn("@media (hover: none), (pointer: coarse)", index_html)
-        for page in ["personal", "research", "engineering", "interview-prep", "news", "grf-tutorial"]:
+        for page in ["personal", "research", "engineering", "interview-prep", "resume", "news"]:
             self.assertIn(f'data-subnav-for="{page}"', index_html)
+        self.assertNotIn('data-subnav-for="grf-tutorial"', index_html)
+        self.assertNotIn('href="#/grf-tutorial"', index_html)
 
         for removed in [
             "SUBNAV_COLLAPSE_KEY",
@@ -373,17 +375,6 @@ Body text
             "flex-wrap: nowrap !important;",
         ]:
             self.assertIn(token, index_html)
-
-    def test_personal_profile_links_use_larger_tap_targets(self):
-        personal_html = read("sections/personal.html")
-        for token in [
-            "md:px-5",
-            "md:py-2.5",
-            "md:text-base",
-            "inline-flex items-center justify-center",
-            "font-semibold",
-        ]:
-            self.assertIn(token, personal_html)
 
     def test_quantum_controls_cover_toggle_search_jumps_and_paging(self):
         parser = parse_html("sections/quantum.html")

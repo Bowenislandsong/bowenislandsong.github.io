@@ -34,9 +34,9 @@ class SiteIntegrityTest(unittest.TestCase):
             "engineering",
             "interview-prep",
             "news",
+            "resume",
             "quantum",
             "paper-discovery",
-            "grf-tutorial",
         }
         routes = parse_router_routes()
         self.assertEqual({name for name, _ in routes}, expected)
@@ -123,6 +123,15 @@ class SiteIntegrityTest(unittest.TestCase):
             "archive",
         }
         self.assertTrue(expected.issubset(ids), f"Missing news anchors: {sorted(expected - ids)}")
+
+    def test_resume_anchor_contract(self):
+        resume_html = read("sections/resume.html")
+        ids = set(re.findall(r'id="([^"]+)"', resume_html))
+        expected = {
+            "resume-overview",
+            "resume-links",
+        }
+        self.assertTrue(expected.issubset(ids), f"Missing resume anchors: {sorted(expected - ids)}")
 
     def test_interview_prep_anchor_contract(self):
         interview_html = read("sections/interview-prep.html")
