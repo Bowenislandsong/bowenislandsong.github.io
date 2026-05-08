@@ -143,6 +143,10 @@
       bindDelegation();
       syncToggleButtons();
     },
+    resources() {
+      bindDelegation();
+      syncToggleButtons();
+    },
     'interview-prep'() {
       if (window.setupInterviewPrep) return window.setupInterviewPrep();
     },

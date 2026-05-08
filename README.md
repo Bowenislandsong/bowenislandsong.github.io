@@ -1,6 +1,6 @@
 # Bowen Song Portfolio Site
 
-Static GitHub Pages portfolio for Bowen Song, built as a hash-routed single-page site with focused sections for research, engineering, interview prep, news, and structured reading tracks.
+Static GitHub Pages portfolio for Bowen Song, built as a hash-routed single-page site with focused sections for research, engineering, resources, interview prep, news, and structured reading tracks.
 
 Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 
@@ -18,6 +18,7 @@ Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 | `#/personal` | Fast overview for recruiters and first-time visitors |
 | `#/research` | Publications, research agenda, projects, teaching, and talks |
 | `#/engineering` | Engineering-focused portfolio page |
+| `#/resources` | Resource index for interview prep, paper exploration, and quantum notes |
 | `#/interview-prep` | Coding interview drill board with categories, approaches, filters, and examples |
 | `#/news` | Updates, poster highlights, and archive |
 | `#/quantum` | Quantum learning track and lesson flow |
@@ -51,6 +52,7 @@ Example deep links:
 │   ├── personal.html
 │   ├── research.html
 │   ├── engineering.html
+│   ├── resources.html
 │   ├── interview-prep.html
 │   ├── news.html
 │   ├── quantum.html

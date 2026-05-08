@@ -165,6 +165,7 @@ class UIContractTest(unittest.TestCase):
             "sections/personal.html",
             "sections/research.html",
             "sections/engineering.html",
+            "sections/resources.html",
             "sections/interview-prep.html",
             "sections/news.html",
             "sections/resume.html",
@@ -334,6 +335,7 @@ Body text
             "sections/engineering.html",
             "sections/news.html",
             "sections/resume.html",
+            "sections/resources.html",
             "sections/quantum.html",
             "sections/interview-prep.html",
             "sections/paper-discovery.html",
@@ -343,7 +345,7 @@ Body text
     def test_index_navigation_exposes_live_tabs(self):
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
-        self.assertEqual(tabs, {"personal", "research", "engineering", "resume", "news"})
+        self.assertEqual(tabs, {"personal", "research", "engineering", "resources", "resume", "news"})
 
     def test_router_handles_same_hash_route_clicks(self):
         router_js = read("js/router.js")
@@ -352,12 +354,19 @@ Body text
         self.assertIn("handleRoute(href);", router_js)
         self.assertIn("window.addEventListener('popstate'", router_js)
 
+    def test_resource_routes_highlight_resources_nav(self):
+        router_js = read("js/router.js")
+        self.assertIn("const resourcePages = new Set(['resources', 'interview-prep', 'quantum', 'paper-discovery']);", router_js)
+        self.assertIn("resourcePages.has(page) ? 'resources' : page", router_js)
+        self.assertIn("data-subnav-for=\"resources\"", read("index.html"))
+
     def test_navigation_and_page_labels_are_specific(self):
         files = [
             "index.html",
             "sections/personal.html",
             "sections/research.html",
             "sections/engineering.html",
+            "sections/resources.html",
             "sections/news.html",
             "sections/resume.html",
         ]
@@ -395,7 +404,7 @@ Body text
         self.assertIn(".site-shell:hover .subnav-shell:not(.hidden)", index_html)
         self.assertIn(".site-shell:focus-within .subnav-shell:not(.hidden)", index_html)
         self.assertIn("@media (hover: none), (pointer: coarse)", index_html)
-        for page in ["personal", "research", "engineering", "interview-prep", "resume", "news"]:
+        for page in ["personal", "research", "engineering", "resources", "interview-prep", "resume", "news"]:
             self.assertIn(f'data-subnav-for="{page}"', index_html)
         self.assertNotIn('data-subnav-for="grf-tutorial"', index_html)
         self.assertNotIn('href="#/grf-tutorial"', index_html)

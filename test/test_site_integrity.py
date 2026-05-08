@@ -32,6 +32,7 @@ class SiteIntegrityTest(unittest.TestCase):
             "personal",
             "research",
             "engineering",
+            "resources",
             "interview-prep",
             "news",
             "resume",
@@ -133,6 +134,15 @@ class SiteIntegrityTest(unittest.TestCase):
         }
         self.assertTrue(expected.issubset(ids), f"Missing resume anchors: {sorted(expected - ids)}")
 
+    def test_resources_anchor_contract(self):
+        resources_html = read("sections/resources.html")
+        ids = set(re.findall(r'id="([^"]+)"', resources_html))
+        expected = {
+            "resources-overview",
+            "resource-links",
+        }
+        self.assertTrue(expected.issubset(ids), f"Missing resources anchors: {sorted(expected - ids)}")
+
     def test_interview_prep_anchor_contract(self):
         interview_html = read("sections/interview-prep.html")
         ids = set(re.findall(r'id="([^"]+)"', interview_html))
@@ -202,6 +212,7 @@ class SiteIntegrityTest(unittest.TestCase):
             "#/research",
             "#/engineering",
             "#/resume",
+            "#/resources",
             "#/interview-prep",
             "#/news",
             "#/quantum",

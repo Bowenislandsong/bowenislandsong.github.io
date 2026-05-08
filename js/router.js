@@ -10,6 +10,7 @@
   const subnavEngineering = document.getElementById('engineering-subnav');
   const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
   const subnavResume = document.getElementById('resume-subnav');
+  const subnavResources = document.getElementById('resources-subnav');
 
   // ---- Config ----
   const DEFAULT_PAGE = 'personal';
@@ -18,6 +19,7 @@
     personal: 'sections/personal.html',
     research: 'sections/research.html',
     engineering: 'sections/engineering.html',
+    resources: 'sections/resources.html',
     'interview-prep': 'sections/interview-prep.html',
     news: 'sections/news.html',
     resume: 'sections/resume.html',
@@ -25,6 +27,7 @@
     'paper-discovery': 'sections/paper-discovery.html',
   };
   const routeNames = new Set(Object.keys(routes));
+  const resourcePages = new Set(['resources', 'interview-prep', 'quantum', 'paper-discovery']);
   const CACHE_MODE = 'no-store'; // ensure you always see latest
   const SCROLL_BEHAVIOR = 'smooth';
 
@@ -59,7 +62,7 @@
   }
 
   function highlightNav(page) {
-    const navPage = page;
+    const navPage = resourcePages.has(page) ? 'resources' : page;
     document.querySelectorAll('.main-nav-btn').forEach(btn => {
       btn.classList.remove('bg-slate-200', 'font-medium');
       if (btn.getAttribute('data-page') === navPage) {
@@ -75,6 +78,7 @@
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
     if (subnavResume) subnavResume.classList.toggle('hidden', page !== 'resume');
+    if (subnavResources) subnavResources.classList.toggle('hidden', !['resources', 'quantum', 'paper-discovery'].includes(page));
   }
 
   function scrollToAnchor(anchor) {
