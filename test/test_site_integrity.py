@@ -201,12 +201,14 @@ class SiteIntegrityTest(unittest.TestCase):
             "#/personal",
             "#/research",
             "#/engineering",
+            "#/resume",
             "#/interview-prep",
             "#/news",
             "#/quantum",
             "#/paper-discovery",
         ]:
             self.assertIn(route, sitemap)
+        self.assertNotIn("#/grf-tutorial", sitemap)
 
 
 if __name__ == "__main__":

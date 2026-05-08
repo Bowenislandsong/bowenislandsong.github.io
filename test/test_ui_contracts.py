@@ -213,6 +213,8 @@ class UIContractTest(unittest.TestCase):
         news_js = read("js/news.js")
         self.assertIn('const panelId = `news-body-${item.slug}`;', news_js)
         self.assertIn('data-toggle-group="news-featured"', news_js)
+        self.assertIn('data-toggle-label-collapsed="Show update details"', news_js)
+        self.assertIn('data-toggle-label-expanded="Hide update details"', news_js)
         self.assertIn('aria-controls="${escapeHtml(panelId)}"', news_js)
         self.assertIn('window.syncToggleButtons', news_js)
 
@@ -342,6 +344,40 @@ Body text
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
         self.assertEqual(tabs, {"personal", "research", "engineering", "resume", "news"})
+
+    def test_navigation_and_page_labels_are_specific(self):
+        files = [
+            "index.html",
+            "sections/personal.html",
+            "sections/research.html",
+            "sections/engineering.html",
+            "sections/news.html",
+            "sections/resume.html",
+        ]
+        banned_phrases = [
+            "At a glance",
+            "Also useful",
+            "Best fit",
+            "Current focus",
+            "Default view",
+            "Details",
+            "Engineering lanes",
+            "Fast paths for hiring readers",
+            "Quick links",
+            "Representative papers",
+            "Research depth with engineering proof",
+            "Selected Evidence",
+            "The short version",
+            "Why it helps",
+            "Why Me",
+        ]
+        violations = []
+        for rel_path in files:
+            text = read(rel_path).lower()
+            for phrase in banned_phrases:
+                if phrase.lower() in text:
+                    violations.append((rel_path, phrase))
+        self.assertEqual(violations, [], f"Vague live labels remain: {violations}")
 
     def test_subnavs_reveal_on_header_hover_without_toggle_button(self):
         index_html = read("index.html")

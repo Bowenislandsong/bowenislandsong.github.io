@@ -16,9 +16,7 @@
       return container.querySelector(`[data-toggle="${explicitSelector}"]`) || document.querySelector(`[data-toggle="${explicitSelector}"]`);
     }
 
-    return Array.from(container.querySelectorAll('button[data-toggle]')).find((button) => {
-      return (button.textContent || '').trim() === 'Details';
-    }) || null;
+    return container.querySelector('button[data-toggle]') || null;
   }
 
   function hasActiveSelection() {
@@ -53,6 +51,12 @@
 
       if (selector && selector.startsWith('#') && !button.hasAttribute('aria-controls')) {
         button.setAttribute('aria-controls', selector.slice(1));
+      }
+
+      const collapsedLabel = button.getAttribute('data-toggle-label-collapsed');
+      const expandedLabel = button.getAttribute('data-toggle-label-expanded');
+      if (collapsedLabel && expandedLabel) {
+        button.textContent = expanded ? expandedLabel : collapsedLabel;
       }
     });
 

@@ -130,10 +130,12 @@
           class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
           data-toggle="#${escapeHtml(panelId)}"
           data-toggle-group="news-featured"
+          data-toggle-label-collapsed="Show update details"
+          data-toggle-label-expanded="Hide update details"
           aria-controls="${escapeHtml(panelId)}"
           aria-expanded="false"
         >
-          Details
+          Show update details
         </button>
       </div>
       <div id="${escapeHtml(panelId)}" class="mt-4 hidden border-t border-slate-200 pt-4">
