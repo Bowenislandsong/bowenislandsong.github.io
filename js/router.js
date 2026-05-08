@@ -211,7 +211,7 @@
         history.pushState(null, '', href);
       }
       handleRoute(href);
-    });
+    }, true);
   }
 
   function setupAnchorDelegation() {

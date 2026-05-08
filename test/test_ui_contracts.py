@@ -352,6 +352,7 @@ Body text
         self.assertIn("function setupRouteDelegation()", router_js)
         self.assertIn("a[href^=\"#/\"]", router_js)
         self.assertIn("handleRoute(href);", router_js)
+        self.assertIn("handleRoute(href);\n    }, true);", router_js)
         self.assertIn("window.addEventListener('popstate'", router_js)
 
     def test_resource_routes_highlight_resources_nav(self):
