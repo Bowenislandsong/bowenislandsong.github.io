@@ -1,149 +1,49 @@
 <!-- sections/engineering.html -->
 
 <section id="engineering-overview" class="py-10 md:py-14">
-  <div class="grid gap-8 lg:grid-cols-[1.25fr,0.75fr] lg:items-start">
-    <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-teal-700">Engineering</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
-        Systems, ML infrastructure, and production delivery.
-      </h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
-        This is the engineering side of my profile: platform ownership, cloud and data systems, ML infrastructure, and model-adjacent services built for reliability.
-      </p>
-      <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
-        My research background shows up as careful measurement, reproducible pipelines, and systems that other engineers can trust and extend.
-      </p>
+  <p class="text-xs font-semibold uppercase tracking-[0.22em] text-teal-700">Engineering</p>
+  <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+    Platforms, data, and ML infrastructure I have shipped.
+  </h1>
+  <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
+    OpenShift platform features, Kafka to ClickHouse ingestion with exactly-once behavior, and ranking infrastructure at eBay. My research background shows up as careful measurement, reproducible pipelines, and code other engineers can trust and extend.
+  </p>
 
-      <div class="mt-7 flex flex-wrap gap-3">
-        <a href="#/resume" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">Resume</a>
-        <a href="#/engineering#engineering-experience" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">Experience</a>
-        <a href="https://github.com/Bowenislandsong" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">GitHub</a>
-        <a href="#/research" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">Research</a>
-      </div>
-    </div>
-
-    <aside class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Engineering Signals</p>
-      <ul class="mt-5 space-y-4 text-sm leading-6 text-slate-600">
-        <li><span class="font-semibold text-slate-900">Platform:</span> OpenShift operator lifecycle, upgrade safety, Helm integration, and CI reliability.</li>
-        <li><span class="font-semibold text-slate-900">Data:</span> Kafka to ClickHouse ingestion, exactly-once semantics, schema evolution, and multi-datacenter concerns.</li>
-        <li><span class="font-semibold text-slate-900">ML infra:</span> Distributed training, ranking evaluation, and reproducible research pipelines.</li>
-      </ul>
-    </aside>
-  </div>
-</section>
-
-<section id="systems" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Systems Strengths</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Four engineering strengths.</h2>
-
-  <div class="mt-6 grid gap-4 md:grid-cols-2">
-    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-slate-900">Platform ownership</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Owned release, dependency, packaging, and interoperability problems that make platforms hard to keep stable. Red Hat OpenShift is the clearest proof point.</p>
-    </article>
-    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-slate-900">Reliable data movement</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Built streaming and analytics paths where correctness matters through upgrades, failures, schema drift, and multi-datacenter operation.</p>
-    </article>
-    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-slate-900">Evaluation and operability</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Treat model quality and infrastructure quality as one loop: baselines, routing, observability, and measurement all decide whether results are trustworthy.</p>
-    </article>
-    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <h3 class="text-xl font-semibold text-slate-900">Production-minded research code</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Prefer reusable pipelines, clear interfaces, and small methods that win under constraints over paper-only artifacts.</p>
-    </article>
-  </div>
-</section>
-
-<section id="ml-infra" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">ML Infrastructure</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Training, evaluation, and infrastructure.</h2>
-
-  <div class="mt-6 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white shadow-sm">
-    <article class="p-6">
-      <h3 class="text-xl font-semibold text-slate-900">Ranking under production constraints</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">The eBay ranking internship required scalable training, routing, capacity awareness, and evaluation workflows. Traffic heterogeneity and experiment reliability shaped the modeling decisions.</p>
-    </article>
-    <article class="p-6">
-      <h3 class="text-xl font-semibold text-slate-900">Research infrastructure that ships</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">My research work tends to produce reusable pipelines and benchmarkable code, because the experiments are stronger when another person can rerun and challenge them.</p>
-    </article>
-    <article class="p-6">
-      <h3 class="text-xl font-semibold text-slate-900">Cloud and incentive thinking</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">The cloud federation work informs how I think about multi-tenant ML systems: resource sharing, QoS, incentives, and failure modes are part of the design, not afterthoughts.</p>
-    </article>
+  <div class="mt-7 flex flex-wrap gap-3">
+    <a href="https://github.com/Bowenislandsong" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">GitHub</a>
+    <a href="#/engineering#engineering-experience" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">Experience</a>
   </div>
 </section>
 
 <section id="engineering-experience" class="scroll-mt-24 py-10">
-  <div class="flex flex-wrap items-end justify-between gap-4">
-    <div>
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Experience</p>
-      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Roles and shipped systems.</h2>
-    </div>
-    <a href="#/resume" class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">Open resume</a>
-  </div>
+  <h2 class="text-3xl font-semibold tracking-tight text-slate-950">Where I have shipped engineering work.</h2>
 
   <div class="mt-6 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white shadow-sm">
     <article class="p-6">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">USC &middot; 2020 to present</p>
-      <h3 class="mt-2 text-xl font-semibold text-slate-900">Researcher with deployability constraints</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">Turned research work into pipelines, baselines, and evaluations that other people can rerun, challenge, and extend.</p>
-    </article>
-    <article class="p-6">
       <p class="text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">eBay &middot; 2024</p>
       <h3 class="mt-2 text-xl font-semibold text-slate-900">Core Ranking Research Intern</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">Worked on mixture-of-experts ranking and the distributed infrastructure needed to test it honestly under traffic heterogeneity.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Mixture-of-experts ranking with distributed training workflows and evaluation under traffic heterogeneity.</p>
     </article>
     <article class="p-6">
       <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">eBay &middot; 2023</p>
       <h3 class="mt-2 text-xl font-semibold text-slate-900">Infrastructure Intern</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">Built Kafka to ClickHouse ingestion with exactly-once semantics, schema evolution handling, and multi-datacenter awareness.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Kafka to ClickHouse ingestion with exactly-once semantics, schema evolution handling, and multi-datacenter awareness.</p>
     </article>
     <article class="p-6">
       <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Red Hat &middot; 2019 to 2020</p>
       <h3 class="mt-2 text-xl font-semibold text-slate-900">Software Engineer, OpenShift</h3>
-      <p class="mt-2 text-sm leading-6 text-slate-600">Contributed to operator platform features, dependency resolution, Helm integration, scheduler-adjacent changes, and CI flake detection for production clusters.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Operator platform contributions to
+        <a href="https://github.com/operator-framework/operator-lifecycle-manager" target="_blank" rel="noopener" class="inline-link">Operator Lifecycle Manager</a>:
+        dependency resolution, Helm integration, scheduler-adjacent changes, and
+        <a href="https://github.com/operator-framework/flake-analyzer" target="_blank" rel="noopener" class="inline-link">CI flake detection</a>
+        for production clusters.
+      </p>
     </article>
-  </div>
-</section>
-
-<section id="engineering-projects" class="scroll-mt-24 py-10">
-  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Projects</p>
-  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Projects and repositories.</h2>
-
-  <div class="mt-6 grid gap-4 md:grid-cols-2">
-    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Kubernetes platform</p>
-      <h3 class="mt-2 text-xl font-semibold text-slate-900">Operator Lifecycle Manager</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Core operator-platform contribution work for installing and upgrading software safely on clusters.</p>
-      <a href="https://github.com/operator-framework/operator-lifecycle-manager" target="_blank" rel="noopener" class="mt-4 inline-flex text-sm font-semibold text-teal-700 hover:text-teal-800">GitHub</a>
-    </article>
-
-    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">CI reliability</p>
-      <h3 class="mt-2 text-xl font-semibold text-slate-900">Flake Analyzer</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Statistical tooling for classifying flaky tests and improving developer trust in CI results.</p>
-      <a href="https://github.com/operator-framework/flake-analyzer" target="_blank" rel="noopener" class="mt-4 inline-flex text-sm font-semibold text-teal-700 hover:text-teal-800">GitHub</a>
-    </article>
-
-    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Large-scale reconciliation</p>
-      <h3 class="mt-2 text-xl font-semibold text-slate-900">RCDS_GO</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Go implementation of remote large-file reconciliation designed to sync huge payloads efficiently by sending differences instead of whole files.</p>
-      <a href="https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO" target="_blank" rel="noopener" class="mt-4 inline-flex text-sm font-semibold text-teal-700 hover:text-teal-800">GitHub</a>
-    </article>
-
-    <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Incentives and systems</p>
-      <h3 class="mt-2 text-xl font-semibold text-slate-900">Shapley Value Calculator</h3>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Package for payoff allocation in resource-sharing settings where fairness and incentives affect adoption.</p>
-      <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold text-teal-700">
-        <a href="https://github.com/Bowenislandsong/shapley-value" target="_blank" rel="noopener" class="hover:text-teal-800">GitHub</a>
-        <a href="https://pypi.org/project/shapley-value/" target="_blank" rel="noopener" class="hover:text-teal-800">PyPI</a>
-      </div>
+    <article class="p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">USC &middot; 2020 to present</p>
+      <h3 class="mt-2 text-xl font-semibold text-slate-900">PhD researcher with deployability constraints</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Turned research into pipelines, baselines, and evaluations that other people can rerun, challenge, and extend.</p>
     </article>
   </div>
 </section>

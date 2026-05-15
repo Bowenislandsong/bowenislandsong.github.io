@@ -155,10 +155,6 @@
       syncToggleButtons();
       if (window.setupNewsPage) return window.setupNewsPage();
     },
-    resume() {
-      bindDelegation();
-      syncToggleButtons();
-    },
     quantum({ anchor } = {}) {
       bindDelegation();
       syncToggleButtons();

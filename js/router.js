@@ -4,13 +4,9 @@
 
 (() => {
   const APP = document.getElementById('app');
-  const subnavPersonal = document.getElementById('personal-subnav');
   const subnavResearch = document.getElementById('research-subnav');
   const subnavNews = document.getElementById('news-subnav');
-  const subnavEngineering = document.getElementById('engineering-subnav');
   const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
-  const subnavResume = document.getElementById('resume-subnav');
-  const subnavResources = document.getElementById('resources-subnav');
 
   // ---- Config ----
   const DEFAULT_PAGE = 'personal';
@@ -22,7 +18,6 @@
     resources: 'sections/resources.html',
     'interview-prep': 'sections/interview-prep.html',
     news: 'sections/news.html',
-    resume: 'sections/resume.html',
     quantum: 'sections/quantum.html',
     'paper-discovery': 'sections/paper-discovery.html',
   };
@@ -72,13 +67,9 @@
   }
 
   function toggleSubnavs(page) {
-    if (subnavPersonal) subnavPersonal.classList.toggle('hidden', page !== 'personal');
     if (subnavResearch) subnavResearch.classList.toggle('hidden', page !== 'research');
     if (subnavNews) subnavNews.classList.toggle('hidden', page !== 'news');
-    if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
-    if (subnavResume) subnavResume.classList.toggle('hidden', page !== 'resume');
-    if (subnavResources) subnavResources.classList.toggle('hidden', !['resources', 'quantum', 'paper-discovery'].includes(page));
   }
 
   function scrollToAnchor(anchor) {

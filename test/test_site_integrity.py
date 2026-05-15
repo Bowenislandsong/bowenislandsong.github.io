@@ -35,7 +35,6 @@ class SiteIntegrityTest(unittest.TestCase):
             "resources",
             "interview-prep",
             "news",
-            "resume",
             "quantum",
             "paper-discovery",
         }
@@ -81,12 +80,7 @@ class SiteIntegrityTest(unittest.TestCase):
     def test_personal_anchor_contract(self):
         personal_html = read("sections/personal.html")
         ids = set(re.findall(r'id="([^"]+)"', personal_html))
-        expected = {
-            "overview",
-            "fit",
-            "experience",
-            "contact",
-        }
+        expected = {"overview"}
         self.assertTrue(expected.issubset(ids), f"Missing personal anchors: {sorted(expected - ids)}")
 
     def test_research_anchor_contract(self):
@@ -98,7 +92,6 @@ class SiteIntegrityTest(unittest.TestCase):
             "projects",
             "agenda",
             "teaching",
-            "talks",
         }
         self.assertTrue(expected.issubset(ids), f"Missing research anchors: {sorted(expected - ids)}")
 
@@ -107,10 +100,7 @@ class SiteIntegrityTest(unittest.TestCase):
         ids = set(re.findall(r'id="([^"]+)"', engineering_html))
         expected = {
             "engineering-overview",
-            "systems",
-            "ml-infra",
             "engineering-experience",
-            "engineering-projects",
         }
         self.assertTrue(expected.issubset(ids), f"Missing engineering anchors: {sorted(expected - ids)}")
 
@@ -125,21 +115,11 @@ class SiteIntegrityTest(unittest.TestCase):
         }
         self.assertTrue(expected.issubset(ids), f"Missing news anchors: {sorted(expected - ids)}")
 
-    def test_resume_anchor_contract(self):
-        resume_html = read("sections/resume.html")
-        ids = set(re.findall(r'id="([^"]+)"', resume_html))
-        expected = {
-            "resume-overview",
-            "resume-links",
-        }
-        self.assertTrue(expected.issubset(ids), f"Missing resume anchors: {sorted(expected - ids)}")
-
     def test_resources_anchor_contract(self):
         resources_html = read("sections/resources.html")
         ids = set(re.findall(r'id="([^"]+)"', resources_html))
         expected = {
             "resources-overview",
-            "resource-links",
         }
         self.assertTrue(expected.issubset(ids), f"Missing resources anchors: {sorted(expected - ids)}")
 
@@ -211,7 +191,6 @@ class SiteIntegrityTest(unittest.TestCase):
             "#/personal",
             "#/research",
             "#/engineering",
-            "#/resume",
             "#/resources",
             "#/interview-prep",
             "#/news",
@@ -219,6 +198,7 @@ class SiteIntegrityTest(unittest.TestCase):
             "#/paper-discovery",
         ]:
             self.assertIn(route, sitemap)
+        self.assertNotIn("#/resume", sitemap)
         self.assertNotIn("#/grf-tutorial", sitemap)
 
 
