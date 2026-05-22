@@ -56,8 +56,7 @@ Example deep links:
 │   ├── interview-prep.html
 │   ├── news.html
 │   ├── quantum.html
-│   ├── paper-discovery.html
-│   └── classes.html                 # archived, not live
+│   └── paper-discovery.html
 ├── js/
 │   ├── router.js
 │   ├── section-hooks.js
@@ -107,7 +106,7 @@ Some automation-related checks are optional and skip unless their external depen
 - Source summaries live in `papers/*.md`.
 - The checked-in manifest lives in `papers/index.json`.
 - The Paper Discovery experience is rendered by `js/papers.js`.
-- Automated fetching is handled by `.github/scripts/fetch_paper.py`.
+- Manual fetching is handled by `.github/scripts/fetch_paper.py` through the `Fetch Paper and Update Indexes` workflow or the local command below.
 - Recent workflow improvements sanitize fenced YAML output before saving and rotate fetches across portfolio-aligned tracks.
 
 ### Quantum Lessons
@@ -115,6 +114,7 @@ Some automation-related checks are optional and skip unless their external depen
 - Source lessons live in `lessons/*.md`.
 - The lesson manifest lives in `lessons/index.json`.
 - The reading flow is rendered by `js/quantum.js`.
+- New Gemini lesson generation is kept as a manual workflow because the scheduled Gemini jobs were exhausting quota.
 
 ### News
 

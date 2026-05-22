@@ -49,6 +49,8 @@ class SiteIntegrityTest(unittest.TestCase):
         router = read("js/router.js")
         self.assertNotIn('href="#/classes"', index_html)
         self.assertNotIn("classes: 'sections/classes.html'", router)
+        self.assertFalse((SECTIONS_DIR / "classes.html").exists())
+        self.assertFalse((ROOT / "js/classes.js").exists())
 
     def test_section_partials_are_markup_only(self):
         for section_path in SECTIONS_DIR.glob("*.html"):

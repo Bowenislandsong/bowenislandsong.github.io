@@ -343,7 +343,19 @@ Body text
     def test_index_navigation_exposes_live_tabs(self):
         index_html = read("index.html")
         tabs = set(re.findall(r'data-page="([^"]+)"', index_html))
-        self.assertEqual(tabs, {"personal", "research", "engineering", "resources", "news"})
+        self.assertEqual(
+            tabs,
+            {
+                "personal",
+                "research",
+                "engineering",
+                "resources",
+                "interview-prep",
+                "news",
+                "paper-discovery",
+                "quantum",
+            },
+        )
 
     def test_router_handles_same_hash_route_clicks(self):
         router_js = read("js/router.js")
@@ -353,10 +365,10 @@ Body text
         self.assertIn("handleRoute(href);\n    }, true);", router_js)
         self.assertIn("window.addEventListener('popstate'", router_js)
 
-    def test_resource_routes_highlight_resources_nav(self):
+    def test_each_resource_route_can_highlight_its_own_nav_item(self):
         router_js = read("js/router.js")
-        self.assertIn("const resourcePages = new Set(['resources', 'interview-prep', 'quantum', 'paper-discovery']);", router_js)
-        self.assertIn("resourcePages.has(page) ? 'resources' : page", router_js)
+        self.assertNotIn("const resourcePages =", router_js)
+        self.assertIn("btn.getAttribute('data-page') === page", router_js)
 
     def test_navigation_and_page_labels_are_specific(self):
         files = [
@@ -373,7 +385,6 @@ Body text
             "Best fit",
             "Current focus",
             "Default view",
-            "Details",
             "Engineering lanes",
             "Fast paths for hiring readers",
             "Quick links",
@@ -382,7 +393,6 @@ Body text
             "Selected Evidence",
             "The short version",
             "Why it helps",
-            "Why Me",
         ]
         violations = []
         for rel_path in files:
@@ -404,11 +414,11 @@ Body text
         self.assertNotIn(".site-shell:hover .subnav-shell:not(.hidden)", index_html)
         self.assertNotIn(".site-shell:focus-within .subnav-shell:not(.hidden)", index_html)
         self.assertNotIn("position: absolute", index_html.split(".subnav-shell {", 1)[1].split("}", 1)[0])
-        # Only pages with three or more in-page sections expose a subnav.
-        for page in ["research", "interview-prep", "news"]:
+        # Pages with multiple meaningful in-page destinations expose a subnav.
+        for page in ["personal", "research", "engineering", "interview-prep", "news"]:
             self.assertIn(f'data-subnav-for="{page}"', index_html)
-        # Pages with one or two sections do not get a subnav.
-        for page in ["personal", "engineering", "resources"]:
+        # The resources index links outward rather than maintaining in-page navigation.
+        for page in ["resources"]:
             self.assertNotIn(f'data-subnav-for="{page}"', index_html)
         self.assertNotIn('data-subnav-for="grf-tutorial"', index_html)
         self.assertNotIn('href="#/grf-tutorial"', index_html)
@@ -469,14 +479,20 @@ Body text
         fetch_workflow = read(".github/workflows/fetch-and-update.yml")
         lesson_workflow = read(".github/workflows/daily_gemini_lesson.yml")
         ci_workflow = read(".github/workflows/ci.yml")
+        security_workflow = read(".github/workflows/security-scan.yml")
 
         self.assertIn(".github/scripts/fetch_paper.py", fetch_workflow)
         self.assertIn("python3 -m unittest discover -s test -q", fetch_workflow)
+        self.assertIn("workflow_dispatch:", fetch_workflow)
+        self.assertNotIn("schedule:", fetch_workflow)
         self.assertIn("python3 -m unittest discover -s test -q", lesson_workflow)
+        self.assertIn("workflow_dispatch:", lesson_workflow)
+        self.assertNotIn("schedule:", lesson_workflow)
         self.assertIn("pull_request:", ci_workflow)
         self.assertIn("unit-tests:", ci_workflow)
         self.assertIn("ui-contracts:", ci_workflow)
         self.assertIn("static-site-smoke:", ci_workflow)
+        self.assertIn("workflow_dispatch:", security_workflow)
 
     def test_readme_matches_current_site_and_test_workflow(self):
         readme = read("README.md")

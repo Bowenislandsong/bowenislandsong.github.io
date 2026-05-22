@@ -275,17 +275,44 @@
           <a href="#/research" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="research">Research</a>
           <a href="#/engineering" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="engineering">Engineering</a>
           <a href="#/resources" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="resources">Resources</a>
+          <a href="#/interview-prep" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="interview-prep">Interview Prep</a>
           <a href="#/news" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="news">News</a>
+          <a href="#/paper-discovery" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="paper-discovery">Reading Map</a>
+          <a href="#/quantum" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="quantum">Quantum Lab</a>
         </nav>
       </div>
+      <div id="personal-subnav" class="subnav-shell hidden" data-subnav-for="personal">
+        <nav class="flex flex-wrap gap-2 text-xs md:text-sm">
+          <a href="#/personal#overview" class="subnav-link">Overview</a>
+          <a href="#/personal#fit" class="subnav-link">Why Me</a>
+          <a href="#/personal#experience" class="subnav-link">Experience</a>
+          <a href="#/personal#contact" class="subnav-link">Contact</a>
+          <a href="#/research" class="subnav-link">Research</a>
+          <a href="#/engineering" class="subnav-link">Engineering</a>
+        </nav>
+      </div>
+
       <!-- Research subnav (only when Research is active) -->
       <div id="research-subnav" class="subnav-shell hidden" data-subnav-for="research">
         <nav class="flex flex-wrap gap-2 text-xs md:text-sm">
+          <a href="#/research#research-overview" class="subnav-link">Overview</a>
           <a href="#/research#agenda" class="subnav-link">Themes</a>
           <a href="#/research#publications" class="subnav-link">Publications</a>
           <a href="#/research#projects" class="subnav-link">Projects</a>
-          <a href="#/research#teaching" class="subnav-link">Beyond papers</a>
+          <a href="#/research#teaching" class="subnav-link">Teaching</a>
+          <a href="#/research#talks" class="subnav-link">Talks</a>
+          <a href="#/engineering" class="subnav-link">Engineering</a>
           <a href="#/paper-discovery" class="subnav-link">Paper Explorer</a>
+        </nav>
+      </div>
+
+      <div id="engineering-subnav" class="subnav-shell hidden" data-subnav-for="engineering">
+        <nav class="flex flex-wrap gap-2 text-xs md:text-sm">
+          <a href="#/engineering#engineering-overview" class="subnav-link">Overview</a>
+          <a href="#/engineering#systems" class="subnav-link">Systems</a>
+          <a href="#/engineering#ml-infra" class="subnav-link">ML Infra</a>
+          <a href="#/engineering#engineering-experience" class="subnav-link">Experience</a>
+          <a href="#/engineering#engineering-projects" class="subnav-link">Projects</a>
         </nav>
       </div>
 
@@ -304,6 +331,7 @@
       <!-- News subnav (only when News is active) -->
       <div id="news-subnav" class="subnav-shell hidden" data-subnav-for="news">
         <nav class="flex flex-wrap gap-2 text-xs md:text-sm">
+          <a href="#/news#news-overview" class="subnav-link">Overview</a>
           <a href="#/news#featured" class="subnav-link">Featured</a>
           <a href="#/news#latest" class="subnav-link">Recent</a>
           <a href="#/news#archive" class="subnav-link">Archive</a>
@@ -321,7 +349,7 @@
           <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Bowen Song</h1>
           <p class="mt-2 text-lg text-slate-700">Research Engineer | PhD Candidate at USC Viterbi</p>
           <p class="mt-3 text-slate-600">Working across <strong>deployable embodied ML</strong>, <strong>ranking</strong>, <strong>cloud systems</strong>, and <strong>ML infrastructure</strong>.</p>
-          <p class="mt-3 text-slate-600">Research for publications and modeling. Engineering for platform, data, and ML infrastructure. Resources for interview prep, paper exploration, and quantum notes. News for public updates.</p>
+          <p class="mt-3 text-slate-600">Explore the overview for the combined story, the research page for publications and modeling, the engineering page for platform and systems work, and the resource pages for interview prep, paper exploration, and quantum notes.</p>
           <p class="mt-4"><strong>Open to:</strong> Research engineering, applied scientist, and ML systems roles where experimentation, implementation, and engineering judgment all matter.</p>
           <p class="mt-4">📧 <a href="mailto:bowenson@usc.edu">bowenson@usc.edu</a> | <a href="https://www.linkedin.com/in/songbowen">LinkedIn</a> | <a href="#/engineering">Engineering</a></p>
         </div>
@@ -349,7 +377,7 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 
   <!-- Scripts -->
-  <script src="js/router.js?v=20260508c"></script>
+  <script src="js/router.js?v=20260522a"></script>
   <script src="js/section-hooks.js?v=20260508b"></script>
   <script src="js/quantum.js?v=20260324b"></script>
   <script src="js/interview-prep-data.js?v=20260411b"></script>

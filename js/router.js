@@ -4,8 +4,10 @@
 
 (() => {
   const APP = document.getElementById('app');
+  const subnavPersonal = document.getElementById('personal-subnav');
   const subnavResearch = document.getElementById('research-subnav');
   const subnavNews = document.getElementById('news-subnav');
+  const subnavEngineering = document.getElementById('engineering-subnav');
   const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
 
   // ---- Config ----
@@ -22,7 +24,6 @@
     'paper-discovery': 'sections/paper-discovery.html',
   };
   const routeNames = new Set(Object.keys(routes));
-  const resourcePages = new Set(['resources', 'interview-prep', 'quantum', 'paper-discovery']);
   const CACHE_MODE = 'no-store'; // ensure you always see latest
   const SCROLL_BEHAVIOR = 'smooth';
 
@@ -57,18 +58,19 @@
   }
 
   function highlightNav(page) {
-    const navPage = resourcePages.has(page) ? 'resources' : page;
     document.querySelectorAll('.main-nav-btn').forEach(btn => {
       btn.classList.remove('bg-slate-200', 'font-medium');
-      if (btn.getAttribute('data-page') === navPage) {
+      if (btn.getAttribute('data-page') === page) {
         btn.classList.add('bg-slate-200', 'font-medium');
       }
     });
   }
 
   function toggleSubnavs(page) {
+    if (subnavPersonal) subnavPersonal.classList.toggle('hidden', page !== 'personal');
     if (subnavResearch) subnavResearch.classList.toggle('hidden', page !== 'research');
     if (subnavNews) subnavNews.classList.toggle('hidden', page !== 'news');
+    if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
   }
 

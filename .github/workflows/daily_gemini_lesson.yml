@@ -1,13 +1,13 @@
-name: Daily Gemini Quantum Lesson
+name: Gemini Quantum Lesson
 
 on:
-  schedule:
-    - cron: '0 6 * * *' # Every day at 6am UTC
   workflow_dispatch:
 
 jobs:
   extract_and_explain:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
     steps:
@@ -17,13 +17,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Set up Conda environment
-        uses: conda-incubator/setup-miniconda@v3
-        with:
-          environment-file: environment.yml
-          auto-activate-base: false
-          activate-environment: website
-      - name: Install pip dependencies (redundant safety)
+      - name: Install Python dependencies
         run: |
           pip install google-generativeai PyPDF2 matplotlib
       - name: Extract next chapter from PDF
@@ -35,10 +29,10 @@ jobs:
       - name: Run full test suite
         run: |
           python3 -m unittest discover -s test -q
-      - name: Commit new lesson
+      - name: Commit new lesson if changed
         run: |
           git config --global user.name "Gemini Bot"
           git config --global user.email "gemini-bot@example.com"
           git add lessons/*.md lessons/index.json classes/index.json papers/index.json
-          git commit -m "Add new Gemini lesson for next chapter"
+          git commit -m "Add new Gemini lesson for next chapter" || echo "No changes"
           git push

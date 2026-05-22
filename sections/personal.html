@@ -1,63 +1,350 @@
 <!-- sections/personal.html -->
 
-<section id="overview" class="py-10 md:py-14">
-  <div class="grid gap-10 lg:grid-cols-[1.25fr,0.75fr] lg:items-start">
+<section id="overview" class="py-12 md:py-16">
+  <div class="grid gap-10 lg:grid-cols-[1.15fr,0.85fr] lg:items-start">
     <div>
-      <h1 class="text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
-        I build ML systems that are accurate, fast, and deployable.
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-teal-700">
+        Bowen Song · <a href="https://viterbi.usc.edu/" target="_blank" rel="noopener" class="inline-link">USC Viterbi</a>
+      </p>
+      <h1 class="mt-5 text-5xl font-semibold tracking-tight text-slate-950 md:text-6xl">
+        Hire me to build ML systems that are accurate, fast, and deployable.
       </h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
-        PhD candidate at USC, advised by
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700 md:text-xl">
+        I deliver results across research and engineering: better model quality, lower complexity, and implementations teams can run in production.
+      </p>
+      <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+        USC PhD ·
+        <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-link">QED Research Group</a>
+        ·
         <a href="https://bourbon.usc.edu/leana/" target="_blank" rel="noopener" class="inline-link">Leana Golubchik</a>
-        in the
-        <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-link">QED Research Group</a>.
-        I work across embodied ML, personalization, ranking, cloud systems, and ML infrastructure, on results that hold up under real sensing, real users, and real production.
+        ·
+        <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-link">Google Scholar</a>
       </p>
 
       <div class="mt-7 flex flex-wrap gap-3">
         <a href="#/research" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
-          See research
+          View Research
         </a>
-        <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          See engineering
+        <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-teal-300 bg-teal-50 px-5 py-3 text-sm font-semibold text-teal-900 transition-colors hover:bg-teal-100">
+          View Engineering
         </a>
-        <a href="mailto:bowenson@usc.edu" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
-          Email me
+        <a href="#/news#featured" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+          Latest News
         </a>
       </div>
 
-      <p class="mt-6 text-sm text-slate-600">
-        Latest:
-        <a href="#/news#featured" class="inline-link">Presented the SER poster at ShowCAIS 2026</a>.
-      </p>
+      <div class="mt-8 rounded-[2rem] border border-teal-200 bg-[linear-gradient(135deg,rgba(204,251,241,0.72),rgba(255,255,255,0.95),rgba(254,243,199,0.68))] p-5 shadow-sm">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div class="max-w-3xl">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-teal-700">Latest News</p>
+            <p class="mt-2 text-lg font-semibold text-slate-900">Presented my SER poster at ShowCAIS 2026.</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              The News page now keeps public updates, poster links, and future milestones in one place.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="#/news#featured" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
+              View update
+            </a>
+            <a href="publications/ShowCAIS_SER_Poster_2026.pdf" download class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+              Poster PDF
+            </a>
+          </div>
+        </div>
+      </div>
 
-      <div class="mt-8 grid gap-3 sm:grid-cols-3">
-        <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">IEEE TBME 2024</p>
-          <p class="mt-2 text-base font-semibold text-slate-900">SER matched or beat heavier LSTMs</p>
-        </article>
-        <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">IEEE CLOUD 2022</p>
-          <p class="mt-2 text-base font-semibold text-slate-900">QoS and incentives for hybrid clouds</p>
-        </article>
-        <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Allerton 2019</p>
-          <p class="mt-2 text-base font-semibold text-slate-900">RCDS beat rsync on real histories</p>
-        </article>
+      <div class="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500">TBME result</p>
+          <p class="mt-2 text-lg font-semibold text-slate-900">SER matched or beat heavier LSTMs</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500">CLOUD result</p>
+          <p class="mt-2 text-lg font-semibold text-slate-900">QoS and incentives for hybrid clouds</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Allerton result</p>
+          <p class="mt-2 text-lg font-semibold text-slate-900">RCDS beat rsync on real histories</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 shadow-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Industry signal</p>
+          <p class="mt-2 text-lg font-semibold text-slate-900">Ranking, streaming, and Kubernetes systems</p>
+        </div>
       </div>
     </div>
 
-    <aside class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-28">
-      <img src="img/aboutmepic/bio.jpeg" alt="Bowen Song portrait" class="h-44 w-full rounded-lg object-cover" />
-      <p class="mt-4 text-base font-semibold text-slate-900">Bowen Song</p>
-      <p class="mt-1 text-sm leading-6 text-slate-600">Research engineer, PhD candidate at USC Viterbi.</p>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Open to research engineering, applied scientist, and ML systems roles.</p>
+    <aside class="rounded-[2rem] border border-slate-200 bg-[rgba(255,255,255,0.86)] p-6 shadow-[0_30px_90px_-52px_rgba(15,23,42,0.28)] backdrop-blur">
+      <div class="flex items-center gap-4">
+        <img src="img/aboutmepic/bio.jpeg" alt="Bowen Song portrait" class="h-24 w-24 rounded-[1.5rem] object-cover" />
+        <div>
+          <p class="text-sm font-semibold text-slate-900">Role fit</p>
+          <p class="mt-1 text-sm leading-6 text-slate-600">
+            Research Engineer, Applied Scientist, and ML Systems roles that need clear experiments, strong code, and measurable impact.
+          </p>
+        </div>
+      </div>
 
-      <div class="mt-4 flex flex-wrap gap-2 text-sm">
-        <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 hover:bg-slate-50">Scholar</a>
-        <a href="https://github.com/Bowenislandsong" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 hover:bg-slate-50">GitHub</a>
-        <a href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 hover:bg-slate-50">LinkedIn</a>
+      <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5" data-card-toggle="#personal-evidence-details">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div class="max-w-xl">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Strongest evidence</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Three projects, each with practical impact.</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">SER, CLOUD, and RCDS show model quality, systems thinking, and deployment awareness.</p>
+          </div>
+          <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#personal-evidence-details" data-toggle-group="personal-aside" aria-controls="personal-evidence-details" aria-expanded="false">Details</button>
+        </div>
+        <div id="personal-evidence-details" class="mt-4 hidden border-t border-slate-200 pt-4">
+          <ul class="space-y-3 text-sm leading-6 text-slate-700">
+            <li>SVD Embedding Regression matched or beat heavier LSTMs for wearable force estimation while staying interpretable and edge-ready.</li>
+            <li>CLOUD modeled hybrid cloud federation with QoS guarantees and fair revenue sharing.</li>
+            <li>RCDS scaled with edit distance and outperformed rsync on realistic reconciliation workloads.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-[1.5rem] bg-slate-950 p-5 text-white" data-card-toggle="#personal-bring-details">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div class="max-w-xl">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-400">What I bring</p>
+            <p class="mt-2 text-sm font-semibold text-white">I own model design, evaluation, and production integration.</p>
+            <p class="mt-2 text-sm leading-6 text-slate-200">Best in teams that care about speed, rigor, reproducibility, and shipping.</p>
+          </div>
+          <button type="button" class="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-white/15" data-toggle="#personal-bring-details" data-toggle-group="personal-aside" aria-controls="personal-bring-details" aria-expanded="false">Details</button>
+        </div>
+        <div id="personal-bring-details" class="mt-4 hidden border-t border-white/10 pt-4">
+          <ul class="space-y-3 text-sm leading-6 text-slate-200">
+            <li>I define metrics early, identify failure modes fast, and adjust design based on evidence.</li>
+            <li>I choose simpler methods when they win, instead of adding unnecessary model complexity.</li>
+            <li>I have shipped across embodied ML, ranking, streaming data, and Kubernetes platforms.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5" data-card-toggle="#personal-transfer-details">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div class="max-w-xl">
+            <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Why this transfers</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Domain-specific work, transferable methods.</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Core strengths: personalization, efficiency, strong evaluation, and systems judgment.</p>
+          </div>
+          <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#personal-transfer-details" data-toggle-group="personal-aside" aria-controls="personal-transfer-details" aria-expanded="false">Details</button>
+        </div>
+        <div id="personal-transfer-details" class="mt-4 hidden border-t border-slate-200 pt-4">
+          <p class="text-sm leading-6 text-slate-700">
+            My PhD work is in biomechanics, but the methods apply broadly: learn from imperfect multimodal data, adapt to user variability, reduce unnecessary complexity, and ship reproducible systems.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2 text-sm">
+        <a href="https://github.com/Bowenislandsong" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 md:px-5 md:py-2.5 md:text-base">GitHub</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 md:px-5 md:py-2.5 md:text-base">Scholar</a>
+        <a href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 md:px-5 md:py-2.5 md:text-base">LinkedIn</a>
       </div>
     </aside>
+  </div>
+</section>
+
+<section id="fit" class="scroll-mt-24 py-10">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Why Me</p>
+  <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Why hire me: I turn ML ideas into reliable, usable systems.</h2>
+
+  <div class="mt-6 grid gap-4 lg:grid-cols-2">
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Model quality</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">I find simpler methods that still win.</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#fit-research-instinct" data-toggle-group="personal-fit" aria-controls="fit-research-instinct" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        I prioritize methods that are clear, efficient, and proven against strong baselines.
+      </p>
+      <div id="fit-research-instinct" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          I start with ambiguity, tighten scope with metrics and ablations, then deliver results others can reproduce and extend.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Cross-domain execution</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">I apply the same rigor across domains.</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#fit-breadth" data-toggle-group="personal-fit" aria-controls="fit-breadth" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        From wearable ML to cloud systems, I build solutions that hold up under real constraints.
+      </p>
+      <div id="fit-breadth" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          Across papers and industry projects, the pattern is consistent: reason under uncertainty, evaluate honestly, and ship trusted systems.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Production mindset</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">I build the system around the model.</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#fit-systems" data-toggle-group="personal-fit" aria-controls="fit-systems" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        Ranking, streaming, and Kubernetes experience keeps scale, reliability, and observability in scope from day one.
+      </p>
+      <div id="fit-systems" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          I treat infrastructure as core to ML impact, because results only matter if teams can run, debug, and extend them.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Team impact</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">I raise team output, not just my own.</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#fit-force-multiplier" data-toggle-group="personal-fit" aria-controls="fit-force-multiplier" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm leading-6 text-slate-600">
+        I mentor teammates, tighten experimental design, and package ideas into code others can trust.
+      </p>
+      <div id="fit-force-multiplier" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          I do my best work on teams that value rigor, speed, and ownership at the same time.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="experience" class="scroll-mt-24 py-10">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Selected Experience</p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Range, with separate doors for research and engineering.</h2>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <a href="#/research" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        Open research page
+      </a>
+      <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        Open engineering page
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-6 grid gap-4 lg:grid-cols-2">
+    <article class="rounded-[2rem] border border-teal-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">USC · 2020 to present</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Personalized AI for Health</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#experience-usc" data-toggle-group="personal-experience" aria-controls="experience-usc" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm font-semibold text-slate-900">Built deployable wearable ML from sensing to evaluation.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Led interpretable, personalized biomechanical estimation in the <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-link">QED Research Group</a> and turned it into first-author research.
+      </p>
+      <div id="experience-usc" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          This is where I learned to treat data pipelines, model design, evaluation, and deployment constraints as one problem instead of four separate ones.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-violet-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">eBay · 2024</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Core Ranking Research Intern</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#experience-ebay-ranking" data-toggle-group="personal-experience" aria-controls="experience-ebay-ranking" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm font-semibold text-slate-900">Worked on ranking models under production constraints.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Focused on mixture-of-experts ranking, large-scale evaluation, and training workflows that had to earn their gains.
+      </p>
+      <div id="experience-ebay-ranking" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          The work sharpened my judgment for strong baselines, traffic heterogeneity, and the difference between a better model and a misleading evaluation.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">eBay · 2023</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Infrastructure Intern</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#experience-ebay-infra" data-toggle-group="personal-experience" aria-controls="experience-ebay-infra" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm font-semibold text-slate-900">Owned a streaming pipeline built for trust and operability.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Handled Kafka-to-ClickHouse ingestion with exactly-once behavior, schema evolution, and multi-datacenter concerns.
+      </p>
+      <div id="experience-ebay-infra" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          That experience reinforced that I can contribute below the model layer too, especially where interfaces, observability, and failure recovery decide whether a system is dependable.
+        </p>
+      </div>
+    </article>
+
+    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Red Hat · 2019 to 2020</p>
+          <h3 class="mt-2 text-xl font-semibold text-slate-900">Software Engineer, OpenShift</h3>
+        </div>
+        <button type="button" class="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50" data-toggle="#experience-redhat" data-toggle-group="personal-experience" aria-controls="experience-redhat" aria-expanded="false">Details</button>
+      </div>
+      <p class="mt-3 text-sm font-semibold text-slate-900">Shipped Kubernetes platform features with release discipline.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        Contributed to OpenShift operator tooling, Helm integration, dependency management, and flaky-test detection.
+      </p>
+      <div id="experience-redhat" class="mt-4 hidden border-t border-slate-200 pt-4">
+        <p class="text-sm leading-6 text-slate-700">
+          OpenShift taught me how mature platform teams manage complexity without accepting fragility, and that still shapes how I approach research code and infrastructure today.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="contact" class="scroll-mt-24 py-10">
+  <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_30px_90px_-52px_rgba(15,23,42,0.28)] md:p-10">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Contact</p>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-slate-950">If your team needs rigorous ML backed by real engineering, I&rsquo;d love to talk.</h2>
+        <p class="mt-4 text-base leading-7 text-slate-600">
+          Research and Reading Map are the fastest follow-ups if you want the deeper technical story behind the highlights here.
+        </p>
+      </div>
+      <div class="rounded-[1.5rem] bg-slate-950 px-5 py-4 text-sm text-slate-200">
+        <p class="font-semibold text-white">Looking ahead</p>
+        <p class="mt-1">Open to 2026 roles in research engineering, applied science, and ML systems.</p>
+      </div>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="mailto:bowenson@usc.edu" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-slate-800">
+        bowenson@usc.edu
+      </a>
+      <a href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        LinkedIn
+      </a>
+      <a href="#/engineering" class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+        Engineering
+      </a>
+    </div>
   </div>
 </section>
