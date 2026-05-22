@@ -214,6 +214,8 @@ class UIContractTest(unittest.TestCase):
         open_source_html = read("sections/open-source.html")
         required_ids = {
             "open-source-agenticlocal",
+            "open-source-local-latex",
+            "open-source-blue-moon",
             "open-source-ser",
             "open-source-cot-rec",
             "open-source-rcds",

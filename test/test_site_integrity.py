@@ -113,7 +113,6 @@ class SiteIntegrityTest(unittest.TestCase):
             "open-source-overview",
             "featured-projects",
             "upstream",
-            "packages",
         }
         self.assertTrue(expected.issubset(ids), f"Missing open-source anchors: {sorted(expected - ids)}")
 
@@ -143,6 +142,12 @@ class SiteIntegrityTest(unittest.TestCase):
         for href in [
             "https://bowen-ai.github.io/AgenticLocal/",
             "https://github.com/Bowen-AI/AgenticLocal",
+            "https://bluemoonbeige.vercel.app",
+            "https://github.com/Bowen-AI/Blue-Moon",
+            "https://bowen-ai.github.io/Local-Latex/",
+            "https://github.com/Bowen-AI/Local-Latex",
+            "https://marketplace.visualstudio.com/items?itemName=BowenAI.latex-one-click",
+            "https://open-vsx.org/extension/BowenAI/latex-one-click",
             "https://github.com/Bowenislandsong/SER",
             "https://github.com/Bowenislandsong/CoT-Rec",
             "https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO",

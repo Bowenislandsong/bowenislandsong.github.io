@@ -20,7 +20,7 @@ Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 | `#/engineering` | Engineering-focused portfolio page |
 | `#/resources` | Resource index for interview prep, paper exploration, and quantum notes |
 | `#/interview-prep` | Coding interview drill board with categories, approaches, filters, and examples |
-| `#/open-source` | Open-source projects, packages, and upstream contributions |
+| `#/open-source` | Open-source project stories and upstream contributions |
 | `#/quantum` | Quantum learning track and lesson flow |
 | `#/paper-discovery` | Paper browser with cards, graph, topic view, and timeline |
 
