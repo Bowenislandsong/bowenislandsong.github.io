@@ -150,10 +150,9 @@
     'interview-prep'() {
       if (window.setupInterviewPrep) return window.setupInterviewPrep();
     },
-    news() {
+    'open-source'() {
       bindDelegation();
       syncToggleButtons();
-      if (window.setupNewsPage) return window.setupNewsPage();
     },
     quantum({ anchor } = {}) {
       bindDelegation();

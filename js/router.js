@@ -6,7 +6,7 @@
   const APP = document.getElementById('app');
   const subnavPersonal = document.getElementById('personal-subnav');
   const subnavResearch = document.getElementById('research-subnav');
-  const subnavNews = document.getElementById('news-subnav');
+  const subnavOpenSource = document.getElementById('open-source-subnav');
   const subnavEngineering = document.getElementById('engineering-subnav');
   const subnavInterviewPrep = document.getElementById('interview-prep-subnav');
 
@@ -19,7 +19,7 @@
     engineering: 'sections/engineering.html',
     resources: 'sections/resources.html',
     'interview-prep': 'sections/interview-prep.html',
-    news: 'sections/news.html',
+    'open-source': 'sections/open-source.html',
     quantum: 'sections/quantum.html',
     'paper-discovery': 'sections/paper-discovery.html',
   };
@@ -69,7 +69,7 @@
   function toggleSubnavs(page) {
     if (subnavPersonal) subnavPersonal.classList.toggle('hidden', page !== 'personal');
     if (subnavResearch) subnavResearch.classList.toggle('hidden', page !== 'research');
-    if (subnavNews) subnavNews.classList.toggle('hidden', page !== 'news');
+    if (subnavOpenSource) subnavOpenSource.classList.toggle('hidden', page !== 'open-source');
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
   }

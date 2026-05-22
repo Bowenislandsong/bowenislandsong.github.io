@@ -34,7 +34,7 @@ class SiteIntegrityTest(unittest.TestCase):
             "engineering",
             "resources",
             "interview-prep",
-            "news",
+            "open-source",
             "quantum",
             "paper-discovery",
         }
@@ -106,16 +106,16 @@ class SiteIntegrityTest(unittest.TestCase):
         }
         self.assertTrue(expected.issubset(ids), f"Missing engineering anchors: {sorted(expected - ids)}")
 
-    def test_news_anchor_contract(self):
-        news_html = read("sections/news.html")
-        ids = set(re.findall(r'id="([^"]+)"', news_html))
+    def test_open_source_anchor_contract(self):
+        open_source_html = read("sections/open-source.html")
+        ids = set(re.findall(r'id="([^"]+)"', open_source_html))
         expected = {
-            "news-overview",
-            "featured",
-            "latest",
-            "archive",
+            "open-source-overview",
+            "featured-projects",
+            "upstream",
+            "packages",
         }
-        self.assertTrue(expected.issubset(ids), f"Missing news anchors: {sorted(expected - ids)}")
+        self.assertTrue(expected.issubset(ids), f"Missing open-source anchors: {sorted(expected - ids)}")
 
     def test_resources_anchor_contract(self):
         resources_html = read("sections/resources.html")
@@ -138,20 +138,20 @@ class SiteIntegrityTest(unittest.TestCase):
         }
         self.assertTrue(expected.issubset(ids), f"Missing interview prep anchors: {sorted(expected - ids)}")
 
-    def test_news_manifest_featured_item_and_assets_exist(self):
-        data = json.loads(read("news/index.json"))
-        items = data.get("items", [])
-        self.assertGreaterEqual(len(items), 1, "news/index.json should contain at least one item")
-
-        slugs = {item["slug"] for item in items}
-        self.assertIn(data.get("featuredSlug"), slugs)
-
-        for item in items:
-            for key in ("poster_image", "poster_pdf"):
-                value = item.get(key)
-                if not value:
-                    continue
-                self.assertTrue((ROOT / value).exists(), f"Missing news asset for {item['slug']}: {value}")
+    def test_open_source_links_core_project_repos(self):
+        open_source_html = read("sections/open-source.html")
+        for href in [
+            "https://bowen-ai.github.io/AgenticLocal/",
+            "https://github.com/Bowen-AI/AgenticLocal",
+            "https://github.com/Bowenislandsong/SER",
+            "https://github.com/Bowenislandsong/CoT-Rec",
+            "https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO",
+            "https://github.com/Bowenislandsong/shapley-value",
+            "https://pypi.org/project/shapley-value/",
+            "https://github.com/operator-framework/operator-lifecycle-manager",
+            "https://github.com/operator-framework/flake-analyzer",
+        ]:
+            self.assertIn(href, open_source_html)
 
     def test_classes_manifest_matches_repo(self):
         actual = []
@@ -195,7 +195,7 @@ class SiteIntegrityTest(unittest.TestCase):
             "#/engineering",
             "#/resources",
             "#/interview-prep",
-            "#/news",
+            "#/open-source",
             "#/quantum",
             "#/paper-discovery",
         ]:

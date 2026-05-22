@@ -276,7 +276,7 @@
           <a href="#/engineering" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="engineering">Engineering</a>
           <a href="#/resources" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="resources">Resources</a>
           <a href="#/interview-prep" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="interview-prep">Interview Prep</a>
-          <a href="#/news" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="news">News</a>
+          <a href="#/open-source" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="open-source">Open Source</a>
           <a href="#/paper-discovery" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="paper-discovery">Reading Map</a>
           <a href="#/quantum" class="px-2 md:px-3 py-1 rounded-full main-nav-btn whitespace-nowrap" data-page="quantum">Quantum Lab</a>
         </nav>
@@ -328,13 +328,13 @@
         </nav>
       </div>
 
-      <!-- News subnav (only when News is active) -->
-      <div id="news-subnav" class="subnav-shell hidden" data-subnav-for="news">
+      <!-- Open Source subnav (only when Open Source is active) -->
+      <div id="open-source-subnav" class="subnav-shell hidden" data-subnav-for="open-source">
         <nav class="flex flex-wrap gap-2 text-xs md:text-sm">
-          <a href="#/news#news-overview" class="subnav-link">Overview</a>
-          <a href="#/news#featured" class="subnav-link">Featured</a>
-          <a href="#/news#latest" class="subnav-link">Recent</a>
-          <a href="#/news#archive" class="subnav-link">Archive</a>
+          <a href="#/open-source#open-source-overview" class="subnav-link">Overview</a>
+          <a href="#/open-source#featured-projects" class="subnav-link">Projects</a>
+          <a href="#/open-source#upstream" class="subnav-link">Upstream</a>
+          <a href="#/open-source#packages" class="subnav-link">Packages</a>
         </nav>
       </div>
     </div>
@@ -383,7 +383,6 @@
   <script src="js/interview-prep-data.js?v=20260411b"></script>
   <script src="js/interview-prep.js?v=20260411a"></script>
   <script src="js/papers.js?v=20260324b"></script>
-  <script src="js/news.js?v=20260508b"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('back-to-top').addEventListener('click', () => {

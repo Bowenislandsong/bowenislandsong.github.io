@@ -167,7 +167,7 @@ class UIContractTest(unittest.TestCase):
             "sections/engineering.html",
             "sections/resources.html",
             "sections/interview-prep.html",
-            "sections/news.html",
+            "sections/open-source.html",
             "sections/quantum.html",
             "sections/paper-discovery.html",
         ]:
@@ -209,14 +209,21 @@ class UIContractTest(unittest.TestCase):
             missing_targets = [selector for selector, target_id in selectors if target_id not in parser.ids]
             self.assertEqual(missing_targets, [], f"Broken selectors in {rel_path}: {missing_targets}")
 
-    def test_news_featured_details_contract(self):
-        news_js = read("js/news.js")
-        self.assertIn('const panelId = `news-body-${item.slug}`;', news_js)
-        self.assertIn('data-toggle-group="news-featured"', news_js)
-        self.assertIn('data-toggle-label-collapsed="Show update details"', news_js)
-        self.assertIn('data-toggle-label-expanded="Hide update details"', news_js)
-        self.assertIn('aria-controls="${escapeHtml(panelId)}"', news_js)
-        self.assertIn('window.syncToggleButtons', news_js)
+    def test_open_source_details_contract(self):
+        parser = parse_html("sections/open-source.html")
+        open_source_html = read("sections/open-source.html")
+        required_ids = {
+            "open-source-agenticlocal",
+            "open-source-ser",
+            "open-source-cot-rec",
+            "open-source-rcds",
+            "open-source-shapley",
+            "open-source-olm",
+            "open-source-flake",
+        }
+        self.assertTrue(required_ids.issubset(parser.ids), f"Missing open-source detail ids: {sorted(required_ids - parser.ids)}")
+        self.assertIn('data-toggle-group="open-source-projects"', open_source_html)
+        self.assertIn('data-toggle-group="open-source-upstream"', open_source_html)
 
     def test_papers_component_contracts_cover_views_and_graph(self):
         parser = parse_html("sections/paper-discovery.html")
@@ -332,7 +339,7 @@ Body text
             "sections/personal.html",
             "sections/research.html",
             "sections/engineering.html",
-            "sections/news.html",
+            "sections/open-source.html",
             "sections/resources.html",
             "sections/quantum.html",
             "sections/interview-prep.html",
@@ -351,7 +358,7 @@ Body text
                 "engineering",
                 "resources",
                 "interview-prep",
-                "news",
+                "open-source",
                 "paper-discovery",
                 "quantum",
             },
@@ -377,7 +384,7 @@ Body text
             "sections/research.html",
             "sections/engineering.html",
             "sections/resources.html",
-            "sections/news.html",
+            "sections/open-source.html",
         ]
         banned_phrases = [
             "At a glance",
@@ -415,7 +422,7 @@ Body text
         self.assertNotIn(".site-shell:focus-within .subnav-shell:not(.hidden)", index_html)
         self.assertNotIn("position: absolute", index_html.split(".subnav-shell {", 1)[1].split("}", 1)[0])
         # Pages with multiple meaningful in-page destinations expose a subnav.
-        for page in ["personal", "research", "engineering", "interview-prep", "news"]:
+        for page in ["personal", "research", "engineering", "interview-prep", "open-source"]:
             self.assertIn(f'data-subnav-for="{page}"', index_html)
         # The resources index links outward rather than maintaining in-page navigation.
         for page in ["resources"]:

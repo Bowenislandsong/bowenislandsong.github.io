@@ -1,6 +1,6 @@
 # Bowen Song Portfolio Site
 
-Static GitHub Pages portfolio for Bowen Song, built as a hash-routed single-page site with focused sections for research, engineering, resources, interview prep, news, and structured reading tracks.
+Static GitHub Pages portfolio for Bowen Song, built as a hash-routed single-page site with focused sections for research, engineering, open-source projects, resources, interview prep, and structured reading tracks.
 
 Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 
@@ -8,7 +8,7 @@ Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 
 - A public portfolio and research site that runs on GitHub Pages without a server backend.
 - A small front-end app where `index.html` is the shell and `#/page#anchor` routes load section partials from `sections/`.
-- A content-heavy repo with handwritten and generated data for papers, lessons, and news.
+- A content-heavy repo with handwritten and generated data for papers, lessons, project pages, and archived course material.
 - A repo that still keeps `classes/` around for archival integrity, even though that material is archived and intentionally hidden from the live navigation.
 
 ## Live Route Map
@@ -20,7 +20,7 @@ Live site: [bowenislandsong.github.io](https://bowenislandsong.github.io)
 | `#/engineering` | Engineering-focused portfolio page |
 | `#/resources` | Resource index for interview prep, paper exploration, and quantum notes |
 | `#/interview-prep` | Coding interview drill board with categories, approaches, filters, and examples |
-| `#/news` | Updates, poster highlights, and archive |
+| `#/open-source` | Open-source projects, packages, and upstream contributions |
 | `#/quantum` | Quantum learning track and lesson flow |
 | `#/paper-discovery` | Paper browser with cards, graph, topic view, and timeline |
 
@@ -30,7 +30,7 @@ Example deep links:
 - `#/research#publications`
 - `#/engineering#systems`
 - `#/interview-prep#problem-browser`
-- `#/news#archive`
+- `#/open-source#featured-projects`
 - `#/quantum#chapter1`
 - `#/paper-discovery#papers-graph-view`
 
@@ -40,8 +40,8 @@ Example deep links:
 - `js/router.js` resolves `#/page#anchor`, swaps in the correct partial from `sections/`, and preserves smooth in-page anchors.
 - `js/section-hooks.js` boots page-specific behavior after a section is loaded.
 - `sections/` contains markup-only partials for each live experience.
-- Page logic lives in specialized scripts such as `js/news.js`, `js/quantum.js`, `js/papers.js`, and `js/interview-prep.js`.
-- JSON and Markdown content under `news/`, `papers/`, `lessons/`, and `classes/` feed the live UI and integrity tests.
+- Page logic lives in specialized scripts such as `js/quantum.js`, `js/papers.js`, and `js/interview-prep.js`.
+- JSON and Markdown content under `papers/`, `lessons/`, and `classes/` feed the live UI and integrity tests.
 
 ## Repository Layout
 
@@ -54,18 +54,16 @@ Example deep links:
 │   ├── engineering.html
 │   ├── resources.html
 │   ├── interview-prep.html
-│   ├── news.html
+│   ├── open-source.html
 │   ├── quantum.html
 │   └── paper-discovery.html
 ├── js/
 │   ├── router.js
 │   ├── section-hooks.js
-│   ├── news.js
 │   ├── quantum.js
 │   ├── papers.js
 │   ├── interview-prep.js
 │   └── interview-prep-data.js
-├── news/
 ├── lessons/
 ├── papers/
 ├── classes/                         # archived source materials
@@ -94,7 +92,7 @@ The tests cover:
 - route-to-section consistency
 - live hash links and anchor contracts
 - page-level UI contracts for buttons, filters, jumps, and rendered content
-- news, papers, lessons, and archived `classes/` manifest integrity
+- open-source route coverage, papers, lessons, and archived `classes/` manifest integrity
 - README accuracy for the documented local workflow
 
 Some automation-related checks are optional and skip unless their external dependencies or credentials are present.
@@ -116,11 +114,11 @@ Some automation-related checks are optional and skip unless their external depen
 - The reading flow is rendered by `js/quantum.js`.
 - New Gemini lesson generation is kept as a manual workflow because the scheduled Gemini jobs were exhausting quota.
 
-### News
+### Open Source
 
-- Updates live in `news/index.json`.
-- The featured card, latest feed, and archive are rendered by `js/news.js`.
-- Older items can be moved out of the main feed by setting `"archived": true`.
+- The project home lives in `sections/open-source.html`.
+- It groups maintained research repos, a published package, and upstream platform contributions.
+- Add new public repos here when they should be discoverable from the top-level navigation.
 
 ### Archived Material
 
