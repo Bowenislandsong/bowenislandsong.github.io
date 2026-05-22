@@ -1,6 +1,45 @@
 {
-  "featuredSlug": "showcais-2026-ser-poster",
+  "featuredSlug": "agenticlocal-launch-2026",
   "items": [
+    {
+      "slug": "agenticlocal-launch-2026",
+      "title": "Launched AgenticLocal: local-first agentic AI workspace",
+      "date": "2026-05-22",
+      "category": "Project launch",
+      "status": "Live",
+      "summary": "Published AgenticLocal with a live project site and open-source repository so people can browse the concept and start using it.",
+      "venue": "Online release",
+      "location": "Web",
+      "archived": false,
+      "tags": [
+        "Agentic AI",
+        "Local AI",
+        "Open Source",
+        "Launch"
+      ],
+      "body": [
+        "AgenticLocal is now live with a public landing page and source code repository.",
+        "The project is designed for local-first, agentic workflows with transparent, hackable implementation details.",
+        "This news entry is now linked on the site for easier navigation and discoverability."
+      ],
+      "poster_image": "img/news/showcais-ser-poster-2026.png",
+      "poster_alt": "AgenticLocal launch announcement",
+      "poster_pdf": "publications/ShowCAIS_SER_Poster_2026.pdf",
+      "links": [
+        {
+          "label": "Visit AgenticLocal site",
+          "href": "https://bowen-ai.github.io/AgenticLocal/"
+        },
+        {
+          "label": "View GitHub repository",
+          "href": "https://github.com/Bowen-AI/AgenticLocal"
+        },
+        {
+          "label": "Browse all news",
+          "href": "#/news"
+        }
+      ]
+    },
     {
       "slug": "showcais-2026-ser-poster",
       "title": "ShowCAIS 2026 SER poster",
