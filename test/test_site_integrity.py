@@ -31,6 +31,7 @@ class SiteIntegrityTest(unittest.TestCase):
         expected = {
             "personal",
             "research",
+            "publications",
             "engineering",
             "resources",
             "interview-prep",
@@ -197,6 +198,7 @@ class SiteIntegrityTest(unittest.TestCase):
         for route in [
             "#/personal",
             "#/research",
+            "#/publications",
             "#/engineering",
             "#/resources",
             "#/interview-prep",

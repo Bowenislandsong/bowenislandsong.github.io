@@ -1,0 +1,104 @@
+<!-- sections/publications.html -->
+
+<section id="publications-overview" class="py-10 md:py-14">
+  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-800">Publications</p>
+  <h1 class="mt-3 text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">Selected publications</h1>
+  <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+    Peer-reviewed papers and dissertation chapters. Full list on
+    <a href="https://scholar.google.com/citations?hl=en&amp;user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-link">Google Scholar</a>.
+  </p>
+</section>
+
+<section id="pub-list" class="scroll-mt-24 pb-14">
+  <ol class="space-y-8 border-t border-slate-200 pt-8">
+    <li class="pub-entry">
+      <p class="text-[15px] leading-7 text-slate-800">
+        <span class="font-semibold text-slate-950">B. Song</span>, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, and D. Shah,
+        &ldquo;Estimating Ground Reaction Forces From Inertial Sensors,&rdquo;
+        <em>IEEE Transactions on Biomedical Engineering</em>, vol.&nbsp;72, no.&nbsp;2, pp.&nbsp;595&ndash;608, 2025.
+      </p>
+      <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+        <a href="publications/Estimating_Ground_Reaction_Forces_From_Inertial_Sensors.pdf" target="_blank" rel="noopener" class="inline-link">[PDF]</a>
+        <a href="https://doi.org/10.1109/TBME.2024.3465373" target="_blank" rel="noopener" class="inline-link">[DOI]</a>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-copy="#bib-grf">[BibTeX]</button>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-toggle="#abs-grf" aria-controls="abs-grf" aria-expanded="false">[Abstract]</button>
+      </p>
+      <p id="abs-grf" class="mt-3 hidden max-w-3xl text-sm leading-6 text-slate-600">
+        We study whether inertial measurement units collected during steady-state running can estimate ground reaction forces and derived biomechanical variables with lightweight models. The paper proposes SVD Embedding Regression (SER) and shows that low-rank methods can match or beat LSTM baselines while remaining practical for edge deployment and personalization. SER compresses IMU and GRF waveforms into low-rank embeddings, learns a linear map in that space, then reconstructs force signals.
+      </p>
+      <pre id="bib-grf" class="sr-only">@ARTICLE{song2025grf,
+  author={Song, B. and Paolieri, M. and Stewart, H. E. and Golubchik, L. and McNitt-Gray, J. L. and Misra, V. and Shah, D.},
+  journal={IEEE Transactions on Biomedical Engineering},
+  title={Estimating Ground Reaction Forces from Inertial Sensors},
+  year={2025},
+  volume={72},
+  number={2},
+  pages={595-608},
+  doi={10.1109/TBME.2024.3465373}
+}</pre>
+    </li>
+
+    <li class="pub-entry">
+      <p class="text-[15px] leading-7 text-slate-800">
+        <span class="font-semibold text-slate-950">B. Song</span>,
+        &ldquo;FedSER for Wearable Biomechanics,&rdquo;
+        Chapter&nbsp;4 in <em>Scalable Biomechanical Modeling Through Federated Learning and Resource Federation</em>, Ph.D. dissertation, University of Southern California, 2026.
+      </p>
+      <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+        <a href="publications/Scalable_Biomechanical_Modeling_Through_Federated_Learning_and_Resource_Federation.pdf" target="_blank" rel="noopener" class="inline-link">[PDF]</a>
+        <a href="#/research#dissertation" class="inline-link">[Dissertation]</a>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-toggle="#abs-fedser" aria-controls="abs-fedser" aria-expanded="false">[Notes]</button>
+      </p>
+      <p id="abs-fedser" class="mt-3 hidden max-w-3xl text-sm leading-6 text-slate-600">
+        Federated multi-task extension of SER for estimating GRFs and hip/knee joint moments across participants and actions without centralizing raw data. Matches centralized SER, outperforms TCN baselines under data scarcity and leave-one-action-out, and was timed on a Pixel&nbsp;8&nbsp;Pro in an 11-client setup (~3&nbsp;min training on phone vs ~40.8&nbsp;min for a centralized TCN on an A100). Not listed as a separate peer-reviewed venue unless/until published.
+      </p>
+    </li>
+
+    <li class="pub-entry">
+      <p class="text-[15px] leading-7 text-slate-800">
+        <span class="font-semibold text-slate-950">B. Song</span>, M. Paolieri, and L. Golubchik,
+        &ldquo;Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements,&rdquo;
+        in <em>Proc. IEEE International Conference on Cloud Computing (CLOUD)</em>, 2022.
+      </p>
+      <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+        <a href="publications/Performance_and_Revenue_Analysis_of_Hybrid_Cloud_Federations_with_QoS_Requirements.pdf" target="_blank" rel="noopener" class="inline-link">[PDF]</a>
+        <a href="https://doi.org/10.1109/CLOUD55607.2022.00055" target="_blank" rel="noopener" class="inline-link">[DOI]</a>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-copy="#bib-cloud">[BibTeX]</button>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-toggle="#abs-cloud" aria-controls="abs-cloud" aria-expanded="false">[Abstract]</button>
+      </p>
+      <p id="abs-cloud" class="mt-3 hidden max-w-3xl text-sm leading-6 text-slate-600">
+        Analyzes hybrid cloud federations where members share local resources and distribute savings according to Shapley value. Characterizes when full sharing is optimal under homogeneous QoS, when heterogeneous QoS changes the answer, and how to discourage free riders without central trust. Forms Chapter&nbsp;5 of the dissertation.
+      </p>
+      <pre id="bib-cloud" class="sr-only">@INPROCEEDINGS{cloud_qos,
+  author={Song, Bowen and Paolieri, Marco and Golubchik, Leana},
+  booktitle={2022 IEEE 15th International Conference on Cloud Computing (CLOUD)},
+  title={Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements},
+  year={2022},
+  doi={10.1109/CLOUD55607.2022.00055}
+}</pre>
+    </li>
+
+    <li class="pub-entry">
+      <p class="text-[15px] leading-7 text-slate-800">
+        <span class="font-semibold text-slate-950">B. Song</span> and A. Trachtenberg,
+        &ldquo;Scalable String Reconciliation by Recursive Content-Dependent Shingling,&rdquo;
+        in <em>Proc. 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</em>, 2019.
+      </p>
+      <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+        <a href="publications/Scalable_String_Reconciliation_by_Recursive_Content-Dependent_Shingling.pdf" target="_blank" rel="noopener" class="inline-link">[PDF]</a>
+        <a href="https://ieeexplore.ieee.org/document/8919901" target="_blank" rel="noopener" class="inline-link">[IEEE]</a>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-copy="#bib-rcds">[BibTeX]</button>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-toggle="#abs-rcds" aria-controls="abs-rcds" aria-expanded="false">[Abstract]</button>
+      </p>
+      <p id="abs-rcds" class="mt-3 hidden max-w-3xl text-sm leading-6 text-slate-600">
+        A communication-efficient protocol for reconciling similar large strings by transferring differences rather than full payloads. Scales with edit distance, remains practical on large strings, and was validated on real revision histories&mdash;outperforming rsync on a substantial fraction of realistic workloads.
+      </p>
+      <pre id="bib-rcds" class="sr-only">@inproceedings{song2019scalable,
+  title={Scalable string reconciliation by recursive content-dependent shingling},
+  author={Song, Bowen and Trachtenberg, Ari},
+  booktitle={2019 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
+  year={2019}
+}</pre>
+    </li>
+  </ol>
+</section>

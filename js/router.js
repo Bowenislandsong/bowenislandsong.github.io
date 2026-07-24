@@ -16,6 +16,7 @@
   const routes = {
     personal: 'sections/personal.html',
     research: 'sections/research.html',
+    publications: 'sections/publications.html',
     engineering: 'sections/engineering.html',
     resources: 'sections/resources.html',
     'interview-prep': 'sections/interview-prep.html',
@@ -24,6 +25,14 @@
     'paper-discovery': 'sections/paper-discovery.html',
   };
   const routeNames = new Set(Object.keys(routes));
+  // Notes hub pages highlight the Notes nav item (resources).
+  const NOTES_PAGES = new Set([
+    'resources',
+    'interview-prep',
+    'open-source',
+    'quantum',
+    'paper-discovery',
+  ]);
   const CACHE_MODE = 'no-store'; // ensure you always see latest
   const SCROLL_BEHAVIOR = 'smooth';
 
@@ -58,20 +67,27 @@
   }
 
   function highlightNav(page) {
+    const activePage = NOTES_PAGES.has(page) ? 'resources' : page;
     document.querySelectorAll('.main-nav-btn').forEach(btn => {
-      btn.classList.remove('bg-slate-200', 'font-medium');
-      if (btn.getAttribute('data-page') === page) {
-        btn.classList.add('bg-slate-200', 'font-medium');
+      btn.classList.remove('is-active', 'bg-slate-200', 'font-medium');
+      if (btn.getAttribute('data-page') === activePage) {
+        btn.classList.add('is-active', 'font-medium');
       }
     });
   }
 
   function toggleSubnavs(page) {
+    const subnavNotes = document.getElementById('notes-subnav');
     if (subnavPersonal) subnavPersonal.classList.toggle('hidden', page !== 'personal');
     if (subnavResearch) subnavResearch.classList.toggle('hidden', page !== 'research');
     if (subnavOpenSource) subnavOpenSource.classList.toggle('hidden', page !== 'open-source');
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
+    // Notes index subnav for hub + quantum/reading pages (interview/open-source keep their own).
+    if (subnavNotes) {
+      const showNotesHub = page === 'resources' || page === 'quantum' || page === 'paper-discovery';
+      subnavNotes.classList.toggle('hidden', !showNotesHub);
+    }
   }
 
   function scrollToAnchor(anchor) {
