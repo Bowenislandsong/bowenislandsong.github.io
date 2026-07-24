@@ -45,3 +45,6 @@ build/
 *.pfx
 id_rsa
 id_rsa.pub
+
+.playwright-cli/
+tmp-preview-*.png
