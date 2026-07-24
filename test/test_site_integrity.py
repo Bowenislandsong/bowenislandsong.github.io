@@ -122,8 +122,16 @@ class SiteIntegrityTest(unittest.TestCase):
         ids = set(re.findall(r'id="([^"]+)"', resources_html))
         expected = {
             "resources-overview",
+            "teaching",
+            "study-notes",
         }
         self.assertTrue(expected.issubset(ids), f"Missing resources anchors: {sorted(expected - ids)}")
+
+    def test_publications_alias_in_router(self):
+        router = read("js/router.js")
+        self.assertIn("publications:", router)
+        self.assertIn("ROUTE_ALIASES", router)
+        self.assertIn("anchor: 'publications'", router)
 
     def test_interview_prep_anchor_contract(self):
         interview_html = read("sections/interview-prep.html")
@@ -198,6 +206,7 @@ class SiteIntegrityTest(unittest.TestCase):
         for route in [
             "#/personal",
             "#/research",
+            "#/research#publications",
             "#/publications",
             "#/engineering",
             "#/resources",

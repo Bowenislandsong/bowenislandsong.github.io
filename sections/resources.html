@@ -1,30 +1,74 @@
-<!-- sections/resources.html — Notes hub -->
+<!-- sections/resources.html -->
 
 <section id="resources-overview" class="py-10 md:py-14">
-  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-800">Notes</p>
+  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-800">Resources</p>
   <h1 class="mt-3 text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
-    Study notes and side projects
+    Teaching, study notes, and side projects
   </h1>
   <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
-    Interview prep, paper exploration, quantum notes, and open-source project pages. These sit alongside the main research profile rather than competing with it.
+    Interview prep, quantum notes, archived TA course materials, a research reading map, and open-source project pages&mdash;kept here so the research profile stays focused.
+  </p>
+</section>
+
+<section id="teaching" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Teaching materials</h2>
+  <p class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+    Materials from courses I TA&rsquo;d or supported. At USC this included CSCI 353 (networking) with Dr. Bill Cheng; earlier teaching support included systems and cloud computing at Boston University. The CS356 archive below preserves lab notes and discussion materials from the site.
   </p>
 
-  <ul class="mt-10 space-y-6 border-t border-slate-200 pt-8">
+  <div class="mt-6 space-y-5">
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">CS356 &mdash; archived lab materials</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Attack lab, bomb lab, cache lab, malloc lab, and discussion slides.</p>
+      <ul class="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+        <li><a href="classes/cs356/attack_lab.md" class="inline-link">Attack lab notes</a> · <a href="classes/cs356/attack%20lab%20(slides).pdf" class="inline-link">slides (PDF)</a></li>
+        <li><a href="classes/cs356/bomblab.md" class="inline-link">Bomb lab notes</a> · <a href="classes/cs356/bomb.asm" class="inline-link">bomb.asm</a></li>
+        <li><a href="classes/cs356/cache_lab.md" class="inline-link">Cache lab notes</a></li>
+        <li><a href="classes/cs356/malloc/malloc_lab.md" class="inline-link">Malloc lab notes</a></li>
+        <li><a href="classes/cs356/data_lab_explained.pdf" class="inline-link">Data lab explained (PDF)</a></li>
+        <li><a href="classes/cs356/CS356_Discussion_03.pdf" class="inline-link">Discussion 03 (PDF)</a> · <a href="classes/cs356/CS356_Discussion_07.pdf" class="inline-link">Discussion 07 (PDF)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">CSCI 353 &mdash; networking (USC)</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        TA for Dr. Bill Cheng&rsquo;s networking course; work included course operations and grading-system automation described in the dissertation acknowledgements.
+      </p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">Boston University &mdash; cloud computing demo</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        <a href="https://www.youtube.com/watch?v=6FnfpbiwJTo" target="_blank" rel="noopener" class="inline-link">Teaching demo on YouTube</a>
+        showing the explanation style used in mentoring and course support.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="study-notes" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Study notes</h2>
+  <ul class="mt-6 space-y-6">
     <li>
       <a href="#/interview-prep" class="text-xl font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Interview Prep</a>
       <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Drill board with filters by category and solution approach, plus LeetCode links.</p>
-    </li>
-    <li>
-      <a href="#/paper-discovery" class="text-xl font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Reading Map</a>
-      <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Paper cards, graph view, topic view, and timeline for the reading map.</p>
     </li>
     <li>
       <a href="#/quantum" class="text-xl font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Quantum Lab</a>
       <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Structured quantum computing lessons with search, chapter jumps, and paging.</p>
     </li>
     <li>
-      <a href="#/open-source" class="text-xl font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Open Source</a>
-      <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">AgenticLocal, Blue Moon, LaTeX One-Click, research code, and upstream contributions.</p>
+      <a href="#/paper-discovery" class="text-xl font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Reading Map</a>
+      <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Paper cards, graph view, topic view, and timeline for the research reading map.</p>
     </li>
   </ul>
+</section>
+
+<section id="open-source-links" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Open source</h2>
+  <p class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+    Project stories for AgenticLocal, Blue Moon, LaTeX One-Click, research code, and upstream contributions.
+  </p>
+  <p class="mt-4 text-sm">
+    <a href="#/open-source" class="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4">Open Source page</a>
+  </p>
 </section>

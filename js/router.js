@@ -16,7 +16,7 @@
   const routes = {
     personal: 'sections/personal.html',
     research: 'sections/research.html',
-    publications: 'sections/publications.html',
+    publications: 'sections/publications.html', // legacy stub; aliased below
     engineering: 'sections/engineering.html',
     resources: 'sections/resources.html',
     'interview-prep': 'sections/interview-prep.html',
@@ -25,8 +25,12 @@
     'paper-discovery': 'sections/paper-discovery.html',
   };
   const routeNames = new Set(Object.keys(routes));
-  // Notes hub pages highlight the Notes nav item (resources).
-  const NOTES_PAGES = new Set([
+  // Legacy bookmarks: #/publications → Research publications section.
+  const ROUTE_ALIASES = {
+    publications: { page: 'research', anchor: 'publications' },
+  };
+  // Resource hub pages highlight the Resources nav item.
+  const RESOURCES_PAGES = new Set([
     'resources',
     'interview-prep',
     'open-source',
@@ -48,14 +52,23 @@
   function pageFromHash(rawHash) {
     // Supports: "#/personal#research", "#/paper-discovery", "", "#research" (in-page)
     const raw = rawHash || '';
+    let page;
+    let anchor;
     if (raw.startsWith('#/')) {
       const noPrefix = raw.slice(2);                   // "personal#research"
-      const [page, anchor] = noPrefix.split('#');
-      return { page: page || DEFAULT_PAGE, anchor: anchor || '' };
+      const parts = noPrefix.split('#');
+      page = parts[0] || DEFAULT_PAGE;
+      anchor = parts[1] || '';
+    } else {
+      // No page prefix: treat as anchor on current/default page
+      page = currentPage || DEFAULT_PAGE;
+      anchor = raw.replace(/^#/, '');
     }
-    // No page prefix: treat as anchor on current/default page
-    const anchor = raw.replace(/^#/, '');
-    return { page: currentPage || DEFAULT_PAGE, anchor };
+    const alias = ROUTE_ALIASES[page];
+    if (alias) {
+      return { page: alias.page, anchor: anchor || alias.anchor };
+    }
+    return { page, anchor };
   }
 
   function isValidPage(page) {
@@ -67,7 +80,7 @@
   }
 
   function highlightNav(page) {
-    const activePage = NOTES_PAGES.has(page) ? 'resources' : page;
+    const activePage = RESOURCES_PAGES.has(page) ? 'resources' : page;
     document.querySelectorAll('.main-nav-btn').forEach(btn => {
       btn.classList.remove('is-active', 'bg-slate-200', 'font-medium');
       if (btn.getAttribute('data-page') === activePage) {
@@ -77,16 +90,16 @@
   }
 
   function toggleSubnavs(page) {
-    const subnavNotes = document.getElementById('notes-subnav');
+    const subnavResources = document.getElementById('resources-subnav');
     if (subnavPersonal) subnavPersonal.classList.toggle('hidden', page !== 'personal');
     if (subnavResearch) subnavResearch.classList.toggle('hidden', page !== 'research');
     if (subnavOpenSource) subnavOpenSource.classList.toggle('hidden', page !== 'open-source');
     if (subnavEngineering) subnavEngineering.classList.toggle('hidden', page !== 'engineering');
     if (subnavInterviewPrep) subnavInterviewPrep.classList.toggle('hidden', page !== 'interview-prep');
-    // Notes index subnav for hub + quantum/reading pages (interview/open-source keep their own).
-    if (subnavNotes) {
-      const showNotesHub = page === 'resources' || page === 'quantum' || page === 'paper-discovery';
-      subnavNotes.classList.toggle('hidden', !showNotesHub);
+    // Resources index subnav for hub + quantum/reading pages (interview/open-source keep their own).
+    if (subnavResources) {
+      const showResourcesHub = page === 'resources' || page === 'quantum' || page === 'paper-discovery';
+      subnavResources.classList.toggle('hidden', !showResourcesHub);
     }
   }
 

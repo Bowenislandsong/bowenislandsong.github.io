@@ -19,10 +19,16 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://bowenislandsong.github.io/#/publications</loc>
+    <loc>https://bowenislandsong.github.io/#/research#publications</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://bowenislandsong.github.io/#/publications</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bowenislandsong.github.io/#/engineering</loc>
