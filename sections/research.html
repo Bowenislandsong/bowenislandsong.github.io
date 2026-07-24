@@ -63,6 +63,55 @@
   </div>
 </section>
 
+<section id="insights" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Key figures and insights</h2>
+  <p class="mt-2 max-w-3xl text-base leading-7 text-slate-600">
+    Selected visuals from the Ph.D. defense (June 18, 2026), with framing drawn from the slides and dissertation.
+  </p>
+
+  <div class="mt-8 space-y-12">
+    <figure class="research-figure">
+      <img src="assets/figures/ser_lstm_artifacts.png" alt="Comparison of GRF waveforms showing LSTM artifacts versus physically plausible lightweight estimates" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">Physical plausibility matters.</span>
+        Clinically important GRF features such as impact peak and rate of force rise are critical for gait analysis. LSTM predictions can produce non-physical artifacts&mdash;unrealistic oscillations or distorted waveform shapes&mdash;while lightweight low-rank estimates stay structurally coherent.
+      </figcaption>
+    </figure>
+
+    <figure class="research-figure">
+      <img src="assets/figures/ser_lightweight_accuracy.png" alt="Accuracy comparison of lightweight SER and KNN models against LSTM baselines for GRF estimation" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">Lightweight models can match or beat heavier networks.</span>
+        SER and KNN achieve accuracy comparable to or exceeding LSTMs while remaining far more efficient. On a smartphone, SER estimates 10 running steps in about 0.3&nbsp;ms (versus ~15&nbsp;s for an LSTM) at a few megabytes of memory.
+      </figcaption>
+    </figure>
+
+    <figure class="research-figure">
+      <img src="assets/figures/fedser_vs_central.png" alt="FedSER matching centralized SER accuracy across biomechanical estimation tasks" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">Federation need not compromise accuracy.</span>
+        FedSER matches centralized SER across tasks when clients collaborate without pooling raw data&mdash;so privacy constraints do not have to mean weaker models.
+      </figcaption>
+    </figure>
+
+    <figure class="research-figure">
+      <img src="assets/figures/fedser_scarcity.png" alt="Gated FedSER accuracy under increasing data scarcity" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">Robust under data scarcity.</span>
+        Gating action-specific experts with a global expert consistently improves FedSER. Linear expert combination outperforms expert-only gating, and accuracy remains competitive even when most training samples are removed.
+      </figcaption>
+    </figure>
+
+    <figure class="research-figure">
+      <img src="assets/figures/hybrid_cloud_federation.png" alt="Diagram of a hybrid cloud federation sharing resources under QoS constraints" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">When should clouds share?</span>
+        Hybrid cloud federations share local capacity under QoS requirements and overflow to public clouds. The dissertation proves that members with the same QoS maximize benefit by sharing everything, and uses Shapley value over public-cloud savings to discourage free riders.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 <section id="agenda" class="scroll-mt-24 border-t border-slate-200 py-10">
   <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Research themes</h2>
   <p class="mt-2 max-w-3xl text-base leading-7 text-slate-600">Constraints that shaped the dissertation.</p>

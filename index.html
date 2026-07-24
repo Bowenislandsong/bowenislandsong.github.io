@@ -182,6 +182,10 @@
       text-decoration-color: rgba(15, 118, 110, 0.55);
     }
     .pub-entry + .pub-entry { border-top: 0; }
+    .research-figure img {
+      height: auto;
+      max-width: 100%;
+    }
     @media (max-width: 768px) {
       .main-nav-shell {
         width: 100%;
@@ -242,6 +246,7 @@
         <nav class="flex flex-wrap text-xs md:text-sm">
           <a href="#/personal#overview" class="subnav-link">Overview</a>
           <a href="#/personal#news" class="subnav-link">News</a>
+          <a href="#/personal#education" class="subnav-link">Education</a>
           <a href="#/personal#experience" class="subnav-link">Experience</a>
           <a href="#/personal#contact" class="subnav-link">Contact</a>
         </nav>
@@ -251,6 +256,7 @@
         <nav class="flex flex-wrap text-xs md:text-sm">
           <a href="#/research#research-overview" class="subnav-link">Overview</a>
           <a href="#/research#dissertation" class="subnav-link">Dissertation</a>
+          <a href="#/research#insights" class="subnav-link">Insights</a>
           <a href="#/research#agenda" class="subnav-link">Themes</a>
           <a href="#/research#publications" class="subnav-link">Publications</a>
           <a href="#/research#projects" class="subnav-link">Projects</a>
@@ -262,6 +268,7 @@
       <div id="engineering-subnav" class="subnav-shell hidden" data-subnav-for="engineering">
         <nav class="flex flex-wrap text-xs md:text-sm">
           <a href="#/engineering#engineering-overview" class="subnav-link">Overview</a>
+          <a href="#/engineering#education" class="subnav-link">Education</a>
           <a href="#/engineering#systems" class="subnav-link">Systems</a>
           <a href="#/engineering#ml-infra" class="subnav-link">ML Infra</a>
           <a href="#/engineering#engineering-experience" class="subnav-link">Roles</a>
@@ -339,8 +346,8 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 
   <!-- Scripts -->
-  <script src="js/router.js?v=20260724b"></script>
-  <script src="js/section-hooks.js?v=20260724b"></script>
+  <script src="js/router.js?v=20260724d"></script>
+  <script src="js/section-hooks.js?v=20260724d"></script>
   <script src="js/quantum.js?v=20260324b"></script>
   <script src="js/interview-prep-data.js?v=20260411b"></script>
   <script src="js/interview-prep.js?v=20260411a"></script>

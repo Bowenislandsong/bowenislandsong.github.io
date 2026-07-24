@@ -83,7 +83,7 @@ class SiteIntegrityTest(unittest.TestCase):
     def test_personal_anchor_contract(self):
         personal_html = read("sections/personal.html")
         ids = set(re.findall(r'id="([^"]+)"', personal_html))
-        expected = {"overview"}
+        expected = {"overview", "education", "experience"}
         self.assertTrue(expected.issubset(ids), f"Missing personal anchors: {sorted(expected - ids)}")
 
     def test_research_anchor_contract(self):
@@ -95,8 +95,16 @@ class SiteIntegrityTest(unittest.TestCase):
             "projects",
             "agenda",
             "teaching",
+            "insights",
         }
         self.assertTrue(expected.issubset(ids), f"Missing research anchors: {sorted(expected - ids)}")
+
+    def test_research_insight_figures_exist(self):
+        research_html = read("sections/research.html")
+        refs = re.findall(r'src="(assets/figures/[^"]+)"', research_html)
+        self.assertGreaterEqual(len(refs), 3)
+        missing = [ref for ref in refs if not (ROOT / ref).exists()]
+        self.assertEqual(missing, [], f"Missing research figures: {missing}")
 
     def test_engineering_anchor_contract(self):
         engineering_html = read("sections/engineering.html")
@@ -104,6 +112,7 @@ class SiteIntegrityTest(unittest.TestCase):
         expected = {
             "engineering-overview",
             "engineering-experience",
+            "education",
         }
         self.assertTrue(expected.issubset(ids), f"Missing engineering anchors: {sorted(expected - ids)}")
 
