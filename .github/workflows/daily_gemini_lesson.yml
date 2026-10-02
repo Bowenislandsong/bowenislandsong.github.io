@@ -1,0 +1,38 @@
+name: Gemini Quantum Lesson
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract_and_explain:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Python dependencies
+        run: |
+          pip install google-generativeai PyPDF2 matplotlib
+      - name: Extract next chapter from PDF
+        run: |
+          python .github/scripts/extract_chapter.py
+      - name: Generate index files
+        run: |
+          python3 .github/scripts/generate_indexes.py
+      - name: Run full test suite
+        run: |
+          python3 -m unittest discover -s test -q
+      - name: Commit new lesson if changed
+        run: |
+          git config --global user.name "Gemini Bot"
+          git config --global user.email "gemini-bot@example.com"
+          git add lessons/*.md lessons/index.json classes/index.json papers/index.json
+          git commit -m "Add new Gemini lesson for next chapter" || echo "No changes"
+          git push

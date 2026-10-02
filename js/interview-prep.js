@@ -1,0 +1,1631 @@
+(function () {
+  'use strict';
+
+  const CATEGORY_META = [
+    {
+      key: 'arrays-intervals',
+      label: 'Arrays / Intervals / Windows',
+      color: 'indigo',
+      instinct: 'Linear inputs reward boundary thinking: left and right pointers, sliding windows, prefix sums, interval merges, greedy frontiers, monotonic stacks, and binary search over an ordered space.',
+    },
+    {
+      key: 'dynamic-programming',
+      label: 'Dynamic Programming',
+      color: 'teal',
+      instinct: 'Freeze the right amount of history. A DP state should capture exactly what future decisions need and nothing more.',
+    },
+    {
+      key: 'graphs',
+      label: 'Graphs',
+      color: 'sky',
+      instinct: 'If positions are connected by moves, transitions, flights, or matrix edges, you are usually traversing a graph whether the prompt says so or not.',
+    },
+    {
+      key: 'trees-heaps',
+      label: 'Trees / BST / Heaps',
+      color: 'cyan',
+      instinct: 'Trees reward recursive invariants and level-order traversal. Heaps are what you reach for when the next most urgent item matters more than a full sort.',
+    },
+    {
+      key: 'advanced-data-structures',
+      label: 'Fenwick / Segment Trees',
+      color: 'lime',
+      instinct: 'When values change and you still need fast prefix or range answers, stop rescanning the array. Use a tree-shaped summary structure that updates locally.',
+    },
+    {
+      key: 'math-geometry',
+      label: 'Math / Geometry / Selection',
+      color: 'fuchsia',
+      instinct: 'If the prompt lives on points, distances, slopes, or order statistics, reduce it to a crisp arithmetic invariant before you code.',
+    },
+    {
+      key: 'linked-lists',
+      label: 'Linked Lists',
+      color: 'violet',
+      instinct: 'Singly linked lists punish backward thinking. Solve them with pointer geometry: fast and slow pointers, reversal, and careful weaving.',
+    },
+    {
+      key: 'backtracking',
+      label: 'Backtracking / Combinatorics',
+      color: 'amber',
+      instinct: 'Build the answer incrementally, prune bad partial states early, and let the recursion tree represent the search space.',
+    },
+    {
+      key: 'strings',
+      label: 'Strings / Parsing',
+      color: 'rose',
+      instinct: 'Treat strings as structured data. Many string problems are really about disciplined parsing, carry simulation, or validating constrained splits.',
+    },
+    {
+      key: 'bit-manipulation',
+      label: 'Bit Manipulation',
+      color: 'slate',
+      instinct: 'If counts are repeated with small fixed-width arithmetic, bits often expose a simple invariant that maps better to hardware than to hash maps.',
+    },
+    {
+      key: 'trie',
+      label: 'Trie / Prefix Search',
+      color: 'emerald',
+      instinct: 'When many words share prefixes, stop rechecking the same prefixes separately. Share them in a trie and prune impossible paths early.',
+    },
+    {
+      key: 'design-systems',
+      label: 'Design / Cache / System Style',
+      color: 'orange',
+      instinct: 'For design prompts, start from operations and invariants first: lookup, eviction, ordering, timestamps, or capacity. Then choose the structure that makes those operations natural.',
+    },
+  ];
+
+  const APPROACH_META = [
+    {
+      key: 'two-pointers',
+      label: 'Two Pointers',
+      cue: 'Sort or anchor one side, then move left and right boundaries based on whether the current sum or constraint is too small or too large.',
+    },
+    {
+      key: 'sliding-window',
+      label: 'Sliding Window',
+      cue: 'Keep a contiguous window and adjust left and right so the window invariant stays true while you maximize or minimize something.',
+    },
+    {
+      key: 'prefix-sum-hash',
+      label: 'Prefix Sum + Hash Map',
+      cue: 'Turn subarray questions into differences of prefixes, then count how often the needed earlier prefix has appeared.',
+    },
+    {
+      key: 'interval-sorting',
+      label: 'Sort + Sweep Intervals',
+      cue: 'Sort by start time first so overlap decisions become local instead of pairwise chaos.',
+    },
+    {
+      key: 'line-sweep',
+      label: 'Line Sweep / Event Deltas',
+      cue: 'Turn intervals into start and end events or signed deltas, sort them once, and let one scan tell you how overlap or load changes over time.',
+    },
+    {
+      key: 'binary-search',
+      label: 'Binary Search',
+      cue: 'Use this when a sorted-side or monotone index invariant lets you throw away half the search space at each step.',
+    },
+    {
+      key: 'binary-search-answer',
+      label: 'Binary Search On Answer',
+      cue: 'Search the answer itself when feasibility is monotone: if value x works, every larger value also works.',
+    },
+    {
+      key: 'greedy',
+      label: 'Greedy Frontier',
+      cue: 'Keep only the strongest frontier summary you need, such as furthest reach, instead of branching into every possible path.',
+    },
+    {
+      key: 'monotonic-stack',
+      label: 'Monotonic Stack',
+      cue: 'Maintain a stack with a strict ordering so the moment that ordering breaks, you can resolve next greater or next smaller answers in bulk.',
+    },
+    {
+      key: 'interval-dp',
+      label: 'Interval DP',
+      cue: 'Use this when boundaries can make a mutable process stable. Typical tell: “guess the last thing done inside a window.”',
+    },
+    {
+      key: '2d-dp',
+      label: '2D Sequence DP',
+      cue: 'A grid of prefixes works when two sequences jointly determine progress. Rows and columns represent consumed prefixes.',
+    },
+    {
+      key: 'space-optimized-dp',
+      label: 'Space-Optimized DP',
+      cue: 'If the next row only depends on the current row and the previous row, compress the table and carry the overwritten diagonal carefully.',
+    },
+    {
+      key: 'dfs',
+      label: 'DFS / Traversal',
+      cue: 'Use DFS when the job is to fully explore a component, path, or search branch before returning.',
+    },
+    {
+      key: 'bfs',
+      label: 'BFS / Layer Traversal',
+      cue: 'Use a queue when unweighted distance, level-by-level exposure, or simultaneous multi-source spread is the real state.',
+    },
+    {
+      key: 'tree-dfs',
+      label: 'Tree DFS / Bounds',
+      cue: 'For trees, recursive answers usually come from child summaries or ancestor bounds. Say exactly what information flows down or back up.',
+    },
+    {
+      key: 'shortest-path',
+      label: 'Shortest Path Framing',
+      cue: 'Once the problem becomes “best cost from a source to every node,” reach for shortest-path tools instead of ad hoc traversal.',
+    },
+    {
+      key: 'dijkstra',
+      label: 'Dijkstra',
+      cue: 'For nonnegative edge costs, repeatedly finalize the node with the smallest known distance.',
+    },
+    {
+      key: 'bellman-ford',
+      label: 'Bellman-Ford / Layered Relaxation',
+      cue: 'Repeated edge relaxation is the safer choice when you want bounded edge counts or want to reason layer by layer.',
+    },
+    {
+      key: 'topological-sort',
+      label: 'Topological Sort',
+      cue: 'Prerequisite graphs want dependency order. Peel zero-indegree nodes so every task appears only after its requirements.',
+    },
+    {
+      key: 'union-find',
+      label: 'Union-Find',
+      cue: 'When the job is dynamic connectivity rather than path enumeration, union-find is usually the lightest correct tool.',
+    },
+    {
+      key: 'heap',
+      label: 'Heap / Priority Queue',
+      cue: 'Use a heap when you repeatedly need the current minimum, maximum, or top-k frontier without paying for a full resort each step.',
+    },
+    {
+      key: 'fenwick-segment-tree',
+      label: 'Fenwick / Segment Tree',
+      cue: 'Reach for these when the array changes over time and you still need fast prefix or range answers. Fenwick trees are lighter; segment trees are more general.',
+    },
+    {
+      key: 'geometry',
+      label: 'Geometry / Distance Reasoning',
+      cue: 'Translate the picture into arithmetic invariants like squared distance, normalized slope, orientation, or bounding boxes before choosing the data structure.',
+    },
+    {
+      key: 'quickselect',
+      label: 'Quickselect',
+      cue: 'Partition like Quicksort, but recurse only into the side containing the kth boundary so you do not pay to fully sort what you do not need.',
+    },
+    {
+      key: 'operation-first-design',
+      label: 'Operation-First Design',
+      cue: 'For design prompts, list the required operations and target costs first, then pick the combination of map, list, queue, or ordered history that makes those costs work.',
+    },
+    {
+      key: 'floyd-cycle',
+      label: 'Floyd Cycle Detection',
+      cue: 'If “next” pointers are implicit, fast and slow pointers can reveal the cycle and its entrance in O(1) space.',
+    },
+    {
+      key: 'fast-slow',
+      label: 'Fast / Slow Pointers',
+      cue: 'Use speed mismatch to find middles, detect cycles, or split a linked list cleanly.',
+    },
+    {
+      key: 'reverse-and-merge',
+      label: 'Reverse + Merge',
+      cue: 'When you need to compare or interleave a list from both ends, reverse one half so both scans become forward pointer walks.',
+    },
+    {
+      key: 'iterative-cascading',
+      label: 'Iterative Cascading',
+      cue: 'For subset-style generation, each new value extends the full set of answers built so far.',
+    },
+    {
+      key: 'backtracking',
+      label: 'Backtracking',
+      cue: 'Enumerate choices recursively, but define crisp pruning rules so the search tree never expands blindly.',
+    },
+    {
+      key: 'string-parsing',
+      label: 'String Parsing',
+      cue: 'If the valid answer depends on constrained chunks, validate each chunk locally and prune illegal formats immediately.',
+    },
+    {
+      key: 'string-addition',
+      label: 'String Addition / Carry',
+      cue: 'When integers are encoded as strings, simulate grade-school addition from right to left and keep the carry explicit.',
+    },
+    {
+      key: 'bit-counting',
+      label: 'Bit Counting',
+      cue: 'Count bit positions instead of full values when the repetition pattern is fixed and arithmetic modulo a small number reveals the outlier.',
+    },
+    {
+      key: 'trie',
+      label: 'Trie',
+      cue: 'Store shared prefixes once so search can stop the moment a path is no longer a valid prefix.',
+    },
+  ];
+
+  const PROBLEMS = [
+    {
+      lc: 312,
+      title: 'Burst Balloons',
+      slug: 'burst-balloons',
+      category: 'dynamic-programming',
+      approaches: ['interval-dp'],
+      requested: true,
+      summary: 'Reverse time. Instead of guessing which balloon pops first, guess which balloon pops last inside each interval so the neighbors are fixed.',
+      instinct: 'If simulating forward keeps changing the state you care about, stop simulating forward. Stable boundaries are usually a better DP state than chronological order.',
+      example: 'For [3, 1, 5, 8], pad to [1, 3, 1, 5, 8, 1]. If k is the last balloon popped inside (left, right), then coins gained at that final step are nums[left] * nums[k] * nums[right], and the left and right intervals become independent subproblems.',
+      signals: [
+        'A local action mutates future neighbors, so forward recursion explodes.',
+        'Choosing the last action creates a clean brick wall between left and right.',
+        'Sentinel 1s remove ugly edge handling.',
+      ],
+      edgeCases: [
+        'Pad with 1 on both ends before building the DP table.',
+        'Keep one interval convention throughout, such as open interval (left, right).',
+        'An interval with no balloon inside contributes 0.',
+      ],
+      complexity: 'Time O(n^3), space O(n^2).',
+    },
+    {
+      lc: 72,
+      title: 'Edit Distance',
+      slug: 'edit-distance',
+      category: 'dynamic-programming',
+      approaches: ['2d-dp', 'space-optimized-dp'],
+      requested: true,
+      summary: 'Think in prefixes. dp[i][j] means the minimum edits needed to turn word1[:i] into word2[:j].',
+      instinct: 'Sequence-to-sequence transform problems usually become clear when each grid cell answers a prefix question. The top, left, and diagonal neighbors map directly to delete, insert, and replace.',
+      example: 'If word1[i - 1] === word2[j - 1], copy the diagonal. Otherwise take 1 + min(top delete, left insert, diagonal replace). For the compressed version, keep the previous diagonal in a temporary variable before it gets overwritten.',
+      signals: [
+        'Two sequences advance independently, so a 2D prefix grid is natural.',
+        'Operations are local and uniform: insert, delete, replace.',
+        'Only the previous row and current row are needed, so the table can be compressed.',
+      ],
+      edgeCases: [
+        'An empty string requires all inserts or all deletes.',
+        'Equal characters should carry the diagonal value without adding 1.',
+        'In the 1D optimization, preserve the old diagonal before overwriting the current cell.',
+      ],
+      complexity: 'Time O(mn); full-table space O(mn), or O(n) with row compression.',
+    },
+    {
+      lc: 97,
+      title: 'Interleaving String',
+      slug: 'interleaving-string',
+      category: 'dynamic-programming',
+      approaches: ['2d-dp', 'space-optimized-dp'],
+      requested: false,
+      summary: 'Let dp[i][j] mean whether s3[:i + j] can be formed by interleaving s1[:i] and s2[:j].',
+      instinct: 'Greedy matching is unreliable because either source string may supply the next character. Prefix DP works because the only thing that matters is how many characters have already been consumed from each source.',
+      example: 'At state (i, j), you can come from (i - 1, j) if s1[i - 1] matches s3[i + j - 1], or from (i, j - 1) if s2[j - 1] matches. That turns a branching string question into a table of local checks.',
+      signals: [
+        'Two input strings jointly build one target string.',
+        'The target index is determined by i + j, so no third dimension is needed.',
+        'Like Edit Distance, the state only depends on the previous row and current row.',
+      ],
+      edgeCases: [
+        'If lengths do not add up, return false immediately.',
+        'Multiple matching choices are common, so avoid greedy one-path logic.',
+        'Initialize the first row and first column carefully for pure-prefix matches.',
+      ],
+      complexity: 'Time O(mn); full-table space O(mn), or O(n) with row compression.',
+    },
+    {
+      lc: 516,
+      title: 'Longest Palindromic Subsequence',
+      slug: 'longest-palindromic-subsequence',
+      category: 'dynamic-programming',
+      approaches: ['interval-dp'],
+      requested: false,
+      summary: 'Use intervals. If the ends match, keep them both. If not, drop one end and take the better interval.',
+      instinct: 'Subsequence problems often ask you to reason from both ends inward. That is a strong hint that the natural state is an interval [i, j], not a running pointer from only one side.',
+      example: 'If s[i] === s[j], then dp[i][j] = 2 + dp[i + 1][j - 1]. Otherwise dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]). Filling intervals by increasing length guarantees smaller intervals are ready first.',
+      signals: [
+        'The decision depends on both ends of the current window.',
+        'The prompt says subsequence, so skipping characters is allowed.',
+        'Smaller intervals solve larger intervals cleanly.',
+      ],
+      edgeCases: [
+        'A single character interval has answer 1.',
+        'Two equal characters side by side should give 2.',
+        'Fill the DP table by interval length, not left-to-right row order.',
+      ],
+      complexity: 'Time O(n^2), space O(n^2).',
+    },
+    {
+      lc: 200,
+      title: 'Number of Islands',
+      slug: 'number-of-islands',
+      category: 'graphs',
+      approaches: ['dfs'],
+      requested: true,
+      summary: 'Each unseen land cell is the entrance to one connected component. Swallow that entire component immediately so you never count it twice.',
+      instinct: 'The outer loop is not the real work. It only finds fresh starting points. The traversal is what maps the full island.',
+      example: 'Scan the grid. When you hit an unvisited "1", increment the island count and launch an iterative DFS or BFS from that cell. Keep a manual stack called connected if you want to avoid recursion depth issues.',
+      signals: [
+        'The prompt is really asking for connected component counting.',
+        'Grid adjacency defines an implicit graph.',
+        'Repeated full exploration from each land cell would overcount unless visited state is tracked aggressively.',
+      ],
+      edgeCases: [
+        'Only four-direction adjacency counts unless the problem says diagonals.',
+        'An empty grid or empty first row should return 0.',
+        'You can use a visited set or mutate the grid in place by sinking land.',
+      ],
+      complexity: 'Time O(mn); worst-case extra space O(mn) for stack plus visited, or O(1) extra if mutating the grid in place.',
+    },
+    {
+      lc: 329,
+      title: 'Longest Increasing Path in a Matrix',
+      slug: 'longest-increasing-path-in-a-matrix',
+      category: 'graphs',
+      approaches: ['dfs'],
+      requested: true,
+      summary: 'Run DFS from every cell, but memoize the best path starting there. Strictly increasing moves turn the matrix into a DAG.',
+      instinct: 'When every state can branch, but many branches revisit the same suffix, brute-force DFS is repeating work. Memoize the answer for each start cell once.',
+      example: 'From each cell, try the four neighbors that are strictly larger. The answer at a cell is 1 + max(answer of valid larger neighbors). Because values must increase, you can never cycle back, so memoization is safe and powerful.',
+      signals: [
+        'The same cell can be reached from many smaller neighbors.',
+        'Strictly increasing edges remove cycles and make the graph DAG-like.',
+        'The problem asks for the best path starting anywhere, so every cell is a candidate start.',
+      ],
+      edgeCases: [
+        'Equal-valued neighbors do not continue the path.',
+        'Memoize per cell, not per full traversal path.',
+        'A single cell is a valid path of length 1.',
+      ],
+      complexity: 'Time O(mn), space O(mn) for memo plus recursion stack in the worst case.',
+    },
+    {
+      lc: 743,
+      title: 'Network Delay Time',
+      slug: 'network-delay-time',
+      category: 'graphs',
+      approaches: ['shortest-path', 'dijkstra', 'bellman-ford'],
+      requested: true,
+      summary: 'This is single-source shortest path on a directed weighted graph. Dijkstra is the fast default because all weights are nonnegative, but Bellman-Ford is the clean relaxation baseline.',
+      instinct: 'The answer is not the first reach time from naive traversal. It is the maximum of the shortest arrival times from the source to every node.',
+      example: 'Build an adjacency list from k. In Dijkstra, the min-heap always pops the node with the smallest currently-known distance. In Bellman-Ford, repeatedly relax every edge and keep improving distances until no better route remains or you finish V - 1 rounds.',
+      signals: [
+        'Weighted edges mean plain BFS is not enough.',
+        'The final answer is max(dist[node]), not the sum of weights.',
+        'Because weights are nonnegative, Dijkstra is safe and efficient.',
+      ],
+      edgeCases: [
+        'If any node remains unreachable, return -1.',
+        'Nodes are 1-indexed in the problem statement, so size your structures carefully.',
+        'Bellman-Ford space is O(V); Dijkstra with adjacency lists uses O(V + E) space.',
+      ],
+      complexity: 'Dijkstra with a heap: time O((V + E) log V), space O(V + E). Bellman-Ford: time O(VE), space O(V).',
+    },
+    {
+      lc: 787,
+      title: 'Cheapest Flights Within K Stops',
+      slug: 'cheapest-flights-within-k-stops',
+      category: 'graphs',
+      approaches: ['shortest-path', 'bellman-ford'],
+      requested: false,
+      summary: 'The stop bound means you must control how many edges have been used. Bellman-Ford style layering does that naturally.',
+      instinct: 'Ordinary shortest-path intuition can break when path length in edges is constrained. The trick is to separate “best cost using at most t edges” from the next layer of updates.',
+      example: 'Keep a copy of the previous distance array, then relax every flight into a fresh array exactly K + 1 times. That prevents an update from reusing another update from the same round and accidentally using too many stops.',
+      signals: [
+        'The phrase “at most K stops” is a big hint to think in layers.',
+        'You need history from the previous round, not the partially updated current round.',
+        'Repeated edge relaxation mirrors the edge-count constraint directly.',
+      ],
+      edgeCases: [
+        'Use a backup array each round so one iteration equals one extra edge.',
+        'If the destination stays infinite, return -1.',
+        'K stops means at most K + 1 edges.',
+      ],
+      complexity: 'Layered Bellman-Ford: time O((K + 1)E), space O(V).',
+    },
+    {
+      lc: 1631,
+      title: 'Path With Minimum Effort',
+      slug: 'path-with-minimum-effort',
+      category: 'graphs',
+      approaches: ['shortest-path', 'dijkstra'],
+      requested: false,
+      summary: 'Redefine the path cost. Here a path costs its worst edge, so Dijkstra minimizes the maximum jump seen so far.',
+      instinct: 'The path metric is unusual, but it is still monotone: extending a path can only keep or increase its effort. That makes a Dijkstra-style best-first search valid.',
+      example: 'When moving to a neighbor, the new effort is max(current effort, height difference). Push that into the min-heap. The first time you pop the destination, you have found the smallest possible maximum edge on any path.',
+      signals: [
+        'The objective is “minimize the worst step,” not “minimize the sum.”',
+        'The state still obeys a best-first monotone property.',
+        'A heap helps you finalize the current lowest-effort frontier first.',
+      ],
+      edgeCases: [
+        'The start cell begins with effort 0.',
+        'Do not sum edge costs; always take the max along the path.',
+        'Skip stale heap entries whose effort is worse than the recorded best.',
+      ],
+      complexity: 'Time O(mn log(mn)), space O(mn).',
+    },
+    {
+      lc: 287,
+      title: 'Find the Duplicate Number',
+      slug: 'find-the-duplicate-number',
+      category: 'linked-lists',
+      approaches: ['floyd-cycle', 'fast-slow'],
+      requested: true,
+      summary: 'Treat values as next pointers. The array becomes a linked list with a cycle, and the duplicate value is the cycle entrance.',
+      instinct: 'The breakthrough is to stop seeing an array and start seeing pointer chasing. Because every value is in [1, n], each element points to another valid index.',
+      example: 'Run slow = nums[slow] and fast = nums[nums[fast]] until they meet. Then reset one pointer to the start and move both one step at a time. Their next meeting point is the duplicate number.',
+      signals: [
+        'The values map cleanly to valid indices, which creates an implicit graph.',
+        'The problem forbids modifying the array and wants O(1) extra space.',
+        'A duplicate forces two paths to merge, which creates a cycle in the functional graph.',
+      ],
+      edgeCases: [
+        'Start pointer movement from nums[0] / nums[nums[0]] or an equivalent consistent scheme.',
+        'Do not sort or mark visited if the constraints forbid mutation or extra space.',
+        'The duplicate can appear more than twice; the cycle argument still works.',
+      ],
+      complexity: 'Time O(n), space O(1).',
+    },
+    {
+      lc: 142,
+      title: 'Linked List Cycle II',
+      slug: 'linked-list-cycle-ii',
+      category: 'linked-lists',
+      approaches: ['floyd-cycle', 'fast-slow'],
+      requested: false,
+      summary: 'Classic Floyd cycle entrance. After the collision, one pointer resets to head and both move one step at a time.',
+      instinct: 'This problem teaches the same pointer geometry as Find the Duplicate Number, but on an explicit linked list instead of a hidden one.',
+      example: 'First detect whether a cycle exists with fast and slow pointers. If they meet, reset slow to head. Move slow and fast one step together; the node where they meet next is the cycle start.',
+      signals: [
+        'You need the cycle entrance, not just a boolean cycle check.',
+        'O(1) extra space rules out a visited set.',
+        'A collision inside the cycle contains enough distance information to recover the entrance.',
+      ],
+      edgeCases: [
+        'Handle the no-cycle case before phase two.',
+        'Lists of length 0 or 1 cannot have a usable cycle entrance unless self-looped.',
+        'Do not advance fast without checking fast and fast.next.',
+      ],
+      complexity: 'Time O(n), space O(1).',
+    },
+    {
+      lc: 143,
+      title: 'Reorder List',
+      slug: 'reorder-list',
+      category: 'linked-lists',
+      approaches: ['fast-slow', 'reverse-and-merge'],
+      requested: true,
+      summary: 'Break the job into three phases: find the middle, reverse the second half, then zip the two halves together.',
+      instinct: 'You cannot pull from both ends of a singly linked list directly. The clean workaround is to convert the back half into forward order by reversing it.',
+      example: 'Use fast and slow to find the midpoint, cut the list, reverse the second half, then alternate nodes from the first and reversed second halves: L0 -> Ln -> L1 -> Ln-1 -> ...',
+      signals: [
+        'The target order alternates front and back, which is impossible with only forward traversal unless you reverse one side.',
+        'Fast and slow pointers locate the split point cleanly.',
+        'The final merge is just careful pointer weaving.',
+      ],
+      edgeCases: [
+        'Cut the list at the midpoint before reversing or you can create cycles.',
+        'Odd-length lists leave one extra node in the first half.',
+        'Preserve next pointers before rewiring during the merge step.',
+      ],
+      complexity: 'Time O(n), extra space O(1).',
+    },
+    {
+      lc: 234,
+      title: 'Palindrome Linked List',
+      slug: 'palindrome-linked-list',
+      category: 'linked-lists',
+      approaches: ['fast-slow', 'reverse-and-merge'],
+      requested: false,
+      summary: 'Find the middle, reverse the second half, and compare the two forward walks.',
+      instinct: 'Comparing both ends of a singly linked list has the same obstacle as Reorder List: the back half must be reversed first.',
+      example: 'Fast and slow pointers find the midpoint. Reverse the second half, compare node values from the head and from the reversed half, and optionally restore the list afterward if mutation matters.',
+      signals: [
+        'You need symmetric comparison on a one-way structure.',
+        'The midpoint split is naturally handled by fast and slow pointers.',
+        'Reversal converts a two-ended comparison into two forward scans.',
+      ],
+      edgeCases: [
+        'For odd lengths, skip the exact middle before comparison.',
+        'Be clear whether the interviewer cares about restoring the original list.',
+        'Handle 0- or 1-node lists as trivially palindromic.',
+      ],
+      complexity: 'Time O(n), extra space O(1).',
+    },
+    {
+      lc: 78,
+      title: 'Subsets',
+      slug: 'subsets',
+      category: 'backtracking',
+      approaches: ['iterative-cascading'],
+      requested: true,
+      summary: 'Every new number doubles the existing power set: keep all current subsets, then clone each one with the new number appended.',
+      instinct: 'You do not always need a recursion tree. For the clean base subset problem, iterative cascading is often the simplest and most teachable mental model.',
+      example: 'Start with [[]]. When you see 1, add [1]. When you see 2, duplicate all current subsets and append 2 to each duplicate. That directly mirrors the include-or-not choice without explicit recursion.',
+      signals: [
+        'The question asks for the full power set.',
+        'Each element independently either appears or does not appear.',
+        'The output naturally doubles with every new element.',
+      ],
+      edgeCases: [
+        'The empty subset must be included.',
+        'Because the output has size 2^n, output cost dominates for large n.',
+        'A fresh copy is required before appending to avoid aliasing existing subsets.',
+      ],
+      complexity: 'Time O(n · 2^n), output space O(n · 2^n).',
+    },
+    {
+      lc: 90,
+      title: 'Subsets II',
+      slug: 'subsets-ii',
+      category: 'backtracking',
+      approaches: ['iterative-cascading', 'backtracking'],
+      requested: true,
+      summary: 'Sort first. For duplicates, only extend the subsets created in the previous round so you do not regenerate the same subset.',
+      instinct: 'The base Subsets idea still works, but duplicates mean you must control which old subsets are allowed to branch when you see the same value again.',
+      example: 'After sorting, when nums[i] differs from nums[i - 1], extend every current subset. When it is equal, extend only the subsets created during the previous iteration. That prevents duplicate copies like [2] from being built twice.',
+      signals: [
+        'The duplicate values are the whole difficulty, so sorting is usually step one.',
+        'You need a rule that distinguishes new subsets from old subsets.',
+        'Backtracking solutions also work, but the iterative boundary trick is elegant.',
+      ],
+      edgeCases: [
+        'Sorting is required before duplicate control works.',
+        'The subset count is still exponential in the worst case.',
+        'Do not append duplicates to all existing subsets when the current value matches the previous one.',
+      ],
+      complexity: 'Time O(n · 2^n), output space O(n · 2^n).',
+    },
+    {
+      lc: 39,
+      title: 'Combination Sum',
+      slug: 'combination-sum',
+      category: 'backtracking',
+      approaches: ['backtracking'],
+      requested: false,
+      summary: 'The state is just “remaining target” plus “where I am allowed to start.” Stay on the same index if reuse is allowed.',
+      instinct: 'Combination-building problems become manageable when each recursive call shrinks the remaining target and never revisits earlier candidates.',
+      example: 'Sort if you want cleaner pruning. At candidate i, either take it and recurse with the same i because reuse is allowed, or skip it by moving to i + 1. The recursion tree mirrors the include/skip decision.',
+      signals: [
+        'The answer is a collection of combinations, not just a count.',
+        'Candidates can be reused, so the index does not always advance after taking a number.',
+        'Remaining target is the natural progress metric.',
+      ],
+      edgeCases: [
+        'Stop the branch once the remaining target becomes negative.',
+        'A remaining target of 0 means the current path is a full answer.',
+        'Sorting is optional for correctness but useful for early pruning.',
+      ],
+      complexity: 'Time is output-sensitive and exponential in the number of valid combinations; recursion depth is O(target / minCandidate).',
+    },
+    {
+      lc: 93,
+      title: 'Restore IP Addresses',
+      slug: 'restore-ip-addresses',
+      category: 'backtracking',
+      approaches: ['backtracking', 'string-parsing'],
+      requested: false,
+      summary: 'This is bounded parsing with pruning. Build exactly four segments and reject illegal chunks immediately.',
+      instinct: 'The space of possible cuts looks large until you notice the structure is tiny: four parts, each length 1 to 3, each value 0 to 255, and no leading zeros except the single digit 0.',
+      example: 'Backtrack by choosing the next segment length 1 to 3. Keep the segment only if it is within 0 to 255 and has no leading zero. Once you place four valid segments and consume the whole string, emit the IP address.',
+      signals: [
+        'The answer is a small structured format, not an unbounded partition problem.',
+        'Most branches are invalid and should die immediately.',
+        'Leading-zero rules are a parsing trap the interviewer expects you to mention.',
+      ],
+      edgeCases: [
+        'Reject segments like 00, 01, and 256.',
+        'You need exactly four segments and must consume the entire string.',
+        'Because segment count is fixed, this search is effectively constant-sized under the problem constraints.',
+      ],
+      complexity: 'The search is bounded by the fixed four-segment structure; practically constant under the problem constraints, with recursion depth O(4).',
+    },
+    {
+      lc: 306,
+      title: 'Additive Number',
+      slug: 'additive-number',
+      category: 'strings',
+      approaches: ['string-parsing', 'string-addition'],
+      requested: true,
+      summary: 'The first two numbers determine the rest. Enumerate only those two starting cuts, then validate the remaining suffix by repeated string addition.',
+      instinct: 'Do not generate every partition of the string. Once the first two numbers are fixed, the entire additive sequence is forced.',
+      example: 'Try every split for the first two numbers, reject illegal leading-zero cases like "02", then repeatedly check whether the remaining suffix starts with stringAdd(a, b). Using string arithmetic avoids overflow and keeps the parser faithful to the prompt.',
+      signals: [
+        'The structure is deterministic after the first two choices.',
+        'Leading zeros are part of the real difficulty, not a minor detail.',
+        'String addition is safer than converting huge substrings to integers.',
+      ],
+      edgeCases: [
+        'The single digit "0" is valid, but values like "01" are not.',
+        'You need at least three numbers in the final sequence.',
+        'A startswith-style suffix check keeps the validation logic clean.',
+      ],
+      complexity: 'Worst-case time O(n^3) from choosing the first two cuts and validating the remaining suffix; extra space O(n) for recursive or iterative string construction.',
+    },
+    {
+      lc: 67,
+      title: 'Add Binary',
+      slug: 'add-binary',
+      category: 'strings',
+      approaches: ['string-addition'],
+      requested: true,
+      summary: 'Simulate carry from right to left exactly like a hardware adder, but in base 2.',
+      instinct: 'When the input is already a digit string, there is no need to convert the whole number. Just walk from the least significant bit, keep a carry, and build the answer backwards.',
+      example: 'Read a and b from the end. At each step, sum carry + current bit from a + current bit from b, push sum % 2, and update carry = Math.floor(sum / 2). Reverse the accumulated digits at the end.',
+      signals: [
+        'You only need local digit information plus a carry.',
+        'The shorter string can be treated as contributing 0 once it runs out.',
+        'This is a simulation problem, not a parsing problem.',
+      ],
+      edgeCases: [
+        'If one string is shorter, treat missing positions as 0.',
+        'Append the final carry if it remains after the loop.',
+        'Build the result backward or prepend carefully to avoid quadratic string cost.',
+      ],
+      complexity: 'Time O(max(m, n)), space O(max(m, n)).',
+    },
+    {
+      lc: 415,
+      title: 'Add Strings',
+      slug: 'add-strings',
+      category: 'strings',
+      approaches: ['string-addition'],
+      requested: false,
+      summary: 'The same carry mechanic as Add Binary, but base 10 instead of base 2.',
+      instinct: 'This is the decimal sibling of Add Binary and a good interview cross-check that you really understand the carry pattern instead of memorizing a binary-specific trick.',
+      example: 'Walk from the end of both strings, sum digitA + digitB + carry, write sum % 10, and update carry = Math.floor(sum / 10). Reverse at the end.',
+      signals: [
+        'Numbers are given as strings, so whole-number conversion is discouraged or unsafe.',
+        'Per-digit carry is the only state needed.',
+        'This is the exact same mental model as manual arithmetic.',
+      ],
+      edgeCases: [
+        'Different lengths are handled by treating missing digits as 0.',
+        'Do not forget the leftover carry after the loop.',
+        'Leading zeros are usually irrelevant to correctness but may appear in tests.',
+      ],
+      complexity: 'Time O(max(m, n)), space O(max(m, n)).',
+    },
+    {
+      lc: 137,
+      title: 'Single Number II',
+      slug: 'single-number-ii',
+      category: 'bit-manipulation',
+      approaches: ['bit-counting'],
+      requested: true,
+      summary: 'Count each bit position modulo 3. The surviving bits belong to the number that appears once.',
+      instinct: 'If every repeated value appears the same fixed number of times, counting whole values is overkill. Count each bit column independently.',
+      example: 'For each of 32 bit positions, count how many numbers have that bit set. count % 3 reveals whether the single number has that bit. Reconstruct the answer bit by bit.',
+      signals: [
+        'The repetition pattern is uniform: every noise value appears exactly three times.',
+        'Bit positions are independent, so a frequency map by full integer is not necessary.',
+        'The modulo operation is the real invariant.',
+      ],
+      edgeCases: [
+        'Negative numbers need sign handling in languages with fixed-width signed integers.',
+        'Use a consistent bit width, usually 32 bits for this problem.',
+        'Modulo must be applied per bit position, not to the whole sum of values.',
+      ],
+      complexity: 'Time O(32n), which is O(n); space O(1).',
+    },
+    {
+      lc: 338,
+      title: 'Counting Bits',
+      slug: 'counting-bits',
+      category: 'bit-manipulation',
+      approaches: ['bit-counting'],
+      requested: false,
+      summary: 'Reuse previous answers: bits[i] = bits[i >> 1] + (i & 1).',
+      instinct: 'The key is to notice that shifting right drops the least significant bit, so every answer can be built from a smaller answer you already know.',
+      example: 'If i = 13 (1101), then i >> 1 = 6 (110). bits[13] is bits[6] plus 1 because the last bit of 13 is set. That turns the whole table into one pass.',
+      signals: [
+        'You need answers for every value from 0 through n, so reuse between neighbors matters.',
+        'Bit shifting naturally exposes a recurrence.',
+        'This is dynamic programming disguised as bit manipulation.',
+      ],
+      edgeCases: [
+        'bits[0] must start at 0.',
+        'Either recurrence bits[i] = bits[i >> 1] + (i & 1) or bits[i] = bits[i & (i - 1)] + 1 works.',
+        'The output array itself dominates the space cost.',
+      ],
+      complexity: 'Time O(n), space O(n) for the output array.',
+    },
+    {
+      lc: 208,
+      title: 'Implement Trie (Prefix Tree)',
+      slug: 'implement-trie-prefix-tree',
+      category: 'trie',
+      approaches: ['trie'],
+      requested: false,
+      summary: 'Store one node per prefix so insert, search, and startsWith all become simple character walks.',
+      instinct: 'If many queries ask about shared prefixes, it is wasteful to store and rescan each full word independently.',
+      example: 'Each node stores children by character plus an isWord flag. insert walks and creates nodes as needed, search requires the final node to be marked as a full word, and startsWith only cares that the prefix path exists.',
+      signals: [
+        'The operations are explicitly prefix-based.',
+        'Multiple words share the same front segments.',
+        'The data structure should make prefix existence cheap.',
+      ],
+      edgeCases: [
+        'An inserted empty string is rare but conceptually means marking the root as a word.',
+        'search and startsWith differ only in whether isWord must be true at the end.',
+        'Space grows with the total number of characters stored across distinct prefixes.',
+      ],
+      complexity: 'Each operation is O(L) for word length L; total trie space is O(total stored characters).',
+    },
+    {
+      lc: 212,
+      title: 'Word Search II',
+      slug: 'word-search-ii',
+      category: 'trie',
+      approaches: ['trie', 'dfs', 'backtracking'],
+      requested: false,
+      summary: 'Build a trie for the dictionary, then DFS the board while pruning the moment the current path is no longer a valid prefix.',
+      instinct: 'Searching every word separately repeats the same prefix work over and over. A trie shares that work and lets failed paths die early.',
+      example: 'Insert all words into a trie. From every board cell, DFS through adjacent cells while walking the trie in parallel. If the next character is missing in the trie, stop immediately. When a trie node marks a word, record it and optionally delete it to avoid duplicates.',
+      signals: [
+        'Many target words share prefixes.',
+        'Board search branches heavily, so pruning quality matters more than raw DFS.',
+        'The trie turns “does any word still match this prefix?” into an O(1)-ish child lookup.',
+      ],
+      edgeCases: [
+        'Mark board cells as visited during the current path only.',
+        'Deduplicate found words if multiple paths reach the same terminal word.',
+        'Pruning trie branches after a word is found can improve runtime in practice.',
+      ],
+      complexity: 'Trie build: O(total word characters). Search worst case: O(mn · 4^L) for maximum word length L, with strong pruning in practice; extra space is the trie plus DFS path state.',
+    },
+    {
+      lc: 3,
+      title: 'Longest Substring Without Repeating Characters',
+      slug: 'longest-substring-without-repeating-characters',
+      category: 'arrays-intervals',
+      approaches: ['sliding-window'],
+      requested: false,
+      summary: 'Keep a window with no duplicate characters. Expand right, and when a duplicate appears, move the left boundary just far enough to restore uniqueness.',
+      instinct: 'Contiguous substring problems usually want a window, not backtracking. The whole trick is to say exactly what must stay true inside the window.',
+      example: 'As you scan "abcabcbb", keep last-seen positions for each character. When the second "a" arrives, jump left from 0 to 1 because the old "a" is still inside the window. The answer is the largest window length seen while maintaining all-unique characters.',
+      signals: [
+        'The prompt asks for a contiguous substring, not an arbitrary subsequence.',
+        'The validity rule is local to the current window: no repeated characters.',
+        'Once the left boundary moves right, it never needs to move left again.',
+      ],
+      edgeCases: [
+        'An empty string should return 0.',
+        'When reusing last-seen positions, never move left backward; use max(left, lastSeen + 1).',
+        'Repeated characters outside the current window should not shrink the window.',
+      ],
+      complexity: 'Time O(n), space O(min(n, alphabet size)).',
+    },
+    {
+      lc: 15,
+      title: '3Sum',
+      slug: '3sum',
+      category: 'arrays-intervals',
+      approaches: ['two-pointers'],
+      requested: false,
+      summary: 'Sort once, fix one anchor, then sweep the remaining range with left and right pointers to find complementary pairs.',
+      instinct: 'After sorting, the sum moves monotonically as the two pointers move. That lets you search pairs in linear time for each anchor instead of trying all triples.',
+      example: 'On [-4, -1, -1, 0, 1, 2], anchor the first -1. Then left = 0 and right = 2 gives -1 + 0 + 2 = 1, so move right. Next left = 0 and right = 1 gives 0, so record [-1, 0, 1], then skip duplicates before continuing.',
+      signals: [
+        'The task asks for unique triplets, which usually means sort plus duplicate control.',
+        'After fixing one value, the remaining condition is a 2Sum on a sorted array.',
+        'The sorted order tells you which pointer to move when the sum is too small or too large.',
+      ],
+      edgeCases: [
+        'Skip duplicate anchors or you will output the same triplet multiple times.',
+        'After finding a match, skip duplicate left and right values before continuing.',
+        'Once the anchor becomes positive in the zero-target version, no later triplet can sum to 0.',
+      ],
+      complexity: 'Time O(n^2) after sorting; sort cost O(n log n) is dominated. Extra space is O(1) besides the output.',
+    },
+    {
+      lc: 33,
+      title: 'Search in Rotated Sorted Array',
+      slug: 'search-in-rotated-sorted-array',
+      category: 'arrays-intervals',
+      approaches: ['binary-search'],
+      requested: false,
+      summary: 'At every midpoint, one half is still sorted. Identify the sorted half, check whether the target lies inside it, and discard the other half.',
+      instinct: 'Rotation destroys full-array order but not all order. Binary search still works because each split leaves at least one monotone side you can reason about.',
+      example: 'In [4, 5, 6, 7, 0, 1, 2], mid = 7 shows the left half [4, 5, 6, 7] is sorted. Since target 0 is not inside that sorted range, throw the left half away and keep searching the right half.',
+      signals: [
+        'The array is mostly sorted except for one rotation pivot.',
+        'The prompt wants logarithmic search, which strongly hints binary search.',
+        'At each step, one side still has normal sorted-order guarantees.',
+      ],
+      edgeCases: [
+        'Be explicit about whether the interval is left-closed/right-closed while updating bounds.',
+        'Check nums[mid] before deciding which side is sorted.',
+        'This classic version has distinct values; duplicates require extra care and can break the clean invariant.',
+      ],
+      complexity: 'Time O(log n), space O(1).',
+    },
+    {
+      lc: 55,
+      title: 'Jump Game',
+      slug: 'jump-game',
+      category: 'arrays-intervals',
+      approaches: ['greedy'],
+      requested: false,
+      summary: 'Track the furthest index reachable so far. If you ever arrive at an index beyond that frontier, the game is impossible.',
+      instinct: 'You do not need to simulate every jump choice. The only information that matters is the best frontier any earlier position can reach.',
+      example: 'For [2, 3, 1, 1, 4], index 0 reaches 2, index 1 extends the frontier to 4, and that already covers the end. For [3, 2, 1, 0, 4], the frontier stalls at index 3, so index 4 is unreachable.',
+      signals: [
+        'The question is only asking whether the end is reachable, not for the actual path.',
+        'A single summary value, furthest reachable index, dominates all earlier choices.',
+        'Exploring branches or building a DP table is more work than the constraints require.',
+      ],
+      edgeCases: [
+        'A single-element array is already at the goal.',
+        'The first time index i exceeds the current frontier, return false immediately.',
+        'Zeros are fine as long as some earlier position jumps past them.',
+      ],
+      complexity: 'Time O(n), space O(1).',
+    },
+    {
+      lc: 56,
+      title: 'Merge Intervals',
+      slug: 'merge-intervals',
+      category: 'arrays-intervals',
+      approaches: ['interval-sorting'],
+      requested: false,
+      summary: 'Sort intervals by start time, then sweep once while maintaining the current merged block.',
+      instinct: 'Pairwise overlap checking is noisy. Sorting puts all potentially mergeable neighbors next to each other so one running interval is enough.',
+      example: 'After sorting [[1, 3], [2, 6], [8, 10], [15, 18]], start with [1, 3]. Since [2, 6] overlaps, extend the current end to 6. [8, 10] starts after 6, so flush [1, 6] and begin a new block.',
+      signals: [
+        'Intervals only interact through their relative order on the number line.',
+        'Sorting collapses global overlap reasoning into a local sweep.',
+        'The output wants coalesced disjoint ranges, not individual pair decisions.',
+      ],
+      edgeCases: [
+        'Clarify whether touching boundaries like [1, 4] and [4, 5] count as overlapping; they do in this problem.',
+        'An empty input should return an empty list.',
+        'When extending the current interval, keep the original start and only update the end with max.',
+      ],
+      complexity: 'Time O(n log n) for sorting, space O(n) for the output.',
+    },
+    {
+      lc: 560,
+      title: 'Subarray Sum Equals K',
+      slug: 'subarray-sum-equals-k',
+      category: 'arrays-intervals',
+      approaches: ['prefix-sum-hash'],
+      requested: false,
+      summary: 'Let prefix be the sum up to the current index. Every earlier prefix equal to prefix - k creates one subarray ending here with sum k.',
+      instinct: 'Negative numbers kill sliding-window monotonicity. Prefix sums recover order-independent counting because each subarray sum is just a difference of two prefixes.',
+      example: 'Scanning [1, 1, 1] with k = 2, prefixes are 1, 2, 3. When prefix = 2, one earlier prefix 0 gives subarray [1, 1]. When prefix = 3, one earlier prefix 1 gives the second [1, 1].',
+      signals: [
+        'The prompt asks for a count of subarrays, not the longest or shortest one.',
+        'Negative values mean expand/shrink window logic is not reliable.',
+        'The same target condition repeats at every index in the form prefix - earlierPrefix = k.',
+      ],
+      edgeCases: [
+        'Initialize the hash map with prefix sum 0 seen once so subarrays starting at index 0 are counted.',
+        'Update the answer before incrementing the current prefix count for this position.',
+        'Multiple identical prefix sums are common and each occurrence matters.',
+      ],
+      complexity: 'Time O(n), space O(n).',
+    },
+    {
+      lc: 739,
+      title: 'Daily Temperatures',
+      slug: 'daily-temperatures',
+      category: 'arrays-intervals',
+      approaches: ['monotonic-stack'],
+      requested: false,
+      summary: 'Keep a decreasing stack of unresolved day indices. When a warmer day appears, pop colder days and fill their waiting times immediately.',
+      instinct: 'This is not about comparing every day to every later day. It is about postponing unresolved days until the first event that breaks a monotone invariant.',
+      example: 'For [73, 74, 75, 71, 69, 72, 76, 73], the stack stores indices whose warmer answer has not appeared yet. When 72 arrives, it resolves 69 first, then 71, because both are colder and waiting for this exact break in monotonicity.',
+      signals: [
+        'Each position wants the next greater element to its right.',
+        'Once a warmer day resolves an index, that answer is final and never revisited.',
+        'A stack can hold unresolved candidates in the exact order needed for future resolution.',
+      ],
+      edgeCases: [
+        'Store indices, not temperatures alone, because you must write day differences.',
+        'Any indices left on the stack at the end should stay 0.',
+        'The invariant here is decreasing temperatures from bottom to top of the stack.',
+      ],
+      complexity: 'Time O(n) because each index is pushed and popped at most once; space O(n).',
+    },
+    {
+      lc: 875,
+      title: 'Koko Eating Bananas',
+      slug: 'koko-eating-bananas',
+      category: 'arrays-intervals',
+      approaches: ['binary-search-answer'],
+      requested: false,
+      summary: 'Search the minimum eating speed. A speed is feasible if the total hours needed at that speed is at most h, and feasibility only gets easier as speed increases.',
+      instinct: 'When the answer is a number and “works” becomes monotone as that number grows, stop guessing manually and binary search the answer space.',
+      example: 'If speed 4 finishes [3, 6, 7, 11] in 8 hours, then any speed above 4 is also feasible. That monotonicity means the first feasible speed can be found by binary search between 1 and max(piles).',
+      signals: [
+        'The prompt asks for the minimum value satisfying a feasibility constraint.',
+        'You can compute whether a proposed speed works in one linear pass.',
+        'Feasibility is monotone, so the answer lives at a boundary between false and true.',
+      ],
+      edgeCases: [
+        'Use ceiling division per pile: (pile + speed - 1) // speed.',
+        'Search on [1, max(piles)], not [0, max(piles)], because speed 0 is invalid.',
+        'Keep a clear invariant such as left = first unknown feasible candidate, right = known feasible upper bound.',
+      ],
+      complexity: 'Time O(n log M), where M is the maximum pile size; space O(1).',
+    },
+    {
+      lc: 253,
+      title: 'Meeting Rooms II',
+      slug: 'meeting-rooms-ii',
+      category: 'arrays-intervals',
+      approaches: ['line-sweep', 'heap'],
+      requested: false,
+      summary: 'Treat meeting starts as more demand and meeting ends as capacity becoming free. After sorting those events, the peak overlap is the number of rooms required.',
+      instinct: 'When intervals overlap over time, the hard part is not pairwise comparison. It is tracking how the active count changes at event boundaries.',
+      example: 'Sort all start times and all end times. As you scan starts from left to right, release any rooms whose meetings have already ended, then allocate the new meeting. The maximum number of simultaneous active meetings is the answer.',
+      signals: [
+        'The question asks for the maximum number of overlapping intervals.',
+        'Only event boundaries matter; nothing changes between them.',
+        'A sweep of sorted starts and ends replaces noisy interval-by-interval comparisons.',
+      ],
+      edgeCases: [
+        'If one meeting starts exactly when another ends, the same room can be reused.',
+        'Empty input should return 0.',
+        'The answer is the maximum active overlap, not the final active count after the scan.',
+      ],
+      complexity: 'Sort + sweep: time O(n log n), space O(n) for the sorted endpoints, or O(1) extra beyond sorting depending on the language setup.',
+    },
+    {
+      lc: 1094,
+      title: 'Car Pooling',
+      slug: 'car-pooling',
+      category: 'arrays-intervals',
+      approaches: ['line-sweep'],
+      requested: false,
+      summary: 'Convert each trip into passenger deltas at pickup and dropoff, sort those events by location, and scan to make sure load never exceeds capacity.',
+      instinct: 'This is meeting overlap with signed load changes. The only state that matters is current passenger count after each event point.',
+      example: 'A trip [2, 1, 5] means +2 passengers at location 1 and -2 at location 5. Sort every delta by location, applying dropoffs before pickups at the same point. If the running load ever rises above capacity, the plan is impossible.',
+      signals: [
+        'Trips create add and remove events along a one-dimensional line.',
+        'You do not need to simulate every mile, only the event coordinates.',
+        'Capacity failure can be detected in one forward pass after sorting deltas.',
+      ],
+      edgeCases: [
+        'At the same location, process dropoffs before pickups so freed seats are available immediately.',
+        'Overlapping trips can be dense, but only event points change the load.',
+        'Check the running load after each delta application.',
+      ],
+      complexity: 'Time O(n log n) for sorting events, space O(n).',
+    },
+    {
+      lc: 98,
+      title: 'Validate Binary Search Tree',
+      slug: 'validate-binary-search-tree',
+      category: 'trees-heaps',
+      approaches: ['tree-dfs'],
+      requested: false,
+      summary: 'Carry valid lower and upper bounds down the tree. Every node must lie strictly between the bounds inherited from its ancestors.',
+      instinct: 'A BST rule is global, not just parent-versus-child. The safest recursion passes down the full range each subtree is allowed to occupy.',
+      example: 'In the invalid tree [5, 1, 4, null, null, 3, 6], node 3 sits in the right subtree of 5, so it must be greater than 5. A local check against parent 4 would miss that, but an ancestor bound catches it immediately.',
+      signals: [
+        'The property depends on all ancestors, not only the direct parent.',
+        'Each subtree inherits a tighter allowed value range.',
+        'Recursive DFS maps naturally to those shrinking bounds.',
+      ],
+      edgeCases: [
+        'BST ordering here is strict, so duplicates are invalid.',
+        'Use open bounds, not inclusive bounds.',
+        'Avoid comparing only against immediate children; that misses deeper violations.',
+      ],
+      complexity: 'Time O(n), space O(h) for recursion depth, where h is tree height.',
+    },
+    {
+      lc: 307,
+      title: 'Range Sum Query - Mutable',
+      slug: 'range-sum-query-mutable',
+      category: 'advanced-data-structures',
+      approaches: ['fenwick-segment-tree'],
+      requested: false,
+      summary: 'When updates and range queries both matter, precompute in a tree-shaped structure so each update only touches O(log n) aggregate buckets.',
+      instinct: 'The array is no longer static, so prefix sums alone are too weak. You need a structure that can repair just the affected summaries after each point update.',
+      example: 'A Fenwick tree stores partial sums over low-bit-sized ranges. Updating index i only changes the buckets whose covered range includes i. Range sums then come from two prefix sums. A segment tree solves the same family more generally with explicit tree nodes.',
+      signals: [
+        'The prompt mixes point updates with repeated range queries.',
+        'Recomputing a whole prefix or range on every change is too slow.',
+        'You need logarithmic updates and logarithmic query time.',
+      ],
+      edgeCases: [
+        'Fenwick trees are usually implemented 1-indexed, so convert indices carefully.',
+        'sumRange(left, right) is prefix(right) - prefix(left - 1), not a direct stored bucket.',
+        'Segment trees are more general, but Fenwick trees are often the simpler choice for sum-style questions.',
+      ],
+      complexity: 'Fenwick tree: update O(log n), query O(log n), space O(n). Segment tree gives the same asymptotic bounds with more general range operations.',
+    },
+    {
+      lc: 973,
+      title: 'K Closest Points to Origin',
+      slug: 'k-closest-points-to-origin',
+      category: 'math-geometry',
+      approaches: ['geometry', 'quickselect'],
+      requested: false,
+      summary: 'Use squared distance as the ranking score, then quickselect until the first k positions contain the k smallest distances.',
+      instinct: 'If geometry is only defining an order, reduce it to arithmetic first. Here you never need a square root because x^2 + y^2 preserves the same distance ordering.',
+      example: 'Map each point to its squared distance from the origin. Partition the array around a pivot distance like Quicksort. If the pivot lands before index k - 1, continue on the right; if after, continue on the left. Stop when the k-boundary is in place.',
+      signals: [
+        'The output wants the k best items, not a full sorted ranking of every point.',
+        'Distance comparisons do not require floating-point arithmetic.',
+        'Selection is enough, so full sorting is extra work.',
+      ],
+      edgeCases: [
+        'Ties can return any valid set of k points unless the prompt says otherwise.',
+        'Use squared distance to avoid unnecessary sqrt cost and precision noise.',
+        'Quickselect is average O(n) but worst-case O(n^2) with consistently bad pivots.',
+      ],
+      complexity: 'Quickselect average time O(n), worst-case O(n^2), extra space O(1) besides loop or recursion state.',
+    },
+    {
+      lc: 102,
+      title: 'Binary Tree Level Order Traversal',
+      slug: 'binary-tree-level-order-traversal',
+      category: 'trees-heaps',
+      approaches: ['bfs'],
+      requested: false,
+      summary: 'Use a queue and process one level at a time. The queue boundary at the start of each round tells you exactly which nodes belong to the current level.',
+      instinct: 'When the output itself is grouped by distance from the root, BFS is the data structure matching the requested shape.',
+      example: 'Start with the root in the queue. Pop exactly queueLength nodes for level 0, collecting their children into the queue for level 1. Repeat until the queue is empty, producing [[3], [9, 20], [15, 7]].',
+      signals: [
+        'The prompt groups nodes by depth or level.',
+        'Children discovered from the current level should only appear in the next round.',
+        'A queue preserves first-in, first-out frontier order naturally.',
+      ],
+      edgeCases: [
+        'An empty tree should return [].',
+        'Snapshot the queue length before processing a level so newly enqueued children do not leak into the same level.',
+        'DFS can also work, but BFS usually matches the story more directly here.',
+      ],
+      complexity: 'Time O(n), space O(w) for maximum tree width.',
+    },
+    {
+      lc: 347,
+      title: 'Top K Frequent Elements',
+      slug: 'top-k-frequent-elements',
+      category: 'trees-heaps',
+      approaches: ['heap'],
+      requested: false,
+      summary: 'Count frequencies first, then keep only the k most important candidates in a min-heap of size k.',
+      instinct: 'When you only care about the top k items, a full sort of every distinct value is unnecessary. A bounded heap keeps just the current winners.',
+      example: 'If counts are {1: 3, 2: 2, 3: 1} and k = 2, push (freq, value) pairs into a min-heap. The heap drops the weakest entry whenever it grows past size k, leaving the two most frequent values at the end.',
+      signals: [
+        'The prompt asks for top k, not a complete ranking.',
+        'Frequencies must be computed first, so there is a clear count-then-select structure.',
+        'A min-heap of size k gives better asymptotic behavior than sorting all unique values when k is small.',
+      ],
+      edgeCases: [
+        'The output order is usually not important unless the prompt says otherwise.',
+        'If k equals the number of distinct values, every value survives.',
+        'Keep the heap keyed by frequency so the weakest current winner is ejected first.',
+      ],
+      complexity: 'Time O(n + u log k), where u is the number of distinct values; space O(u + k).',
+    },
+    {
+      lc: 146,
+      title: 'LRU Cache',
+      slug: 'lru-cache',
+      category: 'design-systems',
+      approaches: ['operation-first-design'],
+      requested: false,
+      summary: 'Combine key lookup with recency ordering so get and put can both refresh an item and evict the least-recently-used key in O(1).',
+      instinct: 'Design prompts should begin with the operation contract, not with code. If you need lookup by key and eviction by age, a single structure usually cannot do both cleanly.',
+      example: 'A hash map gives key -> node lookup. A doubly linked list or OrderedDict keeps keys ordered from least recent to most recent. get moves the key to the recent end. put updates or inserts, then evicts from the stale end if capacity is exceeded.',
+      signals: [
+        'The prompt gives explicit operation targets such as O(1) get and O(1) put.',
+        'Eviction order is part of correctness, not just an implementation detail.',
+        'Recency changes on both reads and writes.',
+      ],
+      edgeCases: [
+        'Updating an existing key should also refresh its recency.',
+        'Evict only after insertion or update pushes size past capacity.',
+        'Capacity 1 is a good sanity test because every new distinct key should evict the old one.',
+      ],
+      complexity: 'With hashmap + doubly linked list or OrderedDict: get O(1), put O(1), space O(capacity).',
+    },
+    {
+      lc: 981,
+      title: 'Time Based Key-Value Store',
+      slug: 'time-based-key-value-store',
+      category: 'design-systems',
+      approaches: ['operation-first-design', 'binary-search'],
+      requested: false,
+      summary: 'Store each key history in timestamp order, then binary search for the latest timestamp less than or equal to the query time.',
+      instinct: 'Append-only histories are a design gift. Once writes for a key arrive in sorted time order, historical lookup becomes a boundary-search problem instead of a scan.',
+      example: 'For key "foo", keep [(1, "bar"), (4, "bar2")]. Querying time 3 should return the entry at time 1, which is the rightmost timestamp <= 3. That is exactly what a lower- or upper-bound style binary search recovers.',
+      signals: [
+        'The API mixes writes over time with later historical lookups.',
+        'Timestamps are increasing for each key, so appending preserves sorted order.',
+        'The query wants the latest valid value, not all earlier values.',
+      ],
+      edgeCases: [
+        'If no timestamp <= query time exists, return the empty string.',
+        'Keep history per key, not globally, or lookups become noisy.',
+        'The search is “last <= target,” which is slightly different from looking for an exact timestamp.',
+      ],
+      complexity: 'set O(1) amortized append, get O(log n) per key history length, space O(total stored key-timestamp pairs).',
+    },
+    {
+      lc: 994,
+      title: 'Rotting Oranges',
+      slug: 'rotting-oranges',
+      category: 'graphs',
+      approaches: ['bfs'],
+      requested: false,
+      summary: 'Run multi-source BFS from every initially rotten orange at once. Each BFS layer represents one minute of spread.',
+      instinct: 'When several sources spread simultaneously and the answer is elapsed time in uniform steps, BFS layers are the clock.',
+      example: 'Seed the queue with all rotten oranges. In minute 1, all adjacent fresh oranges rot. In minute 2, the next ring rots, and so on. If any fresh orange remains unreachable after the queue empties, return -1.',
+      signals: [
+        'Multiple starting points begin spreading at the same time.',
+        'Every edge has equal cost, so layer count equals elapsed time.',
+        'The problem is asking for minimum minutes, which is shortest unweighted distance from the nearest source.',
+      ],
+      edgeCases: [
+        'Count fresh oranges up front so you can detect impossible cases cleanly.',
+        'If there are no fresh oranges, the answer is 0 even if the queue starts nonempty or empty.',
+        'Mark oranges rotten as soon as you enqueue them so they are not enqueued twice.',
+      ],
+      complexity: 'Time O(mn), space O(mn) in the worst case for the queue.',
+    },
+    {
+      lc: 207,
+      title: 'Course Schedule',
+      slug: 'course-schedule',
+      category: 'graphs',
+      approaches: ['topological-sort'],
+      requested: false,
+      summary: 'Build indegrees, enqueue every course with no unmet prerequisites, and peel the graph until no zero-indegree nodes remain.',
+      instinct: 'This is not about finding a path. It is about whether every dependency can be satisfied in some order, which is exactly what topological sort tests.',
+      example: 'For prerequisites [[1, 0]], course 0 starts with indegree 0, so it enters the queue first. Removing 0 drops indegree[1] to 0, so 1 can follow. In a cycle like [[1, 0], [0, 1]], neither node can be fully peeled, so the processed count stays short of numCourses.',
+      signals: [
+        'Words like prerequisite, dependency, and can finish hint at DAG reasoning.',
+        'A cycle is exactly what makes finishing impossible.',
+        'Indegree counts summarize which tasks are currently unlocked.',
+      ],
+      edgeCases: [
+        'Courses with no edges still count and should enter the initial zero-indegree queue.',
+        'Return processedCount === numCourses, not merely whether the queue empties.',
+        'Duplicate prerequisite edges would inflate indegrees if the input allowed them.',
+      ],
+      complexity: 'Time O(V + E), space O(V + E).',
+    },
+    {
+      lc: 684,
+      title: 'Redundant Connection',
+      slug: 'redundant-connection',
+      category: 'graphs',
+      approaches: ['union-find'],
+      requested: false,
+      summary: 'Add edges one by one. The first edge whose endpoints are already connected is the redundant one that closes a cycle.',
+      instinct: 'You do not need to traverse the whole graph after every edge. This is a dynamic connectivity problem, and union-find is built exactly for that.',
+      example: 'If edges [1, 2] and [1, 3] have already merged nodes 1, 2, and 3 into one component, then adding [2, 3] connects two nodes already in the same set. That edge is redundant because it introduces the first cycle.',
+      signals: [
+        'Edges are processed incrementally and the key question is whether two endpoints are already connected.',
+        'The answer is the edge that first creates a cycle, not the cycle itself.',
+        'Union-find gives near-constant-time component merges and connectivity checks.',
+      ],
+      edgeCases: [
+        'Nodes are 1-indexed in this problem, so size the parent array accordingly.',
+        'Return the first edge that fails union in the given scan order.',
+        'Path compression and union by rank keep the structure almost constant-time in practice.',
+      ],
+      complexity: 'Time O(n α(n)), space O(n), where α is the inverse Ackermann function.',
+    },
+  ];
+
+  const CATEGORY_INDEX = new Map(CATEGORY_META.map((item, index) => [item.key, { ...item, order: index }]));
+  const APPROACH_INDEX = new Map(APPROACH_META.map((item, index) => [item.key, { ...item, order: index }]));
+  const CODE_BY_LC = window.interviewPrepCodeByLc || {};
+
+  let activeCategory = 'all';
+  let activeApproach = 'all';
+  let searchTerm = '';
+  let sortMode = 'featured';
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function problemUrl(problem) {
+    return `https://leetcode.com/problems/${problem.slug}/`;
+  }
+
+  function problemCardId(problemOrLc) {
+    const lc = typeof problemOrLc === 'object' ? problemOrLc.lc : problemOrLc;
+    return `problem-lc-${lc}`;
+  }
+
+  function normalize(value) {
+    return String(value || '').toLowerCase();
+  }
+
+  function getSearchInput() {
+    return document.getElementById('interview-search');
+  }
+
+  function clearSearchInput() {
+    const input = getSearchInput();
+    if (input) input.value = '';
+  }
+
+  function countProblemsForCategory(categoryKey) {
+    return PROBLEMS.filter((problem) => problem.category === categoryKey).length;
+  }
+
+  function countProblemsForApproach(approachKey) {
+    return PROBLEMS.filter((problem) => problem.approaches.includes(approachKey)).length;
+  }
+
+  function buildSearchText(problem) {
+    const category = CATEGORY_INDEX.get(problem.category);
+    const approachLabels = problem.approaches
+      .map((key) => APPROACH_INDEX.get(key))
+      .filter(Boolean)
+      .map((item) => item.label)
+      .join(' ');
+
+    return normalize([
+      problem.title,
+      `lc ${problem.lc}`,
+      category ? category.label : '',
+      approachLabels,
+      problem.summary,
+      problem.instinct,
+      problem.example,
+      problem.signals.join(' '),
+      problem.edgeCases.join(' '),
+      problem.complexity,
+    ].join(' '));
+  }
+
+  function matchesFilters(problem) {
+    if (activeCategory !== 'all' && problem.category !== activeCategory) return false;
+    if (activeApproach !== 'all' && !problem.approaches.includes(activeApproach)) return false;
+    if (searchTerm && !buildSearchText(problem).includes(searchTerm)) return false;
+    return true;
+  }
+
+  function compareProblems(a, b) {
+    if (sortMode === 'lc-asc') return a.lc - b.lc;
+    if (sortMode === 'lc-desc') return b.lc - a.lc;
+    if (sortMode === 'title') return a.title.localeCompare(b.title);
+    if (sortMode === 'category') {
+      const categoryCompare = CATEGORY_INDEX.get(a.category).order - CATEGORY_INDEX.get(b.category).order;
+      if (categoryCompare !== 0) return categoryCompare;
+      return a.lc - b.lc;
+    }
+
+    if (a.requested !== b.requested) return a.requested ? -1 : 1;
+
+    const categoryCompare = CATEGORY_INDEX.get(a.category).order - CATEGORY_INDEX.get(b.category).order;
+    if (categoryCompare !== 0) return categoryCompare;
+
+    return a.lc - b.lc;
+  }
+
+  function buttonClasses(active, tone) {
+    if (active) {
+      return 'border-transparent bg-slate-900 text-white shadow-sm';
+    }
+
+    return tone === 'soft'
+      ? 'border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white'
+      : 'border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-50';
+  }
+
+  function renderExampleJumpButtons(problems, filterKind, filterKey, isActive) {
+    const baseClasses = isActive
+      ? 'border-white/20 bg-white/10 text-white hover:bg-white/15'
+      : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white';
+
+    return problems.map((problem) => {
+      return `<button type="button" data-filter-kind="${escapeHtml(filterKind)}" data-filter-key="${escapeHtml(filterKey)}" data-jump-lc="${escapeHtml(problem.lc)}" class="rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${baseClasses}">LC ${escapeHtml(problem.lc)} · ${escapeHtml(problem.title)}</button>`;
+    }).join('');
+  }
+
+  function scrollToSection(targetId) {
+    requestAnimationFrame(() => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+
+  function highlightProblemCard(targetId) {
+    const card = document.getElementById(targetId);
+    if (!card) return;
+
+    card.classList.add('ring-2', 'ring-teal-400', 'ring-offset-2');
+    window.setTimeout(() => {
+      card.classList.remove('ring-2', 'ring-teal-400', 'ring-offset-2');
+    }, 1400);
+  }
+
+  function jumpToProblem(lc) {
+    const targetId = problemCardId(lc);
+    requestAnimationFrame(() => {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      highlightProblemCard(targetId);
+    });
+  }
+
+  function renderCategorySummary() {
+    const container = document.getElementById('interview-category-summary');
+    if (!container) return;
+
+    container.innerHTML = CATEGORY_META.map((category) => {
+      const examples = PROBLEMS.filter((problem) => problem.category === category.key).slice(0, 3);
+      const isActive = activeCategory === category.key;
+
+      return `
+        <article class="rounded-[1.75rem] border ${isActive ? 'border-slate-900 bg-slate-900 text-white shadow-lg' : 'border-slate-200 bg-white text-slate-900 shadow-sm'} p-5 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] ${isActive ? 'text-slate-300' : 'text-slate-500'}">${escapeHtml(String(countProblemsForCategory(category.key)).padStart(2, '0'))} drills</p>
+              <h3 class="mt-2 text-xl font-semibold">${escapeHtml(category.label)}</h3>
+            </div>
+            <button type="button" data-filter-kind="category" data-filter-key="${escapeHtml(category.key)}" data-scroll-target="problem-browser" class="rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors ${isActive ? 'border-white/30 bg-white/10 text-white hover:bg-white/15' : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'}">
+              ${isActive ? 'Active' : 'See drills'}
+            </button>
+          </div>
+          <p class="mt-3 text-sm leading-6 ${isActive ? 'text-slate-200' : 'text-slate-600'}">${escapeHtml(category.instinct)}</p>
+          <p class="mt-4 text-xs font-medium uppercase tracking-[0.14em] ${isActive ? 'text-slate-300' : 'text-slate-500'}">Example set</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            ${renderExampleJumpButtons(examples, 'category', category.key, isActive)}
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  function renderApproachSummary() {
+    const container = document.getElementById('interview-approach-summary');
+    if (!container) return;
+
+    container.innerHTML = APPROACH_META.map((approach) => {
+      const examples = PROBLEMS.filter((problem) => problem.approaches.includes(approach.key)).slice(0, 3);
+      const isActive = activeApproach === approach.key;
+
+      return `
+        <article class="rounded-[1.75rem] border ${isActive ? 'border-teal-600 bg-teal-600 text-white shadow-lg' : 'border-slate-200 bg-white text-slate-900 shadow-sm'} p-5 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] ${isActive ? 'text-teal-100' : 'text-slate-500'}">${escapeHtml(String(countProblemsForApproach(approach.key)).padStart(2, '0'))} examples</p>
+              <h3 class="mt-2 text-xl font-semibold">${escapeHtml(approach.label)}</h3>
+            </div>
+            <button type="button" data-filter-kind="approach" data-filter-key="${escapeHtml(approach.key)}" data-scroll-target="problem-browser" class="rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors ${isActive ? 'border-white/30 bg-white/10 text-white hover:bg-white/15' : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'}">
+              ${isActive ? 'Active' : 'Focus'}
+            </button>
+          </div>
+          <p class="mt-3 text-sm leading-6 ${isActive ? 'text-teal-50' : 'text-slate-600'}">${escapeHtml(approach.cue)}</p>
+          <p class="mt-4 text-xs font-medium uppercase tracking-[0.14em] ${isActive ? 'text-teal-100' : 'text-slate-500'}">Example set</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            ${renderExampleJumpButtons(examples, 'approach', approach.key, isActive)}
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  function renderFilters() {
+    const categoryContainer = document.getElementById('interview-category-filters');
+    const approachContainer = document.getElementById('interview-approach-filters');
+    if (!categoryContainer || !approachContainer) return;
+
+    const categoryButtons = [
+      `<button type="button" data-filter-kind="category" data-filter-key="all" class="rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${buttonClasses(activeCategory === 'all')}">All categories <span class="ml-1 text-xs opacity-70">${PROBLEMS.length}</span></button>`,
+    ].concat(CATEGORY_META.map((category) => {
+      const count = countProblemsForCategory(category.key);
+      return `<button type="button" data-filter-kind="category" data-filter-key="${escapeHtml(category.key)}" class="rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${buttonClasses(activeCategory === category.key)}">${escapeHtml(category.label)} <span class="ml-1 text-xs opacity-70">${count}</span></button>`;
+    }));
+
+    const approachButtons = [
+      `<button type="button" data-filter-kind="approach" data-filter-key="all" class="rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${buttonClasses(activeApproach === 'all', 'soft')}">All approaches <span class="ml-1 text-xs opacity-70">${PROBLEMS.length}</span></button>`,
+    ].concat(APPROACH_META.map((approach) => {
+      const count = countProblemsForApproach(approach.key);
+      return `<button type="button" data-filter-kind="approach" data-filter-key="${escapeHtml(approach.key)}" class="rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${buttonClasses(activeApproach === approach.key, 'soft')}">${escapeHtml(approach.label)} <span class="ml-1 text-xs opacity-70">${count}</span></button>`;
+    }));
+
+    categoryContainer.innerHTML = categoryButtons.join('');
+    approachContainer.innerHTML = approachButtons.join('');
+  }
+
+  function renderProblemCard(problem) {
+    const category = CATEGORY_INDEX.get(problem.category);
+    const codeSnippet = CODE_BY_LC[problem.lc] || '# Example code is coming soon.';
+    const approachChips = problem.approaches
+      .map((key) => APPROACH_INDEX.get(key))
+      .filter(Boolean)
+      .map((approach) => {
+        return `<button type="button" data-filter-kind="approach" data-filter-key="${escapeHtml(approach.key)}" class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:bg-white">${escapeHtml(approach.label)}</button>`;
+      })
+      .join('');
+
+    return `
+      <article id="${escapeHtml(problemCardId(problem))}" class="rounded-[1.75rem] border ${problem.requested ? 'border-teal-200 bg-teal-50/40' : 'border-slate-200 bg-white'} p-5 shadow-sm transition-shadow">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center rounded-full ${problem.requested ? 'bg-teal-600 text-white' : 'bg-slate-900 text-white'} px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em]">LC ${escapeHtml(problem.lc)}</span>
+              ${problem.requested ? '<span class="inline-flex items-center rounded-full border border-teal-200 bg-white px-3 py-1 text-xs font-semibold text-teal-700">Requested anchor</span>' : ''}
+            </div>
+            <h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-950">${escapeHtml(problem.title)}</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <a href="${escapeHtml(problemUrl(problem))}" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50">
+              Official LeetCode
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button type="button" data-filter-kind="category" data-filter-key="${escapeHtml(problem.category)}" class="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-50">${escapeHtml(category.label)}</button>
+          ${approachChips}
+        </div>
+
+        <div class="mt-5 space-y-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Core Move</p>
+            <p class="mt-2 text-sm leading-6 text-slate-700">${escapeHtml(problem.summary)}</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Instinct</p>
+            <p class="mt-2 text-sm leading-6 text-slate-700">${escapeHtml(problem.instinct)}</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Exemplary Walkthrough</p>
+            <p class="mt-2 text-sm leading-6 text-slate-700">${escapeHtml(problem.example)}</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">What To Look For</p>
+            <ul class="mt-2 space-y-2 text-sm leading-6 text-slate-700">
+              ${problem.signals.map((item) => `<li class="flex gap-2"><span class="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>${escapeHtml(item)}</span></li>`).join('')}
+            </ul>
+          </div>
+        </div>
+
+        <details class="mt-5 rounded-[1.25rem] border border-slate-200 bg-white px-4 py-3">
+          <summary class="cursor-pointer list-none text-sm font-semibold text-slate-900">
+            Example code
+          </summary>
+          <div class="mt-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Python Reference</p>
+            <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs leading-6 text-slate-100"><code>${escapeHtml(codeSnippet)}</code></pre>
+          </div>
+        </details>
+
+        <details class="mt-4 rounded-[1.25rem] border border-slate-200 bg-white px-4 py-3">
+          <summary class="cursor-pointer list-none text-sm font-semibold text-slate-900">
+            Edge cases and Big O
+          </summary>
+          <div class="mt-4 grid gap-4 lg:grid-cols-[1.15fr,0.85fr]">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Edge Cases</p>
+              <ul class="mt-2 space-y-2 text-sm leading-6 text-slate-700">
+                ${problem.edgeCases.map((item) => `<li class="flex gap-2"><span class="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400"></span><span>${escapeHtml(item)}</span></li>`).join('')}
+              </ul>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Complexity</p>
+              <p class="mt-2 text-sm leading-6 text-slate-700">${escapeHtml(problem.complexity)}</p>
+            </div>
+          </div>
+        </details>
+      </article>
+    `;
+  }
+
+  function renderProblems() {
+    const container = document.getElementById('interview-problem-grid');
+    const stats = document.getElementById('interview-result-stats');
+    if (!container || !stats) return;
+
+    const filtered = PROBLEMS.filter(matchesFilters).sort(compareProblems);
+    const categoryText = activeCategory === 'all' ? 'all categories' : CATEGORY_INDEX.get(activeCategory).label;
+    const approachText = activeApproach === 'all' ? 'all approaches' : APPROACH_INDEX.get(activeApproach).label;
+
+    stats.textContent = `${filtered.length} of ${PROBLEMS.length} problems shown • ${categoryText} • ${approachText}`;
+
+    if (!filtered.length) {
+      container.innerHTML = `
+        <div class="xl:col-span-2 rounded-[1.75rem] border border-slate-200 bg-white p-8 text-center shadow-sm">
+          <p class="text-lg font-semibold text-slate-900">No drills match that combination yet.</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Try clearing one filter or searching for a broader keyword like "window", "tree", "heap", "graph", or "dp".</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = filtered.map(renderProblemCard).join('');
+  }
+
+  function renderAll() {
+    renderCategorySummary();
+    renderApproachSummary();
+    renderFilters();
+    renderProblems();
+  }
+
+  function bindControls() {
+    const root = document.querySelector('[data-page-root="interview-prep"]');
+    if (!root || root.dataset.interviewPrepBound === 'true') return;
+    root.dataset.interviewPrepBound = 'true';
+
+    const search = getSearchInput();
+    const sort = document.getElementById('interview-sort');
+    if (search) {
+      search.value = searchTerm;
+      search.addEventListener('input', (event) => {
+        searchTerm = normalize(event.target.value.trim());
+        renderAll();
+      });
+    }
+
+    if (sort) {
+      sort.value = sortMode;
+      sort.addEventListener('change', (event) => {
+        sortMode = event.target.value || 'featured';
+        renderAll();
+      });
+    }
+
+    root.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-filter-kind],[data-jump-lc],[data-scroll-target]');
+      if (!button || !root.contains(button)) return;
+
+      const kind = button.getAttribute('data-filter-kind');
+      const key = button.getAttribute('data-filter-key');
+      const jumpLc = button.getAttribute('data-jump-lc');
+      const scrollTarget = button.getAttribute('data-scroll-target');
+      const isFocusedAction = Boolean(jumpLc || scrollTarget);
+
+      if (kind && key) {
+        if (isFocusedAction) {
+          if (kind === 'category') {
+            activeCategory = key;
+            activeApproach = 'all';
+          } else if (kind === 'approach') {
+            activeApproach = key;
+            activeCategory = 'all';
+          }
+          searchTerm = '';
+          clearSearchInput();
+        } else {
+          if (kind === 'category') activeCategory = key;
+          if (kind === 'approach') activeApproach = key;
+        }
+      }
+
+      renderAll();
+
+      if (jumpLc) {
+        jumpToProblem(jumpLc);
+        return;
+      }
+
+      if (scrollTarget) {
+        scrollToSection(scrollTarget);
+      }
+    });
+  }
+
+  window.setupInterviewPrep = function setupInterviewPrep() {
+    renderAll();
+    bindControls();
+  };
+})();

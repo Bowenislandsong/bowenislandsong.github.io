@@ -1,0 +1,307 @@
+<!-- sections/research.html -->
+
+<section id="research-overview" class="py-10 md:py-14">
+  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-800">Research</p>
+  <h1 class="mt-3 text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+    Scalable biomechanical modeling under privacy, edge, and resource constraints.
+  </h1>
+  <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
+    My Ph.D. work develops lightweight and federated methods for estimating ground reaction forces and joint moments from wearable sensors, and studies when hybrid cloud federations share compute under QoS requirements.
+  </p>
+  <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+    USC Viterbi ·
+    <a href="https://qed.usc.edu/" target="_blank" rel="noopener" class="inline-link">QED Research Group</a>
+    · Advisor
+    <a href="https://bourbon.usc.edu/leana/" target="_blank" rel="noopener" class="inline-link">Leana Golubchik</a>
+    ·
+    <a href="https://scholar.google.com/citations?hl=en&amp;user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-link">Google Scholar</a>
+  </p>
+  <div class="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold">
+    <a href="publications/Scalable_Biomechanical_Modeling_Through_Federated_Learning_and_Resource_Federation.pdf" target="_blank" rel="noopener" class="text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Ph.D. dissertation</a>
+    <a href="publications/SCALABLE_STRING_RECONCILIATION_Thesis.pdf" target="_blank" rel="noopener" class="text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">M.S. thesis</a>
+    <a href="publications/Thesis_Defense_Slides.pdf" target="_blank" rel="noopener" class="text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Defense slides</a>
+    <a href="#/research#publications" class="text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Publications</a>
+    <a href="#/engineering" class="text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-teal-700">Experience</a>
+  </div>
+</section>
+
+<section id="dissertation" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Dissertations and theses</h2>
+  <h3 class="mt-2 text-lg font-semibold text-slate-900">Ph.D. dissertation · Scalable Biomechanical Modeling Through Federated Learning and Resource Federation</h3>
+  <p class="mt-3 max-w-3xl text-base leading-7 text-slate-600">
+    Ph.D. in Computer Science, University of Southern California, June 2026.
+    Advisor: <a href="https://bourbon.usc.edu/leana/" target="_blank" rel="noopener" class="inline-link">Prof. Leana Golubchik</a>.
+    Defense: June 18, 2026.
+    Committee members listed on the defense materials:
+    <a href="https://www.cs.usc.edu/directory/faculty/profile/?lname=Soltanolkotabi&amp;fname=Mahdi" target="_blank" rel="noopener" class="inline-link">Prof. Mahdi Soltanolkotabi</a> (CS) and
+    <a href="https://dornsife.usc.edu/profile/jill-l-mcnitt-gray/" target="_blank" rel="noopener" class="inline-link">Prof. Jill L. McNitt-Gray</a> (Biomechanics).
+  </p>
+  <p class="mt-4 text-sm">
+    <a href="publications/Scalable_Biomechanical_Modeling_Through_Federated_Learning_and_Resource_Federation.pdf" target="_blank" rel="noopener" class="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4">Dissertation PDF</a>
+    ·
+    <a href="publications/Thesis_Defense_Slides.pdf" target="_blank" rel="noopener" class="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4">Defense slides</a>
+  </p>
+
+  <div class="mt-8 space-y-6">
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">Part I · Modeling: SVD Embedding Regression (SER)</h3>
+      <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+        Estimates ground reaction forces and derived biomechanical variables from IMU signals by learning a linear map between low-rank SVD embeddings of inputs and outputs. On running data, SER and KNN match or exceed LSTM accuracy at a fraction of the cost: about 0.3&nbsp;ms for 10 steps on a smartphone versus ~15&nbsp;s for an LSTM in the dissertation evaluation.
+      </p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">Part II · Data: Federated SER (FedSER)</h3>
+      <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+        Federated multi-task extension for GRFs and hip/knee joint moments across participants and actions. Learns shared SVD bases without centralizing raw data; combines action-specific experts with a global expert. Matches centralized SER, outperforms TCN baselines under scarcity and leave-one-action-out, and was timed on a Pixel&nbsp;8&nbsp;Pro in an 11-client setup.
+      </p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">Part III · Resources: Hybrid cloud federations</h3>
+      <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+        Models a federation of hybrid clouds as a continuous-time Markov chain under QoS requirements. Proves full sharing is optimal under homogeneous QoS, shows heterogeneous QoS changes the picture, and allocates public-cloud savings via Shapley value to discourage free riding. A systems study separate from the biomechanics experiments.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-10 border-t border-slate-200 pt-8">
+    <h3 class="text-lg font-semibold text-slate-900">M.S. thesis · Scalable String Reconciliation by Recursive Content-Dependent Shingling</h3>
+    <p class="mt-3 max-w-3xl text-base leading-7 text-slate-600">
+      M.S. in Electrical &amp; Computer Engineering, Boston University, 2019. Introduces Recursive Content-Dependent Shingling (RCDS), a protocol for reconciling similar strings in distributed systems while keeping communication proportional to their edit distance, with analysis and experiments against existing synchronization tools.
+    </p>
+    <p class="mt-4 text-sm">
+      <a href="publications/SCALABLE_STRING_RECONCILIATION_Thesis.pdf" target="_blank" rel="noopener" class="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4">M.S. thesis PDF</a>
+    </p>
+  </div>
+</section>
+
+<section id="insights" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Key figures and insights</h2>
+  <p class="mt-2 max-w-3xl text-base leading-7 text-slate-600">
+    Selected visuals from the Ph.D. defense (June 18, 2026), with framing drawn from the slides and dissertation.
+  </p>
+
+  <div class="mt-8 space-y-12">
+    <figure class="research-figure">
+      <img src="assets/figures/ser_lstm_artifacts.png" alt="Comparison of GRF waveforms showing LSTM artifacts versus physically plausible lightweight estimates" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">Physical plausibility matters.</span>
+        Clinically important GRF features such as impact peak and rate of force rise are critical for gait analysis. LSTM predictions can produce unrealistic oscillations or distorted waveform shapes. Lightweight low-rank estimates stay structurally coherent.
+      </figcaption>
+    </figure>
+
+    <figure class="research-figure">
+      <img src="assets/figures/ser_lightweight_accuracy.png" alt="Accuracy comparison of lightweight SER and KNN models against LSTM baselines for GRF estimation" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">Lightweight models can match or beat heavier networks.</span>
+        SER and KNN achieve accuracy comparable to or exceeding LSTMs while remaining far more efficient. On a smartphone, SER estimates 10 running steps in about 0.3&nbsp;ms (versus ~15&nbsp;s for an LSTM) at a few megabytes of memory.
+      </figcaption>
+    </figure>
+
+    <figure class="research-figure">
+      <img src="assets/figures/fedser_vs_central.png" alt="FedSER matching centralized SER accuracy across biomechanical estimation tasks" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">Federation need not compromise accuracy.</span>
+        FedSER matches centralized SER across tasks when clients collaborate without pooling raw data, showing that privacy constraints do not have to mean weaker models.
+      </figcaption>
+    </figure>
+
+    <figure class="research-figure">
+      <img src="assets/figures/fedser_scarcity.png" alt="Gated FedSER accuracy under increasing data scarcity" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">Robust under data scarcity.</span>
+        Gating action-specific experts with a global expert consistently improves FedSER. Linear expert combination outperforms expert-only gating, and accuracy remains competitive even when most training samples are removed.
+      </figcaption>
+    </figure>
+
+    <figure class="research-figure">
+      <img src="assets/figures/hybrid_cloud_federation.png" alt="Diagram of a hybrid cloud federation sharing resources under QoS constraints" class="w-full max-w-3xl border border-slate-200 bg-white" loading="lazy" />
+      <figcaption class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+        <span class="font-semibold text-slate-900">When should clouds share?</span>
+        Hybrid cloud federations share local capacity under QoS requirements and overflow to public clouds. The dissertation proves that members with the same QoS maximize benefit by sharing everything, and uses Shapley value over public-cloud savings to discourage free riders.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="agenda" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Research themes</h2>
+  <p class="mt-2 max-w-3xl text-base leading-7 text-slate-600">Constraints that shaped the dissertation.</p>
+  <div class="mt-6 space-y-6">
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">Edge-deployable embodied ML</h3>
+      <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+        Interpretable, physically meaningful estimators that stay efficient enough for phones and other edge devices. Wearable and motion data are a demanding testbed: models must respect biomechanical structure, stay legible, and still run when the person, sensor placement, and environment change.
+      </p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">Personalization with privacy built in</h3>
+      <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+        Adapt across users, devices, and actions without brittle retraining or centralizing sensitive signals. Lightweight adaptation, multi-task experts, and federated learning matter because average-case performance is often the wrong target, and private wearable or clinical data rarely lives in one clean training loop.
+      </p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">Resource federation under QoS</h3>
+      <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+        When organizations keep data local but need bursty compute, when does sharing machines help, and how should savings be allocated? Clinics and labs are a natural audience for this systems question. The cloud chapter is intentionally separate from the FedSER experiments.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="publications" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Publications</h2>
+  <p class="mt-3 max-w-3xl text-base leading-7 text-slate-600">
+    Selected peer-reviewed papers and dissertation chapters. Full list on
+    <a href="https://scholar.google.com/citations?hl=en&amp;user=Vk5z698AAAAJ" target="_blank" rel="noopener" class="inline-link">Google Scholar</a>.
+  </p>
+  <p class="mt-3 text-sm">
+    <a href="publications/Scalable_Biomechanical_Modeling_Through_Federated_Learning_and_Resource_Federation.pdf" target="_blank" rel="noopener" class="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4">Ph.D. dissertation</a>
+    ·
+    <a href="publications/SCALABLE_STRING_RECONCILIATION_Thesis.pdf" target="_blank" rel="noopener" class="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4">M.S. thesis</a>
+    ·
+    <a href="publications/Thesis_Defense_Slides.pdf" target="_blank" rel="noopener" class="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4">Defense slides</a>
+  </p>
+
+  <ol id="pub-list" class="mt-8 space-y-8 border-t border-slate-200 pt-8">
+    <li class="pub-entry">
+      <p class="text-[15px] leading-7 text-slate-800">
+        <span class="font-semibold text-slate-950">B. Song</span>, M. Paolieri, H. E. Stewart, L. Golubchik, J. L. McNitt-Gray, V. Misra, and D. Shah,
+        &ldquo;Estimating Ground Reaction Forces From Inertial Sensors,&rdquo;
+        <em>IEEE Transactions on Biomedical Engineering</em>, vol.&nbsp;72, no.&nbsp;2, pp.&nbsp;595&ndash;608, 2025.
+      </p>
+      <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+        <a href="publications/Estimating_Ground_Reaction_Forces_From_Inertial_Sensors.pdf" target="_blank" rel="noopener" class="inline-link">[PDF]</a>
+        <a href="https://doi.org/10.1109/TBME.2024.3465373" target="_blank" rel="noopener" class="inline-link">[DOI]</a>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-copy="#bib-grf">[BibTeX]</button>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-toggle="#abs-grf" aria-controls="abs-grf" aria-expanded="false">[Abstract]</button>
+      </p>
+      <p id="abs-grf" class="mt-3 hidden max-w-3xl text-sm leading-6 text-slate-600">
+        We study whether inertial measurement units collected during steady-state running can estimate ground reaction forces and derived biomechanical variables with lightweight models. The paper proposes SVD Embedding Regression (SER) and shows that low-rank methods can match or beat LSTM baselines while remaining practical for edge deployment and personalization. SER compresses IMU and GRF waveforms into low-rank embeddings, learns a linear map in that space, then reconstructs force signals.
+      </p>
+      <pre id="bib-grf" class="sr-only">@ARTICLE{song2025grf,
+  author={Song, B. and Paolieri, M. and Stewart, H. E. and Golubchik, L. and McNitt-Gray, J. L. and Misra, V. and Shah, D.},
+  journal={IEEE Transactions on Biomedical Engineering},
+  title={Estimating Ground Reaction Forces from Inertial Sensors},
+  year={2025},
+  volume={72},
+  number={2},
+  pages={595-608},
+  doi={10.1109/TBME.2024.3465373}
+}</pre>
+    </li>
+
+    <li class="pub-entry">
+      <p class="text-[15px] leading-7 text-slate-800">
+        <span class="font-semibold text-slate-950">B. Song</span>,
+        &ldquo;FedSER for Wearable Biomechanics,&rdquo;
+        Chapter&nbsp;4 in <em>Scalable Biomechanical Modeling Through Federated Learning and Resource Federation</em>, Ph.D. dissertation, University of Southern California, 2026.
+      </p>
+      <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+        <a href="publications/Scalable_Biomechanical_Modeling_Through_Federated_Learning_and_Resource_Federation.pdf" target="_blank" rel="noopener" class="inline-link">[PDF]</a>
+        <a href="#/research#dissertation" class="inline-link">[Dissertation]</a>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-toggle="#abs-fedser" aria-controls="abs-fedser" aria-expanded="false">[Notes]</button>
+      </p>
+      <p id="abs-fedser" class="mt-3 hidden max-w-3xl text-sm leading-6 text-slate-600">
+        Federated multi-task extension of SER for estimating GRFs and hip/knee joint moments across participants and actions without centralizing raw data. Matches centralized SER, outperforms TCN baselines under data scarcity and leave-one-action-out, and was timed on a Pixel&nbsp;8&nbsp;Pro in an 11-client setup (~3&nbsp;min training on phone vs ~40.8&nbsp;min for a centralized TCN on an A100). Not listed as a separate peer-reviewed venue unless/until published.
+      </p>
+    </li>
+
+    <li class="pub-entry">
+      <p class="text-[15px] leading-7 text-slate-800">
+        <span class="font-semibold text-slate-950">B. Song</span>, M. Paolieri, and L. Golubchik,
+        &ldquo;Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements,&rdquo;
+        in <em>Proc. IEEE International Conference on Cloud Computing (CLOUD)</em>, 2022.
+      </p>
+      <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+        <a href="publications/Performance_and_Revenue_Analysis_of_Hybrid_Cloud_Federations_with_QoS_Requirements.pdf" target="_blank" rel="noopener" class="inline-link">[PDF]</a>
+        <a href="https://doi.org/10.1109/CLOUD55607.2022.00055" target="_blank" rel="noopener" class="inline-link">[DOI]</a>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-copy="#bib-cloud">[BibTeX]</button>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-toggle="#abs-cloud" aria-controls="abs-cloud" aria-expanded="false">[Abstract]</button>
+      </p>
+      <p id="abs-cloud" class="mt-3 hidden max-w-3xl text-sm leading-6 text-slate-600">
+        Analyzes hybrid cloud federations where members share local resources and distribute savings according to Shapley value. Characterizes when full sharing is optimal under homogeneous QoS, when heterogeneous QoS changes the answer, and how to discourage free riders without central trust. Forms Chapter&nbsp;5 of the dissertation.
+      </p>
+      <pre id="bib-cloud" class="sr-only">@INPROCEEDINGS{cloud_qos,
+  author={Song, Bowen and Paolieri, Marco and Golubchik, Leana},
+  booktitle={2022 IEEE 15th International Conference on Cloud Computing (CLOUD)},
+  title={Performance and Revenue Analysis of Hybrid Cloud Federations with QoS Requirements},
+  year={2022},
+  doi={10.1109/CLOUD55607.2022.00055}
+}</pre>
+    </li>
+
+    <li class="pub-entry">
+      <p class="text-[15px] leading-7 text-slate-800">
+        <span class="font-semibold text-slate-950">B. Song</span> and A. Trachtenberg,
+        &ldquo;Scalable String Reconciliation by Recursive Content-Dependent Shingling,&rdquo;
+        in <em>Proc. 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</em>, 2019.
+      </p>
+      <p class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+        <a href="publications/Scalable_String_Reconciliation_by_Recursive_Content-Dependent_Shingling.pdf" target="_blank" rel="noopener" class="inline-link">[PDF]</a>
+        <a href="https://ieeexplore.ieee.org/document/8919901" target="_blank" rel="noopener" class="inline-link">[IEEE]</a>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-copy="#bib-rcds">[BibTeX]</button>
+        <button type="button" class="inline-link bg-transparent p-0 text-sm text-slate-600" data-toggle="#abs-rcds" aria-controls="abs-rcds" aria-expanded="false">[Abstract]</button>
+      </p>
+      <p id="abs-rcds" class="mt-3 hidden max-w-3xl text-sm leading-6 text-slate-600">
+        A communication-efficient protocol for reconciling similar large strings by transferring differences instead of full payloads. It scales with edit distance, remains practical on large strings, and outperformed rsync on a substantial fraction of the real revision histories used for validation.
+      </p>
+      <pre id="bib-rcds" class="sr-only">@inproceedings{song2019scalable,
+  title={Scalable string reconciliation by recursive content-dependent shingling},
+  author={Song, Bowen and Trachtenberg, Ari},
+  booktitle={2019 57th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
+  year={2019}
+}</pre>
+    </li>
+  </ol>
+</section>
+
+<section id="projects" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Selected projects</h2>
+  <p class="mt-2 max-w-3xl text-base leading-7 text-slate-600">Code that supports the research story.</p>
+  <ul class="mt-6 space-y-4 text-sm leading-6 text-slate-700">
+    <li>
+      <a href="https://github.com/Bowenislandsong/SER" target="_blank" rel="noopener" class="font-semibold text-slate-900 inline-link">SER:</a>
+      SVD Embedding Regression for estimating ground reaction forces from IMU signals.
+    </li>
+    <li>
+      <a href="https://github.com/Bowenislandsong/shapley-value" target="_blank" rel="noopener" class="font-semibold text-slate-900 inline-link">Shapley Value Calculator</a>
+      (<a href="https://pypi.org/project/shapley-value/" target="_blank" rel="noopener" class="inline-link">PyPI</a>):
+      payoff allocation for federation and resource sharing.
+    </li>
+    <li>
+      <a href="https://github.com/String-Reconciliation-Ditributed-System/RCDS_GO" target="_blank" rel="noopener" class="font-semibold text-slate-900 inline-link">RCDS_GO:</a>
+      Go implementation of remote large-string reconciliation.
+    </li>
+    <li>
+      <a href="https://github.com/Bowenislandsong/CoT-Rec" target="_blank" rel="noopener" class="font-semibold text-slate-900 inline-link">CoT-Rec:</a>
+      chain-of-thought generation with ranking for selecting reasoning paths.
+    </li>
+  </ul>
+  <p class="mt-4 text-sm"><a href="#/open-source" class="inline-link">More on Open Source</a></p>
+</section>
+
+<section id="teaching" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Teaching and mentorship</h2>
+  <p class="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+    Mentored students and collaborators across biomechanics, cloud systems, and ML infrastructure, including co-mentoring on biomechanics dataset work. At USC, TA experience included CSCI 353 (networking) with Dr. Bill Cheng. Mentorship highlights from the dissertation acknowledgements include Eli Friedman (queueing simulator) and Amy (Qinming) Zhang (biomechanics dataset, co-mentored with Harper Stewart).
+  </p>
+  <p class="mt-4 text-sm">
+    Course notes and archived TA materials are collected under
+    <a href="#/resources#teaching" class="inline-link">Resources · Teaching</a>,
+    including CS356 lab writeups and a
+    <a href="https://www.youtube.com/watch?v=6FnfpbiwJTo" target="_blank" rel="noopener" class="inline-link">Boston University cloud computing teaching demo</a>.
+  </p>
+</section>
+
+<section id="talks" class="scroll-mt-24 border-t border-slate-200 py-10">
+  <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Talks</h2>
+  <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-700">
+    <li><span class="font-semibold text-slate-900">Ph.D. Defense · June 18, 2026:</span> Scalable Biomechanical Modeling Through Federated Learning and Resource Federation. USC QED.
+      <a href="publications/Thesis_Defense_Slides.pdf" target="_blank" rel="noopener" class="inline-link">[Slides]</a></li>
+    <li><span class="font-semibold text-slate-900">IEEE CLOUD 2022:</span> Hybrid-cloud federation: incentives, QoS, and deployable coordination.</li>
+    <li><span class="font-semibold text-slate-900">Allerton 2019:</span> RCDS and practical synchronization at scale.</li>
+    <li><span class="font-semibold text-slate-900">DevConf.US 2020:</span> Distributed systems work rooted in string reconciliation.
+      <a href="https://devconfus2020.sched.com/event/dkXZ" target="_blank" rel="noopener" class="inline-link">[Session]</a></li>
+    <li><span class="font-semibold text-slate-900">Red Hat Summit 2020:</span> Hosted a full day of summit programming.</li>
+  </ul>
+</section>

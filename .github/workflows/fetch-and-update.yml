@@ -1,0 +1,33 @@
+name: Fetch Paper and Update Indexes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch_and_update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch paper via Gemini
+        run: python3 .github/scripts/fetch_paper.py
+      - name: Generate index files
+        run: |
+          python3 .github/scripts/generate_indexes.py
+      - name: Run full test suite
+        run: |
+          python3 -m unittest discover -s test -q
+      - name: Commit new paper and updated indexes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add papers/*.md papers/index.json classes/index.json
+          git commit -m "Add new paper and update indexes from Gemini API" || echo "No changes"
+          git push
