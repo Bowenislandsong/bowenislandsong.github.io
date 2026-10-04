@@ -619,7 +619,7 @@
                   </div>
                   <h3 class="text-sm font-semibold text-slate-900 line-clamp-2">${displayTitle}</h3>
                   <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">${meta.authors || ''}</p>
-                  ${firstContrib ? `<p class="mt-1.5 text-xs text-slate-600">${bowenLens ? '🎯' : '💡'} <strong>${bowenLens ? 'Bowen lens' : 'Key idea'}:</strong> ${firstContrib}</p>` : ''}
+                  ${firstContrib ? `<p class="mt-1.5 text-xs text-slate-600">${bowenLens ? '🎯' : '💡'} <strong>${bowenLens ? 'Research connection' : 'Key idea'}:</strong> ${firstContrib}</p>` : ''}
                   ${whyText ? `<p class="mt-0.5 text-xs text-slate-500">⭐ ${whyText}</p>` : ''}
                 </div>
               </div>

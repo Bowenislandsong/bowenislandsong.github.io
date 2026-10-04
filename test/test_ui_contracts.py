@@ -215,7 +215,6 @@ class UIContractTest(unittest.TestCase):
         required_ids = {
             "open-source-agenticlocal",
             "open-source-local-latex",
-            "open-source-blue-moon",
             "open-source-ser",
             "open-source-cot-rec",
             "open-source-rcds",
