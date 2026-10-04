@@ -7,3 +7,356 @@
   <!-- Primary SEO -->
   <title>Bowen Song | Ph.D., USC · Google · ML Systems &amp; Research</title>
   <meta name="description" content="Bowen Song earned a Ph.D. in Computer Science from USC Viterbi (June 2026) and is a Software Engineer at Google. The site covers lightweight and federated biomechanical modeling, cloud federation, ML systems, engineering notes, interview prep, and open-source projects." />
+  <link rel="canonical" href="https://bowenislandsong.github.io/" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+
+  <!-- (Optional/Legacy) Keywords: search engines mostly ignore, safe to remove -->
+  <meta name="keywords" content="Bowen Song, coding interview prep, coding interview preparation, LeetCode, Google interview prep, algorithms, data structures, dynamic programming, graphs, DFS, trie, two pointers, linked list, string parsing, bit manipulation, AI for Health, Quantum Computing, Explainable AI, Low-latency inference, Multi-modal sensing, Distributed systems, USC, UVic, QED, research, publications, academic, biomechanics, federated learning, personalization, ground reaction force, IMU, machine learning, deep learning, smart health, teaching, mentoring, AgenticLocal, local AI, agentic workflows, open source AI" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/img/aboutmepic/bio.jpeg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="/img/aboutmepic/bio.jpeg" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bowen Song | Ph.D., USC · Google | Research &amp; Engineering" />
+  <meta property="og:description" content="Ph.D. in Computer Science from USC (2026). Software Engineer at Google. Lightweight and federated biomechanical ML, cloud systems, and engineering." />
+  <meta property="og:url" content="https://bowenislandsong.github.io/" />
+  <meta property="og:image" content="https://bowenislandsong.github.io/img/aboutmepic/bio.jpeg" />
+  <meta property="og:site_name" content="Bowen Song" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bowen Song | Ph.D., USC · Google | Research &amp; Engineering" />
+  <meta name="twitter:description" content="Ph.D. in Computer Science from USC (2026). Software Engineer at Google. Research, engineering, and technical resources." />
+  <meta name="twitter:image" content="https://bowenislandsong.github.io/img/aboutmepic/bio.jpeg" />
+
+  <!-- Site Verification -->
+  <meta name="google-site-verification" content="aOBPWfdIMvfVZ9nvI3cEKqeC5sh6ztQ5HINFHwpk1fo" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Bowen Song",
+    "url": "https://bowenislandsong.github.io/",
+    "image": "https://bowenislandsong.github.io/img/aboutmepic/bio.jpeg",
+    "jobTitle": "Software Engineer",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Southern California",
+      "department": "Viterbi School of Engineering, Computer Science"
+    },
+    "affiliation": [
+      {"@type": "Organization", "name": "Google"},
+      {"@type": "Organization", "name": "USC QED Research Group"}
+    ],
+    "sameAs": [
+      "https://scholar.google.com/citations?user=Vk5z698AAAAJ&hl=en",
+      "https://www.linkedin.com/in/songbowen",
+      "https://qed.usc.edu",
+      "https://github.com/Bowenislandsong"
+    ],
+    "knowsAbout": [
+      "Federated learning",
+      "Biomechanical signal estimation",
+      "SVD Embedding Regression",
+      "Multi-modal sensing",
+      "Low-latency inference",
+      "Hybrid cloud federations",
+      "Distributed systems",
+      "Machine learning systems"
+    ],
+    "description": "Ph.D. in Computer Science from USC (2026). Software Engineer at Google. Research on lightweight and federated biomechanical modeling and cloud systems."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Bowen Song",
+    "url": "https://bowenislandsong.github.io/",
+    "description": "Personal academic and professional site for Bowen Song: Ph.D. research, engineering, open source, and technical resources.",
+    "keywords": [
+      "coding interview prep",
+      "coding interview preparation",
+      "LeetCode",
+      "dynamic programming",
+      "graph algorithms",
+      "DFS",
+      "trie",
+      "Google interview prep"
+    ]
+  }
+  </script>
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Minimal critical styles -->
+  <style>
+    :root {
+      --page-bg: #fafafa;
+      --page-accent: #0f766e;
+      --page-accent-ink: #134e4a;
+      --page-muted: #475569;
+      --page-border: rgba(15, 23, 42, 0.12);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--page-bg);
+      color: #0f172a;
+      font-family: "Manrope", system-ui, sans-serif;
+    }
+    h1, h2, h3, .brand-mark {
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
+    }
+    .hidden { display: none !important; }
+    .print-only { display: none !important; }
+    ::selection { background: rgba(15, 118, 110, 0.16); }
+    .main-nav-btn {
+      color: var(--page-muted);
+      border-bottom: 2px solid transparent;
+      padding: 0.35rem 0.15rem;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .main-nav-btn:hover { color: #0f172a; }
+    .main-nav-btn.is-active {
+      color: #0f172a;
+      border-bottom-color: var(--page-accent);
+      font-weight: 600;
+    }
+    .page-content { min-height: 70vh; }
+    .subnav-shell {
+      margin-top: 0.25rem;
+      padding: 0.5rem 0 0.75rem;
+      border-top: 1px solid var(--page-border);
+    }
+    .main-nav-shell {
+      scrollbar-width: thin;
+      gap: 1.1rem;
+    }
+    .subnav-link {
+      display: inline-flex;
+      align-items: center;
+      color: #475569;
+      padding: 0.2rem 0;
+      margin-right: 1rem;
+      border-bottom: 1px solid transparent;
+    }
+    .subnav-link:hover {
+      color: #0f172a;
+      border-bottom-color: rgba(15, 118, 110, 0.45);
+    }
+    .site-shell {
+      background: rgba(250, 250, 250, 0.92);
+      backdrop-filter: blur(10px);
+    }
+    .identity-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      color: #334155;
+      border: 1px solid var(--page-border);
+      background: #fff;
+    }
+    .identity-link:hover { color: var(--page-accent-ink); border-color: rgba(15, 118, 110, 0.35); }
+    .identity-link svg { width: 1rem; height: 1rem; }
+    .inline-link {
+      text-decoration-line: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+      text-decoration-color: rgba(100, 116, 139, 0.55);
+    }
+    .inline-link:hover {
+      color: var(--page-accent-ink);
+      text-decoration-color: rgba(15, 118, 110, 0.55);
+    }
+    .pub-entry + .pub-entry { border-top: 0; }
+    .research-figure img {
+      height: auto;
+      max-width: 100%;
+    }
+    @media (max-width: 768px) {
+      .main-nav-shell {
+        width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        gap: 0.9rem;
+        padding-bottom: 0.15rem;
+      }
+      .main-nav-btn { white-space: nowrap; }
+      .subnav-shell nav {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+      }
+      .subnav-link { white-space: nowrap; margin-right: 0.85rem; }
+      .site-brand-subtitle { display: none; }
+    }
+    @media print {
+      @page { size: letter; margin: 0.45in; }
+      body { background: #ffffff; color: #0f172a; }
+      header, footer, .subnav-shell, .print-hidden, #back-to-top { display: none !important; }
+      main, #app { max-width: none !important; padding: 0 !important; }
+      .print-only { display: block !important; }
+      a { color: inherit !important; text-decoration: none !important; }
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased">
+  <!-- Header -->
+  <header class="site-shell sticky top-0 z-50 border-b border-slate-200">
+    <div class="site-header-inner mx-auto max-w-5xl px-4 md:px-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 py-3">
+        <div class="flex min-w-0 items-center gap-4">
+          <a href="#/personal" class="min-w-0">
+            <span class="brand-mark block text-xl text-slate-900">Bowen Song</span>
+            <span class="site-brand-subtitle block text-[11px] uppercase tracking-[0.22em] text-slate-500">Ph.D., USC · Google</span>
+          </a>
+          <div class="flex items-center gap-1.5" aria-label="Profiles">
+            <a class="identity-link" href="https://scholar.google.com/citations?hl=en&amp;user=Vk5z698AAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+            </a>
+            <a class="identity-link" href="https://github.com/Bowenislandsong" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.36-1.3-1.72-1.3-1.72-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.42.36.79 1.08.79 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.74 18.27.5 12 .5z"/></svg>
+            </a>
+            <a class="identity-link" href="https://www.linkedin.com/in/songbowen" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.23 0z"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav id="main-nav" class="main-nav-shell flex items-center text-sm overflow-x-auto">
+          <a href="#/personal" class="main-nav-btn" data-page="personal">Home</a>
+          <a href="#/research" class="main-nav-btn" data-page="research">Research</a>
+          <a href="#/engineering" class="main-nav-btn" data-page="engineering">Experience</a>
+          <a href="#/resources" class="main-nav-btn" data-page="resources">Resources</a>
+        </nav>
+      </div>
+
+      <div id="personal-subnav" class="subnav-shell hidden" data-subnav-for="personal">
+        <nav class="flex flex-wrap text-xs md:text-sm">
+          <a href="#/personal#overview" class="subnav-link">Overview</a>
+          <a href="#/personal#news" class="subnav-link">News</a>
+          <a href="#/personal#education" class="subnav-link">Education</a>
+          <a href="#/personal#experience" class="subnav-link">Experience</a>
+          <a href="#/personal#contact" class="subnav-link">Contact</a>
+        </nav>
+      </div>
+
+      <div id="research-subnav" class="subnav-shell hidden" data-subnav-for="research">
+        <nav class="flex flex-wrap text-xs md:text-sm">
+          <a href="#/research#research-overview" class="subnav-link">Overview</a>
+          <a href="#/research#dissertation" class="subnav-link">Dissertation</a>
+          <a href="#/research#insights" class="subnav-link">Insights</a>
+          <a href="#/research#agenda" class="subnav-link">Themes</a>
+          <a href="#/research#publications" class="subnav-link">Publications</a>
+          <a href="#/research#projects" class="subnav-link">Projects</a>
+          <a href="#/research#teaching" class="subnav-link">Teaching</a>
+          <a href="#/research#talks" class="subnav-link">Talks</a>
+        </nav>
+      </div>
+
+      <div id="engineering-subnav" class="subnav-shell hidden" data-subnav-for="engineering">
+        <nav class="flex flex-wrap text-xs md:text-sm">
+          <a href="#/engineering#engineering-overview" class="subnav-link">Overview</a>
+          <a href="#/engineering#education" class="subnav-link">Education</a>
+          <a href="#/engineering#systems" class="subnav-link">Systems</a>
+          <a href="#/engineering#ml-infra" class="subnav-link">ML Infra</a>
+          <a href="#/engineering#engineering-experience" class="subnav-link">Roles</a>
+          <a href="#/engineering#engineering-projects" class="subnav-link">Projects</a>
+        </nav>
+      </div>
+
+      <div id="resources-subnav" class="subnav-shell hidden" data-subnav-for="resources">
+        <nav class="flex flex-wrap text-xs md:text-sm">
+          <a href="#/resources" class="subnav-link">Resources index</a>
+          <a href="#/resources#teaching" class="subnav-link">Teaching</a>
+          <a href="#/interview-prep" class="subnav-link">Interview Prep</a>
+          <a href="#/quantum" class="subnav-link">Quantum Lab</a>
+          <a href="#/paper-discovery" class="subnav-link">Reading Map</a>
+          <a href="#/open-source" class="subnav-link">Open Source</a>
+        </nav>
+      </div>
+
+      <div id="interview-prep-subnav" class="subnav-shell hidden" data-subnav-for="interview-prep">
+        <nav class="flex flex-wrap text-xs md:text-sm">
+          <a href="#/resources" class="subnav-link">Resources index</a>
+          <a href="#/interview-prep#prep-overview" class="subnav-link">Overview</a>
+          <a href="#/interview-prep#problem-browser" class="subnav-link">Problem Browser</a>
+          <a href="#/interview-prep#python-toolkit" class="subnav-link">Toolbox</a>
+          <a href="#/interview-prep#category-map" class="subnav-link">Categories</a>
+          <a href="#/interview-prep#approach-map" class="subnav-link">Approaches</a>
+          <a href="#/interview-prep#study-playbook" class="subnav-link">Playbook</a>
+        </nav>
+      </div>
+
+      <div id="open-source-subnav" class="subnav-shell hidden" data-subnav-for="open-source">
+        <nav class="flex flex-wrap text-xs md:text-sm">
+          <a href="#/resources" class="subnav-link">Resources index</a>
+          <a href="#/open-source#open-source-overview" class="subnav-link">Overview</a>
+          <a href="#/open-source#featured-projects" class="subnav-link">Projects</a>
+          <a href="#/open-source#upstream" class="subnav-link">Upstream</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- App container where sections load -->
+  <main id="app" class="page-content mx-auto max-w-5xl px-4 md:px-6 py-6">
+    <!-- Static SEO content - visible before JS loads and for search engine crawlers -->
+    <noscript>
+      <section class="grid grid-cols-1 md:grid-cols-[1fr,220px] gap-8 py-10">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Bowen Song</h1>
+          <p class="mt-2 text-lg text-slate-700">Ph.D., Computer Science (USC, 2026) · Google</p>
+          <p class="mt-3 text-slate-600">Research on <strong>lightweight and federated biomechanical modeling</strong>, <strong>cloud federation</strong>, and <strong>ML systems</strong>.</p>
+          <p class="mt-3 text-slate-600">Explore the overview, research page (dissertation and publications), engineering page, and resource pages for interview prep, paper exploration, and quantum notes.</p>
+          <p class="mt-4">Email: <a href="mailto:bowenson@usc.edu">bowenson@usc.edu</a> | <a href="https://www.linkedin.com/in/songbowen">LinkedIn</a> | <a href="#/research">Research</a></p>
+        </div>
+      </section>
+    </noscript>
+    <!-- Section content gets injected here by JS -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200/80 bg-white/70">
+    <div class="mx-auto max-w-5xl px-4 md:px-6 py-6 text-sm text-slate-600 flex flex-wrap items-center justify-between gap-2">
+      <p>© <span id="year"></span> Bowen Song</p>
+      <button id="back-to-top" type="button" class="underline">Back to top</button>
+    </div>
+  </footer>
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+
+  <!-- Scripts -->
+  <script src="js/router.js?v=20260724d"></script>
+  <script src="js/section-hooks.js?v=20260724d"></script>
+  <script src="js/quantum.js?v=20260324b"></script>
+  <script src="js/interview-prep-data.js?v=20260411b"></script>
+  <script src="js/interview-prep.js?v=20260411a"></script>
+  <script src="js/papers.js?v=20260324b"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
